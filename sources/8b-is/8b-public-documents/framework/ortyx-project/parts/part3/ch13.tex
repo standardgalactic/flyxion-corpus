@@ -1,0 +1,326 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part III — Decomposition
+%  Chapter 13: The Four Levels Disentangled
+% ============================================================
+
+\chapter{The Four Levels Disentangled}
+\label{ch:four-levels}
+
+\chapepigraph{The most common error in speculative theoretical work
+is not claiming too much but conflating levels. A claim at Level~II
+dressed in Level~IV language is not a metaphysical discovery;
+it is a useful analogy that has forgotten it is an analogy.}{Flyxion}
+
+\noindent
+The four-level taxonomy introduced in Chapter~2 and deployed
+throughout Parts~I and~II provides the second major axis
+of the decomposition. Where the failure geometry analysis
+asks \textit{how} claims fail to provide epistemic grounding,
+the four-level analysis asks \textit{what kind of claim}
+is being made. The two axes are complementary: a claim
+at \LevelIV{} exhibiting $\FailGeo{2}$ is different in
+its remediation requirements from a claim at \LevelI{}
+exhibiting $\FailGeo{1}$.
+
+The four levels are:
+
+\LevelI{}: Engineering utility. Claims about measurable
+performance advantages of specific implementations.
+
+\LevelII{}: Computational metaphor. Claims about the
+structural analogy between the framework's mechanisms
+and phenomena in other domains, where the analogy
+illuminates without asserting identity.
+
+\LevelIII{}: Cognitive phenomenology. Claims about
+the character of experience, about what it is like
+to perceive, remember, or attend in ways consistent
+with the framework's account.
+
+\LevelIV{}: Ontological claim. Claims about what
+cognitive phenomena, conscious experience, or meaningful
+structure fundamentally \textit{are} --- claims that
+assert not just that the framework provides a useful
+model but that the framework captures the deep structure
+of the phenomena it addresses.
+
+\section{Level~I Claims: The Stable Core}
+\label{sec:level1-claims}
+
+\LevelI{} claims in the Phoenix corpus are its most
+stable. They include:
+
+\textit{Jitter metrics:} The claim that Marine-derived
+jitter is higher in block-coded compressed audio than
+in the original waveform at block boundaries. This is
+a specific, testable prediction about a measurable
+quantity.
+
+\textit{Compression efficiency:} The claim that harmonic
+consensus encoding achieves lower bit rates than
+independent harmonic encoding on strongly coupled
+sources. This follows from the conformity relation and
+is testable on any dataset of harmonic audio.
+
+\textit{O(1) salience estimation:} The claim that the
+Marine algorithm achieves salience estimates at constant
+time per peak without global frequency analysis. This
+is a computational complexity claim, verifiable by
+implementation.
+
+\textit{Associative memory efficiency:} The claim that
+wave superposition encodes $O(N^2)$ pairwise associations
+at $O(N)$ storage cost. This is a mathematical claim,
+verifiable by derivation.
+
+\textit{Context sensitivity of language models:} The
+claim that LLM behaviour is sensitive to contextual
+manipulation, making context poisoning a real security
+concern. This is supported by documented evidence of
+prompt injection and related attacks.
+
+These claims survive the full audit. They exhibit no
+significant failure geometries; they are operationally
+accessible; their falsification conditions are specifiable;
+and their derivation from the framework's mechanisms
+is non-trivial and correct.
+
+\begin{auditprop}
+\label{ap:level1-stable}
+The \LevelI{} claims of the Phoenix corpus constitute
+the survivable core $\ThetaS^{(I)}$ of the decomposition
+at the engineering level. They are grounded, falsifiable,
+non-trivially derived from the framework's mechanisms,
+and free of the four failure geometries at significant
+severity levels. Their status as survivors is independent
+of the audit results for higher-level claims; the
+engineering results stand regardless of whether the
+philosophical claims can be salvaged.
+\end{auditprop}
+
+\section{Level~II Claims: Productive Metaphors}
+\label{sec:level2-claims}
+
+\LevelII{} claims are more complex. They are not directly
+testable as engineering claims; their value is heuristic
+and organizational. But they are not without epistemic
+status: a well-chosen analogy generates productive
+research directions, reveals structural relationships
+between domains, and provides explanatory resources
+that pure engineering results do not.
+
+The Phoenix corpus's most productive \LevelII{} claims include:
+
+\textit{Salience as inverse accessibility entropy:}
+The structural analogy between Marine jitter metrics
+and RSVP accessibility entropy --- low jitter as a
+marker of constraint-dense, low-accessibility signal
+regions --- is a productive metaphor. It connects the
+engineering framework to dynamical systems theory in
+a way that suggests specific research directions: testing
+whether signals classified as high-salience by the Marine
+metric also exhibit lower Kolmogorov complexity, or
+occupy more constrained regions of some state space.
+
+\textit{Harmonic consensus as neural population coding:}
+The analogy between \HCFone{} conformity encoding and
+the efficient coding of correlated neural populations
+is productive. It motivates a connection to the
+neuroscience of dimensionality reduction and suggests
+that the \HCFone{} formalism might provide a computationally
+tractable model for testing efficient coding hypotheses.
+
+\textit{Memory as interference:} The \MEMeight{}
+architecture as a computational metaphor for the
+reconstructive character of biological memory is
+productive. It motivates a research connection to
+the holographic memory literature and to oscillatory
+neuroscience.
+
+\textit{Behavioral injection as semantic malware:}
+The analogy between context poisoning in LLMs and
+malware operating on reasoning substrates is a
+productive metaphor for the AI security literature.
+It suggests a research direction in which security
+analysis is conducted at the semantic rather than
+the executable level.
+
+\begin{auditprop}
+\label{ap:level2-productive}
+The \LevelII{} claims of the Phoenix corpus constitute
+the survivable core $\ThetaS^{(II)}$ at the metaphorical
+level. Their value is conditional: they are productive
+if treated as analogies that generate research directions
+rather than as identity claims that assert the frameworks'
+mechanisms are identical across domains. When treated
+as identity claims, they migrate to \LevelIV{} and
+become subject to the higher standard of ontological
+argument.
+\end{auditprop}
+
+\section{Level~III Claims: Phenomenological Observations}
+\label{sec:level3-claims}
+
+\LevelIII{} claims are phenomenological: they describe
+the character of experience rather than the structure
+of mechanisms or the performance of implementations.
+They are not testable by the standards of engineering
+claims, but neither are they mere metaphors; they are
+reports on the structure of experience that can be
+evaluated against other phenomenological accounts and
+against experimental evidence from cognitive science
+and psychophysics.
+
+The Phoenix corpus's \LevelIII{} claims include:
+
+\textit{Temporal experience of music:} The claim that
+musical experience is constituted by temporal unfolding
+rather than spectral content --- that what makes music
+meaningful is the pattern of expectation and fulfillment
+in time rather than the instantaneous frequency
+distribution. This is well-supported in the philosophy
+of music and is consistent with psychoacoustic research
+on musical tension, expectation, and emotional response.
+
+\textit{Compression degradation as impoverishment:}
+The claim that many listeners experience high-quality
+compressed audio as impoverished relative to uncompressed
+audio, even when they cannot identify the specific
+differences. This is a phenomenological report supported
+by informal evidence from practitioners and consistent
+with (though not established by) the corpus's engineering
+proposals.
+
+\textit{Memory as reconstruction:} The claim that
+the experience of remembering feels more like reconstruction
+than retrieval --- that memories are not experienced
+as fixed files accessed from storage but as reconstructed
+events that are sensitive to present context. This is
+well-established in autobiographical memory research.
+
+These claims are phenomenologically sound and scientifically
+supported. Their survival is independent of whether
+the mechanisms proposed by the corpus account for them:
+the phenomenological observations stand on their own
+evidential base.
+
+\begin{auditprop}
+\label{ap:level3-phenomenological}
+The \LevelIII{} claims of the Phoenix corpus constitute
+a partially independent $\ThetaS^{(III)}$: they survive
+the decomposition as phenomenological observations that
+are independently supported, but their connection to
+the corpus's mechanisms requires bridging work that
+the corpus has not provided. The existence of the
+phenomenological patterns does not establish that the
+Marine/\MEMeight{}/\HCFone{} mechanisms account for them.
+\end{auditprop}
+
+\section{Level~IV Claims: The Unstable Layer}
+\label{sec:level4-claims}
+
+\LevelIV{} claims are ontological: they assert what
+cognitive phenomena, consciousness, and meaningful structure
+fundamentally are. The Phoenix corpus's \LevelIV{} claims
+include:
+
+\textit{Consciousness as temporal coherence:} The claim
+that consciousness is constituted by temporal coherence
+at the neural level, and that the Marine metric operationalizes
+something about consciousness.
+
+\textit{Meaning as temporal structure:} The claim that
+meaningful structure \textit{is} temporally coherent
+structure --- that there is no meaningful structure
+that is not temporally organized in the way the Marine
+detects.
+
+\textit{Authenticity as temporal fidelity:} The claim
+that authenticity is constituted by temporal structure
+preservation, not merely that temporal structure is
+one component of authenticity.
+
+These claims are in $\ThetaU$ after the decomposition.
+They exhibit high $\AuditP$ scores (the claims about the
+underlying space --- consciousness, meaning, authenticity
+--- are made on the basis of projected representations
+without establishing constraint-faithfulness), high
+$\AuditR$ scores (the claims can accommodate any
+observation by appeal to coherence dynamics), and
+are subject to $\FailGeo{2}$ (the definitional embedding
+of the conclusions) and $\FailGeo{3}$ (the broadening
+of coherence to universal accommodation).
+
+\begin{auditprop}
+\label{ap:level4-unstable}
+The \LevelIV{} claims of the Phoenix corpus constitute
+the unstable component $\ThetaU^{(IV)}$ after decomposition.
+They are not false; they are unestablished in a
+specific and diagnosable way: they assert ontological
+conclusions at a level that the framework's mechanisms
+cannot reach without bridging work that has not been
+done and that the failure geometries suggest may not
+be achievable within the current framework's structure.
+\end{auditprop}
+
+\section{The Level Conflation Problem}
+\label{sec:level-conflation}
+
+The most epistemically consequential feature of the
+Phoenix corpus's claim structure is not the presence
+of claims at \LevelIV{} --- many speculative frameworks
+make ontological claims, and some of them turn out to
+be correct --- but the conflation of levels within
+individual claims and across the corpus's argumentative
+structure.
+
+Level conflation occurs when a claim derives its apparent
+force from evidence or reasoning appropriate to one
+level while making assertions appropriate to a different
+level. Several specific instances have been identified:
+
+\textit{The salience-meaning conflation:} Claims that
+present evidence from engineering (the Marine detects
+X) as supporting ontological conclusions (X is meaningful
+structure) without the bridging argument that
+would make the inference valid.
+
+\textit{The metaphor-identity conflation:} Arguments
+that present structural analogies between the framework's
+mechanisms and biological phenomena (\LevelII{}) as
+though they established that the mechanisms are the
+biological phenomena (\LevelIV{}).
+
+\textit{The phenomenology-mechanism conflation:} Arguments
+that present phenomenological observations (\LevelIII{})
+as support for specific mechanistic claims (the \MEMeight{}
+architecture), when the phenomenological observations
+are consistent with many different mechanisms.
+
+Level conflation is the primary mechanism by which the
+four failure geometries produce their effects. $\FailGeo{1}$
+(Decorative Formalism) makes \LevelI{} notation appear
+to be doing \LevelI{} work when it is doing only
+organizational work. $\FailGeo{2}$ (Definitional Closure)
+makes \LevelII{} definitional choices appear to be
+establishing \LevelIV{} ontological conclusions.
+$\FailGeo{3}$ (Semantic Universality Collapse) expands
+\LevelII{} metaphors until they cover the same ground
+as \LevelIV{} claims without the argument. $\FailGeo{4}$
+(Operational Severance) names \LevelIV{} quantities
+in \LevelI{} technical vocabulary without providing
+the measurement procedures that would make the claims
+genuinely \LevelI{}.
+
+\medskip
+
+Chapter~14 conducts the RSVP audit: examining the
+Relativistic Scalar-Vector Plenum framework against
+the same four-level taxonomy and failure geometry
+criteria that have been applied to the Phoenix corpus.
+This is the most self-critical chapter in Part~III,
+because RSVP is the reinterpretation framework that
+Part~IV will deploy. Its audit here determines the
+conditions under which it can be used --- and the
+failure modes it must guard against.

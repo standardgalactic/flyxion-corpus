@@ -1,0 +1,409 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\geometry{margin=1.25in}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+
+\title{Hierarchical Continuation and the Geometry of Locomotion}
+\author{Flyxion \\ Independent Researcher}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent This essay develops a falsifiable geometric account of central-pattern-generator-driven locomotion, in which gait is understood as a hierarchy of amplitwist operators -- Needham's local decomposition of a transformation into a scaling and a rotation -- rather than as an explicit joint-angle trajectory. The Kuramoto order parameter, already standard in the coupled-oscillator literature, is shown to be an amplitwist operator without modification, and hierarchical composition of such operators is developed and applied to a worked bipedal case. Three explicit falsification conditions are stated -- a compactness criterion, a ground-contact discontinuity test, and a balance-recovery signature -- two of which are operationalized as reanalysis proposals against existing perturbation-recovery datasets. The essay closes by separating this claim from structurally similar but undeveloped patterns elsewhere in this author's work, and by stating plainly what remains true of central pattern generators independent of whether the geometric reading proposed here survives its own tests.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction: State-Based versus Trajectory-Based Control}
+
+\subsection{The State-Centric Default}
+
+The dominant treatment of movement in robotics and computer animation is state-centric. A controller is given, or computes, a target configuration — a pose, a joint-angle vector, a foot-placement target — and the problem of control is understood as the problem of driving the system from its current configuration to that target, typically through some form of inverse kinematics. Balance, on this view, is a condition achieved at each instant: the controller measures a discrepancy between current and desired state and applies a correction, and locomotion is the repeated application of this correction at a rate fast enough that no single failure becomes visible. The trajectory the system actually traces is, on this account, an incidental byproduct of a sequence of state corrections rather than the object the controller is reasoning about at all.
+
+This is not a claim that state-centric control is mistaken; it is extremely successful, and much of applied robotics rests on it. The claim is narrower: state-centric control treats the path as derivative and the pose as primary, and this essay is interested in what changes when that priority is reversed.
+
+\subsection{The Trajectory-Centric Alternative}
+
+A recurring pattern in this author's other work treats histories as primary and states as compressed summaries of them, not the reverse. A macro is not usefully described as an action; it is a compressed record of a previously-traversed sequence of actions, replayed rather than recomputed. An undo tree does not discard a state once a new one arrives; it preserves the branch, because the state was never the primary object to begin with. A repaired telemetry history is not a report about a memory that already existed; the repair operation, applied to fragments, is what constitutes the memory. In each case a system that appears, on the surface, to be manipulating states turns out, on inspection, to be manipulating a trajectory, with any given state recoverable as a compressed slice of it.
+
+This essay asks whether locomotion admits the same reversal. Rather than asking what pose a limb should occupy at time $t$, the trajectory-centric alternative asks what local operator is generating the limb's motion, and treats the resulting path — and the pose at any instant along it — as a consequence of that operator rather than as the thing being directly specified. Balance, under this reading, is not a target state periodically re-attained; it is a property of an ongoing process, continuously regenerated rather than achieved and held. This distinction is developed formally in Sections 3 and 5.
+
+\subsection{Thesis Statement}
+
+This monograph argues that locomotion is usefully understood as a case of hierarchical continuation: a process that persists by continuously regenerating the conditions of its own further continuation, in the sense developed elsewhere in this author's work on recursive continuation. The specific claim is that central pattern generators (CPGs), already standard in the biological and robotic locomotion literature as trajectory generators rather than pose generators, admit a natural local geometric description in terms of the amplitwist — Needham's decomposition of a local transformation into a scaling and a rotation. Section 3 shows that this is not merely an appealing analogy: the complex order parameter already used to describe populations of coupled phase oscillators is, without modification, an amplitwist operator, with population coherence playing the role of amplitude and mean phase playing the role of twist. Section 3 further shows how such operators compose hierarchically, so that a joint-level amplitwist field can serve as input to a limb-level coupling functional, which can in turn serve as input to a whole-body gait-level functional, each level a compressed description of the coherence and common phase of the level beneath it.
+
+\subsection{Scope and Epistemic Status}
+
+This is a theoretical-geometry essay, not a controller specification. It does not provide, and is not intended to motivate, an implementation recipe for a specific robotic platform; the distance between the claims made here and anything resembling deployable control code is substantial, spanning at minimum the hybrid-system extension needed for ground contact (Section 6.2) and the considerable engineering ordinarily required to take any reduced oscillator model into hardware. The essay's contribution, if it has one, is a candidate answer to a narrower question: given that CPG-based accounts of locomotion are already trajectory-centric in the sense of Section 1.2, what is the right local geometric language for describing the trajectories they generate, and how far can that language be pushed before it breaks.
+
+Section 6 states the conditions under which this framework should be considered to have failed, stated in advance of any attempt to fit the framework to data collected after the fact. Two of the three claims made there are stated as conjectures rather than results, restricted deliberately to their weakest defensible form. Nothing in what follows should be read as a stronger claim than this section license.
+
+\section{Historical Background: Oscillators, CPGs, and Hierarchical Coordination}
+
+Section 1 asserted, without argument, that CPGs are already trajectory generators rather than pose generators, and that the amplitwist reading of Section 3 is therefore an addition of geometric vocabulary to an existing trajectory-centric picture rather than an imposition of one. This section supplies the argument, tracing the relevant background from the biological discovery of CPGs through their robotic reduction to the Kuramoto model that Section 3 depends on, and closing with the observation that the trajectory-centric character of this lineage was present from its earliest formulations, decades before any geometric reading was attached to it.
+
+\subsection{CPGs in Biology}
+
+The discovery that rhythmic motor behavior does not require continuous sensory guidance is usually traced to Graham Brown's early twentieth-century work on deafferented cat preparations, which showed that alternating flexor-extensor stepping patterns could be produced by isolated spinal circuits with the dorsal roots cut, removing peripheral sensory feedback as a possible driver of the rhythm. This result was, at the time, surprising against the prevailing reflex-chain view associated with Sherrington, in which each phase of a movement was thought to be triggered by sensory feedback from the phase preceding it. Brown's half-center model proposed instead two mutually inhibiting neuron pools whose reciprocal suppression, combined with adaptation of the active pool, produces spontaneous alternation without requiring an external trigger for each transition.
+
+Subsequent work substantially elaborated this picture without displacing its central claim. The CPG for locomotion is now understood, across a wide range of vertebrate species, as a distributed network of rhythm-generating circuits, one loosely associated with each limb, coupled through commissural and long propriospinal pathways that establish stable phase relationships between limbs and thereby determine gait. Sensory feedback is not absent from this picture, and it plays a substantial role in shaping and adapting the rhythm to terrain and perturbation, but the rhythm-generating capacity itself is intrinsic to the network rather than externally imposed step by step.
+
+What matters for this essay is the structure of the claim, independent of its neurophysiological detail. A CPG is a circuit that specifies a coupling relationship among oscillatory elements and lets the pattern of activity unfold from that relationship; it does not, at any stage, store or compute a target pose for a given instant and then move the limb to that pose. The rhythm is not a target that the system approaches; it is what the system does by virtue of its coupling structure, and any resulting joint trajectory is read off from that ongoing activity rather than specified in advance. This is already, decades before the vocabulary of Section 1 existed, a trajectory-centric account of movement generation.
+
+\subsection{CPGs in Robotics}
+
+The biological CPG concept was imported into robotics primarily as a reduced-order oscillator model, since the full neurophysiological detail of a half-center circuit is unnecessary for generating a usable rhythmic control signal. A robotic CPG is typically instantiated as a small system of coupled nonlinear oscillators, one per joint or limb, with the coupling terms chosen to enforce a desired phase relationship (in-phase for a hopping gait, anti-phase for a trotting gait, more elaborate offsets for a galloping or crawling gait) and with the oscillator amplitude and frequency serving as the parameters an outer control loop adjusts to change stride length or speed.
+
+This reduction is important for the present essay because it is precisely the point at which the rhythm-generating circuit becomes mathematically tractable as a population of coupled phase equations, of the kind Section 3 uses directly. A robotic CPG, in this reduced form, does not specify a joint-angle trajectory as its primary output; it specifies a coupling structure among oscillators, and the joint-angle trajectory is derived from the oscillator states as a secondary, read-off quantity. The engineering motivation for this design (fewer parameters to tune, graceful degradation under perturbation, straightforward gait transitions by adjusting coupling rather than replanning a trajectory from scratch) is independent of anything argued in this essay, but the resulting architecture is exactly the trajectory-centric structure Section 1 describes in the abstract.
+
+\subsection{The Kuramoto Model}
+
+The mathematical treatment of coupled phase oscillators used in Section 3 did not originate in robotics or biology; it originates with Kuramoto's analysis of collective synchronization among weakly coupled limit-cycle oscillators, developed to explain how large populations of oscillators with individually distributed natural frequencies can nonetheless lock into a common rhythm above a critical coupling strength. The reduction of a robotic CPG to the Kuramoto form is a special case of this general treatment, restricted to the small populations (one oscillator per limb or joint) relevant to locomotion rather than the large thermodynamic-limit populations Kuramoto's original analysis targeted.
+
+The complex order parameter,
+\[
+Z(t) = r(t)\, e^{i\psi(t)} = \frac{1}{N}\sum_{j=1}^{N} e^{i\theta_j(t)},
+\]
+is the standard diagnostic device introduced to track the degree and phase of synchronization in this literature, well before Section 3 of this essay proposes reading it as an amplitwist operator. Its two components, an amplitude $r \in [0,1]$ measuring coherence and a phase $\psi$ measuring the common direction of that coherence, are already, in the coupled-oscillator literature on its own terms, exactly the two independent quantities Needham isolates in the local action of a holomorphic map. Section 3's claim is only that this coincidence is not a coincidence: the order parameter already has the shape of an amplitwist because both are answers to the same underlying question, namely how a local scaling and a local rotation can be tracked as a single complex quantity.
+
+\subsection{CPGs Were Trajectory-Centric Before Any Geometric Reading}
+
+\begin{observation}
+The trajectory-centric character of CPG-based locomotion control is not a consequence of, or an argument for, the amplitwist reading developed later in this essay. It predates that reading by decades, in both the biological literature (Brown, and the half-century of spinal-circuit work following him) and the robotics literature (reduced oscillator models used in legged robot gait synthesis well before any complex-analytic vocabulary was attached to them). The amplitwist contribution of Section 3 is additive: a local geometric language layered onto an already trajectory-centric architecture, not a reinterpretation required to make that architecture trajectory-centric in the first place.
+\end{observation}
+
+This observation matters for how the rest of this essay should be read. If Sections 3 through 6 turn out to fail their own falsification conditions — if the compactness criterion is not met, if the reset map at ground contact resists an amplitwist description, if no coherence precursor to balance recovery is found — what would be discredited is the amplitwist geometry specifically, not the prior and independently well-supported claim that CPGs generate trajectories rather than poses. The two claims are separable, and this section has been written to keep them so.
+
+\section{Amplitwist Operators as Local Trajectory Descriptions}
+
+Section 1 distinguished state-based control, in which a controller specifies a target configuration and leaves the path to that configuration unspecified, from trajectory-based control, in which the object of specification is the path itself. Section 2 argued that central pattern generators (CPGs) are trajectory generators in exactly this sense: a CPG does not compute a joint angle and then hold it; it produces a continuously regenerated oscillatory pattern from which joint angles are read off as a byproduct. This section supplies the local geometric language in which such a pattern can be described, adapting Needham's amplitwist to the setting of coupled oscillators.
+
+\subsection{The Amplitwist Decomposition, Recalled}
+
+Following Needham, a holomorphic function $f$ acting locally at a point $z_0$ in the complex plane admits, to first order, a decomposition into a pure scaling and a pure rotation. Writing the derivative in polar form,
+\[
+f'(z_0) = r\, e^{i\theta}, \qquad r = |f'(z_0)| > 0,\ \theta = \arg f'(z_0),
+\]
+the local action of $f$ near $z_0$ is, to first order, multiplication by $f'(z_0)$: every infinitesimal displacement from $z_0$ is scaled by $r$ (the \emph{amplification}) and rotated by $\theta$ (the \emph{twist}). We call the pair $(r,\theta)$, or equivalently the single complex number $A = r e^{i\theta}$, the \emph{amplitwist} of $f$ at $z_0$.
+
+\begin{definition}[Amplitwist operator]
+Let $M$ be a manifold locally modeled on $\mathbb{C}$ (or, more generally, admitting a local almost-complex structure), and let $\gamma: \mathbb{R} \to M$ be a differentiable curve. An \emph{amplitwist operator} along $\gamma$ at time $t$ is a complex-valued function
+\[
+A(t) = r(t)\, e^{i\theta(t)}
+\]
+such that the local first-order behavior of the generating process at $\gamma(t)$ is given by scaling by $r(t)$ and rotation by $\theta(t)$. $A(t)$ is a local, instantaneous description; it says nothing by itself about the global shape of $\gamma$, only about how the generating law is acting at that instant.
+\end{definition}
+
+The amplitwist, on this reading, is not a description of a curve. It is a description of an \emph{operator that generates} a curve, evaluated pointwise along whatever trajectory it happens to be generating. This is the same distinction, in different vocabulary, between $\Phi$ (law) and $v$ (flow) developed elsewhere in this author's work: $A(t)$ plays the role of an instantaneous flow-generator, not the role of a stored path.
+
+\subsection{From a Single Oscillator to a Coupled Phase Field}
+
+A single limb, joint, or actuator driven by a CPG is standardly modeled as a phase oscillator,
+\[
+\dot\theta_i = \omega_i + \sum_{j} K_{ij} \sin(\theta_j - \theta_i),
+\]
+the Kuramoto form, where $\omega_i$ is the natural frequency of oscillator $i$ and $K_{ij}$ the coupling strength from oscillator $j$. This equation already has the shape this essay has been building toward: it specifies a rate of change of phase, not a target phase, and the resulting trajectory $\theta_i(t)$ is a continuously regenerated consequence of the coupling structure rather than a stored path.
+
+The Kuramoto model supplies, without any modification, exactly the amplitwist quantity this section needs. Define the complex order parameter over a population of $N$ coupled oscillators,
+\[
+Z(t) = r(t)\, e^{i\psi(t)} = \frac{1}{N} \sum_{j=1}^{N} e^{i\theta_j(t)}.
+\]
+Here $r(t) \in [0,1]$ measures the instantaneous degree of phase synchronization across the population (amplitude), and $\psi(t)$ is the mean phase (twist). $Z(t)$ is not introduced by analogy; it is the same object as $A(t)$ under the identification $r \leftrightarrow r$, $\theta \leftrightarrow \psi$. A population of coupled CPG oscillators generates, at every instant, a genuine amplitwist operator whose amplitude is the coherence of the population and whose twist is its common phase.
+
+\begin{proposition}[The order parameter is an amplitwist field]
+Let $\{\theta_j(t)\}_{j=1}^N$ evolve under the Kuramoto coupling above. The complex order parameter $Z(t) = r(t) e^{i\psi(t)}$ is an amplitwist operator in the sense of Definition 1, with amplitude $r(t)$ and twist $\psi(t)$ evolving according to
+\[
+\dot r = \frac{1}{N}\sum_j \cos(\theta_j - \psi)\,(\omega_j - \dot\psi) - \text{(higher order coupling terms)}, \qquad
+\dot\psi = \frac{1}{Nr}\sum_j \sin(\theta_j - \psi)\, K_j + \bar\omega,
+\]
+where $\bar\omega$ is the mean natural frequency. In the strongly coupled limit ($K_{ij} \to \infty$ uniformly), $r \to 1$ and all oscillators lock to a common phase, so that $Z(t) \to e^{i\bar\omega t}$: the population amplitwist degenerates to pure rotation with no amplitude modulation, recovering rigid, fully synchronized gait.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Differentiate $Z = r e^{i\psi}$ directly and substitute the Kuramoto equations for $\dot\theta_j$; separating real and imaginary parts yields the stated equations for $\dot r$ and $\dot\psi$ by the standard Kuramoto mean-field derivation (Strogatz, 2000). The strong-coupling limit is the standard phase-locking result: when coupling dominates frequency dispersion, the variance of $\{\theta_j - \psi\}$ collapses to zero, $r \to 1$, and $\dot\psi \to \bar\omega$.
+\end{proof}
+
+This proposition is doing real work for the framework, not merely decorating it. It shows that the amplitwist decomposition is not an interpretive overlay imposed on CPG dynamics after the fact; it is already present, as the order parameter, in the standard mathematical treatment of coupled oscillators. Amplitude and twist are not a metaphor borrowed from complex analysis and pasted onto locomotion. They are the same two numbers that locomotion researchers already track under the name synchronization index and mean phase.
+
+One clarification is worth stating explicitly here, since a reader familiar with CPG robotics from a different angle could otherwise conflate two distinct sources of an ``$r$.'' Much of the applied CPG literature (following Righetti, Ijspeert, and related work) models each individual oscillator directly as a Hopf normal form, $\dot r_i = \mu_i r_i - r_i^3$, $\dot\theta_i = \omega_i + b r_i^2$, in which case $r_i$ is the limit-cycle amplitude of that single oscillator, born at a supercritical bifurcation as $\mu_i$ crosses zero. The $r$ used throughout this essay is a different quantity: it is the Kuramoto order parameter's coherence, a population-level measure of how tightly a collection of phase oscillators are locked together, not the amplitude of any individual oscillator's limit cycle. The two constructions are compatible and frequently combined in practice (a population of Hopf oscillators, each with its own amplitude, additionally coupled and assessed for phase coherence via the order parameter), but they answer different questions, and this essay's amplitwist chain is built exclusively on the second.
+
+\subsection{Hierarchical Composition of Amplitwist Fields}
+
+A single joint is driven by a local oscillator population; a limb couples several joint-level oscillator populations; a gait couples several limb-level populations; whole-body locomotion couples the gait-level pattern to postural and vestibular correction loops. At each level, the population below supplies a $(r,\theta)$ pair, and that pair becomes one of the inputs to the coupling structure of the level above.
+
+\begin{definition}[Amplitwist chain]
+Let $\{A^{(1)}_i(t)\}$ be a family of amplitwist operators at level $1$ (e.g. individual joint oscillator populations). Define a coupling functional $\mathcal{C}$ that maps a finite collection of level-$k$ amplitwist operators to a single level-$(k+1)$ amplitwist operator,
+\[
+A^{(k+1)}(t) = \mathcal{C}\big(A^{(k)}_1(t), \dots, A^{(k)}_{n_k}(t)\big).
+\]
+An \emph{amplitwist chain} of depth $n$ is a sequence $A^{(1)} \to A^{(2)} \to \cdots \to A^{(n)}$ generated by repeated application of $\mathcal{C}$, where $A^{(n)}$ is the coarsest-scale description (e.g. whole-body gait phase and coherence) and $A^{(1)}$ is the finest (individual actuator phase and coherence).
+\end{definition}
+
+The simplest admissible $\mathcal{C}$ is again the Kuramoto order parameter, applied one level up: treat each lower-level $A^{(k)}_i = r_i e^{i\theta_i}$ as a single effective phase-amplitude unit and compute a second-order order parameter over these units. Nothing prevents richer choices of $\mathcal{C}$ (weighted couplings reflecting anatomical asymmetry, phase-lag terms encoding the fixed inter-limb offsets characteristic of a trot versus a walk versus a gallop), but the minimal case already establishes that $\mathcal{C}$ is well-defined and that the chain does not require a different formalism at each level. This is the CPG-chain structure referred to earlier in this project: not a chain of joint-angle commands, but a chain of amplitwist operators, each one a compressed description of the coherence and common phase of the level beneath it.
+
+\begin{corollary}
+An amplitwist chain of depth $n$ is a history in the sense developed elsewhere in this author's work, not a state. At no level does $A^{(k)}(t)$ specify a pose; it specifies the instantaneous rate and direction of change of the level below. A gait, on this account, is the trajectory traced out by $A^{(n)}(t)$ as the entire chain is continuously regenerated — balance is not a state achieved once and held, but a coherence value $r^{(n)}(t)$ kept away from zero by ongoing coupling, in the same sense that Sec.\ 25.4's repaired memory is continuously reconstructed rather than stored.
+\end{corollary}
+
+\subsection{What This Section Does Not Yet Claim}
+
+Two restrictions are worth stating explicitly before the framework is extended further. First, the Kuramoto order parameter is a mean-field description; it discards information about which specific oscillators are out of phase; a richer $\mathcal{C}$ may be required wherever that information matters (e.g. detecting which limb is desynchronizing before a stumble becomes visible at the whole-body level). Second, nothing in this section addresses discontinuous events — foot strikes, slips, collisions — since the Kuramoto formalism and its order parameter are defined for smooth, continuously coupled phase evolution. Section 6 returns to this second restriction directly, since it is the sharpest test of whether the amplitwist chain is describing locomotion or only describing steady-state gait.
+
+\section{Composition and Hierarchy of Amplitwist Operators}
+
+Section 3 introduced the coupling functional $\mathcal{C}$ only in its minimal form: a second-order Kuramoto order parameter computed over a collection of lower-level amplitwist operators treated as effective phase-amplitude units. That minimal case was sufficient to establish that $\mathcal{C}$ is well-defined and that a chain does not require new mathematics at each level, but it is too impoverished to distinguish one gait from another, since it treats every lower-level unit identically and imposes no structure on how they should relate. This section develops $\mathcal{C}$ to the point where it can carry that distinction, gives a precise sense in which the depth of an amplitwist chain is a causal-depth measure in this author's existing Assembly-Theoretic vocabulary, and closes with the question of whether $\mathcal{C}$ itself should be regarded as a fixed law across gaits or as something gait-specific.
+
+\subsection{Coupling Functionals Beyond the Minimal Case}
+
+A gait is not merely a pattern of individual limb oscillations; it is a specific, stable pattern of \emph{relative phase} among them. A trot, a pace, a bound, and a gallop, in a quadruped, are standardly distinguished not by the frequency or amplitude of any single limb's oscillation but by the phase lags between limbs: diagonal pairs in phase for a trot, lateral pairs in phase for a pace, front and hind pairs in phase for a bound. This is a substantial existing literature in its own right; Collins and Stewart's analysis of coupled oscillator networks showed that the standard quadrupedal gaits correspond to distinct symmetry classes of solutions to a network of coupled oscillators with a fixed topology, the gait being determined by which symmetry the coupled system spontaneously selects rather than by any change in the oscillators themselves.
+
+\begin{definition}[Gait-specifying coupling functional]
+Let $\{A_i^{(k)}(t)\}_{i=1}^{n_k}$ be a family of level-$k$ amplitwist operators. A \emph{gait-specifying coupling functional} is a pair $\mathcal{C}_K = (\mathcal{C}, K)$ where $\mathcal{C}$ is the coupling functional of Definition 2 (Section 3) and $K = (K_{ij})$ is a coupling matrix specifying, for each pair $(i,j)$, both a coupling strength and a target phase offset $\Delta\phi_{ij}$:
+\[
+\dot\theta_i = \omega_i + \sum_j K_{ij} \sin\big(\theta_j - \theta_i - \Delta\phi_{ij}\big).
+\]
+A \emph{gait} is an assignment of a specific $K$ (equivalently, a specific pattern of target phase offsets $\{\Delta\phi_{ij}\}$) to a fixed set of oscillators; distinct gaits over the same limbs correspond to distinct choices of $K$ over the same functional form.
+\end{definition}
+
+This definition makes precise a claim that was left informal in Section 3: differences between gaits are differences in the parameters $K$ supplied to a fixed coupling law, not differences in the law itself. Walking, trotting, and galloping are not three different theories of how limbs couple; they are three different stable fixed points of the same coupled-oscillator system under three different phase-offset targets. Section 4.3 returns to why this matters.
+
+\subsection{The Assembly Index of an Amplitwist Chain}
+
+The amplitwist chain of Definition 2 (Section 3) has a depth: the number of applications of $\mathcal{C}$ required to reach the coarsest-scale operator $A^{(n)}$ from the finest-scale operators $A^{(1)}_i$. This is the same quantity, applied to a hierarchy of geometric operators rather than to a generative program, as the Assembly Index developed in this author's other work on procedural ontology, and the identification is worth making precise rather than left as a loose analogy.
+
+\begin{definition}[Assembly Index of an amplitwist chain]
+Let an amplitwist chain of depth $n$ be built from a finite basis of level-1 operators $\{A^{(1)}_i\}_{i=1}^{n_1}$ by repeated application of gait-specifying coupling functionals $\mathcal{C}_K^{(1)}, \dots, \mathcal{C}_K^{(n-1)}$, one per level. Define the Assembly Index of the chain, $A(\text{chain})$, as the number of such applications, $n - 1$.
+\end{definition}
+
+\begin{proposition}
+For a hierarchy organized strictly by anatomical composition (individual joint oscillators composed into a limb-level operator, limb-level operators composed into a whole-body gait-level operator), $A(\text{chain})$ is bounded below by the number of independently controlled anatomical levels between the finest oscillator and the coarsest gait descriptor, and is otherwise independent of the number of oscillators at any single level.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Each level of the hierarchy requires exactly one application of $\mathcal{C}$ to produce the next, regardless of how many oscillators are aggregated at that application; $n_k$, the population size at level $k$, enters the computation of $Z^{(k+1)}$ as a summation index but does not itself require an additional application of $\mathcal{C}$. Hence depth tracks levels of anatomical organization, not oscillator count.
+\end{proof}
+
+This proposition gives the Assembly Index of a locomotor system a concrete and checkable value: a bipedal walker with a two-level hierarchy (joint operators composing directly into a single whole-body gait operator) has $A = 1$; a quadruped with an intermediate limb-level operator between joint and gait has $A = 2$; a system with an additional postural-correction layer above the gait level, as briefly mentioned in Section 1.3, would have $A = 3$. The claim that assembly depth is a meaningful complexity measure for a locomotor controller, independent of its role in this essay's geometric argument, is therefore falsifiable in the same spirit as Section 6: a controller hierarchy that in practice requires more levels than an organism's or robot's evident anatomical organization would suggest is evidence that the chain, as defined, is not tracking the structure it claims to track.
+
+\subsection{Law Realism Applied to the Coupling Functional}
+
+Definition 1 above already commits this essay to a specific answer to a question that could otherwise be left ambiguous: whether $\mathcal{C}$ is one fixed law, instantiated differently by different parameter choices, or a family of unrelated laws, one per gait, that happen to share notation. This essay adopts the former position, for reasons that parallel the law realism with instance nominalism defended in this author's other work on procedural ontology, applied here to a coupling functional rather than to source code.
+
+\begin{observation}
+Under Definition 1, $\mathcal{C}$ is real and persistent across gaits, in the sense that its functional form, $\dot\theta_i = \omega_i + \sum_j K_{ij}\sin(\theta_j - \theta_i - \Delta\phi_{ij})$, does not change between a walk and a trot. What changes is $K$: a particular, nominal instantiation of the coupling law, selected by whatever mechanism (central drive, terrain, learned preference) determines gait choice in a given circumstance. A walk and a trot are, on this reading, two instances of one law, exactly as two executions of one program are two instances of one $\Phi$ in this author's earlier treatment of procedural generation.
+\end{observation}
+
+The alternative view — that a walk and a trot are governed by structurally distinct coupling laws that happen to admit a shared notation — is not obviously false, but it is the less economical hypothesis, and Definition 1 has been written so as to make the more economical hypothesis explicit and testable rather than assumed by default. If empirical gait data required a different functional form of $\mathcal{C}$ (not merely a different $K$) to fit different gaits accurately, that would be a specific, checkable failure of the law-realist reading adopted here, distinct from and additional to the three failure modes already stated in Section 6.
+
+\section{Locomotion as Hierarchical Continuation}
+
+Sections 3 and 4 established the formal apparatus: amplitwist operators as local trajectory descriptions, the Kuramoto order parameter as a concrete instance of one, and a gait-specifying coupling functional $\mathcal{C}_K$ by which such operators compose across anatomical levels. This section applies that apparatus to a single worked case, restates the balance-as-continuation claim from Section 1.2 in the now-available formal vocabulary, and then addresses directly how far the parallel to this author's work on recursive continuation and autopoiesis should be pressed.
+
+\subsection{Balance as Continuously Regenerated Coherence}
+
+Section 1.2 asserted, informally, that balance is not a state achieved once and held but a property continuously regenerated by an ongoing process. The apparatus of Sections 3 and 4 gives this assertion a precise referent.
+
+\begin{corollary}
+Let $A^{(n)}(t) = r^{(n)}(t)\,e^{i\psi^{(n)}(t)}$ be the coarsest-level amplitwist operator of a locomotor amplitwist chain (Definition 2, Section 3). Balance, at the resolution this framework can describe it, is the condition $r^{(n)}(t) \gtrsim r_{\min}$ for some threshold $r_{\min}$ below which the population of oscillators feeding the chain is no longer sufficiently phase-coherent to produce a stable gait pattern. Balance is not a value $r^{(n)}$ reaches and then stops changing; $r^{(n)}(t)$ is being continuously recomputed from the phase relationships of the level below, at every instant, by the same coupling dynamics that produced its previous value. There is no stored quantity called ``balance'' anywhere in the system; there is only $r^{(n)}(t)$, evaluated now, and the coupling structure that will determine $r^{(n)}(t + dt)$.
+\end{corollary}
+
+This is the same move made throughout this author's other treatments of history-primacy: a repaired telemetry history is not a report about a memory that already existed, but is constituted by the repair operation as it runs; a concept is not stored in advance of the reconstruction that recovers it from decades of fragmentary input. Balance, on this reading, is constituted by ongoing coupling in exactly the same sense, and the threshold $r_{\min}$ is not a target the system aims at but a boundary below which the continuously regenerated quantity stops counting, by definition, as balance.
+
+\subsection{Worked Case: Bipedal Walking as a Two-Level Chain}
+
+Take the simplest anatomically motivated case: a bipedal walker with two legs, each leg's hip, knee, and ankle joints driven by a joint-level population of coupled oscillators, and a single coupling functional combining the two leg-level operators into one whole-body gait descriptor. This is a chain of Assembly Index $A = 1$ under Definition 4 of Section 4: one application of $\mathcal{C}_K$, taking two leg-level amplitwist operators $A^{(1)}_{\text{L}}(t)$ and $A^{(1)}_{\text{R}}(t)$ as input and producing a single gait-level operator
+\[
+A^{(2)}(t) = \mathcal{C}_K\big(A^{(1)}_{\text{L}}(t),\, A^{(1)}_{\text{R}}(t)\big).
+\]
+
+A normal walking gait corresponds, in Definition 1's vocabulary (Section 4), to a target phase offset of $\Delta\phi_{\text{LR}} \approx \pi$: left and right legs anti-phase, so that one leg is in swing while the other is in stance. Under this offset, the two-oscillator order parameter takes a form familiar from the general Kuramoto reduction: near-perfect anti-phase locking drives the instantaneous sum $e^{i\theta_L} + e^{i\theta_R}$ toward cancellation whenever the phase difference is exactly $\pi$, so that a naive population-coherence reading of $r^{(2)}$ computed directly on $\{\theta_L, \theta_R\}$ would misleadingly register as low coherence for a perfectly healthy anti-phase gait rather than a high one. This is not a flaw in the framework; it is a reminder that $\mathcal{C}_K$ must be computed relative to the target offset $\Delta\phi_{ij}$, not relative to naive phase equality, exactly as Definition 1 specifies. Defining the offset-corrected order parameter
+\[
+\tilde Z^{(2)}(t) = \frac{1}{2}\Big(e^{i\theta_L(t)} + e^{i(\theta_R(t) - \pi)}\Big),
+\]
+a healthy anti-phase walking gait drives $|\tilde Z^{(2)}| \to 1$, recovering the high-coherence reading that a state of good balance should register. The correction is trivial to make but easy to omit, and is recorded here because Section 6.1's compactness criterion depends on getting this detail right: an implementation that failed to offset-correct would show spuriously poor coherence for good gaits, inflating the apparent parameter count needed to track balance and unfairly damaging the framework's own compactness score.
+
+\subsection{Relation to Recursive Continuation and Autopoiesis}
+
+The corollary of Section 5.1 places locomotion within the more general pattern this author has called recursive continuation: a system that persists not by reaching an optimum but by regenerating, through its own operation, the conditions of its own further operation. A gait is a clean instance of this pattern: each cycle's phase relationships are what produce the coupling that determines the next cycle's phase relationships, with no separate planning stage that could, even in principle, be run once and then discarded.
+
+Readers familiar with autopoietic theory will recognize the shape of this claim, and the caution urged elsewhere in this author's work applies here without modification. Autopoiesis, in its original biological formulation, is a claim about a system's self-production of its own material components; nothing in this section establishes that a coupled-oscillator gait controller is autopoietic in that strong sense, and the claim made here is deliberately narrower. What is being claimed is only that gait exhibits the structural pattern autopoietic theory also names — operation producing the conditions of further operation — not that a walking robot is thereby alive, self-maintaining, or metabolically self-producing in any sense beyond this structural one. The locomotion case is offered as one more instance of a general pattern, alongside Vim macros, undo trees, and repaired telemetry histories, not as evidence that the pattern itself is a claim about biological life.
+
+\subsection{Trajectories Versus Histories}
+
+The preceding sections have used ``trajectory'' loosely, and it is worth separating two things that word has been asked to do at once. A trajectory is a path: a function of time, $x(t)$, with no further commitment about how that function came to hold. A history, in the stronger sense this author's other work depends on (Vim macros, undo trees, repaired telemetry), is a path together with the generative process that produced it — and, critically, a process that is itself regenerated by its own prior operation rather than fixed in advance and merely executed. The distinction is not pedantic: a spline fit to recorded joint angles is a trajectory in the first sense without being a history in the second, since nothing about the spline's own future depends on its own past in the way the second sense requires.
+
+\begin{proposition}
+The amplitwist chain of Definition 2 (Section 3) is history-generating in the stronger sense, not merely trajectory-generating. At every level $k$, the operator $A^{(k)}(t)$ is not a fixed law applied to a stored position; it is computed from the phases $\{\theta_i(t)\}$ of the level below, and those phases are themselves evolving under coupling to one another, so that $A^{(k)}(t + dt)$ depends on the coupling state at $t$, not on an externally supplied target. There is no stage in the chain at which the process governing $x(t)$ is decoupled from the process that produced $x(t)$ up to that point.
+\end{proposition}
+
+This matters for how the balance-as-continuation claim of Corollary 2 should be read. It is not merely that $r^{(n)}(t)$ traces a path over time; it is that the coupling dynamics producing $r^{(n)}(t)$ at this instant are the same dynamics that will produce $r^{(n)}(t+dt)$, recursively, with no point at which the generating process hands off to a separate mechanism for continuing itself. The trajectory a gait traces out is, on this reading, a byproduct of a self-regenerating history in exactly the sense this author's work elsewhere assigns to that word, not a weaker, merely-a-path sense that happened to borrow the vocabulary of continuation without earning it.
+
+\begin{observation}
+The two-level worked example of Section 5.2 is deliberately minimal. It omits sensory feedback, terrain adaptation, and the postural correction loop mentioned briefly in Section 1.3, all of which would add at least one further level to the chain and correspondingly increase its Assembly Index. The minimal case is presented here because it is the case in which the offset-correction subtlety of Section 5.2 is easiest to state precisely; the fuller case, with feedback and postural correction included, is left for future work rather than folded in here, consistent with this essay's general practice of stating a minimal defensible claim rather than a maximally general one.
+\end{observation}
+
+\section{Failure Modes and Limitations}
+
+A framework that only accumulates supporting instances is not yet a theory; it is a resemblance. Section 3 established that the amplitwist chain is not an analogy imposed on CPG dynamics but a direct reading of the Kuramoto order parameter already standard in the coupled-oscillator literature. That result buys the framework its initial plausibility, but plausibility of this kind is cheap relative to what a genuine theory owes: an account of where it is expected to fail, and what an observation of that failure would look like. This section states three such tests explicitly, in increasing order of severity, and proposes a provisional extension for the third that is flagged as conjectural rather than established.
+
+\subsection{The Compactness Criterion}
+
+The weakest test is also the easiest to apply, and any framework that fails it should be abandoned regardless of how well it performs elsewhere.
+
+\begin{definition}[Compactness criterion]
+Let $\mathcal{D}_{\mathrm{IK}}(T)$ denote the description length of a locomotor trajectory over interval $T$ under a conventional inverse-kinematics or joint-angle state-space representation, and let $\mathcal{D}_{\mathrm{AT}}(T)$ denote the description length of the same trajectory under an amplitwist chain of the kind developed in Section 3 (i.e.\ the parameters $\{r_i^{(k)}(t), \theta_i^{(k)}(t), K_{ij}^{(k)}\}$ needed to regenerate the trajectory to a fixed tolerance $\epsilon$). The amplitwist chain satisfies the \emph{compactness criterion} on a class of gaits $\mathcal{G}$ if
+\[
+\mathcal{D}_{\mathrm{AT}}(T) \le \mathcal{D}_{\mathrm{IK}}(T) \qquad \text{for all gaits in } \mathcal{G}, \text{ up to a fixed additive constant.}
+\]
+\end{definition}
+
+The criterion is deliberately unforgiving. The entire motivation for preferring an operator-generated trajectory over an explicitly stored one, throughout this author's other work, is that the operator description is cheaper: a macro is worth having only because $|m| \ll |h|$ for the history $h$ it compresses (cf.\ the macro material developed elsewhere in this project). If the amplitwist chain requires more parameters, more coupling terms, or a deeper hierarchy than a comparably accurate joint-angle spline, then whatever is elegant about the rotation-scaling language has purchased that elegance at the price of the one property the framework is supposed to deliver. A framework this author would be obliged to abandon, on the framework's own terms, is one that turns out to be a more expensive redescription of something already cheaply described.
+
+For steady, periodic gaits (regular walking, trotting, swimming) the criterion is plausibly satisfied: a handful of $(r,\theta,K)$ parameters per level, propagated through a shallow hierarchy, should regenerate a full joint-angle trace far more cheaply than storing or splining that trace directly. This is, in fact, only a restatement of why Kuramoto-style reduced models are already used in robotics gait synthesis. Nothing in this observation is new; what would be new, and worth treating as a genuine result rather than a restatement, is a demonstrated failure of compactness on some class of gaits presently considered periodic. No such failure is known to the author at the time of writing.
+
+\subsection{Ground-Contact Discontinuities}
+
+The second test is sharper, because it targets an assumption the framework has so far left unstated: that the coupling among oscillators is smooth.
+
+\begin{proposition}[Discontinuities are outside the smooth Kuramoto regime]
+Let a legged gait include a foot-strike event at time $t^*$, understood as an abrupt change in the constraint structure of the limb in contact with the ground (a jump in effective stiffness, a sudden reaction force, a change in which degrees of freedom are kinematically free). The Kuramoto coupling term $K_{ij}\sin(\theta_j - \theta_i)$ is continuous and differentiable in $\theta$ by construction; it cannot, without modification, represent an instantaneous change in the coupling structure itself. Consequently the order parameter $Z(t) = r(t)e^{i\psi(t)}$, and any amplitwist chain built from it as in Definition 2 of Section 3, is well-defined only on the open intervals between contact events, not across them.
+\end{proposition}
+
+This is not a minor caveat. Foot-strike events are not rare exceptions within an otherwise smooth gait; in a walking or running cycle they are exactly as frequent as the steps themselves, which means the amplitwist chain as stated in Section 3 is, at present, a theory of the swing phase and not yet a theory of the stance-to-swing transition that defines a step. A framework that were quietly restricted to smooth interludes and required separate, unrelated machinery at every contact event would have failed this test in substance even if no single equation in Section 3 is wrong.
+
+The honest response is not to patch over this with an ad hoc reset rule chosen after the fact to make the numbers come out. It is to note that hybrid dynamical systems, in which smooth flow (here, the Kuramoto phase equations) is interrupted by discrete reset maps at guard conditions (here, $z_{\mathrm{foot}}(t) = 0$), are already a standard formalism for legged locomotion, and to ask whether the reset map has a natural amplitwist reading rather than an arbitrary one.
+
+\begin{definition}[Hybrid amplitwist system, provisional]
+A hybrid amplitwist system consists of a smooth flow, given by the coupled phase equations of Section 3 together with the induced order parameter $Z(t)$, together with a finite set of guard conditions $g_e(x) = 0$ corresponding to contact events $e$, and a reset map $R_e$ acting on the phase vector $\{\theta_i\}$ (and hence on $Z$) at the instant $g_e = 0$ is crossed:
+\[
+\{\theta_i(t^{*+})\} = R_e\big(\{\theta_i(t^{*-})\}\big).
+\]
+$R_e$ is provisionally taken to act as an instantaneous amplitwist operator in its own right — a discrete rotation-scaling applied to the phase vector at contact, rather than a rule external to the geometric language of Section 3 — but this identification is a conjecture, not a result: nothing yet establishes that a physically accurate reset (one derived from the actual impact mechanics of a limb striking a surface) takes this form rather than some more general map that only coincidentally admits an amplitwist reading in simple cases.
+\end{definition}
+
+\begin{conjecture}[Reset-as-amplitwist]
+The reset map $R_e$ induced by a rigid, inelastic foot-strike, under standard impact mechanics (conservation of angular momentum about the point of contact, instantaneous velocity discontinuity, no slip), can be written as a single amplitwist operator $A_e = \rho_e e^{i\phi_e}$ acting on the pre-impact order parameter, $Z(t^{*+}) = A_e \cdot Z(t^{*-})$, for at least the class of planar, single-point contact gaits.
+\end{conjecture}
+
+This conjecture is stated in the weakest form the author is willing to defend, restricted to planar single-point contact, precisely so that it is falsifiable rather than rescued by successive qualification. If it fails even in this restricted setting — if the correct reset genuinely requires information not expressible as a single complex multiplication on $Z$ — that is a real result about the limits of the amplitwist language, not a defect in the exposition, and should be reported as such rather than absorbed into a more complicated $R_e$ that no longer resembles an amplitwist at all.
+
+\subsection{Balance Recovery as the Decisive Test}
+
+The third test is the one this essay regards as decisive, because it is the only one of the three that cannot be satisfied merely by extending the machinery of Sections 3 and 6.1--6.2 to cover a wider class of periodic and quasi-periodic events.
+
+Steady gait and even repeated, regular foot-strikes remain, in an important sense, still trajectories the system has seen before: a walking cycle is a limit cycle, and a hybrid reset at every step is a repeated element of that same cycle. Balance recovery is different in kind. A stumble, a slip on an unexpectedly low-friction surface, or a sudden push does not select among a family of known periodic patterns; it forces the system into a transient, non-periodic response that may not resemble any gait in the animal's or robot's ordinary repertoire, precisely at the moment when the smooth-flow assumption of Section 3 and the regular-reset assumption of Section 6.2 are both least reliable.
+
+\begin{conjecture}[Coherence collapse as a recovery signature]
+During a perturbation large enough to threaten balance, the population coherence $r^{(n)}(t)$ at the coarsest level of the amplitwist chain (Definition 2, Section 3) drops sharply and measurably below its steady-gait value, prior to any externally visible loss of balance, and recovery is marked by $r^{(n)}(t)$ returning toward its steady-state value along a trajectory that is itself well-described as a transient amplitwist operator with $r$ increasing monotonically and $\theta$ re-locking to the pre-perturbation phase.
+\end{conjecture}
+
+This conjecture, unlike the reset conjecture of Section 6.2, is directly testable against existing motion-capture and force-plate datasets of perturbed human or animal gait without requiring any new apparatus: it predicts a specific, measurable precursor signal (a coherence drop in a suitably defined phase population) that should be visible in recordings of stumbles and recoveries already collected for other purposes. If no such precursor is present — if $r^{(n)}(t)$ remains near its steady value right up until the moment balance is visibly lost, with recovery driven by mechanisms that leave no trace in the coherence signal at all — the conjecture is false, and with it falls the strongest form of the claim that amplitwist chains describe locomotion as such rather than merely steady-state gait. A framework that survives Sections 6.1 and 6.2 but fails this test should be reported honestly as a theory of periodic locomotion, a narrower and still useful claim, rather than quietly generalized to cover recovery by redefining $r^{(n)}$ after the fact to fit whatever the recovery data show.
+
+\subsection{Summary}
+
+Table 1 collects the three tests together with what would count as passing and failing evidence for each, so that the framework's own falsification conditions are visible in one place rather than distributed across the preceding discussion.
+
+\begin{center}
+\begin{tabular}{p{3.2cm}p{4.6cm}p{4.6cm}}
+\textbf{Test} & \textbf{Passes if} & \textbf{Fails if} \\
+\hline
+Compactness (6.1) & Amplitwist chain parameters $\le$ joint-angle description, for steady gaits & Chain requires more parameters or a deeper hierarchy than direct kinematic description \\
+Ground contact (6.2) & Reset map at foot-strike expressible as a single amplitwist operator on $Z$ (Conjecture 1) & Physically correct reset requires structure not expressible as a complex multiplication on $Z$ \\
+Balance recovery (6.3) & Coherence $r^{(n)}(t)$ shows a measurable drop preceding visible imbalance, with monotonic re-locking on recovery (Conjecture 2) & No coherence precursor is observed; recovery is not reflected in $r^{(n)}(t)$ \\
+\end{tabular}
+\end{center}
+
+Passing all three would justify treating hierarchical amplitwist chains as a genuine theory of locomotion, in the strong sense argued for in Sections 1--3. Passing only the first two would still leave a useful, narrower theory of periodic gait, with balance recovery reserved for a different account. Failing the first would mean the language should be abandoned even for its easiest case. The purpose of stating these conditions before the empirical work is done, rather than after, is to make sure the theory can be wrong — which is the only condition under which its being right would mean anything.
+
+\section{Predictions and Empirical Tests}
+
+Section 6 stated three falsification conditions and left two of them, the ground-contact reset and the balance-recovery signature, as conjectures rather than results. This section operationalizes those two conjectures into procedures that could, in principle, be run against data that already exists, without requiring new motion-capture collection, and states plainly what a positive result and a null result would each look like. A framework that has been given falsification conditions but no route to actually applying them has only postponed the discipline Section 6 was written to impose; this section is where that discipline is meant to be discharged.
+
+\subsection{An Operational Estimator for $r^{(n)}(t)$}
+
+Every empirical test proposed below depends on being able to compute the coherence $r^{(n)}(t)$ of Section 3 from ordinary kinematic recordings, rather than from the coupled phase equations directly, since no existing dataset records $\theta_i(t)$ as such. The standard route from a joint-angle time series to an instantaneous phase is the analytic signal construction via the Hilbert transform, well established in the synchronization literature.
+
+\begin{definition}[Empirical coherence estimator]
+Let $x_i(t)$ be the recorded angular time series for joint or limb segment $i$ (e.g.\ hip flexion angle). Let $\hat x_i(t)$ denote its Hilbert transform, and define the analytic signal $x_i(t) + i\hat x_i(t) = a_i(t)\, e^{i\hat\theta_i(t)}$, so that $\hat\theta_i(t)$ is the instantaneous phase of joint $i$. The empirical coherence estimator is
+\[
+\hat r^{(n)}(t) = \left| \frac{1}{N}\sum_{i=1}^N e^{i\hat\theta_i(t)} \right|,
+\]
+computed over whatever population of joints or limb segments $N$ the level-$n$ description of Section 3 is meant to summarize.
+\end{definition}
+
+$\hat r^{(n)}(t)$ is not identical to the theoretical $r^{(n)}(t)$ of the Kuramoto reduction, since the Hilbert phase extracted from a recorded joint angle is a description of the observed kinematic signal, not a direct read-out of an underlying neural oscillator's phase. This is an estimator, not a measurement of the theoretical quantity, and any result obtained with it should be reported as a claim about $\hat r^{(n)}(t)$, with the gap between estimator and theoretical construct stated rather than elided.
+
+\subsection{Operationalizing the Ground-Contact Conjecture}
+
+Conjecture 1 (Section 6.2) claims that the reset map at foot-strike, restricted to planar single-point contact, is expressible as a single amplitwist operator $A_e$ acting on the pre-impact order parameter. This becomes testable once $\hat r^{(n)}(t)$ and $\hat\psi^{(n)}(t) = \arg\big(\frac{1}{N}\sum_i e^{i\hat\theta_i(t)}\big)$ are available across a contact event: the conjecture predicts that the ratio $\hat Z(t^{*+}) / \hat Z(t^{*-})$, computed immediately after and immediately before a detected foot-strike, should be approximately constant in magnitude and phase across repeated steps of the same gait, since a fixed amplitwist $A_e$ applied repeatedly to a periodic pre-impact state should produce a repeatable post-impact ratio.
+
+A null result, under this operationalization, would be a measured ratio $\hat Z(t^{*+})/\hat Z(t^{*-})$ that varies substantially and unsystematically from step to step within a single recorded trial of steady gait, despite the pre-impact state itself being repeatable; this would indicate that whatever the reset map is actually doing, it is not capturable as a single fixed complex multiplication, and Conjecture 1 should be reported as false even in its restricted planar, single-contact form.
+
+\subsection{Operationalizing the Balance-Recovery Conjecture}
+
+Conjecture 2 (Section 6.3) is the more consequential of the two, and is directly testable against existing perturbation datasets in the human balance-recovery literature, of the kind produced by treadmill belt perturbations, pelvis pushes, or induced slips in laboratory gait studies. Such studies standardly record joint kinematics, and often ground reaction forces, across a perturbation onset that is itself precisely timestamped, which is exactly the alignment structure the conjecture requires.
+
+The operationalized hypothesis is: define $t_0$ as the recorded perturbation onset, and $t_1$ as the first recorded instant at which a standard biomechanical instability criterion is met (e.g.\ the body's center of mass crossing outside the base of support, or an equivalent margin-of-stability measure already used in that literature). Conjecture 2 predicts that $\hat r^{(n)}(t)$, computed over an appropriately chosen joint population, shows a statistically detectable decline beginning at some $t^* \in (t_0, t_1)$, strictly before $t_1$, followed by a monotonic recovery toward baseline $\hat r^{(n)}$ during the recorded recovery phase, with $\hat\psi^{(n)}(t)$ re-approaching its pre-perturbation trajectory as recovery completes.
+
+A positive result is a reproducible, statistically significant decline in $\hat r^{(n)}(t)$ that reliably precedes $t_1$ across trials and, ideally, across recorded subjects, with an effect size distinguishable from the ordinary trial-to-trial variability of $\hat r^{(n)}(t)$ during unperturbed steady gait. A null result is the absence of any such precursor: $\hat r^{(n)}(t)$ remaining within its steady-gait variability range right up to $t_1$, with whatever recovery mechanism is actually operating leaving no detectable trace in the coherence signal at all. The conjecture, and with it the strongest reading of this essay's central claim, should be considered false under the second outcome, and the resulting framework should be reported honestly as a theory of periodic gait rather than of locomotion as such, exactly as Section 6.3 already commits to in advance.
+
+\subsection{A Minimal Experiment}
+
+The test proposed here is deliberately minimal, in the sense that it requires no new data collection: it is a reanalysis proposal, applying the estimator of Definition 1 to kinematic recordings already collected in the published perturbation-recovery literature (studies in the tradition of Bhatt, Wening, and Pai on slip-induced instability, and Vlutters, van Asseldonk, and van der Kooij on pelvis-perturbation recovery during treadmill walking, among comparable paradigms), subject to the ordinary constraints of data availability and marker-set completeness in whichever specific dataset is used.
+
+The minimal protocol is: extract joint-angle time series for a fixed, pre-specified joint population (e.g.\ bilateral hip, knee, and ankle flexion); compute $\hat\theta_i(t)$ via the Hilbert transform for each; compute $\hat r^{(n)}(t)$ over this population across each trial; align all trials to the recorded perturbation onset $t_0$; and test, across trials, whether $\hat r^{(n)}(t)$ during the window $(t_0, t_1)$ is significantly lower than $\hat r^{(n)}(t)$ during a matched-duration window of unperturbed steady gait from the same subject and trial set, using whatever paired comparison is appropriate to the sample size actually available. This is a modest analysis, well within the reach of existing biomechanics datasets and standard signal-processing tools, and its outcome is stated here, before it is run, as a direct test of Conjecture 2 rather than as a demonstration to be interpreted favorably regardless of what it shows.
+
+\section{Broader Implications for Control Architectures}
+
+The preceding sections have deliberately kept a narrow scope: a falsifiable claim about locomotion, stated in the geometric vocabulary of Sections 3 and 4, tested against the conditions of Section 6, and operationalized in Section 7. This closing section steps back to note where the same structural pattern recurs elsewhere in this author's work, without importing any of those other domains into the claims already made. Each pointer below is kept brief on purpose; developing any of them to the standard the locomotion claim has been held to here would be a separate essay; running the domains together within this one would blur exactly the distinction between theoretical geometry and applied interface that this essay's scope statement (Section 1.4) was written to preserve.
+
+\subsection{Operator-Generated Control Outside Locomotion}
+
+The distinction between state-specified and operator-generated control, developed for locomotion in Section 1, is not specific to legs. Hierarchical keyboard interfaces of the kind explored elsewhere in this author's work, in which a leader key followed by a nested sequence selects a behavior class rather than an explicit output, exhibit the same structure in an entirely different substrate: a high-level operator selection determines which lower-level generative process runs, rather than the interface directly specifying a final state. Whether such interfaces admit an amplitwist reading in the specific sense developed here — whether behavior selection in a nested keymap has a natural amplitude-and-rotation decomposition, rather than merely sharing the general operator-over-state preference — is an open question this essay does not attempt to answer. It is noted here only as a second, structurally similar instance of the pattern, not as an extension of the locomotion claim itself.
+
+\subsection{The General Pattern, and a Note on Auditory Grouping}
+
+The pattern instantiated by CPG-driven gait — coherence among coupled oscillatory elements as the primary object, with any given configuration read off as a derived quantity — recurs in this author's other work under different names: Vim macros and undo trees (compressed and preserved histories rather than stored states), telemetry repair and admissible prefetch (memory constituted by ongoing reconciliation rather than antecedent storage), and recursive continuation generally (systems that persist by regenerating the conditions of their own further operation). Locomotion, as treated in this essay, is one instance of this recurring pattern, not its origin.
+
+One further instance is worth a single mention without elaboration. The problem of determining how many distinct sound sources are present in a mixed audio signal, and which time-frequency components belong to which source, is not well solved by frequency-band separation alone, since two sources can and often do overlap in frequency, particularly under pitch variation or vocal mimicry. The oscillatory correlation approach to computational auditory scene analysis addresses this by the same mechanism used throughout this essay: components are grouped by driving them into phase synchrony with other components from the same source, and desynchrony with components from other sources, so that the number of sources and their assignments emerge as coherence clusters rather than as frequency bins fixed in advance. This is, again, the Kuramoto order parameter doing the same work it does in Section 3, applied to auditory grouping instead of gait. It is mentioned here as a sibling application and nothing more; no claims about auditory processing are made or defended in this essay.
+
+\subsection{Open Problems}
+
+The amplitwist chain developed in this essay is built on the Kuramoto reduction, which presupposes a population of oscillatory elements with a well-defined rhythm. This is a reasonable presupposition for gait, which is periodic by nature, but it is not obviously the right starting point for movement that is not rhythmic at all: reaching for an object, manipulating a tool, or any single discrete action with a clear start and end but no cyclic repetition. Whether the amplitwist language extends to such movement, and if so what plays the role of the population whose coherence is being tracked, is not answered by anything in Sections 1 through 7 and is left as the most direct open problem this essay produces. A plausible starting guess, offered without defense, is that a single discrete reaching movement might admit an amplitwist description at the level of a single joint's velocity profile (an instantaneous scaling and rotation of the hand's approach vector) without requiring a population or an order parameter at all, in which case the extension to non-periodic movement would not be a generalization of Section 3's machinery so much as a degenerate case of it, with $N = 1$ and no coherence to speak of. Establishing whether this guess survives contact with actual reaching kinematics is left for future work.
+
+A second open problem concerns the relationship between the Assembly Index of Section 4.2 and the actual evolutionary or developmental history of a locomotor hierarchy. Section 4.2 treats assembly depth as tracking anatomical organization synchronically, at a single point in time; it says nothing about whether a deeper hierarchy is harder to acquire developmentally, or whether the depth of a mature gait hierarchy bears any relationship to the depth of the process, ontogenetic or evolutionary, that produced it. This essay has consistently treated histories as primary elsewhere in this author's work, and it is a live question, not addressed here, whether the amplitwist chain's synchronic hierarchy is itself best understood as a compressed trace of a developmental history rather than as a freestanding structure — the same question Section 27 of this author's essay on procedural ontology asks about long-timescale concept formation, unresolved here for locomotion specifically.
+
+\subsection{Closing Remark}
+
+This essay has tried throughout to hold itself to a standard stated plainly in Section 1.4 and enforced explicitly in Sections 6 and 7: that a unifying claim is worth making only if it specifies, in advance, what would count against it. The central claim — that CPG-driven locomotion is usefully described as a hierarchy of amplitwist operators, with balance as continuously regenerated coherence rather than achieved state — has been given three ways to fail (Section 6), two of them operationalized against data that already exists (Section 7), and a scope statement (Section 1.4, Section 8.1--8.2) that keeps it from expanding to cover every structurally similar pattern this author has noticed elsewhere. If the framework survives the tests of Section 7, it will have earned a stronger claim than it is entitled to make here. If it does not, what remains — CPGs as trajectory generators, independent of any geometric reading, as argued in Section 2 — was true before this essay was written and will remain true after.
+
+\section*{References}
+\begin{enumerate}
+\item T. G. Brown (1911). ``The intrinsic factors in the act of progression in the mammal.'' \emph{Proceedings of the Royal Society B} 84: 308--319.
+\item S. Grillner (2006). ``Biological pattern generation: the cellular and computational logic of networks in motion.'' \emph{Neuron} 52(5): 751--766.
+\item Y. Kuramoto (1984). \emph{Chemical Oscillations, Waves, and Turbulence}. Springer.
+\item S. H. Strogatz (2000). ``From Kuramoto to Crawford: exploring the onset of synchronization in populations of coupled oscillators.'' \emph{Physica D} 143(1--4): 1--20.
+\item A. J. Ijspeert (2008). ``Central pattern generators for locomotion control in animals and robots: a review.'' \emph{Neural Networks} 21(4): 642--653.
+\item T. Needham (1997). \emph{Visual Complex Analysis}. Oxford University Press.
+\item J. J. Collins and I. Stewart (1993). ``Coupled nonlinear oscillators and the symmetries of animal gaits.'' \emph{Journal of Nonlinear Science} 3(1): 349--392.
+\item A. Pikovsky, M. Rosenblum, and J. Kurths (2001). \emph{Synchronization: A Universal Concept in Nonlinear Sciences}. Cambridge University Press.
+\item T. Bhatt, J. D. Wening, and Y.-C. Pai (2006). ``Adaptive control of gait stability in reducing slip-related backward loss of balance.'' \emph{Experimental Brain Research} 170(1): 61--73.
+\item M. Vlutters, E. H. F. van Asseldonk, and H. van der Kooij (2016). ``Center of mass velocity-based predictions in balance recovery following pelvis perturbations during human walking.'' \emph{Journal of Experimental Biology} 219(10): 1514--1523.
+\item L. Righetti, J. Buchli, and A. J. Ijspeert (2006). ``Dynamic Hebbian learning in adaptive frequency oscillators.'' \emph{Physica D} 216(2): 269--281.
+\end{enumerate}
+
+\end{document}

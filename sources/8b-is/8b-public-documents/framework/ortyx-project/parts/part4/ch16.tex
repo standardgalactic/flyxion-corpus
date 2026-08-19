@@ -1,0 +1,195 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part IV — Reconstruction
+%  Chapter 16: The Reinterpretation Functor
+% ============================================================
+
+\chapter{The Reinterpretation Functor}
+\label{ch:reinterpretation-functor}
+
+\chapepigraph{Translation is not betrayal. It is the discovery
+that the same structure was legible in two languages all along,
+and that one of those languages makes the structure's
+assumptions more visible than the other.}{Flyxion}
+
+\noindent
+The Interlude named what survived the decomposition of the
+Phoenix corpus. Part~IV now performs the reconstruction:
+the formal translation of survivable components into a
+more stable semantic framework. The vehicle for that
+translation is the reinterpretation functor:
+\[
+  \RSVPfunctor : \ThetaS \to \ThetaStar.
+\]
+This chapter specifies what the functor does and what
+it does not do, before applying it to the survivable
+components in Chapters~17--20.
+
+\section{What the Functor Is}
+\label{sec:functor-definition}
+
+The reinterpretation functor is not a claim that the
+Phoenix corpus is secretly a special case of RSVP, nor
+that RSVP is more true than Phoenix. It is a structure-preserving
+map from the survivable components of the Phoenix corpus
+to a more stable expressive context: one in which the
+components' assumptions are made explicit, their projection
+dependencies are acknowledged, and their empirical contact
+points are more clearly marked.
+
+A functor, in the categorical sense, maps objects and
+morphisms between categories while preserving composition
+and identity. The reinterpretation functor $\RSVPfunctor$
+maps:
+
+\textit{Phoenix concepts} (the objects of $\ThetaS$)
+to \textit{RSVP-compatible concepts} (the objects of
+$\ThetaStar$), where the mapping preserves the structural
+relationships between concepts --- the ways they imply,
+constrain, and generate each other.
+
+\textit{Phoenix arguments} (the morphisms of $\ThetaS$)
+to \textit{RSVP-compatible arguments} (the morphisms
+of $\ThetaStar$), where the mapping preserves the
+inferential structure of arguments --- what they assume
+and what they conclude.
+
+The functor is not required to be injective (different
+Phoenix concepts may map to the same RSVP concept) or
+surjective (not all RSVP concepts need be images of
+Phoenix concepts). It is required to be structure-preserving:
+if two Phoenix concepts are related by a specific inferential
+relationship in $\ThetaS$, their images must be related
+by a corresponding relationship in $\ThetaStar$.
+
+\section{What the Functor Is Not}
+\label{sec:functor-not}
+
+The functor is not a replacement of the Phoenix framework
+by RSVP. The survivable components in $\ThetaS$ are
+already grounded; the functor translates them, it does
+not improve them. A jitter metric that is correctly
+computed under the Marine algorithm remains correctly
+computed after the functor maps it to an accessibility
+entropy concept. The functor adds expressive resources
+and makes assumptions explicit; it does not add empirical
+grounding that was not there before.
+
+The functor is not a proof that the translated components
+are true in any stronger sense than they were before
+translation. The translation makes the components more
+auditable --- more clearly connected to their assumptions,
+more clearly bounded in their scope --- but auditability
+is not truth. The RSVP-translated components remain
+subject to the same empirical requirements as the original
+Phoenix components.
+
+\begin{auditprop}
+\label{ap:functor-scope}
+The reinterpretation functor $\RSVPfunctor$ maps the
+survivable components $\ThetaS$ of the Phoenix corpus
+to a more stable expressive context $\ThetaStar$ by
+making the components' projection dependencies explicit,
+marking their empirical contact points more clearly,
+and providing a vocabulary in which their boundary
+conditions can be stated without the failure geometries
+that afflicted the original formulation. The functor
+does not add empirical grounding, improve predictive
+accuracy, or establish the truth of any claim that was
+not already established in $\ThetaS$.
+\end{auditprop}
+
+\section{The Projection Defect Reduction}
+\label{sec:projection-defect-reduction}
+
+The central virtue of the translated components in
+$\ThetaStar$ over the original components in $\ThetaS$
+is the reduction in projection defect. Recall from
+Chapter~11 that the projection defect of a framework
+is:
+\[
+  \ProjDef(\SysTriple)
+  = \sup_{x \in X_{\mathrm{adm}}}
+  \abs{\ConstrX(x) - \ConstrM(\pi(x))},
+\]
+measuring how much the constraints operative in the
+full space fail to be reflected in the projected
+representation.
+
+The Phoenix corpus's projection defect is elevated
+primarily because its claims about consciousness,
+authenticity, and meaning are made at the level of
+the full space (phenomenological and ontological claims
+about the world) while the supporting evidence is at
+the level of the projected representation (engineering
+results about signal processing). The translation to
+RSVP does not close this gap in the sense of providing
+new evidence, but it closes it in a different sense:
+the RSVP vocabulary makes the gap explicit rather than
+obscuring it behind unified terminology.
+
+In RSVP-compatible terms, a claim that would previously
+read as: ``the Marine detects meaningful structure''
+now reads as: ``the Marine detects low-entropy trajectory
+regions in signal space, and whether low-entropy
+trajectory regions correspond to meaningful structure
+is an open empirical question that requires specification
+of the meaning-accessibility relationship.'' The
+second formulation is less rhetorically powerful but
+more epistemically honest: it locates the projection
+dependency explicitly rather than hiding it in
+vocabulary continuity.
+
+\section{The Translation Table}
+\label{sec:translation-table}
+
+The core translations that the functor performs are
+summarized below. Each row maps a Phoenix concept or
+claim to its RSVP-compatible counterpart.
+
+\begin{center}
+\begin{tabular}{p{0.42\textwidth}p{0.42\textwidth}}
+\toprule
+Phoenix $\ThetaS$ & RSVP $\ThetaStar$ \\
+\midrule
+Temporal coherence (jitter) & Trajectory constraint density:
+low-jitter signals occupy low-$\AccEnt$ regions \\[6pt]
+Marine salience filter & Constraint-governed gating: selection
+of events consistent with admissible trajectories \\[6pt]
+Harmonic conformity $\Gamma_n$ & Constraint propagation: harmonics
+evolving within a shared admissible basin \\[6pt]
+\MEMeight{} wave superposition & Field dynamics in the RSVP plenum:
+wave interference as a parameterization of field-theoretic
+memory \\[6pt]
+Predictive processing alignment & Constraint-governed trajectory
+selection: prediction error as trajectory revision signal \\[6pt]
+Behavioral injection & Constraint field poisoning: manipulation
+of the contextual field that governs admissible reasoning
+trajectories \\[6pt]
+Compression efficiency & Constraint discovery: compression that
+exploits relational structure reduces redundancy by identifying
+shared admissibility conditions \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+
+Each translation in the table preserves the core content
+of the Phoenix concept while replacing vocabulary that
+carries unacknowledged projection risks with vocabulary
+that makes the projection dependencies explicit. The
+RSVP column does not claim more than the Phoenix column;
+it claims the same thing in terms that are more clearly
+bounded.
+
+\medskip
+
+Chapters~17--20 apply this translation to the survivable
+components in detail. Chapter~17 handles the signal
+processing and salience results; Chapter~18 handles
+the memory architecture; Chapter~19 handles the Nexus
+framework as a new case study in constraint-preserving
+computational memory; Chapter~20 synthesizes the
+reconstructed components into a coherent alternative
+paradigm statement.

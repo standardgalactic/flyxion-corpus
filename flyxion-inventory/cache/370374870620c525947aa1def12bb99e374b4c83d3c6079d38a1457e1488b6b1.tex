@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{titling}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+
+\title{Primordial Distinctions and Cosmological Memory:\\
+Galactic Spin as Persistence Under Transformation}
+\author{Flyxion\\ \textit{Independent Researcher}}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent A recent high-significance observational result reports that present-day galactic angular momenta retain a statistically recoverable relationship with the primordial tidal field acting on their protohalo progenitors. This paper treats that result not as a confirmation to be paraphrased but as a case study for a more general proposition: physical persistence across cosmic time is frequently persistence of a recoverable distinction rather than persistence of a material configuration, an object, or a microscopic state. Using the tidal-torque theory (TTT) reconstruction of Sheng et al. as an empirical anchor, we distinguish the physical primordial relation between protohalo inertia and the surrounding tidal field from the operationally reconstructible proxy actually measured, and from the present-day observable inferred from it. We develop a hierarchy running from primordial distinction through cross-scale constraint, admissible evolution, partial erasure, persistent correlation, reconstructible proxy, to present observation, and we introduce the persistence cone, a scale- and threshold-relative construction that separates physical from observable erasure of a distinction. The empirical asymmetry between gas and stellar spin tracers in Sheng et al.'s sample is used to derive a falsifiable ordering prediction rather than treated as decorative confirmation. The paper closes by arguing that cosmology, understood this way, is the discipline of asking which observables, at which scales, under which transformations, retain inferential access to distinctions established before the observed object existed.
+\end{abstract}
+
+\section{Introduction: What Does a Galaxy Retain?}
+
+A galaxy observed today is not in the material configuration from which its formation began. Its gas has been shocked, cooled, and converted into stars; its structure has been reorganized by mergers, accretion, and feedback; its dark matter halo has virialized and very likely absorbed other halos along the way. Almost nothing about its microscopic configuration can be traced continuously back to the density field that seeded it. And yet Sheng et al.\ report a statistically significant, direction-sensitive correlation between the angular momentum of present-day central galaxies, measured through integral field spectroscopy, and the angular momentum predicted from a reconstruction of the primordial tidal field acting on their protohalo progenitors, at a significance reaching 7.0$\sigma$ in their fiducial analysis. Something about the galaxy's present rotation carries information about a primordial gravitational environment that is no longer directly observable in any present-day form.
+
+This paper takes that result as an occasion to ask a narrower and more disciplined question than "does the early universe leave traces." It asks what kind of thing must survive for such a correlation to be possible, given that almost nothing about the object's material identity survives. The answer developed here is that persistence of this kind is persistence of a distinction: a statistically recoverable difference between alternative primordial histories, encoded not in any single conserved quantity but in a relational structure that later observables continue to distinguish. The paper's task is to make this notion precise enough to do real work, rather than leaving it as a metaphor borrowed from information theory and applied loosely to astrophysics.
+
+\section{Tidal-Torque Theory and the Access Problem}
+
+Tidal-torque theory explains the origin of galactic angular momentum through the misalignment between two rank-two tensors associated with a protohalo: its inertia tensor and the tidal field of the surrounding matter distribution. In its classical form, the initial angular momentum of a protohalo is
+\begin{equation}
+j^{\mathrm{TTT}}_\alpha \;\propto\; \epsilon_{\alpha\beta\gamma} I_{\beta\kappa} T_{\kappa\gamma},
+\label{eq:ttt}
+\end{equation}
+where $I_{\beta\kappa}$ is the protohalo's inertia tensor, $T_{\kappa\gamma}$ is the primordial tidal tensor evaluated in its vicinity, and the Levi-Civita symbol extracts the antisymmetric part of their product. Rotation is a purely relational consequence of noncommensurability between the shape of the collapsing structure and the anisotropy of the field that surrounds it; a perfectly aligned inertia and tidal tensor would generate no torque at all.
+
+Equation~\eqref{eq:ttt} is correct as physics and useless as an observational program, because $I_{\beta\kappa}$ describes the shape of a protohalo, an object that has not yet collapsed and cannot be identified from a present-day density field by any direct procedure. The primordial tidal field is in principle reconstructible from the late-time density field, since gravitational dynamics is in a suitable sense invertible on large scales; the protohalo's shape is not similarly recoverable, because its boundary is not defined by any distinguishing feature present in the initial conditions themselves. This is not a technical inconvenience to be waved past. It marks the point at which the theoretical relation and the operational relation diverge, and the divergence is the paper's first serious example of the distinction between a physical relation and its epistemically accessible proxy.
+
+\section{The Reconstructible Proxy}
+
+Sheng et al.\ resolve the access problem not by attempting to recover $I_{\beta\kappa}$ but by replacing it with a different, fully reconstructible object: the tidal field evaluated at a second, smaller smoothing scale. Their spin reconstruction proxy is
+\begin{equation}
+j^{\mathrm R}_\alpha \;\propto\; \epsilon_{\alpha\beta\gamma}\, T^{r}_{\beta\kappa} T^{R}_{\kappa\gamma}, \qquad R \to r^{+},
+\label{eq:proxy}
+\end{equation}
+where $T^{r}$ and $T^{R}$ are the same underlying tidal field smoothed at two nested Gaussian scales $r$ and $R$, with $r \approx 0.8\,r_q$ and $r_q$ the Lagrangian radius of the halo, $r_q \equiv (2 M_{\mathrm h} G / \Omega_{\mathrm m} H_0^2)^{1/3}$. The smaller scale traces protohalo-scale anisotropy in place of the unobservable inertia tensor; the larger scale, taken in the limit that it approaches the smaller from above, characterizes the immediately surrounding tidal environment.
+
+What makes equation~\eqref{eq:proxy} theoretically interesting, independent of its empirical success, is what it substitutes for what. It does not approximate $I_{\beta\kappa}$ with some independently motivated inertia-like quantity. It replaces the pairing of an object property with a field property by a pairing of the same field with itself, evaluated at two different resolutions. The distinction being measured is therefore not, strictly, protohalo-versus-environment misalignment; it is scale-dependent noncommensurability internal to a single reconstructed field. The physical claim of TTT and the operational claim actually tested are related but not identical, and the paper will insist throughout on keeping this separation explicit, because it is precisely the kind of distinction that a looser treatment of "primordial memory" would collapse.
+
+\section{Three Objects, Not One}
+
+It is worth naming the three objects in play before proceeding, since much of the argument below depends on not conflating them. The first is the physical primordial relation: whatever misalignment actually existed, at the moment relevant to protohalo collapse, between the true inertia tensor of the protohalo and the true tidal field acting on it. This object is not observationally accessible even in principle from a single reconstruction, since it depends on structure the reconstruction cannot resolve. The second is the reconstructible proxy of equation~\eqref{eq:proxy}, an operationally well-defined quantity computable from a reconstructed initial density field together with a choice of smoothing scales. The third is the present-day observable, the galaxy's kinematic spin as measured from a velocity field. A correlation between the second and third objects is evidence bearing on the first, but it is not identical to it, and the strength of that evidential bearing depends on how well the proxy tracks the physical relation in simulation, which Sheng et al.\ address directly by validating equation~\eqref{eq:proxy} against protohalo spins in $N$-body simulations before applying it to reconstructed observational fields.
+
+\section{The Empirical Result}
+
+The observational side of the analysis draws spin measurements from the MaNGA integral-field survey, fitting kinematic position angles separately for gas, traced through H$\alpha$ emission, and stars, using the position-angle fitting package \textsc{pafit}. The reconstructed initial conditions come from the ELUCID project, which infers a primordial density field for the nearby universe from a halo-based galaxy group catalogue through a Hamiltonian Markov Chain Monte Carlo procedure combined with particle-mesh dynamics. Observed galaxies are cross-matched to their host dark matter halos, traced back to Lagrangian space through an inverse-displacement remapping procedure, and their predicted spins computed at the corresponding protohalo positions using equation~\eqref{eq:proxy}, then projected onto the observed galaxy's plane for direct comparison with the measured two-dimensional spin.
+
+The resulting sample comprises 781 central elliptical galaxies and 815 central spiral galaxies with reliable gas-traced spins, and 635 ellipticals and 812 spirals with reliable stellar-traced spins, all residing in halos of mass $M_{\mathrm h} \geq 10^{12}\,M_\odot$ within the ELUCID reconstruction volume. The correlation between observed and reconstructed spin directions is quantified by a weighted mean cosine, $\mu$, with weighting by a tidal-environment parameter $\beta_{\mathrm{TT}}^{1/2}$ that suppresses contributions from halos whose primordial tidal twist is weak and therefore poorly constraining. The strongest signal occurs for the gas component of central elliptical galaxies, reaching $\mu = 0.13$ at an optimal smoothing scale $r_{\mathrm{opt}} = 3.4\,h^{-1}\,\mathrm{Mpc}$. Against a null distribution constructed by shuffling observed spins within halo mass bins, this correlation departs from zero at $7.0\sigma$ in the fiducial analysis, at $6.3\sigma$ when both signal and null are evaluated at the theoretically motivated fixed scale $0.8\,r_q$, and at $5.9\sigma$ under a stricter test in which the optimal scale is independently re-selected within each shuffled null realization. These three figures are not redundant restatements of the same number; they represent successively more conservative commitments about how much scale-optimization freedom is permitted before the significance is assessed, and the persistence of a strong signal across all three is the paper's principal empirical anchor.
+
+\section{From States to Trajectories}
+
+The framework developed in this paper treats a physical system not primarily as an object possessing a state at a given time but as a trajectory through a space of admissible configurations, $\gamma: t \mapsto X(t)$. An observed galaxy is then $X(t_0)$, but not every property worth explaining is a function of $X(t_0)$ alone; some observables are better understood as functionals of the entire trajectory, $O[X(t_0)] \to \mathcal I[\gamma]$, that happen to be legible from a single late-time cross-section. Angular momentum, on this reading, is interesting precisely because it is partly historical: it is a quantity whose present value encodes information about the trajectory's earlier geometry, not merely about the configuration of matter currently present.
+
+This reframing does real work here because it resolves an apparent tension in the empirical result. If a galaxy is treated purely as its present state, a correlation between that state and a primordial field billions of years removed looks almost paradoxical, since nothing about the present configuration seems obligated to remember anything. If a galaxy is treated as a trajectory, the correlation is simply evidence that some trajectory-level historical dependence has been only partially degraded by the intervening dynamics, which is a much weaker and more plausible claim.
+
+\section{Distinction as the Unit of Cosmological Memory}
+
+\begin{definition}
+A distinction $D$ is a physically instantiated difference between two or more alternative histories, operationally defined by the existence of some later observable $O$ such that the conditional distributions $P(O \mid D = d_1)$ and $P(O \mid D = d_2)$ differ for distinct values $d_1 \neq d_2$.
+\end{definition}
+
+If two classes of primordial tidal environment, $P_1$ and $P_2$, give rise to descendant galaxies whose spin distributions remain statistically distinguishable at $t_0$, so that $P(X_{t_0} \mid P_1) \neq P(X_{t_0} \mid P_2)$, then some information about the primordial distinction between $P_1$ and $P_2$ has survived to $t_0$, whatever else has changed. This licenses a persistence measure defined directly as unnormalized mutual information between the distinction and a specified later observable,
+\begin{equation}
+\Pi_D(O, t) \;=\; I(D; O_t),
+\end{equation}
+which requires no observable at the primordial epoch itself, a quantity that in general does not exist in any comparable form; a MaNGA-derived gas-spin observable, for instance, has no primordial-epoch counterpart to normalize against. Where $D$ is discrete, a bounded normalized version is available as $\Pi_D(O, t) = I(D; O_t) / H(D) \in [0,1]$, but for continuous distinctions such as the tidal tensor considered here, normalized mutual information is more delicate to define well, and the paper uses the unnormalized quantity throughout. Either way, $\Pi_D(O,t) > 0$ certifies that the distinction has not been completely erased, relative to the observable $O$, by the intervening dynamics, independent of whether any human observer, reconstruction algorithm, or physical process retains an explicit record of it.
+
+\section{Memory Without Representation}
+
+A galaxy does not store a symbolic record of the primordial tidal tensor that shaped its protohalo. There is no register, no encoded value, nothing that plays the functional role of a memory address. And yet, if the Sheng et al.\ result holds, $I(T_{\mathrm{primordial}}; L_{\mathrm{observed}}) > 0$: a positive quantity of mutual information links the primordial configuration of a field that is no longer directly observable to a rotation that can be measured today. The lesson generalizes beyond this particular system. Structural memory, in the sense intended throughout this paper, is the persistence of inferential dependence between temporally separated physical variables, and it requires neither an explicit representation nor any process that could reasonably be called storage. Memory of this kind is a property of the joint statistics of a physical system across time, not a property of any subsystem singled out as a memory device.
+
+\section{Nonlinear Evolution as an Information-Degrading Transformation}
+
+The dynamics connecting a protohalo to its descendant galaxy, comprising collapse, virialization, mergers, gas cooling, star formation, and feedback, can be represented schematically as a sequence of transformations $X_{t+1} = F_t(X_t, \eta_t)$, where $\eta_t$ denotes stochastic or effectively stochastic influences not tracked at the resolution of interest. The inequality this section relies on does not follow merely from nonlinearity or stochasticity; it requires an explicit structural assumption, which is worth stating as its own proposition rather than left implicit.
+
+\begin{proposition}[Markovian Coarse-Grained Evolution]
+Suppose the primordial distinction $D_0$, the state $X_t$, and the later state $X_{t+\Delta t}$ satisfy the Markov chain
+\begin{equation}
+D_0 \;\to\; X_t \;\to\; X_{t+\Delta t},
+\end{equation}
+that is, all influence of $D_0$ on $X_{t+\Delta t}$ is mediated through $X_t$, with no channel by which $D_0$ affects $X_{t+\Delta t}$ independently of $X_t$. Then, by the data-processing inequality,
+\begin{equation}
+I(D_0; X_{t+\Delta t}) \;\leq\; I(D_0; X_t).
+\end{equation}
+\end{proposition}
+
+The Markov hypothesis is doing real work here and should not be taken for granted. It holds to good approximation when $X_t$ is a sufficiently complete description of the system at time $t$, so that no additional primordial information reaches $X_{t+\Delta t}$ through channels absent from $X_t$; it can fail if the coarse-graining used to define $X_t$ discards degrees of freedom, for instance a subhalo population later accreted, that themselves retain independent primordial information and later rejoin the system. With the Markov structure stated explicitly, accessibility to any fixed primordial distinction $D_0$ can only decrease, never increase, as further Markovian transformations are applied. The empirically interesting question is never whether this inequality holds, since it is close to a mathematical triviality, but how slowly the accessible information decays relative to the violence of the transformations applied. Sheng et al.'s result is notable precisely because the decay, while evidently substantial, given that the measured correlation $\mu = 0.13$ is far from the correlation of order $0.5$–$0.7$ found between protohalo and late-time halo spin in dark-matter-only simulations, has not reached zero even after billions of years of baryonic and gravitational evolution including, for the elliptical population specifically, a plausible merger history.
+
+\section{Repair Without Restoration}
+
+It is tempting, and would be a mistake, to describe the survival of this correlation using a naive notion of restoration, as though the galaxy periodically returns to some earlier configuration. Define repair, in the sense intended here, as dynamics that return a perturbed system to some admissible region of configuration space, $R: X \notin \mathcal A \to X' \in \mathcal A$, without any requirement that $X'$ coincide with an earlier state, $X' \neq X_{\mathrm{previous}}$ in general. A galaxy following a merger does not reconstruct its pre-merger configuration; it relaxes into a different admissible configuration, generally with different morphology, different kinematics, and a different mass distribution. Repair, on this reading, is not reversal, and nothing in the empirical result requires reversal.
+
+It should be said plainly that ``repair'' is a framework-specific term rather than a new physical mechanism competing with established dynamical vocabulary. In conventional language, the processes referred to here are relaxation, re-equilibration, dissipation, and continued evolution within a dynamically viable region; nothing about calling this repair changes the physics of virialization or gas dissipation. What the term is meant to contribute is a way of talking about the outcome of these processes, admissibility restored without configuration restored, that keeps the paper's later claims about distinction survival from being read as claims about literal structural memory. The vocabulary is a mapping onto standard dynamics, not a replacement for it. What is required, and what the data appear to support, is only that certain relational features of the trajectory survive repeated episodes of perturbation and relaxation even though the object's overall configuration does not.
+
+\section{Recursive Repair and Historical Identity}
+
+A stronger claim can be built from repeated application of the above. Consider a chain of transformations and repairs,
+\begin{equation}
+D_0 \xrightarrow{F_1} D_1 \xrightarrow{R_1} D_1' \xrightarrow{F_2} \cdots \xrightarrow{R_n} D_n,
+\end{equation}
+in which each transformation degrades accessibility to the distinction and each repair returns the system to an admissible region without restoring its previous configuration. If $I(D_0; D_n) > 0$ at the end of this chain, then a form of historical identity survives that is not grounded in the persistence of any configuration along the way, but only in the survival, through every degrading step, of enough relational structure to keep the endpoints statistically linked. Repair, in this sense, preserves difference rather than restoring sameness, and recursively repaired distinctions are what historical identity, understood physically rather than metaphysically, amounts to. A galaxy is an unusually clean example because essentially everything about its material organization is free to change while a comparatively small number of relational invariants remain informative about its earliest history.
+
+\section{The Plenum Reading}
+
+The preceding sections can be restated, with some caution, in terms of a continuous field description rather than a discrete-object description. Represent cosmological structure through fields $(\Phi, \mathbf v, S)$, with $\Phi$ a scalar structural field, $\mathbf v$ a vector flow field, and $S$ an entropy-like scalar field, without committing here to a specific identification of $S$ with departure from any particular initial condition beyond what follows from the underlying field equations of the broader framework. On this reading, the primordial tidal environment is not fundamentally a collection of objects exerting forces on one another but an anisotropy already present in the structure of $\Phi$, and galaxy formation is localization of this continuous field evolution into recognizable, semi-bounded configurations. This reframing is offered as an alternative descriptive language rather than a claim that the observation uniquely selects it; nothing in the empirical argument of this paper depends on adopting it, though it does suggest a natural continuation, addressed next, in which the tidal tensor itself is derived from $\Phi$ rather than posited independently.
+
+\section{Angular Momentum as a Residual of Field Geometry}
+
+Within the plenum reading, the conventional tidal tensor is recovered as $T_{ij} = \partial_i \partial_j \Phi$, consistent with the actual reconstruction procedure used by Sheng et al., who compute their tidal tensor from the second derivatives of a smoothed primordial gravitational potential obtained by solving a Poisson equation on the reconstructed density field. The open theoretical question is whether a more general functional $\mathcal J[\Phi, \mathbf v, S]$ can be constructed that captures the rotational residue of early anisotropic structure without the intermediate step of positing a protohalo inertia tensor at all, effectively generalizing equation~\eqref{eq:proxy} rather than the classical equation~\eqref{eq:ttt}. Schematically,
+\begin{equation}
+L_{\mathrm{obs}} \;=\; \mathcal P_{t_0}\, \mathcal U_{t_0, t_i}\big[\Phi_i, \mathbf v_i, S_i\big],
+\end{equation}
+where $\mathcal U$ denotes cosmological evolution and $\mathcal P$ the observational projection onto the plane perpendicular to the line of sight actually used in the MaNGA-based measurement. The empirical result implies that this composition, whatever its detailed form, has not destroyed every feature of the primordial field geometry that is in principle recoverable from $\mathcal J$.
+
+\section{Entropy Growth Does Not Imply Historical Erasure}
+
+A natural objection holds that a universe evolving toward higher entropy should, by that fact alone, be expected to erase historical correlations. This objection conflates two distinct quantities. Entropy production, $\Delta S > 0$, describes the growth of the number of microstates compatible with a coarse-grained description; it does not by itself imply $I(X_{t_i}; X_{t_0}) = 0$ for variables of interest, since correlations can persist in low-dimensional projections of a system even as its microscopic entropy rises without bound. Read this way, entropy is better understood as loss of accessible distinctions at some specified resolution than as disorder in any absolute sense: some distinctions become inaccessible at that resolution while others, evaluated through better-chosen observables, survive. The Sheng et al.\ result is a dramatic instance of the latter, since the retained distinction spans a cosmological baseline while surviving substantial entropy production in the intervening baryonic and gravitational evolution.
+
+\section{Reachability and the Persistence Cone}
+
+For a primordial condition $X_i$, define its reachable set at time $t$ as $\mathcal R(X_i, t) = \{X(t) : X(t) \text{ is dynamically reachable from } X_i\}$. If two primordial conditions $P_1$ and $P_2$ generate reachable sets that fail to coincide at $t_0$, $\mathcal R(P_1, t_0) \neq \mathcal R(P_2, t_0)$, then observations at $t_0$ retain at least some discriminatory power regarding which primordial condition obtained, which is the reachability-theoretic content of the persistence claim made throughout this paper.
+
+This licenses the paper's principal new construction. Define, for a distinction $D$ and an observable family $O$ indexed by scale $r$ and time $t$, the physical persistence cone as a purely information-theoretic object,
+\begin{equation}
+\mathcal C_{\mathrm{phys}}(D) \;=\; \big\{ (O, r, t) : \mathcal I\!\left(D; O_{r,t}\right) > 0 \big\},
+\label{eq:cone}
+\end{equation}
+the set of observable-scale-time triples at which some physical dependence on $D$ genuinely remains, evaluated with respect to an idealized, noiseless channel and unlimited reconstruction fidelity. Equation~\eqref{eq:cone} deliberately contains no reconstruction procedure, no detection threshold, and no statistical apparatus of any kind; it is a fact about the joint distribution of $D$ and $O$ under the true dynamics, not a fact about what any observer can establish. The gas-versus-stellar, elliptical-versus-spiral, and scale-dependent structure reported by Sheng et al.\ bear on this cone only indirectly, through the two further cones developed in the next section, which is where the paper's actual epistemic content is located.
+
+The analogy to a causal cone is instructive and deliberately limited. A causal cone describes where influence from an event can in principle propagate. The physical persistence cone describes where genuine statistical dependence on that influence remains, which is a strictly smaller, and generally much smaller, region than the causal cone, with a boundary set by decoherence of the relevant correlations rather than by any speed-of-propagation limit. But equation~\eqref{eq:cone} alone cannot be evaluated from data, which is the reason a single cone is not enough.
+
+\section{Physical Erasure Versus Observational Termination}
+
+Equation~\eqref{eq:cone} forces a distinction that a looser treatment of "primordial memory" would blur, but a single further cone is still not sufficient. Mutual information and statistical significance are conceptually different criteria: a nonzero $\mathcal I(D; O_{r,t})$ is a fact about the true joint distribution, while a $7\sigma$ detection is a fact about what a specific finite dataset, estimator, and null-hypothesis procedure can establish. Collapsing these into one threshold, as an earlier formulation of this argument did, obscures exactly the layer at which most real disagreements about a result like Sheng et al.'s will occur. Three cones, not two, are needed.
+
+Define the observable persistence cone,
+\begin{equation}
+\mathcal C_{\mathrm{obs}}(D \mid \mathcal O) \;=\; \big\{ (O, r, t) \in \mathcal C_{\mathrm{phys}}(D) : O \text{ is a channel realizable by observation } \mathcal O \big\},
+\end{equation}
+restricting the physical cone to those observable-scale-time triples that some available observational channel, such as integral-field spectroscopy of galaxy kinematics, could in principle expose, independent of any particular reconstruction algorithm or dataset size. Define, further, the detection cone,
+\begin{equation}
+\mathcal C_{\mathrm{det}}(D \mid \mathcal O, \mathcal R, N, \alpha) \;=\; \big\{ (O, r, t) \in \mathcal C_{\mathrm{obs}}(D \mid \mathcal O) : \text{a sample of size } N \text{, reconstruction } \mathcal R \text{, achieves significance} < \alpha \big\},
+\end{equation}
+the subset of the observable cone at which a stated reconstruction procedure $\mathcal R$, sample size $N$, and significance criterion $\alpha$ actually suffice to reject the null hypothesis of no correlation. These satisfy the nesting
+\begin{equation}
+\mathcal C_{\mathrm{det}} \;\subseteq\; \mathcal C_{\mathrm{obs}} \;\subseteq\; \mathcal C_{\mathrm{phys}},
+\label{eq:nesting}
+\end{equation}
+and the inclusions can each be strict for reasons that have nothing to do with one another. A signal can fail to appear in $\mathcal C_{\mathrm{det}}$ because the underlying physical dependence has genuinely decayed to zero, that is, because the relevant triple has left $\mathcal C_{\mathrm{phys}}$ itself; because the chosen observational tracer no longer couples to the surviving dependence, so the triple has left $\mathcal C_{\mathrm{obs}}$ while possibly remaining in $\mathcal C_{\mathrm{phys}}$ under some other tracer; because the reconstruction procedure cannot resolve the relevant Lagrangian scale with sufficient fidelity; or simply because the sample size and measurement noise leave insufficient statistical power at the stated $\alpha$. These are four physically and epistemically distinct explanations for the same reported empirical outcome, an absence of significant correlation, and equation~\eqref{eq:nesting} is what makes the distinction between them precise rather than merely rhetorical.
+
+This distinction is not academic in the present case. Sheng et al.\ explicitly identify a low-mass regime, below roughly $M_{\mathrm h} \approx 10^{12.5}\,M_\odot$, in which the measured correlation degrades sharply, and attribute this degradation not to any physical claim about weaker primordial imprinting at low mass but to growing Lagrangian-space remapping error and reconstruction uncertainty at the corresponding Lagrangian scales, which in the present vocabulary is a statement that $\mathcal C_{\mathrm{det}}$ has shrunk relative to $\mathcal C_{\mathrm{obs}}$ because of limitations in $\mathcal R$, with no claim being made about $\mathcal C_{\mathrm{phys}}$ itself. They similarly note, in discussing prospects for extending the measurement, that existing reconstruction techniques such as ELUCID have reached a bottleneck on small scales that constrains what can currently be recovered, independent of whether the corresponding small-scale primordial information has actually left $\mathcal C_{\mathrm{phys}}$. A termination of $\mathcal C_{\mathrm{det}}(D \mid \mathcal O, \mathcal R, N, \alpha)$ at some scale is therefore evidence bearing on, but not proof of, a corresponding termination of $\mathcal C_{\mathrm{phys}}(D)$, and the paper regards conflating the two as one of the more consequential errors available to a careless reading of results of this kind.
+
+The nesting in equation~\eqref{eq:nesting} has a further consequence worth stating explicitly. The measurement pipeline connecting a primordial distinction to a reported correlation amplitude can be written schematically as
+\begin{equation}
+D \;\xrightarrow{\ \mathcal U\ }\; O \;\xrightarrow{\ \mathcal O\ }\; Y \;\xrightarrow{\ \mathcal R\ }\; \widehat D \;\xrightarrow{\ \mathcal E\ }\; \widehat\mu,
+\end{equation}
+where $\mathcal U$ is cosmological evolution, $\mathcal O$ the observational channel producing raw data $Y$, $\mathcal R$ the reconstruction procedure yielding an estimated distinction $\widehat D$, and $\mathcal E$ the estimator producing the reported correlation statistic $\widehat\mu$. The smoothing scale $r_{\mathrm{opt}} = 3.4\,h^{-1}\,\mathrm{Mpc}$ at which Sheng et al.\ report the peak correlation is the maximum of this entire composed pipeline, not of $\mathcal U$ in isolation. It should therefore not be read as a direct measurement of the physical scale at which primordial dependence is strongest; in general
+\begin{equation}
+r_{\mathrm{opt}}^{\,\mathrm{detected}} \;\neq\; r_{\mathrm{opt}}^{\,\mathrm{physical}},
+\end{equation}
+since $r_{\mathrm{opt}}^{\,\mathrm{detected}}$ is jointly determined by where $\mathcal C_{\mathrm{phys}}(D)$ is widest and by where $\mathcal O$, $\mathcal R$, and $\mathcal E$ each perform best, three considerations with no guarantee of sharing a common maximum. This is a direct payoff of the three-cone formalism rather than a caveat external to it, and it is the reason the persistence-cone apparatus, properly stated, does more than redescribe an already reported result in new vocabulary.
+
+\section{A Falsifiable Ordering Prediction}
+
+The persistence-cone framework earns its place in this paper only if it produces a claim exposed to failure, not merely a redescription of an existing result in new vocabulary. Sheng et al.\ report that gas-traced spins in central elliptical galaxies correlate with the reconstructed primordial field far more strongly than stellar-traced spins, and attribute this asymmetry to a combination of factors: a shift toward higher, and therefore more reconstructible, host halo masses in their elliptical sample; a plausible dynamical difference in which gas retains coherent rotational memory more readily than a stellar population, consistent with earlier simulation-based work; and smaller measurement uncertainty in gas-derived position angles relative to stellar ones. The persistence-cone language converts this into an explicit, testable ordering, and stating it well requires naming the confounds rather than waving at them. Writing $\Pi_{\mathrm{gas}}$ and $\Pi_{\mathrm{stars}}$ for the persistence of the primordial tidal distinction along the gas and stellar channels, as a function of host halo mass $M_{\mathrm h}$, an environmental or merger-history control $\mathcal E$, position-angle measurement uncertainty $\sigma_{\mathrm{PA}}$, and redshift $z$, the framework predicts
+\begin{equation}
+\Pi_{\mathrm{gas}}(M_{\mathrm h}, \mathcal E, \sigma_{\mathrm{PA}}, z) \;>\; \Pi_{\mathrm{stars}}(M_{\mathrm h}, \mathcal E, \sigma_{\mathrm{PA}}, z)
+\end{equation}
+for matched values of all four arguments, since it is only the proposed dynamical-coherence mechanism, and not the mass, environmental, measurement-precision, or redshift confounds, that the persistence framework as such is committed to explaining. Sheng et al.'s own mass-controlled comparison, restricted to narrow halo-mass bins, already shows ellipticals retaining a stronger gas correlation than spirals at fixed mass, which is suggestive but does not yet hold $\mathcal E$, $\sigma_{\mathrm{PA}}$, and $z$ fixed simultaneously while isolating the gas-versus-stellar channel within a single morphological population. Should improved instrumentation or larger samples eliminate the gas-stellar asymmetry once all four variables are properly matched, the dynamical-coherence component of the persistence account, though not the framework's general apparatus, would lose support. This is precisely the kind of exposure a genuinely explanatory framework, as opposed to a merely descriptive one, ought to carry.
+
+\section{Cosmological Archaeology}
+
+The distinctions developed here generalize beyond galactic spin. Cosmic microwave background anisotropies, baryon acoustic structure, primordial elemental abundances, and large-scale structure statistics are all, in the vocabulary of this paper, different forms of historical persistence, differing in what specifically survives. It is useful to classify them by kind rather than lump them together as generic fossils: state remnants, in which something close to the original configuration genuinely persists; statistical remnants, in which only distributional properties survive; relational remnants, in which a relationship between variables survives while neither variable's own history is separately recoverable; and dynamical remnants, in which what survives is a signature of a process rather than of any static configuration. Galactic spin, as analyzed here, belongs most naturally to the latter two categories: it is a relational remnant of the pairing between protohalo and tidal environment, expressed through a dynamical signature, angular momentum, that would not exist at all in the absence of the originating misalignment.
+
+\section{Indirect Inference and Neutrino Mass}
+
+Sheng et al.\ note, as a motivation for the broader research program rather than as a result already established, that galaxy angular momentum offers a route to cosmological parameters not otherwise accessible from scalar density statistics alone, including constraints on neutrino mass, since massive neutrinos are predicted to modify the primordial tidal field and its associated spin-alignment statistics in ways that scalar clustering measurements do not directly probe. In the language developed here, this is simply the claim that an indirect inference channel exists,
+\begin{equation}
+\theta_\nu \;\to\; T_{\mathrm{prim}} \;\to\; L_{\mathrm{gal}} \;\to\; O,
+\end{equation}
+provided the persistence cone of the relevant tidal distinction extends far enough, and with sufficient fidelity, to remain within reach of the observable channel $O$. Galaxy spins, on this reading, function as detectors of distinctions established before galaxy formation and, in principle, before structure formation of any kind, which is a considerably more concrete framing than the general claim that "the early universe leaves traces."
+
+\section{A General Persistence Principle}
+
+The preceding sections license a general statement, offered here as the paper's central theoretical claim rather than as a claim specific to galactic spin.
+
+\begin{proposition}[Persistence Principle]
+Let $D_i$ denote a physically instantiated distinction at time $t_i$, and let $O_f$ be an observable available at some later time $t_f > t_i$. The distinction persists relative to $O_f$ whenever $I(D_i; O_f) > 0$. Persistence in this sense requires neither material identity between the system at $t_i$ and at $t_f$, nor microscopic reversibility of the intervening dynamics, nor preservation of any particular state.
+\end{proposition}
+
+It is useful to further distinguish strong persistence, in which $I(D_i; O_f)$ remains a substantial fraction of its maximal value, from weak persistence, in which it remains strictly positive but small, from complete erasure, in which it reaches zero, recognizing throughout that an apparent instance of the third case may in fact be an instance of the second combined with insufficient reconstruction fidelity, as discussed above.
+
+\section{Persistence Under Noninvertible Evolution}
+
+The Persistence Principle can be given a more precise formal grounding, but doing so correctly requires care about what noninvertibility does and does not imply. It is worth stating the failure mode explicitly before stating the theorem: noninvertibility of a transformation is not, by itself, sufficient for the survival of any nontrivial distinction, since a completely erasing channel, one under which $X_n$ is statistically independent of $X_0$, is noninvertible as well, and under such a channel every function of $X_0$, coarse-grained or not, is independent of $X_n$. A useful theorem must therefore either assume that some information survives in aggregate, or exhibit a structural mechanism by which particular functions of $X_0$ can survive even as the bulk of the information about $X_0$ decays. The second route is more informative physically and is the one developed here.
+
+Let $(\Omega, \mathcal B, \mu)$ be a measure space representing primordial phase-space configurations, and let $T : \Omega \to \Omega$ be a measure-preserving, generally noninvertible map representing cosmological evolution over one time step, with $T^n$ representing evolution over $n$ steps. Associated with $T$ are a Koopman operator $U$ acting on observables $g \in L^2(\Omega, \mu)$ by $(Ug)(x) = g(Tx)$, and its adjoint, the transfer operator $\mathcal P$, acting on densities by pushing them forward under $T$. Because $U$ is an isometry on $L^2(\Omega, \mu)$ whenever $T$ is measure-preserving, its spectrum decomposes $L^2(\Omega, \mu)$ into a peripheral part and a mixing part,
+\begin{equation}
+L^2(\Omega, \mu) \;=\; \mathcal H_{\mathrm{inv}} \oplus \mathcal H_{\mathrm{dec}}, \qquad \mathcal H_{\mathrm{inv}} = \mathrm{span}\{\psi : U\psi = e^{i\theta}\psi\},
+\end{equation}
+where $\mathcal H_{\mathrm{inv}}$, the peripheral or unimodular eigenspace, consists of observables that evolve quasi-periodically rather than mixing, and $\mathcal H_{\mathrm{dec}}$ consists of observables $\phi$ for which $U^n\phi \to 0$ weakly, the genuinely dissipative or mixing component of the dynamics.
+
+\begin{theorem}[Spectral Persistence Criterion]
+Let $T$ be as above, let $U$ be its Koopman operator, and let $f \in L^2(\Omega, \mu)$ be a centered observable, $\int f \, d\mu = 0$, representing a coarse-grained distinction $D = f(X_0)$. Write $f = f_{\mathrm{pp}} + f_{\mathrm c}$, the orthogonal decomposition of $f$ into its projection onto the pure-point spectral subspace of $U$, the closed span of the Koopman eigenfunctions, and its projection onto the continuous spectral subspace. Define the autocorrelation $C_f(n) = \langle f, U^n f \rangle_{L^2}$. Then
+\begin{equation}
+\lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} |C_f(n)|^2 \;=\; \sum_{\lambda \in \sigma_{\mathrm{pp}}(U)} \big|P_\lambda f\big|_{L^2}^{\,4},
+\label{eq:wiener-persistence}
+\end{equation}
+where $P_\lambda$ denotes orthogonal projection onto the eigenspace of $U$ with eigenvalue $\lambda$. Consequently, the time-averaged squared autocorrelation on the left is strictly positive if and only if $f$ has a nonzero projection onto the pure-point spectral subspace, that is, if and only if $f_{\mathrm{pp}} \neq 0$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+By the spectral theorem for unitary operators, the autocorrelation sequence of $f$ is the sequence of Fourier coefficients of a spectral measure $\nu_f$ on the unit circle, $C_f(n) = \int_{\mathbb S^1} z^n \, d\nu_f(z)$, and $\nu_f$ decomposes uniquely into an atomic part supported on eigenvalues of $U$ and a continuous part, $\nu_f = \nu_f^{\mathrm{pp}} + \nu_f^{\mathrm c}$. Wiener's theorem relating the time average of squared Fourier coefficients to the atomic mass of the underlying measure gives
+\begin{equation}
+\lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} |C_f(n)|^2 \;=\; \sum_{z \in \mathbb S^1} \big|\nu_f(\{z\})\big|^2,
+\end{equation}
+and the atoms of $\nu_f$ correspond exactly to the projections of $f$ onto Koopman eigenspaces, $\nu_f(\{\lambda\}) = \big|P_\lambda f\big|_{L^2}^{\,2}$ for each eigenvalue $\lambda$. Substituting gives equation~\eqref{eq:wiener-persistence} directly, and the right-hand side is strictly positive exactly when at least one $P_\lambda f$ is nonzero.
+\end{proof}
+
+An earlier formulation of this argument, since corrected, asserted that a nonzero projection onto the eigenspace implies $\liminf_{n \to \infty} \mathrm{Cov}_\mu(f(X_0), f(X_n)) > 0$ directly. That claim is false as stated: on a single eigenspace with $U\psi = e^{i\theta}\psi$, a real observable's correlation behaves like $\cos(n\theta)$, whose liminf can be negative, and interference between several peripheral frequencies can drive even the magnitude of the correlation toward zero at particular times without any loss of underlying spectral weight. The theorem above avoids this failure by working with the time-averaged squared autocorrelation rather than the pointwise or liminf correlation; this is the quantity for which persistence of spectral weight, rather than persistence of a fixed correlation value, is the correct and provable criterion. The theorem does not imply that $C_f(n)$ approaches a nonzero constant; a persistent pure-point spectral component can produce oscillatory or quasiperiodic correlations whose instantaneous value vanishes or changes sign at particular times. What is guaranteed to persist is spectral power in the time-averaged quadratic sense, which is the appropriate and correctly provable sense in which a relational distinction can remain dynamically legible even as other components of the same state undergo genuine mixing.
+
+Two distinctions follow that the earlier, uncorrected version of this argument did not draw. First, finite-time persistence, a positive correlation or mutual information observed over some fixed, finite baseline such as the one measured by Sheng et al., is not the same claim as asymptotic spectral persistence, a nonzero pure-point projection guaranteed to prevent the time-averaged squared correlation from decaying to zero as $n \to \infty$; the theorem establishes a criterion for the latter, and the observational result reported here is direct evidence only for the former. Second, and consequently, it would overstate the theorem's bearing on the empirical result to claim that the two-scale reconstruction proxy of equation~\eqref{eq:proxy} is already known to have substantial overlap with the pure-point spectral subspace of the relevant cosmological evolution operator. The observation establishes a statistically significant correlation across a long but finite baseline; it does not establish that any particular functional of the tidal field constitutes, or even approximates, a Koopman eigenmode. What the theorem licenses is a further, more precise research question, complementary to rather than redundant with the persistence-cone construction of the preceding sections: whether observables lying well within the physical persistence cone, such as the gas-traced spin correlation identified here, carry systematically greater spectral weight in slowly decorrelating or effectively discrete dynamical modes than observables lying near or beyond its inferred boundary. The persistence cone asks where historical information remains accessible; the spectral criterion asks what dynamical modes could carry it indefinitely. Answering the second question for the tidal-torque case would require dedicated simulation and spectral analysis of the relevant evolution operator, which lies outside the scope of the present essay.
+
+\section{The Galaxy as a Historical Object}
+
+Where the empirical evidence warrants it, as in the case examined here, a galaxy is better represented not as a state, $G = X(t_0)$, but as an equivalence class of histories, $G \sim [\gamma]$, whose present configuration carries a variable and generally small, but not necessarily zero, quantity of recoverable information about its trajectory. Objecthood, on this reading, is compressed history: not a claim that every galaxy's full trajectory is recoverable from its present state, which is manifestly false, but a claim that the present state should be treated as a lossy, partially informative encoding of that trajectory rather than as a self-contained description requiring no historical reference at all.
+
+\section{Discussion: A Lossy Historical Channel}
+
+Cosmological evolution can be modeled schematically as a channel, $X_{\mathrm{prim}} \xrightarrow{\mathcal U} X_{\mathrm{today}}$, that is emphatically lossy: the overwhelming majority of primordial microscopic information is observationally inaccessible today by any means, direct or reconstructive. It is equally clearly not a channel of total erasure, since a chain of distinctions,
+\begin{equation}
+D_{\mathrm{prim}} \to D_1 \to D_2 \to \cdots \to D_{\mathrm{obs}},
+\end{equation}
+survives with positive mutual information at each link for at least some choices of $D$, of which galactic spin under the Sheng et al.\ reconstruction is now a directly measured example rather than a hypothetical one. Cosmology as an observational discipline is possible at all only because chains of this kind remain inferentially traversable for a nontrivial range of primordial distinctions, and the persistence-cone construction developed here is offered as a way of asking, for any given distinction, precisely how far that traversability extends and along which observational coordinates it is widest.
+
+\section{Conclusion: The Universe Remembers Relations}
+
+The deepest content of the Sheng et al.\ result is not that galaxies have remained materially unchanged since the primordial universe; they plainly have not, and the paper has taken pains throughout not to suggest otherwise. It is closer to the opposite: galaxies have changed enormously, through mechanisms, mergers, gas accretion, star formation, and feedback, that are individually well understood to be highly destructive of primordial structure, and a relational distinction established in the primordial gravitational field remains, nonetheless, statistically legible in the rotation of their gas billions of years later. A primordial density patch does not survive as a density patch; its constituents are dispersed and reorganized beyond any hope of direct reconstruction. Yet the anisotropy it once expressed can leave a residue, at a specific and measurable scale, in a specific and measurable observable, recoverable at a specific and now quantified level of statistical significance.
+
+The persistence-cone construction developed in this paper is not offered as a replacement for tidal-torque theory or for the reconstruction methodology that made this measurement possible, both of which remain the physical and empirical substance of the result. It is offered as a discipline for stating precisely what such a result does and does not establish: not that objects persist, not that states persist, but that certain distinctions, evaluated through the right observable, at the right scale, under a specified standard of detectability, survive transformations severe enough to have destroyed almost everything else about the system in which they were first instantiated. Cosmology, understood this way, is the practice of mapping the shape of that survival.
+
+\bigskip
+\noindent\textit{Note on the empirical basis of this essay.} All observational and simulation results discussed above, including the sample sizes, correlation amplitudes, significance figures, and the identification of the reconstruction bottleneck in the low-mass regime, are drawn from Sheng et al.\ (2026) below. The theoretical apparatus, including the persistence cone, the three-cone nesting, the corrected persistence theorem, and the falsifiable gas-versus-stellar ordering prediction, is original to this essay and is not attributed to that paper.
+
+\begin{thebibliography}{99}
+
+\bibitem{Sheng2026}
+Sheng, M.-J., Yu, H.-R., Bao, M., Chen, B.-H., Shao, F.-N., Guo, Q., Chen, Y.-M., Wang, H., Pen, U.-L., Wang, J., and Yang, X.\ (2026). A high-significance detection of primordial tidal torque imprints. \textit{arXiv:2512.11383}.
+
+\bibitem{Peebles1969}
+Peebles, P.\ J.\ E.\ (1969). Origin of the Angular Momentum of Galaxies. \textit{Astrophysical Journal}, 155, 393.
+
+\bibitem{Doroshkevich1970}
+Doroshkevich, A.\ G.\ (1970). The space structure of perturbations and the origin of rotation of galaxies in the theory of fluctuation. \textit{Astrofizika}, 6, 581--600.
+
+\bibitem{White1984}
+White, S.\ D.\ M.\ (1984). Angular momentum growth in protogalaxies. \textit{Astrophysical Journal}, 286, 38--41.
+
+\bibitem{Porciani2002}
+Porciani, C., Dekel, A., and Hoffman, Y.\ (2002). Testing tidal-torque theory. I. Spin amplitude and direction. \textit{Monthly Notices of the Royal Astronomical Society}, 332, 325--338.
+
+\bibitem{Yu2020}
+Yu, H.-R., et al.\ (2020). Probing Primordial Chirality with Galaxy Spins. \textit{Physical Review Letters}, 124, 101302.
+
+\bibitem{Wu2021}
+Wu, Q., Yu, H.-R., Liao, S., and Du, M.\ (2021). Spin mode reconstruction in Lagrangian space. \textit{Physical Review D}, 103, 063522.
+
+\bibitem{Wang2014}
+Wang, H., Mo, H.\ J., Yang, X., Jing, Y.\ P., and Lin, W.\ P.\ (2014). ELUCID---Exploring the Local Universe with the Reconstructed Initial Density Field. I. \textit{Astrophysical Journal}, 794, 94.
+
+\bibitem{Wang2016}
+Wang, H., et al.\ (2016). ELUCID---Exploring the Local Universe with ReConstructed Initial Density Field III: Constrained Simulation in the SDSS Volume. \textit{Astrophysical Journal}, 831, 164.
+
+\bibitem{Bundy2015}
+Bundy, K., et al.\ (2015). Overview of the SDSS-IV MaNGA Survey: Mapping nearby Galaxies at Apache Point Observatory. \textit{Astrophysical Journal}, 798, 7.
+
+\bibitem{Sheng2023}
+Sheng, M.-J., et al.\ (2023). Baryonic Effects on Lagrangian Clustering and Angular Momentum Reconstruction. \textit{Astrophysical Journal}, 943, 128.
+
+\bibitem{Sheng2024}
+Sheng, M.-J., et al.\ (2024). Spin speed correlations and the evolution of galaxy-halo systems. \textit{Physical Review D}, 109, 123548.
+
+\bibitem{Li2024}
+Li, S., Sheng, M.-J., Li, H., and Yu, H.-R.\ (2024). Lagrangian space remapping and the angular momentum reconstruction from cosmic structures. \textit{Physical Review D}, 110, 023512.
+
+\bibitem{CoverThomas}
+Cover, T.\ M., and Thomas, J.\ A.\ (2006). \textit{Elements of Information Theory}, 2nd ed. Wiley-Interscience.
+
+\bibitem{EckmannRuelle}
+Eckmann, J.-P., and Ruelle, D.\ (1985). Ergodic theory of chaos and strange attractors. \textit{Reviews of Modern Physics}, 57, 617--656.
+
+\bibitem{Wiener1930}
+Wiener, N.\ (1930). Generalized Harmonic Analysis. \textit{Acta Mathematica}, 55, 117--258.
+
+\end{thebibliography}
+
+\end{document}

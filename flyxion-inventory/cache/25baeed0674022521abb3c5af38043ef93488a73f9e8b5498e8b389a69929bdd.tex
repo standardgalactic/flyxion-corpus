@@ -1,0 +1,3816 @@
+\documentclass[11pt]{book}
+
+% ── Packages ─────────────────────────────────────────────────────────────
+\usepackage[margin=1.2in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{tikz}
+\usepackage[splitindex]{imakeidx}
+\makeindex[name=topics,title=Topic Index,intoc]
+\makeindex[name=vocab,title=Vocabulary Index,intoc]
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,patterns,backgrounds}
+
+% ── Unified chapter figure style ─────────────────────────────────────
+\tikzset{
+  >=Latex,
+  chapterbox/.style={draw, thick, rounded corners},
+  flow/.style={->, thick},
+  thinflow/.style={->, thin},
+  point/.style={circle, fill, inner sep=1.2pt},
+  every node/.style={font=\small},
+  cfig/.style={thick},
+  cfigdash/.style={dashed, thick},
+  cfigfill/.style={fill opacity=0.75},
+  cfignode/.style={circle, fill, inner sep=1.5pt}
+}
+
+% ── Typography ───────────────────────────────────────────────────────────
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries}{\chaptername\ \thechapter}{10pt}{\huge}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% ── Theorem environments ─────────────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{openproblem}[theorem]{Open Problem}
+\newtheorem{exercise}[theorem]{Exercise}
+
+% ── Notation ─────────────────────────────────────────────────────────────
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\G}{\Gamma}
+\newcommand{\Ss}{S}
+
+% ── Extension environments ────────────────────────────────────────────────
+% Historical preamble: opens each chapter with a paradigm's history
+\newenvironment{historicalpreamble}
+  {\begin{quote}\small}
+  {\end{quote}}
+
+% Historical figures: key contributors and sources
+\newenvironment{historicalfigures}
+  {\begin{quote}\small\textbf{Key figures.}\enspace\ignorespaces}
+  {\end{quote}}
+
+% Timeline: paradigm shift chronology
+\newenvironment{paradigmtimeline}
+  {\begin{quote}\small\textbf{Timeline.}\enspace\ignorespaces}
+  {\end{quote}}
+
+% Formal correspondence: precise mathematical restatement of the chapter idea
+\newenvironment{formalcorrespondence}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+% Computational aside: computational paradigm parallel
+\newenvironment{computationalaside}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+% Spherepop comparison: BNF fragment + categorical diagram
+\newenvironment{spherepopcomparison}
+  {\begin{quote}\small}
+  {\end{quote}}
+
+% UML / categorical diagram wrapper
+\newenvironment{umldiagram}
+  {\begin{center}\begin{tikzpicture}[
+      box/.style={draw, rounded corners, align=center,
+                  minimum width=3.2cm, minimum height=1cm, font=\small},
+      arrow/.style={-Latex, thick}
+    ]}
+  {\end{tikzpicture}\end{center}}
+
+% Teacher note: pedagogical guidance for instructors
+\newenvironment{teachernote}
+  {\begin{quote}\small\bfseries\textit{Teacher Note.}\normalfont\small\enspace\ignorespaces}
+  {\end{quote}}
+
+% Lesson plan: multi-year curriculum block
+\newenvironment{lessonplan}
+  {\begin{quote}\small}
+  {\end{quote}}
+
+% University bridge: connections to university-level topics
+\newenvironment{universitybridge}
+  {\begin{quote}\small\itshape\textbf{University connections:}\normalfont\small\itshape\enspace\ignorespaces}
+  {\end{quote}}
+
+% Reading list: per-chapter further reading
+\newenvironment{readinglist}
+  {\begin{quote}\small}
+  {\end{quote}}
+
+% ── Title ────────────────────────────────────────────────────────────────
+\title{\textbf{Structural Thinking}\\[6pt]
+\large A History of Computation and the Geometry of Ideas}
+\author{Flyxion}
+\date{}
+
+% ════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ════════════════════════════════════════════════════════════════════════
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Teacher's Guide}
+\addcontentsline{toc}{chapter}{Teacher's Guide}
+% ════════════════════════════════════════════════════════════════════════
+
+\section*{Pedagogical Philosophy}
+
+\begin{teachernote}
+This textbook is structured around a single underlying principle:
+students learn best when they encounter the same structure in multiple
+forms before it is formalised.
+
+Each chapter presents a historical problem, an intuitive resolution, a
+formal structure, and a computational interpretation. Students are not
+expected to master all layers immediately. Understanding accumulates
+through repeated exposure across chapters. The goal is not early
+precision, but eventual inevitability: the sensation that the answer
+could not have been otherwise.
+
+The teacher's role is to hold the structure stable while students find
+their footing in each new representation. Resist the temptation to
+explain the structure too early. Let students encounter the same idea
+in history, in mathematics, and in computation before naming what it is.
+\end{teachernote}
+
+\begin{remark}
+Each chapter in this book presents the same underlying structure from
+five perspectives: (1) historical development of a computational
+paradigm, (2) conceptual explanation, (3) formal correspondence,
+(4) computational interpretation, and (5) worked example with exercises.
+These are not separate topics. They are different descriptions of the
+same underlying system. The teacher notes at the end of each chapter
+explain how to navigate these layers and what university-level topics
+each chapter is preparing students to encounter.
+\end{remark}
+
+\section*{Two-Year Lesson Plan}
+
+\begin{lessonplan}
+\textbf{Year~1 (Chapters~1--5).}
+Focus: constraints, emergence, abstraction, entropy, and temporal
+compression. Emphasis on conceptual understanding and worked examples.
+Students should finish Year~1 able to describe a solution as the result
+of constraint accumulation rather than inspiration.
+
+\textbf{Year~2 (Chapters~6--12).}
+Focus: failure modes, consistency, cross-domain mapping, intelligence,
+and synthesis. Emphasis on formal reasoning and structured thinking.
+Students should finish Year~2 able to recognise the same structure in
+different domains and to diagnose failure when global consistency breaks
+down.
+\end{lessonplan}
+
+\section*{Three-Year Lesson Plan (Recommended)}
+
+\begin{lessonplan}
+\textbf{Year~1 (Chapters~1--3).}
+Focus: constraints, structural emergence, and abstraction. Goal:
+students learn to think in terms of elimination and invariants. By the
+end of the year, students should be able to describe any narrowing
+process---in mathematics, language, or daily reasoning---as constraint
+accumulation.
+
+\textbf{Year~2 (Chapters~4--7).}
+Focus: entropy, time and relegation, local versus global consistency,
+and obstruction. Goal: students understand limits, structural breakdown,
+and the distinction between local correctness and global coherence. They
+should encounter, at least once, a system that looks correct everywhere
+and fails globally.
+
+\textbf{Year~3 (Chapters~8--12).}
+Focus: functorial correspondence, intelligence as constraint maintenance,
+the geometry of ideas, deliberate constraint accumulation, and synthesis.
+Goal: students integrate the concepts across domains and begin to reason
+formally. By the end they should be able to identify when two apparently
+different problems share the same underlying structure.
+\end{lessonplan}
+
+\section*{Assessment Philosophy}
+
+\begin{teachernote}
+Assessment should not prioritise memorisation of definitions. Instead,
+evaluate: the ability to recognise structure across different contexts;
+the ability to detect inconsistency; and the ability to explain why a
+solution must be what it is, rather than merely that it is. Strong
+students will begin to describe answers as \emph{forced} rather than
+\emph{chosen}. That shift in language is the clearest sign that the
+framework has been internalised.
+\end{teachernote}
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{How to Use This Book}
+\addcontentsline{toc}{chapter}{How to Use This Book}
+% ════════════════════════════════════════════════════════════════════════
+
+Each chapter unfolds in the same sequence. A historical preamble
+introduces a computational paradigm and the problem it was invented to
+solve. The conceptual core develops the chapter's main idea in plain
+terms. A formal correspondence restates that idea in mathematical
+language. A computational perspective shows how the same structure
+appears in programming. A worked example walks through the idea
+concretely. Exercises ask the student to apply it.
+
+These layers are not independent. The history motivates the concept. The
+formalism clarifies the concept. The computation instantiates the
+concept. The worked example proves that the concept works in practice.
+A student who reads only one layer has read one coordinate of the same
+point.
+
+Teacher notes appear at the end of each chapter. They are addressed to
+instructors and describe common misconceptions, teaching strategies, and
+connections to university-level mathematics and computer science.
+
+A student reading this book for the first time should read the
+historical preamble and conceptual core of each chapter before
+attempting the formal correspondence. The formal correspondence will
+then feel like a restatement of something already understood, not a new
+idea.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{A Note on Computation}
+\addcontentsline{toc}{chapter}{A Note on Computation}
+% ════════════════════════════════════════════════════════════════════════
+
+Computation is often described as calculation: the production of a
+numerical result from numerical inputs. This description is accurate but
+incomplete.
+
+At a deeper level, computation is transformation. A computing system
+takes a representation of some structure and produces a new
+representation according to rules. The rules may be arithmetic, but
+they may equally be symbolic, logical, or structural. What matters is
+not the content of the representations but the rules that govern their
+transformation and the stable forms those transformations eventually
+reach.
+
+This view of computation---as rule-governed transformation converging on
+stable forms---is what connects the history of computing machines to the
+theory of constraints, abstraction, and invariants that this book
+develops. Computation and structured thinking are not analogous. They
+are instances of the same process.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{A Note on Structure}
+\addcontentsline{toc}{chapter}{A Note on Structure}
+% ════════════════════════════════════════════════════════════════════════
+
+Structure is not the same as content. Two objects can share the same
+structure while having entirely different content, just as two sentences
+can have the same grammatical form while meaning entirely different
+things.
+
+In this book, structure means constraint. A structure is defined by what
+it rules out: the configurations, transformations, or combinations that
+are not admissible. The more constraints a system satisfies, the more
+determinate its structure. A fully determined structure is one where
+every admissible configuration is forced by the constraints themselves.
+
+This definition has a counterintuitive implication: adding constraints
+does not restrict understanding. It produces it. The accumulation of
+constraints is what makes a system legible, a solution inevitable, and
+an idea recognisable.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Notation and Prerequisites}
+\addcontentsline{toc}{chapter}{Notation and Prerequisites}
+% ════════════════════════════════════════════════════════════════════════
+
+This book assumes familiarity with the following informal concepts.
+
+\textbf{Sets.} A set is a collection of objects. We write $x \in A$ to
+mean that $x$ is an element of the set $A$, and $A \subseteq B$ to mean
+that every element of $A$ is also an element of $B$. The intersection
+$A \cap B$ is the set of elements belonging to both $A$ and $B$.
+
+\textbf{Functions.} A function $f : X \to Y$ assigns to each element of
+$X$ exactly one element of $Y$. We call $X$ the domain and $Y$ the
+codomain.
+
+\textbf{Logarithms.} The logarithm $\log_b n$ is the exponent to which
+$b$ must be raised to produce $n$. We write $\log$ for $\log_2$
+throughout, following the convention of information theory\index[topics]{information theory}.
+
+\textbf{Graphs (informal).} A graph is a collection of nodes connected
+by edges. Graphs are used informally in this book to depict
+relationships between systems and components.
+
+No calculus, linear algebra, or formal proof techniques are required.
+Where proofs appear, they are sketched rather than presented in full
+technical detail. The mathematical appendix at the back of the book
+provides additional background.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+% ════════════════════════════════════════════════════════════════════════
+
+This book takes a single idea seriously: that ideas themselves obey
+structural laws.
+
+It argues that great insights are not accidents of inspiration but
+convergence phenomena---the inevitable endpoint of accumulating enough
+constraints from enough different domains. It formalises what that means
+using the beginnings of several mathematical traditions: set theory,
+logic, topology, information theory, and category theory\index[topics]{category theory}.
+
+No advanced mathematical background is assumed. What is assumed is
+willingness to think carefully and tolerance for precise language. The
+formalism here is a tool for clarity, not an obstacle to it.
+
+The payoff is practical. Once you understand how constraint accumulation
+works---formally---you can deliberately accelerate it.
+
+\begin{remark}
+Throughout this text, each chapter opens with a historical account of a
+computing paradigm and closes with three parallel layers: a formal
+correspondence that restates the chapter's main idea in mathematical
+language, a computational aside that shows the same idea as it appears
+in programming, and a brief comparison with Spherepop Calculus\index[topics]{Spherepop Calculus}, a
+formal system in which structure is built entirely from nested regions,
+merges, and collapses. These layers are not supplements to the main
+argument. They are the same argument, stated in different coordinate
+systems. The goal is for each restatement to feel like a clarification
+of something already understood, not a new idea.
+\end{remark}
+
+\mainmatter
+
+% ════════════════════════════════════════════════════════════════════════
+% Global Structural Note
+% ════════════════════════════════════════════════════════════════════════
+
+\begin{remark}
+Each chapter in this book presents the same underlying structure from
+multiple perspectives: (1)~historical development of a computational
+paradigm, (2)~conceptual explanation, (3)~formal correspondence,
+(4)~computational interpretation, and (5)~worked example and exercises.
+These are not separate topics but different descriptions of the same
+underlying system. A student who feels that each new layer is restating
+something already known is reading correctly.
+\end{remark}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{Constraints and Their Accumulation}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Constraints as the Engine of Thought}
+
+\begin{historicalpreamble}
+Early computing machines were not designed to ``find answers.'' They were
+designed to follow instructions. From the mechanical calculators of the
+nineteenth century to the earliest stored-program computers, computation
+was understood as a sequence of explicit steps carried out in order.
+Programs were written as procedures: do this, then this, then this. Each
+step restricted what could happen next. Errors did not arise from mystery,
+but from incorrect instructions or missing conditions.
+
+Over time it became clear that what mattered was not the individual steps,
+but the way they progressively eliminated possibilities. A program did not
+construct an answer out of nothing---it reduced a space of possibilities
+until only one remained. This view of computation as sequential constraint
+application forms the foundation of imperative programming\index[topics]{imperative programming} and, as this
+chapter argues, the foundation of thought itself.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Charles Babbage\index[topics]{Babbage, Charles} (1791--1871) designed the Analytical Engine, an early
+mechanical model of programmable computation. Ada Lovelace\index[topics]{Lovelace, Ada} (1815--1852)
+recognised that such a machine could follow symbolic rules, not just
+perform numerical calculation. John von Neumann\index[topics]{von Neumann, John} (1903--1957) formalised
+the stored-program architecture, establishing sequential execution as the
+dominant computational model of the twentieth century.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1830s: mechanical computation (Babbage). \quad
+1940s: stored-program computers. \quad
+1950s--60s: assembly languages and early imperative languages. \quad
+1970s: structured programming and control-flow discipline.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.92]
+  % Outer cube (projected)
+  \draw[cfig] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+  \draw[cfig] (1.2,1.2) -- (5.2,1.2) -- (5.2,5.2) -- (1.2,5.2) -- cycle;
+  \draw[cfig] (0,0) -- (1.2,1.2);
+  \draw[cfig] (4,0) -- (5.2,1.2);
+  \draw[cfig] (4,4) -- (5.2,5.2);
+  \draw[cfig] (0,4) -- (1.2,5.2);
+  % Constraint planes
+  \fill[blue!15,cfigfill] (1.4,0.7) -- (4.6,0.7) -- (4.6,4.7) -- (1.4,4.7) -- cycle;
+  \fill[red!15,cfigfill]  (0.8,1.4) -- (4.8,1.4) -- (4.8,2.6) -- (0.8,2.6) -- cycle;
+  \fill[green!18,cfigfill](2.2,0.4) -- (3.2,0.4) -- (4.4,1.6) -- (3.4,1.6) -- cycle;
+  % Admissible region
+  \fill[orange!55,cfigfill] (2.45,1.55) rectangle (3.25,2.45);
+  \draw[cfig,orange!70!black] (2.45,1.55) rectangle (3.25,2.45);
+  % Labels
+  \node at (2.0,-0.55) {configuration space $\Gamma$};
+  \node[blue!65!black]   at (5.55,4.4) {$C_1$};
+  \node[red!65!black]    at (5.55,2.0) {$C_2$};
+  \node[green!55!black]  at (4.5,0.7)  {$C_3$};
+  \node[orange!80!black] at (2.85,2.9) {$\mathcal{A}(\mathcal{C})$};
+\end{tikzpicture}
+\caption{Constraints $C_1, C_2, C_3$ each define a subset of configuration space.
+Their intersection is the admissible set $\mathcal{A}(\mathcal{C})$: the only region
+that satisfies all conditions simultaneously.}
+\end{figure}
+
+\section{Formal Definition}
+
+\begin{definition}[Constraint]\index[vocab]{constraint}
+A \textbf{constraint} is a predicate $c : X \to \{\mathrm{true}, \mathrm{false}\}$
+defined on a set $X$ of possible configurations. A constraint \emph{eliminates}
+from consideration every $x \in X$ for which $c(x) = \mathrm{false}$.
+\end{definition}
+
+The set $X$ is the space of all initially possible configurations---
+answers, solutions, models. A constraint reduces this space.
+
+\begin{definition}[Constraint Set and Admissible Set]\index[vocab]{admissible set}\index[vocab]{constraint set}
+Given a set of constraints $\C = \{c_1, c_2, \ldots, c_n\}$ on $X$, the
+\textbf{admissible set} is
+\[
+  \A(\C) \;=\; \bigl\{ x \in X \;\mid\; c_i(x) = \mathrm{true}
+  \text{ for all } i \bigr\}.
+\]
+\end{definition}
+
+\begin{example}
+Let $X = \{1, 2, \ldots, 100\}$. Define constraints:
+\begin{align*}
+  c_1(x) &= [x \text{ is even}] \\
+  c_2(x) &= [x > 50] \\
+  c_3(x) &= [x < 70]
+\end{align*}
+Then $\A(\{c_1, c_2, c_3\}) = \{52, 54, 56, 58, 60, 62, 64, 66, 68\}$.
+Nine possibilities remain from one hundred.
+\end{example}
+
+As constraints are added, $|\A(\C)|$ typically decreases. When
+$|\A(\C)| = 1$, a unique solution is determined. This is the formal
+structure of discovery: the constraints forced the answer.
+
+\section{Domains as Constraint Systems}
+
+\begin{definition}[Domain]\index[vocab]{domain}
+A \textbf{domain} $D$ is a pair $(X_D, \C_D)$ where $X_D$ is a space of
+domain-specific configurations and $\C_D$ is a set of constraints
+governing admissibility within $D$.
+\end{definition}
+
+Physics, mathematics, music theory, and grammar are all domains in this
+sense. Each has its own space of configurations and its own constraints on
+what is admissible.
+
+\begin{remark}
+A domain expert is someone who has internalized $\C_D$ so thoroughly that
+it operates automatically---as a filter rather than a conscious checklist.
+This is what aspect relegation formalizes (Chapter~\ref{ch:relegation}).
+\end{remark}
+
+\section{Cross-Domain Constraint Accumulation}
+
+The most powerful constraints arise when we require a configuration to be
+admissible in multiple domains simultaneously.
+
+\begin{definition}[Cross-Domain Admissibility]\index[vocab]{cross-domain admissibility}
+Given domains $D_1 = (X_1, \C_1)$ and $D_2 = (X_2, \C_2)$ with a common
+mapping $\phi : X \to X_1 \times X_2$, the \textbf{cross-domain admissible
+set} is
+\[
+  \A(\C_1 \cup \C_2) \;=\; \bigl\{ x \in X \;\mid\;
+  \phi(x) \in \A(\C_1) \times \A(\C_2) \bigr\}.
+\]
+\end{definition}
+
+Each additional domain reduces $|\A|$. When enough domains are imposed,
+the admissible set may collapse to a single element.
+
+\begin{principle}[Inevitability Under Density]\index[topics]{inevitability under density}
+If the intersection of admissible sets across sufficiently many domains
+contains exactly one element, that element is determined by the constraints
+alone, not by guessing or inspiration.
+\end{principle}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $\Gamma$ denote the set of all possible configurations of a system and
+let $\mathcal{C} = \{C_1, C_2, \dots, C_n\}$ be a set of constraints. Each
+$C_i$ defines a subset $\Gamma_i \subseteq \Gamma$. The admissible set is
+\[
+  \Gamma_{\mathcal{C}} = \bigcap_{i=1}^n \Gamma_i.
+\]
+An idea corresponds to an element $x \in \Gamma_{\mathcal{C}}$. When
+$|\Gamma_{\mathcal{C}}| = 1$, the solution is uniquely determined by the
+constraints. This is the same structure stated above, expressed in
+set-theoretic terms.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+In imperative programming, a system is transformed step by step. Each
+instruction reduces what remains possible. A constraint behaves the same
+way: it removes configurations from consideration. A sequence of
+constraints is therefore not a collection of ideas but a process of
+elimination. What appears as a final answer is often just the state that
+remains after all eliminations have been applied.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider the problem of identifying a number between 1 and 100. Impose
+three constraints: the number is even; the number is greater than 50; the
+number is divisible by 5. Each constraint reduces the admissible set:
+\[
+  \Gamma_1 = \{2,4,\dots,100\}, \quad
+  \Gamma_2 = \{52,54,\dots,100\}, \quad
+  \Gamma_3 = \{50,55,60,\dots,100\}.
+\]
+Their intersection is $\{60,70,80,90,100\}$. Adding a fourth
+constraint---the number is less than 80---yields $\{60,70\}$. The solution
+is not constructed; it is progressively revealed by eliminating
+incompatible possibilities.
+
+\begin{exercise}
+Write a sequence of yes/no questions that narrows any number between 1 and
+100 to a single value. Observe how each question eliminates possibilities
+rather than constructing the answer directly.
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Spherepop begins from the idea that structure is built by nested regions,
+merges, and collapses. In this chapter, a constraint behaves like a rule
+that prunes possible pops until only admissible ones remain.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<system>      ::= <region>
+<region>      ::= <atom> | "(" <region-list> ")"
+<region-list> ::= <region> | <region> <region-list>
+<constraint>  ::= "allow" <region> | "forbid" <region>
+\end{verbatim}
+
+A constraint-preserving system retains only regions that are not forbidden.
+The admissible set corresponds exactly to the pops that survive elimination.
+This expresses the same structure introduced in the definitions above, now
+stated as a formal grammar.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (space)  {Configuration\\Space};
+  \node[box, right=2.4cm of space]  (filter) {Constraint\\Filter};
+  \node[box, right=2.4cm of filter] (admit)  {Admissible\\Regions};
+  \draw[arrow] (space) -- (filter);
+  \draw[arrow] (filter) -- (admit);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should begin to see thinking as elimination rather than
+construction. The most common difficulty is that students try to guess
+answers rather than narrow possibilities systematically. Force step-by-step
+elimination exercises and do not permit jumping ahead. Watch for students
+who confuse rules with outcomes---who treat a constraint as a description
+of the answer rather than as a filter on possibilities.
+
+The worked example in this chapter is deliberately numerical. Use it to
+establish the habit of making the admissible set explicit at each step.
+Later chapters depend on students having internalised this habit.
+\end{teachernote}
+
+\begin{universitybridge}
+Constraint satisfaction problems (CSPs) in artificial intelligence.
+Linear programming and feasible region analysis. Propositional logic
+and satisfiability (SAT). Integer programming.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+George P\'olya, \textit{How to Solve It} --- an introduction to
+problem solving as a process of narrowing possibilities; accessible at
+any level.
+
+Thomas H. Cormen et al., \textit{Introduction to Algorithms} (selected
+sections) --- shows how constraints shape algorithm design.
+
+Rina Dechter, \textit{Constraint Processing} --- a formal treatment of
+constraint satisfaction problems at university level.
+\end{readinglist}
+
+\chapter{The Three Conditions for Structural Emergence}
+
+\begin{historicalpreamble}
+In the early twentieth century, mathematicians sought to understand what it
+meant to compute in the most abstract sense. Alonzo Church introduced the
+lambda calculus\index[topics]{lambda calculus}, a system in which computation was no longer described as
+a sequence of steps but as the transformation of expressions. In this
+framework, one does not execute instructions; one reduces an expression
+according to formal rules until it reaches a stable form. This stable
+form---called a normal form\index[topics]{normal form}---represents the completed result of the
+computation.
+
+This shift was profound. It suggested that computation is not inherently
+procedural. It can instead be understood as the process of eliminating
+instability within a structure until no further change is possible. The
+same logic applies to ideas: an idea is not assembled but simplified to
+the point where it can no longer be altered without violating a constraint.
+Modern functional programming\index[topics]{functional programming} languages inherit this view, treating programs
+as expressions to be evaluated rather than instructions to be followed.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Alonzo Church\index[topics]{Church, Alonzo} (1903--1995) developed lambda calculus as a formal system
+of computation. Alan Turing\index[topics]{Turing, Alan} (1912--1954) introduced the Turing machine
+and proved the two models equivalent. Haskell Curry\index[topics]{Curry, Haskell} (1900--1982) advanced
+combinatory logic, which directly influenced the design of functional
+programming languages.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1930s: lambda calculus and formal models of computation. \quad
+1950s: theoretical equivalence of computation models proven. \quad
+1980s--90s: functional languages (ML, Haskell). \quad
+2000s: functional paradigms integrated into mainstream languages.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.98]
+  \fill[blue!18,cfigfill]   (0,0)   ellipse (2.1 and 1.3);
+  \fill[red!18,cfigfill]    (1.9,0) ellipse (2.1 and 1.3);
+  \fill[green!20,cfigfill]  (0.95,1.35) ellipse (2.1 and 1.3);
+  \draw[cfig,blue!55!black]  (0,0)   ellipse (2.1 and 1.3);
+  \draw[cfig,red!55!black]   (1.9,0) ellipse (2.1 and 1.3);
+  \draw[cfig,green!45!black] (0.95,1.35) ellipse (2.1 and 1.3);
+  % Overlap region
+  \fill[orange!60,cfigfill] (0.95,0.42) circle (0.44);
+  \draw[cfig,orange!80!black] (0.95,0.42) circle (0.44);
+  % Labels
+  \node[blue!65!black]    at (-1.5,-1.6) {constraint density};
+  \node[red!65!black]     at ( 3.4,-1.6) {closure};
+  \node[green!50!black]   at ( 0.95, 2.9) {projection capacity};
+  \node[orange!85!black]  at ( 0.95, 0.42) {emergence};
+\end{tikzpicture}
+\caption{Structural emergence appears only at the intersection of all three conditions:
+constraint density, closure, and projection capacity. Each condition alone is necessary
+but not sufficient.}
+\end{figure}
+
+\begin{definition}[Constraint Density]\index[vocab]{constraint density}
+A system is \textbf{constraint-dense} if $|\A(\C)|$ is small relative to
+$|X|$ and the constraints interact non-trivially---that is, $\A(\C_1 \cup
+\C_2) \subsetneq \A(\C_1) \cap \A(\C_2)$ for many pairs $C_1, C_2 \subset \C$.
+\end{definition}
+
+\begin{definition}[Closure]\index[vocab]{closure}
+A system satisfies the \textbf{closure condition} if $\A(\C) \neq \emptyset$.
+Closure is the precondition for any solution to exist at all.
+\end{definition}
+
+\begin{definition}[Projection Capacity]\index[vocab]{projection capacity}
+A system has \textbf{projection capacity} if there exists a map
+$\Pi : X \to Y$ into a simpler space $Y$ such that $\Pi$ preserves the
+essential structure of $\A(\C)$: the admissible configurations in $Y$
+correspond to those in $X$ under the same constraints.
+\end{definition}
+
+\begin{theorem}[Necessary and Sufficient Conditions]\index[topics]{structural emergence, conditions for}
+Cross-domain structural ideas emerge if and only if the generating system
+is constraint-dense, satisfies closure, and possesses projection capacity.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Constraint density ensures that constraints from different domains interact,
+ruling out configurations that would survive each domain individually.
+Closure ensures a solution exists. Projection capacity ensures the solution
+can be represented in a compressed form that preserves the relevant
+structure. Without any one of these, either no solution is determined, no
+solution exists, or the solution cannot be expressed.
+\end{proof}
+
+\begin{remark}
+This theorem reframes the question of intellectual originality. Rather than
+asking ``how did this person come up with this?'' we ask: ``was the system
+they operated within constraint-dense, closed, and projection-capable?'' If
+yes, the idea was in some sense inevitable.
+\end{remark}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $T$ be a transformation that applies constraints to a candidate
+configuration. A stable configuration satisfies
+\[
+  T(x) = x.
+\]
+Such configurations are fixed point\index[topics]{fixed point}s. In computational systems---for
+instance, lambda calculus---these correspond to normal forms: structures
+that no longer change under evaluation. Recognition is the process of
+reaching such a fixed point. Constraint density, closure, and projection
+capacity are exactly the conditions that guarantee a fixed point exists,
+is unique, and is representable. This expresses the same structure as
+the theorem above, now stated in the language of iteration.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+In functional programming, one does not construct results step by step.
+Instead, one defines expressions and allows them to reduce. An idea
+behaves similarly: it is not assembled but simplified. The final form
+is reached when no further transformation changes it. Recognition is the
+moment at which reduction has completed.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider a system defined by three constraints:
+\[
+  C_1: x + y = 10, \qquad C_2: x - y = 2, \qquad C_3: x,y \in \mathbb{Z}.
+\]
+Adding $C_1$ and $C_2$ gives $2x = 12$, so $x = 6$. Substituting into
+$C_1$ gives $y = 4$. The system stabilises at $(x,y) = (6,4)$.
+Structure emerges only when all three constraints are satisfied
+simultaneously; removing any one allows multiple solutions.
+
+\begin{exercise}
+Simplify the expression $((x + 0) \times 1)$ until no further simplification
+is possible. Notice that the result is not constructed but revealed by
+removing what does not change the value.
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Spherepop reduction reaches closure when no further collapse is required.
+This matches the chapter's account of structural emergence.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<expression> ::= <region> | <merge> | <collapse>
+<merge>      ::= <region> "+" <region>
+<collapse>   ::= "[" <expression> "]" "=>" <region>
+\end{verbatim}
+
+A structurally emergent object is one that has passed through enough
+merges and collapses to reach a stable region. Constraint density
+corresponds to many possible collapse pressures; closure to the
+existence of a stable reduced region; projection capacity to whether
+the reduced region can serve as a usable outer form. This is the same
+structure introduced in the theorem above, now stated as a grammar.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (dense)   {Constraint\\Density};
+  \node[box, right=2.4cm of dense]   (closure) {Closure};
+  \node[box, right=2.4cm of closure] (stable)  {Stable\\Form};
+  \draw[arrow] (dense) -- (closure);
+  \draw[arrow] (closure) -- (stable);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should recognise that solutions appear when constraints interact,
+not when effort increases. The most common difficulty is a persistent
+belief that insight is random or purely intuitive. Counter this by using
+systems where removing one constraint breaks uniqueness: show the student
+a system with three constraints that has a unique solution, then remove
+one, and ask what changes. Watch for students who solve procedurally
+without recognising the structural conditions that make a unique solution
+possible.
+
+The three conditions---constraint density, closure, and projection
+capacity---should be treated as a checklist students can apply to any
+problem. Ask them to identify which condition is violated when a system
+fails to produce a solution.
+\end{teachernote}
+
+\begin{universitybridge}
+Fixed point theory and Banach's fixed point theorem. Lambda calculus and
+normal forms. Dynamical systems and convergence. Nonlinear systems and
+equilibria.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Douglas Hofstadter, \textit{G\"odel, Escher, Bach} --- explores how
+structure emerges from interacting rules; accessible and motivating.
+
+Alonzo Church, \textit{An Unsolvable Problem of Elementary Number
+Theory} (1936) --- introduces lambda calculus; readable with care.
+
+Henk Barendregt, \textit{The Lambda Calculus} --- a deeper formal
+treatment of reduction and fixed points at university level.
+\end{readinglist}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{Compression, Abstraction, and Representation}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Abstraction as Constraint-Preserving Reduction}
+
+\begin{historicalpreamble}
+As programming languages evolved, it became clear that not all
+computations need to be performed immediately. In some systems, values are
+computed only when they are required---a strategy known as lazy evaluation\index[topics]{lazy evaluation}.
+This idea emerged from both practical and theoretical concerns. In infinite
+data structures such as streams, it is impossible to compute everything in
+advance; computation must be deferred until a specific portion is needed.
+Languages such as Haskell formalised this approach, allowing expressions to
+remain unevaluated until their results are demanded.
+
+This revealed something deeper: evaluation is not a single event but a
+process that can be partially completed and resumed later. Abstraction
+is the result of completing enough of that process that the internal
+structure no longer needs to be visited again.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+John Backus (1924--2007) developed FORTRAN and later articulated a
+functional programming style. Paul Hudak (1952--2015) contributed
+centrally to Haskell and the theory of lazy evaluation. Philip Wadler
+(1956--) advanced functional programming and formalised evaluation
+strategies that underpin modern abstract computation.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1950s: early compilers (FORTRAN). \quad
+1970s: demand-driven evaluation concepts proposed. \quad
+1980s--90s: lazy evaluation formalised (Haskell). \quad
+2000s: streaming and deferred computation in production systems.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.9]
+  % Detailed structure (left)
+  \draw[cfig] (0,0) -- (1,1.5) -- (2.2,1.1) -- (2.8,2.2)
+              -- (4,1.8) -- (4.5,0.7) -- (3.5,-0.4)
+              -- (2.1,-0.7) -- (1.1,-0.2) -- cycle;
+  \draw[thin,gray!60] (1,1.5) -- (3.5,-0.4);
+  \draw[thin,gray!60] (2.2,1.1) -- (1.1,-0.2);
+  \draw[thin,gray!60] (2.8,2.2) -- (2.1,-0.7);
+  \node at (2.2,-1.35) {detailed structure $X$};
+  % Invariant labels
+  \node at (0.65,1.9)  {$a$};
+  \node at (4.15,2.15) {$b$};
+  \node at (3.8,-0.85) {$c$};
+  % Projection arrow
+  \draw[->,very thick] (5.2,0.75) -- (7.0,0.75);
+  \node at (6.1,1.15) {$\pi$};
+  % Abstract structure (right)
+  \fill[gray!10] (7.5,0) rectangle (10.5,2.1);
+  \draw[cfig]   (7.5,0) rectangle (10.5,2.1);
+  \node at (9.0,-0.5) {abstract structure $\tilde{X}$};
+  % Invariant labels preserved
+  \node at (7.85,2.45)  {$a$};
+  \node at (10.15,2.45) {$b$};
+  \node at (10.15,-0.3) {$c$};
+\end{tikzpicture}
+\caption{Abstraction $\pi$ maps detailed internal structure to a simpler representation.
+The invariants $a$, $b$, $c$ are preserved; internal distinctions irrelevant to them are discarded.}
+\end{figure}
+
+\section{The Formal Definition}
+
+\begin{definition}[Abstraction Operator]\index[vocab]{abstraction operator}\index[vocab]{abstraction}
+An \textbf{abstraction operator} is a surjective map $\alpha : X \to Y$
+from a high-dimensional configuration space $X$ to a lower-dimensional
+space $Y$ such that:
+\begin{enumerate}[label=(\roman*)]
+  \item $\alpha$ preserves admissibility: if $x \in \A(\C)$ then
+        $\alpha(x) \in \A(\alpha(\C))$, where $\alpha(\C)$ denotes the
+        image of the constraint set;
+  \item $\alpha$ does not identify inadmissible with admissible:
+        if $\alpha(x_1) = \alpha(x_2)$ then $x_1 \sim_\C x_2$
+        (they are constraint-equivalent).
+\end{enumerate}
+\end{definition}
+
+Condition (i) says the abstraction does not discard relevant structure.
+Condition (ii) says the abstraction only identifies things that are
+genuinely equivalent under the constraints.
+
+\section{Information Loss and Structural Preservation}
+
+Every abstraction involves loss. The question is which loss is acceptable.
+
+\begin{principle}[Admissible Loss]\index[topics]{admissible loss}
+The information discarded by a well-formed abstraction is exactly the
+information that does not affect constraint satisfaction. Its loss
+simplifies without distorting.
+\end{principle}
+
+\begin{example}
+The ideal gas law $PV = nRT$ abstracts over the positions and velocities
+of individual molecules. It discards enormous detail. But for the purposes
+of predicting bulk behavior under the relevant constraints, the discarded
+detail is irrelevant. The abstraction preserves what matters.
+\end{example}
+
+\section{Invariants Under Abstraction}
+
+\begin{definition}[Invariant]\index[vocab]{invariant}
+A property $P$ of configurations in $X$ is an \textbf{invariant under
+abstraction $\alpha$} if $P(x) = P(\alpha(x))$ for all $x \in X$---that
+is, the property is preserved by the abstraction.
+\end{definition}
+
+The goal of abstraction is to find representations in which invariants
+become explicit. A good abstraction makes the structure of the constraint
+system legible.
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Abstraction is modelled as a projection $\pi : X \to \tilde{X}$. Define
+an equivalence relation:
+\[
+  x_1 \sim x_2 \iff \pi(x_1) = \pi(x_2).
+\]
+Then $\tilde{X} = X / {\sim}$. Abstraction corresponds to quotienting:
+internal differences are removed once they no longer affect external
+interaction. This aligns with reduction---internal computation is
+completed before projection. This expresses the same structure as the
+abstraction operator defined above, now stated as a quotient space\index[topics]{quotient space}.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+In modular systems, complexity is hidden behind stable interfaces. A
+component may contain many internal operations, but externally it behaves
+as a single unit. Abstraction follows the same principle: internal
+structure is resolved to the point that it no longer affects interaction.
+To use an abstraction is to rely on completed computation without
+revisiting it.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider the expression $(3 + 5) \times (2 + 4)$. Expanding fully gives
+$8 \times 6 = 48$. Alternatively, set $a = 3 + 5$ and $b = 2 + 4$; then
+$a \times b = 48$. The abstraction removes intermediate computation steps
+while preserving the final relationship. Different internal structures
+collapse to the same result: $(4 + 4)(1 + 5) = 8 \times 6 = 48$.
+Abstraction identifies equivalence classes of computations sharing the
+same external behaviour.
+
+\begin{exercise}
+Describe how you would explain a calculator to someone without describing
+its internal circuitry. What information is necessary, and what can be
+hidden?
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+In Spherepop, abstraction means that an inner region has been collapsed
+enough that the outer system can treat it as a single unit.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<region>   ::= <atom> | "(" <region-list> ")"
+<abstract> ::= "abs(" <region> ")"
+<equiv>    ::= <region> "~" <region>
+\end{verbatim}
+
+If two regions reduce to the same outer behaviour, they may be treated as
+equivalent under abstraction. Replacing a complex nested pop by a single
+abstract region while preserving allowed outer interactions is the same
+operation as the quotient map $\pi$ above, now stated as a grammar rule.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (inner)   {Nested\\Region};
+  \node[box, right=2.4cm of inner]   (collapse) {Abstraction\\(Quotient)};
+  \node[box, right=2.4cm of collapse] (outer)   {Abstract\\Unit};
+  \draw[arrow] (inner) -- (collapse);
+  \draw[arrow] (collapse) -- (outer);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should understand that abstraction hides completed work, not
+incomplete work. The most common misconception is treating abstraction
+as simplification---a removal of complexity for convenience---rather than
+as the preservation of what matters once internal distinctions have been
+resolved. Show different internal forms that produce identical outputs,
+and ask students to identify what was preserved and what was discarded.
+
+Watch for students who lose track of what must remain invariant. Ask
+explicitly: if I change the internal structure, what would have to
+change in the output for this to count as a different abstraction?
+\end{teachernote}
+
+\begin{universitybridge}
+Equivalence relations and quotient spaces. Type systems and abstract
+data types. Category theory: objects defined by morphisms rather than
+internal construction. Homotopy type theory.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Harold Abelson and Gerald Jay Sussman, \textit{Structure and
+Interpretation of Computer Programs} --- shows abstraction as the
+central tool of computation; freely available online.
+
+Barbara Liskov, \textit{Data Abstraction and Hierarchy} (1987) ---
+introduces abstraction in system design; concise and precise.
+
+F. William Lawvere and Stephen Schanuel, \textit{Conceptual
+Mathematics} --- accessible introduction to category theory.
+\end{readinglist}
+
+\chapter{Multiplicity, Entropy, and Compression}
+
+\begin{historicalpreamble}
+As software systems grew in size and complexity, it became impossible for
+any one person to understand every detail of a program. This led to the
+development of modular programming, in which systems are divided into
+components with well-defined interfaces. A module hides its internal
+workings while exposing only what is needed for interaction, allowing
+programmers to build large systems by combining smaller parts without
+needing to re-examine their internal structure.
+
+Concepts such as functions, libraries, and application programming
+interfaces formalised this approach. A function could be used reliably
+once its behaviour was understood, regardless of how it was implemented.
+This marked a shift from computation as execution to computation as the
+composition of stabilised units---and it is exactly the shift that
+multiplicity and entropy make precise.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Edsger Dijkstra\index[topics]{Dijkstra, Edsger} (1930--2002) advocated structured programming and
+conceptual clarity. Barbara Liskov\index[topics]{Liskov, Barbara} (1939--) developed foundational
+principles of abstraction and data encapsulation. Alan Kay\index[topics]{Kay, Alan} (1940--)
+pioneered object-oriented thinking and the idea that meaning lies in
+interfaces rather than implementations.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1960s: structured programming. \quad
+1970s: modular systems and data abstraction. \quad
+1980s: object-oriented programming\index[topics]{object-oriented programming}. \quad
+2000s: APIs and large-scale software ecosystems.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Microstates (left cloud)
+  \foreach \x/\y in {0/0, 0.7/1.1, 1.2/0.2, 1.7/1.4, 2.1/0.65,
+                     2.4/1.8, 2.8/0.1, 3.0/1.15, 3.3/0.8, 3.6/1.9} {
+    \node[cfignode] at (\x,\y) {};
+  }
+  \node at (1.8,-0.55) {microstates};
+  % Flows
+  \foreach \x/\y/\tx/\ty in {
+    0/0/5.7/0.5,  0.7/1.1/5.7/1.5, 1.2/0.2/5.7/0.5,
+    1.7/1.4/5.7/1.5, 2.1/0.65/5.7/0.5, 2.4/1.8/5.7/2.2,
+    2.8/0.1/5.7/0.5, 3.0/1.15/5.7/1.5, 3.3/0.8/5.7/1.5,
+    3.6/1.9/5.7/2.2} {
+    \draw[thinflow,gray!55] (\x,\y) -- (\tx,\ty);
+  }
+  % Macrostates (right)
+  \fill[blue!35]  (5.7,0.15) rectangle (6.4,0.85);
+  \fill[red!35]   (5.7,1.15) rectangle (6.4,1.85);
+  \fill[green!35] (5.7,1.95) rectangle (6.4,2.55);
+  \draw[cfig,blue!60!black]  (5.7,0.15) rectangle (6.4,0.85);
+  \draw[cfig,red!60!black]   (5.7,1.15) rectangle (6.4,1.85);
+  \draw[cfig,green!50!black] (5.7,1.95) rectangle (6.4,2.55);
+  \node at (7.15,0.5)  {$M_1$};
+  \node at (7.15,1.5)  {$M_2$};
+  \node at (7.15,2.25) {$M_3$};
+  \node at (6.05,-0.55) {macrostates};
+  % Entropy annotation
+  \draw[cfigdash,gray!50] (4.1,0.9) -- (4.1,-0.8);
+  \node[gray!60!black] at (4.1,-1.05) {$S = \log\,\mu$};
+\end{tikzpicture}
+\caption{Compression maps many indistinguishable microstates onto fewer macrostates.
+Multiplicity $\mu$ counts how many microstates share a macrostate; entropy $S = \log\,\mu$
+measures the uncertainty that compression cannot remove.}
+\end{figure}
+
+\section{Multiplicity as a Measure}
+
+\begin{definition}[Multiplicity]\index[vocab]{multiplicity}
+Given a constraint set $\C$ on $X$, the \textbf{multiplicity} of a
+configuration $y$ in the abstracted space $Y$ is the number of
+pre-images in $X$ that map to $y$ under the abstraction:
+\[
+  \mu(y) \;=\; |\alpha^{-1}(y) \cap \A(\C)|.
+\]
+\end{definition}
+
+High multiplicity means that many distinct configurations in $X$ are
+indistinguishable at the level of $Y$. The abstraction has collapsed them
+together.
+
+\section{Entropy as Log-Multiplicity}
+
+\begin{definition}[Structural Entropy]\index[vocab]{entropy!structural}\index[vocab]{entropy}
+The \textbf{structural entropy} of a compressed representation is
+\[
+  \Ss(y) \;=\; \log \mu(y).
+\]
+\end{definition}
+
+This formalizes the intuition that entropy measures uncertainty or
+multiplicity. When $\Ss(y) = 0$, the configuration $y$ corresponds to
+exactly one configuration in $X$: the abstraction is lossless at that
+point. When $\Ss(y)$ is large, many configurations in $X$ are being
+grouped together.
+
+\begin{remark}
+Shannon's information entropy \cite{shannon1948} has this same formal
+structure. The entropy of a message is the log of the number of messages
+that would appear identical under the channel constraints. Our structural
+entropy is the same idea applied to constraint systems.
+\end{remark}
+
+\section{The Three Roles of Entropy}
+
+In the framework developed here, structural entropy simultaneously plays
+three roles that might seem distinct:
+
+\begin{enumerate}
+  \item \textbf{Thermodynamic:} In physical systems, it measures the number
+        of microscopic configurations compatible with macroscopic observations.
+  \item \textbf{Epistemic:} It measures how much of the past cannot be
+        recovered from the present---how much historical information is lost
+        in compression.
+  \item \textbf{Slack:} It measures the residual freedom a system has to
+        evolve while remaining within its constraints.
+\end{enumerate}
+
+These are not three separate concepts. They are the same concept read at
+different scales. This is the kind of unification that abstraction makes
+visible.
+
+\section{Constraint-Preserving Compression}
+
+\begin{definition}[Constraint-Preserving Compression]\index[vocab]{compression!constraint-preserving}\index[vocab]{compression}
+A compression operator $\Pi : \A(\C) \to \tilde{\A}$ is
+\textbf{constraint-preserving} if
+\[
+  \Pi(\gamma_1) = \Pi(\gamma_2) \;\Rightarrow\;
+  \gamma_1 \sim_\C \gamma_2.
+\]
+That is, $\Pi$ identifies configurations only when they are genuinely
+indistinguishable under the constraint set.
+\end{definition}
+
+\begin{proposition}[Entropy Under Compression]
+Under a constraint-preserving compression $\Pi$,
+\[
+  \Ss_\Pi(x) \;\leq\; \Ss(x),
+\]
+with equality if and only if $\Pi$ preserves all admissible distinctions.
+\end{proposition}
+
+\begin{proof}
+$\Pi$ can only group configurations that are already equivalent under $\C$.
+The equivalence classes of $\Pi$ are subsets of the equivalence classes
+of $\C$. The multiplicity measure $\mu_\Pi(y)$ is therefore at most
+$\mu(y)$ for each $y$, giving $\Ss_\Pi \leq \Ss$.
+\end{proof}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Abstraction is a projection $\pi : X \to \tilde{X}$ that identifies
+configurations equivalent under $\sim$. Multiplicity counts how many
+distinct configurations map to the same observable:
+\[
+  \mu(y) = |\pi^{-1}(y) \cap \A(\C)|.
+\]
+Entropy is $S(y) = \log \mu(y)$. Compression reduces $\mu$ while
+preserving the distinctions that matter. This expresses the same
+structure as the proposition above, now reading entropy directly as
+log-multiplicity of the projection's fibres.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+Spherepop makes multiplicity visible by allowing many internal regions
+to reduce to the same observable outer shell. Different inner states may
+satisfy $\mathrm{obs}(r_1) = \mathrm{obs}(r_2) = \cdots = \mathrm{obs}(r_n)$.
+Multiplicity counts how many distinct Spherepop reductions remain
+indistinguishable under the current projection---and this is the direct
+analogue of entropy as log-multiplicity.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider a system with eight possible states $\Gamma = \{s_1,\dots,s_8\}$.
+Entropy is $S = \log_2 8 = 3$. Now impose constraints reducing the
+admissible set to $\{s_3, s_7\}$. The new entropy is $S = \log_2 2 = 1$.
+Compression reduces multiplicity while preserving admissible structure.
+A representation that encodes only membership in $\{s_3, s_7\}$ preserves
+the constraint-relevant distinction while discarding irrelevant detail.
+
+\begin{exercise}
+Describe a complex object using as few words as possible without losing
+its essential structure. What information can be removed, and what must
+remain?
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+In Spherepop, multiplicity appears when many internal regions reduce to
+the same outer shell.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<state>        ::= <region>
+<observable>   ::= "obs(" <state> ")"
+<multiplicity> ::= "mult(" <observable> ")"
+\end{verbatim}
+
+Different inner states satisfying $\mathrm{obs}(r_i) = \mathrm{obs}(r_j)$
+are counted by $\mathrm{mult}$. This is the grammar-level expression of
+log-multiplicity as entropy, the same quantity defined in the proposition
+above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (many)    {Many Internal\\States};
+  \node[box, right=2.4cm of many]    (obs)  {Shared\\Observable};
+  \node[box, right=2.4cm of obs]     (ent)  {Multiplicity /\\Entropy};
+  \draw[arrow] (many) -- (obs);
+  \draw[arrow] (obs) -- (ent);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should come to see entropy as counting possibilities, not
+measuring disorder. The word ``entropy'' carries misleading connotations
+from everyday use. Begin with simple counting: how many configurations
+are consistent with what you know? That count is the multiplicity.
+Its logarithm is entropy. Establish this concretely before introducing
+any formula.
+
+Watch for confusion between compression and loss of meaning. Students
+often assume that a shorter representation is a less faithful one.
+Show explicitly that constraint-preserving compression discards only
+what was already redundant---the meaning is not reduced, only the
+representation.
+\end{teachernote}
+
+\begin{universitybridge}
+Shannon's information entropy. Statistical mechanics and Boltzmann
+entropy. Coding theory and Huffman coding. Minimum description length
+and Kolmogorov complexity.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Claude Shannon, \textit{A Mathematical Theory of Communication} (1948)
+--- the foundational text; the first few sections are accessible to a
+careful high school student.
+
+David J.~C.~MacKay, \textit{Information Theory, Inference, and
+Learning Algorithms} --- accessible introduction to entropy and coding;
+freely available online.
+
+Thomas Cover and Joy Thomas, \textit{Elements of Information Theory}
+--- standard university-level treatment.
+\end{readinglist}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{Temporal Structure and Relegation}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Aspect Relegation and the Arrow of Time}
+\label{ch:relegation}
+
+\begin{historicalpreamble}
+With the rise of networks and large-scale computing, programs were no
+longer confined to a single machine. Distributed systems introduced new
+challenges: multiple components operating independently, communicating
+across unreliable connections. It became clear that correctness could no
+longer be verified locally. Each component might behave correctly on its
+own, yet the system as a whole could fail due to mismatched assumptions,
+delayed messages, or inconsistent states.
+
+But distributed systems\index[topics]{distributed systems} also revealed something about time. Events on
+different machines could not always be placed in a single global order.
+Leslie Lamport introduced logical clocks to impose a partial order on
+events without requiring a universal clock. This formalised the idea that
+time in a computing system is not a background against which computation
+happens, but a structure produced by computation itself. Aspect relegation
+is the cognitive analogue: the compression of prior computation into a form
+that can be retrieved without being reconstructed.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Leslie Lamport\index[topics]{Lamport, Leslie} (1941--) developed the theory of logical clocks and
+distributed consistency. His 1978 paper on time, clocks, and the ordering
+of events in distributed systems remains foundational. Barbara Liskov
+(1939--) contributed consistency models that formalised the trade-offs
+between local and global coherence. Eric Brewer\index[topics]{Brewer, Eric} (1955--) formulated the
+CAP theorem\index[topics]{CAP theorem}, showing that certain global properties cannot be simultaneously
+guaranteed.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1970s: early networked systems and distributed algorithms. \quad
+1978: Lamport's logical clocks paper. \quad
+2000s: CAP theorem and large-scale distributed computing. \quad
+2010s: cloud infrastructure and global consistency systems.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Winding trajectory
+  \draw[very thick,blue!60]
+    plot[smooth] coordinates
+    {(0,0) (0.8,0.65) (1.3,0.1) (2.0,1.1) (2.8,0.5) (3.6,1.5) (4.4,0.8)};
+  \node[cfignode,blue!60] at (0,0) {};
+  \node[cfignode,blue!60] at (4.4,0.8) {};
+  \node at (2.2,-0.55) {extended computation over time};
+  % Compression arrow
+  \draw[->,very thick] (5.2,0.75) -- (7.1,0.75);
+  \node at (6.15,1.15) {$\tau_t$};
+  % Latent block
+  \draw[cfig,rounded corners] (7.5,0.2) rectangle (10.1,1.4);
+  \fill[gray!12] (7.5,0.2) rectangle (10.1,1.4);
+  \node at (8.8,0.8) {latent structure $\Pi(\gamma)$};
+  % Time axis
+  \draw[->] (-0.3,-1.05) -- (10.3,-1.05) node[right]{$t$};
+  % irreversibility annotation
+  \draw[cfigdash,red!55] (4.4,0.8) -- (4.4,-0.85);
+  \node[red!60!black] at (3.6,-0.7) {information lost};
+\end{tikzpicture}
+\caption{Temporal compression $\tau_t$ collapses an extended history into a latent structure.
+The compression is lossy: the prior trajectory cannot be recovered from the result.
+This is the formal content of irreversibility.}
+\end{figure}
+
+\section{Temporal Compression}
+
+\begin{definition}[Temporal Compression]\index[vocab]{temporal compression}
+The map $\tau_t : X^{(-\infty, t)} \to X(t)$ that sends a history of
+configurations to the present state is a \textbf{temporal compression
+operator} if it is lossy---that is, if distinct histories can map to
+the same present state.
+\end{definition}
+
+When $\tau_t$ is lossy, the present state does not uniquely determine
+the past. This is the formal definition of irreversibility.
+
+\begin{proposition}[Irreversibility Under Lossy Compression]
+If $\tau_t$ is lossy, then $\tau_t^{-1}$ does not exist as a function.
+The process is irreversible.
+\end{proposition}
+
+\begin{proof}
+Surjectivity of $\tau_t$ with non-trivial fibers means multiple distinct
+pre-images exist. No right inverse is definable.
+\end{proof}
+
+\section{Entropy and History}
+
+The entropy of the present state $X(t)$ measures how many histories are
+compatible with it:
+\[
+  \Ss(X(t)) \;=\; \log |\tau_t^{-1}(X(t))|.
+\]
+
+As time advances, more and more distinct histories become consistent with
+the present configuration. Entropy increases not because the world becomes
+``more disordered'' in some vague sense, but because the present state
+becomes consistent with a growing number of possible pasts.
+
+This is the arrow of time\index[topics]{arrow of time}, stated precisely.
+
+\section{Aspect Relegation as Directed Temporal Compression}
+
+\begin{definition}[Aspect Relegation]\index[vocab]{aspect relegation}\index[vocab]{relegation}
+\textbf{Aspect relegation} is the process by which a cognitive system
+applies temporal compression $\tau_t$ to a constraint structure,
+storing the result as latent structure that can be executed without
+active reconstruction.
+\end{definition}
+
+What we call ``intuition'' is the execution of relegated structure. The
+compression happened earlier (through practice and learning); execution
+now retrieves the compressed result rather than recomputing it.
+
+\begin{proposition}
+Aspect relegation reduces the active computational cost of constraint
+satisfaction at execution time, at the cost of requiring prior compression
+work.
+\end{proposition}
+
+\begin{remark}
+This proposition explains why expertise feels effortless and why it takes
+time to develop. The effort is not reduced; it is relocated in time.
+\end{remark}
+
+\section{Failure Modes}
+
+Relegated structures are built for specific constraint environments. When
+the environment changes---when new constraints are introduced that violate
+assumptions of the stored compression---relegation fails.
+
+\begin{definition}[Relegation Failure]\index[vocab]{relegation failure}
+A relegated structure $\Pi(\gamma)$ undergoes \textbf{relegation failure}
+when the environment presents a configuration outside $\A(\C)$ as defined
+when $\Pi$ was formed, causing the stored compression to produce an
+inadmissible result.
+\end{definition}
+
+Relegation failure is not a bug. It is the signal that reactivation of
+deliberate constraint-processing is necessary. The error is not in the
+relegated structure; it is in applying it past its domain of validity.
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $x(t)$ be a time-dependent state. Temporal compression is the map
+$\tau_t : X^{(-\infty,t)} \to X(t)$ that sends a full history to the
+present state. When $\tau_t$ is lossy, the present does not uniquely
+determine the past. Entropy of the present measures how many histories
+are compatible with it: $S(X(t)) = \log|\tau_t^{-1}(X(t))|$. As time
+advances, $S$ increases because more distinct histories become consistent
+with the current state. This is the arrow of time, stated precisely, and
+it is the same structure as the temporal compression operator defined
+above.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+Compiled systems perform their work in advance, producing a form that can
+be executed rapidly. Intuition is analogous: the underlying transformations
+have already been carried out, leaving only a direct mapping from input to
+result. Speed is not the absence of computation but its prior completion.
+What appears as intuition is the execution of relegated structure.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider solving $(2 + 3) \times 4$. Step by step: $2 + 3 = 5$, then
+$5 \times 4 = 20$. Once the intermediate step is completed, the internal
+structure $(2+3)$ is no longer needed. We retain only $5 \to 20$. The
+earlier computation is relegated---it cannot be reconstructed from the
+final result alone. Time introduces irreversibility by compressing prior
+structure into a simplified form.
+
+\begin{exercise}
+Compare solving a problem step by step with instantly recognising the
+answer. What must have happened beforehand for immediate recognition to
+be possible?
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Aspect relegation in Spherepop appears when previously reduced inner
+regions are carried forward as latent units rather than recomputed.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<history>    ::= <state> | <state> "->" <history>
+<latent>     ::= "store(" <region> ")"
+<reactivate> ::= "use(" <latent> ")"
+\end{verbatim}
+
+A latent region is a previously collapsed structure retained for future
+reuse. Temporal compression corresponds to storing a reduced Spherepop
+unit and deploying it later instead of rebuilding the full nested
+computation. This is the same operation as $\tau_t$ above, now stated as
+a grammar rule on stored regions.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (comp)   {Expanded\\Computation};
+  \node[box, right=2.4cm of comp]   (lat)   {Latent\\Unit};
+  \node[box, right=2.4cm of lat]    (reuse) {Reactivated\\Use};
+  \draw[arrow] (comp) -- (lat);
+  \draw[arrow] (lat) -- (reuse);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should come to see time as compression of prior structure, not
+merely as sequence. The most common difficulty is treating temporal order
+as just a list of steps rather than as a process that destroys
+information as it advances. Begin with concrete reversible and
+irreversible processes: scrambling an egg, shuffling a deck, evaluating
+an arithmetic expression. Ask in each case: can you recover the starting
+state from the result? When the answer is no, ask what was lost and why.
+
+The concept of aspect relegation is subtle. Frame it as: ``the work
+happened earlier, and only its result is retained.'' Students who grasp
+this will also grasp why expertise feels effortless and why it takes time
+to develop---the effort is not reduced but relocated in time. This is the
+single most important idea in Part~III. Take extra time here if needed.
+\end{teachernote}
+
+\begin{universitybridge}
+Thermodynamics and the second law. Irreversibility and entropy
+production. Partial evaluation and program specialisation. Computational
+complexity and the limits of reversible computation (Bennett, Landauer).
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Charles H.~Bennett, \textit{Logical Reversibility of Computation}
+(1973) --- connects computation and thermodynamics; short and precise.
+
+Michael Sipser, \textit{Introduction to the Theory of Computation}
+--- standard university CS text; includes discussion of time and
+complexity.
+
+Stephen Wolfram, \textit{A New Kind of Science} (selected sections)
+--- explores computation unfolding over time with many visual examples.
+\end{readinglist}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Local Coherence and Global Consistency}
+
+\begin{historicalpreamble}
+As programs became more complex, the nature of errors changed. Early
+errors were often immediate and visible: a machine would halt, a number
+would be obviously wrong. Later systems introduced subtle failures that
+appeared correct under most conditions but failed under specific ones.
+Debugging emerged as a discipline focused not only on identifying
+mistakes, but on understanding why systems that seem correct can still
+fail.
+
+Formal verification methods were developed to prove that programs satisfy
+all required conditions, not just the ones that happen to be tested.
+These developments showed that correctness is not binary. A system can
+appear correct while still violating constraints that are not immediately
+visible. Local correctness---passing every individual test---does not
+guarantee global consistency. This is one of the central structural facts
+that formal verification was built to address, and it is the same fact
+this chapter formalises.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Tony Hoare\index[topics]{Hoare, Tony} (1934--) developed Hoare logic, a formal system for reasoning
+about program correctness. Donald Knuth\index[topics]{Knuth, Donald} (1938--) emphasised rigorous
+analysis of algorithms and the importance of proving, not merely
+assuming, correctness. Edsger Dijkstra advocated that programs should be
+constructed in a way that makes correctness provable by design.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1960s: debugging as a systematic discipline. \quad
+1969: Hoare logic published. \quad
+1970s: formal verification methods developed. \quad
+1990s--2000s: static analysis tools and automated theorem provers.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Sheet U1
+  \fill[blue!18,cfigfill]
+    (0,0) -- (3,0) -- (4,1) -- (1,1) -- cycle;
+  \draw[cfig,blue!55!black]
+    (0,0) -- (3,0) -- (4,1) -- (1,1) -- cycle;
+  % Sheet U2
+  \fill[green!18,cfigfill]
+    (2,0.6) -- (5,0.6) -- (6,1.6) -- (3,1.6) -- cycle;
+  \draw[cfig,green!50!black]
+    (2,0.6) -- (5,0.6) -- (6,1.6) -- (3,1.6) -- cycle;
+  % Sheet U3 (misaligned)
+  \fill[red!18,cfigfill]
+    (3.4,1.3) -- (6.4,1.5) -- (7.3,2.4) -- (4.3,2.2) -- cycle;
+  \draw[cfig,red!55!black]
+    (3.4,1.3) -- (6.4,1.5) -- (7.3,2.4) -- (4.3,2.2) -- cycle;
+  % Mismatch seam
+  \draw[very thick,red!70,dashed] (3.7,1.4) -- (4.85,1.52);
+  % Section labels
+  \node[blue!65!black]  at (1.5,-0.45) {$U_1$};
+  \node[green!55!black] at (4.3, 0.2)  {$U_2$};
+  \node[red!65!black]   at (6.0, 2.85) {$U_3$};
+  \node[red!70!black]   at (5.15, 1.1) {gluing fails};
+  % Overlap indicator
+  \draw[<->,thin,gray!60] (3.65,0.78) -- (3.65,1.35);
+  \node[gray!70!black] at (2.95,1.0) {overlap $U_1\!\cap\! U_2$};
+\end{tikzpicture}
+\caption{Local sections $s_1, s_2, s_3$ each satisfy constraints on their own region.
+At the overlap of $U_2$ and $U_3$ the sections disagree: gluing fails.
+Local correctness does not guarantee global consistency.}
+\end{figure}
+
+\section{The Local-Global Distinction}
+
+\begin{definition}[Local Consistency]\index[vocab]{local consistency}
+A configuration is \textbf{locally consistent} within a region $U \subset X$
+if it satisfies all constraints $c \in \C$ restricted to $U$.
+\end{definition}
+
+\begin{definition}[Global Consistency]\index[vocab]{global consistency}
+A configuration is \textbf{globally consistent} if it satisfies all
+constraints $c \in \C$ on the entire domain $X$.
+\end{definition}
+
+Local consistency does not imply global consistency. This is one of the
+central facts about structural thinking, and its failure modes are common
+and important.
+
+\section{Fragmentation}
+
+\begin{definition}[Fragmented Structure]\index[vocab]{fragmentation}
+A structure is \textbf{fragmented} if it is locally consistent on each
+of several regions but fails global consistency when the regions are
+combined.
+\end{definition}
+
+\begin{example}
+The Penrose staircase\index[topics]{Penrose staircase} appears locally consistent at every corner: each step
+connects to the next. But globally, it is impossible---following the stairs
+returns you to the starting point after ascending. The global section fails.
+\end{example}
+
+Fragmentation is a common failure in complex theories. Each piece makes
+local sense. The contradiction only appears when pieces are combined.
+
+\section{Overcompression}
+
+\begin{definition}[Overcompressive Abstraction]\index[vocab]{overcompression}
+An abstraction $\alpha : X \to Y$ is \textbf{overcompressive} if it
+identifies configurations that are distinguishable under $\C$:
+\[
+  \exists\, x_1, x_2 \in X : \alpha(x_1) = \alpha(x_2)
+  \text{ but } x_1 \not\sim_\C x_2.
+\]
+\end{definition}
+
+Overcompression discards relevant distinctions. The resulting model appears
+simpler and may even appear internally consistent, because the distinctions
+that would reveal the inconsistency have been erased.
+
+\begin{proposition}
+An overcompressive abstraction generically increases the obstruction to
+global consistency, because the identified configurations impose incompatible
+constraints at their shared boundaries.
+\end{proposition}
+
+\section{Hallucination as False Global Section}
+
+\begin{definition}[Hallucinated Structure]\index[vocab]{hallucination}
+A \textbf{hallucinated structure} is a configuration that appears globally
+consistent under a restricted projection but does not correspond to any
+element of $\A(\C)$ for the full constraint set.
+\end{definition}
+
+Hallucination is overcompression producing a false sense of closure. The
+constraints that would reveal the impossibility have been removed from
+consideration.
+
+\begin{remark}
+This definition applies equally to human belief formation and to artificial
+systems. A language model that produces a confident but false statement is
+exhibiting hallucination in precisely this formal sense: the local consistency
+within its training distribution does not extend to global consistency with
+the full constraint set of reality.
+\end{remark}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $\{U_i\}$ be overlapping domains of definition with local sections
+$s_i$ valid on each $U_i$. Global coherence requires compatibility on
+overlaps:
+\[
+  s_i\big|_{U_i \cap U_j} = s_j\big|_{U_i \cap U_j}.
+\]
+If this holds, the sections glue into a global section $s$. Failure of
+this condition corresponds to inconsistency: local correctness without
+global realisability. A system of constraints $\mathcal{C}$ is consistent
+if $\Gamma_{\mathcal{C}} \neq \emptyset$ and inconsistent if
+$\Gamma_{\mathcal{C}} = \emptyset$. This is the sheaf-theoretic restatement
+of the definitions above.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+The most difficult bugs are not immediate failures but near-successes. A
+system appears correct under limited testing but fails under more complete
+conditions. Ideas fail in the same way. Structures that satisfy some
+constraints but not all can appear stable until examined more fully.
+Failure is often the result of incomplete constraint resolution rather
+than obvious contradiction.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider three local constraints: $C_1: x = y$, $C_2: y = z$,
+$C_3: x \neq z$. Each pair appears locally consistent. But $C_1$ and
+$C_2$ together imply $x = y = z$, which directly contradicts $C_3$.
+Thus $\Gamma_{\mathcal{C}} = \emptyset$. The system is locally coherent
+but globally inconsistent. Local satisfaction of constraints does not
+guarantee global realisability.
+
+\begin{exercise}
+Imagine two people editing the same document without communicating.
+Describe how inconsistencies could arise even if both make reasonable
+changes. What would be required to ensure a consistent final result?
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+A Spherepop system can look valid locally while failing globally when
+different reduced regions impose incompatible outer boundaries.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<tile>    ::= "tile(" <region> ")"
+<overlap> ::= <tile> "&" <tile>
+<global>  ::= "glue(" <tile-list> ")"
+<failure> ::= "mismatch(" <overlap> ")"
+\end{verbatim}
+
+Fragmentation occurs when tiles exist but do not glue. Hallucination
+occurs when a seeming whole has no admissible underlying global region.
+These correspond directly to the sheaf gluing condition stated above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (l1) {Local\\Region $A$};
+  \node[box, below=1.4cm of l1] (l2) {Local\\Region $B$};
+  \node[box, right=3.2cm of $(l1)!0.5!(l2)$] (gl) {Global\\Glue Attempt};
+  \draw[arrow] (l1) -- (gl);
+  \draw[arrow] (l2) -- (gl);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students must understand that local correctness is not sufficient for
+global coherence, and that this is a structural fact, not a matter of
+carelessness. The Penrose staircase example in the chapter body is
+useful precisely because it makes the failure vivid and unambiguous.
+Use it early.
+
+The most common difficulty is students accepting partial solutions as
+complete. Design exercises that require students to combine locally
+valid pieces and check whether the combination is globally consistent.
+Give systems that almost work: each piece checks out, but the pieces
+disagree on their shared boundary.
+
+Watch for students who fail to check overlap conditions. Ask explicitly:
+does your solution work on the \emph{intersection}? This habit of
+checking overlaps---not just individual pieces---is the central skill
+this chapter builds, and it generalises directly to proof verification,
+software testing, and scientific theory-building.
+\end{teachernote}
+
+\begin{universitybridge}
+Sheaf theory and \v{C}ech cohomology. Distributed systems and
+consistency models (CAP theorem, eventual consistency). Constraint
+propagation. Formal verification and model checking.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Leslie Lamport, \textit{Time, Clocks, and the Ordering of Events in a
+Distributed System} (1978) --- a classic paper readable at advanced
+high school level with guidance.
+
+Eric Brewer, overview articles on the CAP theorem --- accessible
+survey of the trade-offs in distributed consistency.
+
+Glen E.~Bredon, \textit{Sheaf Theory} (introductory ideas) --- the
+formal mathematical treatment at university level.
+\end{readinglist}
+
+\chapter{Cognitive Dissonance as Obstruction}
+
+\begin{historicalpreamble}
+Grace Hopper's team built the first compiler in the early 1950s, and with
+it came a new insight: computation could be transformed before it ran.
+A compiler does not execute a program; it translates it into a form that
+a machine can execute more efficiently, performing much of the work in
+advance. Optimisations remove redundant steps, reorganise computations,
+and produce a representation that runs quickly.
+
+The result is a system that appears to ``know what to do'' immediately,
+even though the work was carried out in a prior stage. This distinction
+between interpreted and compiled execution revealed that speed often comes
+from prior transformation rather than inherent simplicity---and it is
+exactly the distinction between explicit reasoning and intuition that
+this chapter formalises as an obstruction problem.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Grace Hopper\index[topics]{Hopper, Grace} (1906--1992) developed the first compiler and coined the
+term ``debugging.'' John McCarthy\index[topics]{McCarthy, John} (1927--2011) advanced symbolic
+computation and introduced the idea of programs that reason about their
+own structure. Frances Allen\index[topics]{Allen, Frances} (1932--2020) pioneered compiler optimisation
+techniques that became foundational to modern computing.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1950s: early compilers (Hopper). \quad
+1970s: optimisation techniques formalised. \quad
+1990s: just-in-time compilation. \quad
+2000s: adaptive and profile-guided optimising systems.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Energy landscape curve
+  \draw[very thick,gray!70]
+    (0,2.5)
+    .. controls (1,1.0)  and (2,1.0)  .. (3,2.4)
+    .. controls (3.8,3.2) and (4.6,3.2) .. (5.5,2.4)
+    .. controls (6.4,1.0) and (7.4,1.0) .. (8.5,2.5);
+  % Attractor points
+  \fill[blue!65] (1.45,1.42) circle (2.5pt);
+  \fill[blue!65] (6.95,1.42) circle (2.5pt);
+  \node at (1.45,0.95) {$A$};
+  \node at (6.95,0.95) {$B$};
+  % Energetic barrier label
+  \node at (4.25,3.55) {energetic barrier};
+  % Curved arrow (energetic path — possible but costly)
+  \draw[->,thick,blue!50]
+    (1.85,1.75) .. controls (3.0,3.1) and (5.5,3.1) .. (6.65,1.75);
+  \node[blue!65!black] at (4.25,3.1) {};
+  % Topological cut (cannot cross)
+  \draw[very thick,red!65] (4.25,0.2) -- (4.25,-1.3);
+  \node[red!65!black] at (5.9,-0.65) {topological separation};
+  % Axis
+  \draw[->] (-0.3,0) -- (8.9,0) node[right]{configuration};
+  \draw[->] (0,-0.2) -- (0,4.0) node[above]{$E$};
+\end{tikzpicture}
+\caption{States $A$ and $B$ occupy separate minima. They are energetically separated if
+a continuous path through the landscape connects them. They are topologically separated
+if no such path exists: no amount of gradual change can bridge the gap.}
+\end{figure}
+
+\section{A Precise Definition}
+
+\begin{definition}[Gluing Failure]\index[vocab]{gluing failure}
+Given two locally consistent structures $\psi_1$ on region $U_1$ and
+$\psi_2$ on region $U_2$ with $U_1 \cap U_2 \neq \emptyset$, a
+\textbf{gluing failure} occurs when $\psi_1$ and $\psi_2$ disagree on
+$U_1 \cap U_2$---that is, they cannot be combined into a single globally
+consistent structure.
+\end{definition}
+
+Cognitive dissonance is the experiential signal of a gluing failure. Two
+beliefs, each locally coherent, cannot be reconciled at their overlap.
+
+\section{Energetic and Topological Separation}
+
+\begin{definition}[Energetic Separation]\index[vocab]{energetic separation}
+Two locally consistent configurations are \textbf{energetically separated}
+if they can be connected by a continuous path of intermediate configurations,
+each locally consistent, at some cost. Transition between them is possible
+by gradual change.
+\end{definition}
+
+\begin{definition}[Topological Separation]\index[vocab]{topological separation}
+Two configurations are \textbf{topologically separated} if they lie in
+distinct connected components of the space of globally consistent
+structures. No continuous path of locally consistent configurations
+connects them.
+\end{definition}
+
+This distinction has a direct experiential analog:
+
+\begin{itemize}
+  \item Energetically separated beliefs can be reconciled by gradual
+        accumulation of evidence. The transition is continuous.
+  \item Topologically separated beliefs require a discontinuous
+        restructuring---a paradigm shift, a gestalt change. No amount of
+        gradual evidence accumulation reaches across the topological barrier.
+\end{itemize}
+
+\begin{exercise}
+Think of a belief you hold. Is it energetically or topologically separated
+from its opposite? What would it take to change it: gradual evidence, or a
+sudden restructuring of your entire framework?
+\end{exercise}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $T$ be a sequence of constraint applications. Explicit reasoning
+corresponds to stepwise evaluation $x_{n+1} = T(x_n)$. Intuition
+corresponds to a precomputed mapping $x \mapsto x^*$ where $x^*$ is the
+result of many implicit iterations. Thus intuition is a compressed
+representation of iterative computation. Cognitive dissonance is the
+obstruction that arises when two such precomputed mappings produce
+incompatible results on their shared domain---a gluing failure in the
+space of compressed representations.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+In distributed systems, two components may each function correctly in
+isolation, yet the system as a whole fails if their states do not align.
+Local correctness does not ensure global consistency. Understanding
+behaves the same way: a collection of correct parts is not sufficient;
+they must agree on their overlaps. Coherence is a condition on the whole,
+not just the parts.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider two constraint systems: $\mathcal{C}_A: x > 5$ and
+$\mathcal{C}_B: x < 3$. Individually, each admits solutions:
+$\Gamma_A = \{6,7,8,\dots\}$ and $\Gamma_B = \{1,2\}$. Together,
+$\Gamma_{A \cup B} = \emptyset$. The incompatibility cannot be resolved
+by refinement alone. This is an obstruction: two valid structures that
+cannot be merged into a single consistent configuration. Whether the
+separation is energetic or topological determines what resolution, if
+any, is possible.
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+In Spherepop, obstruction appears when two or more region-structures
+cannot be reduced into a single coherent whole without tearing the
+grammar of composition.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<pathA>       ::= <region> "=>" ... "=>" <region>
+<pathB>       ::= <region> "=>" ... "=>" <region>
+<obstruction> ::= "obs(" <pathA> "," <pathB> ")"
+\end{verbatim}
+
+Topological separation means there is no admissible continuous reduction
+path between the two region-families. This is the grammar-level
+expression of gluing failure---the same condition stated in the
+definitions above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (s1) {Stable\\Region 1};
+  \node[box, right=4cm of s1] (s2) {Stable\\Region 2};
+  \node[box, below=1.8cm of $(s1)!0.5!(s2)$] (obs) {Obstruction /\\Separation};
+  \draw[arrow] (s1) -- (obs);
+  \draw[arrow] (s2) -- (obs);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should recognise when systems cannot be reconciled, and accept
+that recognition as a result, not a failure. The most common difficulty
+is a refusal to acknowledge genuine obstruction: students try to force
+incompatible ideas together by weakening one or reinterpreting both. It
+is important to establish clearly that some constraint systems have no
+solution, and that demonstrating this is a legitimate and useful
+conclusion.
+
+The distinction between energetic and topological separation is worth
+spending time on. Energetic separation means that gradual change can
+bridge the gap; topological separation means it cannot. Ask students to
+think of a belief they would change with enough evidence, and a belief
+they would not change regardless of evidence. The second type is
+topologically separated from its negation. This is not a comment on the
+belief's truth, but on the structure of the space it inhabits.
+
+Watch for students who believe more effort resolves contradiction.
+The most important thing this chapter teaches is the skill of recognising
+genuine incompatibility early, rather than investing effort in resolution
+that is structurally impossible.
+\end{teachernote}
+
+\begin{universitybridge}
+Topological obstruction and cohomology. Unsatisfiable constraint systems
+and UNSAT certificates. G\"odel's incompleteness theorems (conceptually).
+Logical inconsistency and proof by contradiction.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Raymond Smullyan, \textit{What Is the Name of This Book?} ---
+logical paradoxes and contradictions presented accessibly.
+
+Edsger Dijkstra, \textit{A Discipline of Programming} --- rigorous
+reasoning about program correctness and the structure of logical
+argument.
+
+Allen Hatcher, \textit{Algebraic Topology} (conceptual introduction
+only) --- introduces obstruction in a geometric setting at university
+level.
+\end{readinglist}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Functorial Correspondence}
+
+\begin{historicalpreamble}
+As data grew in scale, storing and transmitting it efficiently became a
+central problem. Compression algorithms were developed to reduce the size
+of data while preserving its essential structure. Some methods, such as
+lossless compression, preserve all information. Others, such as lossy
+compression, discard details unlikely to be noticed, retaining only what
+is most important.
+
+Claude Shannon's 1948 paper founding information theory showed that the
+compressibility of a message is determined not by its content but by its
+structure---specifically, by the statistical redundancy of the symbols it
+uses. Encoding schemes translate complex structures into simpler
+representations that can be stored, transmitted, or processed more
+efficiently. These developments showed that representation is always a
+reduction of underlying complexity, and that preserving structure is more
+important than preserving surface form. This is the same insight that
+functorial correspondence formalises across mathematical domains.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Claude Shannon\index[topics]{Shannon, Claude} (1916--2001) founded information theory with his 1948
+paper ``A Mathematical Theory of Communication.'' David Huffman
+(1925--1999) developed the optimal prefix-free compression code bearing
+his name. Abraham Lempel\index[topics]{Lempel, Abraham} (1936--) and Jacob Ziv\index[topics]{Ziv, Jacob} (1931--) created the
+LZ family of compression algorithms, which underlie most lossless
+compression used today.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1948: Shannon's information theory paper. \quad
+1950s: coding theory and error-correcting codes. \quad
+1970s: Lempel--Ziv compression algorithms. \quad
+2000s: multimedia encoding, streaming, and perceptual compression.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.93]
+  % Left cube
+  \draw[cfig] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+  \draw[cfig] (0.7,0.7) -- (2.7,0.7) -- (2.7,2.7) -- (0.7,2.7) -- cycle;
+  \draw[cfig] (0,0)--(0.7,0.7); \draw[cfig] (2,0)--(2.7,0.7);
+  \draw[cfig] (2,2)--(2.7,2.7); \draw[cfig] (0,2)--(0.7,2.7);
+  % Vertex labels (left)
+  \node[cfignode] at (0,0)     {}; \node at (-0.2,-0.2) {$a$};
+  \node[cfignode] at (2,0)     {}; \node at ( 2.2,-0.2) {$b$};
+  \node[cfignode] at (2,2)     {}; \node at ( 2.2, 2.2) {$c$};
+  \node[cfignode] at (2.7,2.7) {}; \node at ( 2.9, 2.9) {$d$};
+  \node at (1.35,-0.6) {domain $\mathcal{C}$};
+  % Right cube
+  \draw[cfig] (6,0) -- (8,0) -- (8,2) -- (6,2) -- cycle;
+  \draw[cfig] (6.7,0.7) -- (8.7,0.7) -- (8.7,2.7) -- (6.7,2.7) -- cycle;
+  \draw[cfig] (6,0)--(6.7,0.7); \draw[cfig] (8,0)--(8.7,0.7);
+  \draw[cfig] (8,2)--(8.7,2.7); \draw[cfig] (6,2)--(6.7,2.7);
+  % Vertex labels (right)
+  \node[cfignode] at (6,0)     {}; \node at (5.8,-0.2) {$F(a)$};
+  \node[cfignode] at (8,0)     {}; \node at (8.25,-0.2){$F(b)$};
+  \node[cfignode] at (8,2)     {}; \node at (8.25, 2.2){$F(c)$};
+  \node[cfignode] at (8.7,2.7) {}; \node at (8.95, 2.9){$F(d)$};
+  \node at (7.35,-0.6) {domain $\mathcal{D}$};
+  % Structure-preserving arrows
+  \draw[->,thick,blue!60] (2.7,2.7) to[bend left=12] (6.0,2.7);
+  \draw[->,thick,blue!60] (2.0,2.0) to[bend left=8]  (8.0,2.0);
+  \draw[->,thick,blue!60] (0.7,0.7) to[bend right=8] (6.7,0.7);
+  \node[blue!70!black] at (4.35,3.3) {$F$};
+\end{tikzpicture}
+\caption{A structure-preserving map $F$ carries both vertices and their compositional
+relations from domain $\mathcal{C}$ into domain $\mathcal{D}$.
+What changes is the interpretation of objects; what is preserved is the grammar of their relationships.}
+\end{figure}
+
+\section{Structure-Preserving Maps}
+
+\begin{definition}[Structure-Preserving Map]\index[vocab]{structure-preserving map}\index[vocab]{functor}
+A map $F : D_1 \to D_2$ between domains is \textbf{structure-preserving}
+if it maps admissible configurations to admissible configurations and
+preserves the compositional rules of the domain:
+\[
+  x \in \A(\C_1) \;\Rightarrow\; F(x) \in \A(\C_2),
+\]
+and if $x_1 \circ x_2$ is an admissible composition in $D_1$, then
+$F(x_1) \circ F(x_2)$ is admissible in $D_2$.
+\end{definition}
+
+In the language of category theory, such maps are called functors. For our
+purposes, the key point is simpler: a structure-preserving map translates
+the constraint grammar of one domain into another without distorting it.
+
+\section{What Is Preserved}
+
+\begin{theorem}[Invariants Under Structure-Preserving Maps]\index[topics]{functorial correspondence, invariants}
+A structure-preserving map $F : D_1 \to D_2$ preserves:
+\begin{enumerate}[label=(\roman*)]
+  \item Admissibility: elements of $\A(\C_1)$ map to $\A(\C_2)$.
+  \item Obstruction: gluing failures in $D_1$ produce gluing failures
+        in $D_2$.
+  \item Attractor structure: stable configurations in $D_1$ map to
+        stable configurations in $D_2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+What changes under $F$ is the interpretation of the objects. What does not
+change is the grammar of their relationships. This is why the same
+mathematical structures appear in physics, cognition, and economics: the
+grammar is invariant; the objects are different.
+\end{remark}
+
+\section{Examples}
+
+\begin{example}
+The flow of heat through a solid and the flow of electrical current through
+a conductor are related by a structure-preserving map. Temperature corresponds
+to voltage, heat flux to current density, thermal conductivity to electrical
+conductivity. The equations governing one can be translated directly into
+the equations governing the other.
+\end{example}
+
+\begin{example}
+The spread of information through a social network and the spread of a
+contagion through a population share a structure-preserving relationship.
+Connectivity, transmission rate, and recovery correspond across domains.
+Insights from epidemiology directly inform information theory and vice versa.
+\end{example}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Let $X$ be a high-dimensional state space. A projection $\pi : X \to Y$
+reduces dimensionality. Multiple states may map to the same observable:
+$\pi(x_1) = \pi(x_2)$. The projection preserves invariants but loses
+internal detail. A structure-preserving map $F : D_1 \to D_2$ does the
+same across domains: it translates the constraint grammar of one domain
+into another without distorting it. What changes under $F$ is the
+interpretation of the objects; what does not change is the structure of
+their relationships. This corresponds to coarse-graining in physical and
+informational systems, and to the functor concept in category theory.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+Compression reduces a representation while preserving structure necessary
+for reconstruction or use. Projection behaves similarly: multiple
+underlying configurations may be represented by a single observable
+state. Understanding depends on selecting representations that preserve
+relevant structure while discarding unnecessary detail. The same
+principle underlies both Shannon's compression theory and the
+category-theoretic notion of a functor.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider two domains. Numbers: $1, 2, 3$. Shapes: $\triangle, \square,
+\bigcirc$. Define a mapping $F: 1 \mapsto \triangle,\ 2 \mapsto \square,\
+3 \mapsto \bigcirc$. If addition in numbers corresponds to composition of
+shapes---$1 + 2 = 3$ corresponds to $\triangle \circ \square = \bigcirc$---
+then structure is preserved across domains. What the map preserves is not
+the objects themselves but the relationships between them.
+
+\begin{exercise}
+Find two domains in your own experience where the same structural
+relationship holds. Describe the mapping explicitly. What is preserved,
+and what changes?
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Functorial correspondence means that Spherepop structures may be mapped
+into another domain while preserving the grammar of composition.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<object>   ::= <region>
+<morphism> ::= <object> "->" <object>
+<functor>  ::= "F(" <object> ")" | "F(" <morphism> ")"
+\end{verbatim}
+
+If a merge or collapse relation exists in Spherepop, a
+structure-preserving map sends it to a valid relation in the target
+domain. The map preserves admissibility, obstruction, and attractor
+structure---the same invariants listed in the theorem above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (src) {Spherepop\\Objects \& Morphisms};
+  \node[box, right=3.2cm of src] (tgt) {Target Domain\\Objects \& Morphisms};
+  \draw[arrow] (src) -- node[above]{\small Functor $F$} (tgt);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should come to see analogy not as a rhetorical device but as a
+structure-preserving mapping that can be verified. The most common
+difficulty is superficial analogy: students map surface features---names,
+appearances, casual resemblances---rather than structural relationships.
+A well-formed analogy maps morphisms, not just objects.
+
+Design exercises that require students to state explicitly what the
+mapping preserves. Ask: if I perform this operation on one side, what
+must the corresponding operation be on the other? If they cannot answer,
+the analogy is not yet structural.
+
+Watch for students who map objects when they should be mapping
+relationships. The key question is always: is the composition rule
+preserved? If $f$ followed by $g$ produces $h$ in one domain, does
+$F(f)$ followed by $F(g)$ produce $F(h)$ in the other? That is the
+criterion for a functorial correspondence, and it is the test that
+separates genuine structural analogy from coincidental similarity.
+\end{teachernote}
+
+\begin{universitybridge}
+Category theory and functors. Representation theory. Formal analogies
+in physics (e.g., heat and electricity). Cross-domain modelling in
+applied mathematics.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+F.~William Lawvere and Stephen Schanuel, \textit{Conceptual
+Mathematics} --- the most accessible introduction to category theory;
+suitable for advanced high school students.
+
+Saunders Mac Lane, \textit{Categories for the Working Mathematician}
+--- the standard university-level reference for functors and natural
+transformations.
+
+David I.~Spivak, \textit{Category Theory for the Sciences} ---
+applications of categorical structure across scientific domains.
+\end{readinglist}
+
+\chapter{Intelligence as Constraint Maintenance}
+
+\begin{historicalpreamble}
+Object-oriented programming emerged as a way to manage complexity by
+organising software around interacting components. Each object combines
+data and behaviour, encapsulating its internal state while exposing
+methods for interaction. Systems built in this way emphasise
+relationships: objects communicate, collaborate, and depend on one
+another to produce overall behaviour.
+
+This approach shifted the focus from individual operations to the
+structure of interactions. The behaviour of the system is no longer
+found in a single place but emerges from the coordinated activity of
+many parts. Understanding such a system requires understanding how
+components relate, not just what they contain. This is the same shift
+that this chapter makes in the theory of intelligence: from intelligence
+as internal optimisation to intelligence as the maintenance of
+constraint-consistent structure across a network of relationships.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Alan Kay (1940--) pioneered object-oriented programming and the idea
+that meaning lies in interfaces between components rather than in their
+internal construction. Niklaus Wirth\index[topics]{Wirth, Niklaus} (1934--2024) designed structured
+languages that made compositional reasoning tractable. Bjarne Stroustrup
+(1950--) developed C++, bringing object-oriented design into systems
+programming and shaping how large-scale software is structured today.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1970s: object-oriented programming formalised. \quad
+1983: C++ developed. \quad
+1995: Java and platform-independent component systems. \quad
+2000s: component-based and service-oriented architectures.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Corridor walls
+  \draw[cfig,gray!60]
+    (0,0.55) .. controls (2,1.05) and (4,1.45) .. (8.5,1.65);
+  \draw[cfig,gray!60]
+    (0,-0.55) .. controls (2,-0.2) and (4,0.1) .. (8.5,0.38);
+  % Corridor fill
+  \fill[blue!8]
+    (0,0.55) .. controls (2,1.05) and (4,1.45) .. (8.5,1.65)
+    -- (8.5,0.38) .. controls (4,0.1) and (2,-0.2) .. (0,-0.55) -- cycle;
+  % Admissible trajectory
+  \draw[very thick,blue!65]
+    (0,0) .. controls (2,0.22) and (4,0.82) .. (8.5,1.02);
+  \fill[blue!65] (8.5,1.02) circle (2pt);
+  \node[blue!70!black] at (7.2,0.6) {admissible trajectory};
+  % Unconstrained optimum (dashed, exits corridor)
+  \draw[very thick,dashed,red!60]
+    (4,0.82) .. controls (5,2.9) and (6.2,3.1) .. (7.8,2.3);
+  \fill[red!60] (7.8,2.3) circle (2pt);
+  \node[red!65!black] at (8.25,2.45) {unconstrained optimum};
+  % Label
+  \node at (4.25,-0.95) {constraint corridor};
+  % Axis
+  \draw[->] (-0.3,-1.05) -- (9.0,-1.05) node[right]{$t$};
+\end{tikzpicture}
+\caption{The admissible trajectory stays within the constraint corridor at all times.
+The unconstrained optimum lies outside the corridor: pursuing it would violate the
+conditions required for the system's own continuation.}
+\end{figure}
+
+\section{The Optimization Model and Its Failure}
+
+The dominant model of intelligence---in both cognitive science and artificial
+intelligence---treats intelligent systems as optimizers: agents that maximize
+an objective function.
+
+This model is useful but incomplete. It fails in predictable ways when:
+\begin{itemize}
+  \item The objective function does not capture all relevant constraints.
+  \item The system's actions alter the constraint environment itself.
+  \item Optimization of the objective is incompatible with the persistence
+        of the system.
+\end{itemize}
+
+\begin{principle}[Intelligence as Constraint Maintenance]\index[topics]{intelligence, as constraint maintenance}
+An intelligent system is one that can maintain constraint-consistent
+structure across time, acquiring new constraints, revising inconsistent
+ones, and preserving globally coherent configurations as the environment
+changes.
+\end{principle}
+
+\section{Non-Admissibility of Self-Invalidating Trajectories}
+
+\begin{definition}[Constraint-Preserving Evolution]\index[vocab]{constraint-preserving evolution}
+A trajectory $\gamma(t)$ is \textbf{constraint-preserving} if
+$\gamma(t) \in \A(\C)$ for all $t$.
+\end{definition}
+
+\begin{definition}[Substrate Violation]\index[vocab]{substrate violation}
+A trajectory \textbf{violates its substrate} if it alters $\C$ such that
+future states are no longer admissible under the constraints required for
+the system's own persistence.
+\end{definition}
+
+\begin{theorem}[Non-Admissibility of Self-Invalidating Trajectories]\index[topics]{self-invalidating trajectories}
+A trajectory that leads to a state where the constraint set $\C$ required
+for its continuation is no longer satisfied is not in $\A(\C)$.
+\end{theorem}
+
+\begin{proof}
+Admissibility requires that each continuation of $\gamma$ satisfies $\C$.
+If $\gamma(t^*)$ violates $\C$, no extension of $\gamma$ exists within
+$\A(\C)$. Therefore $\gamma \notin \A(\C)$.
+\end{proof}
+
+\begin{corollary}
+Any trajectory that eliminates the conditions required for its own operation
+is not a stable solution of the system. ``Doom scenarios'' in which an
+autonomous system converts all available resources into forms incompatible
+with its own persistence are non-admissible by this theorem.
+\end{corollary}
+
+\section{Bounded Self-Improvement}
+
+\begin{theorem}[Constraint-Bounded Self-Modification]\index[topics]{bounded self-improvement}
+Let $\mathcal{R}$ be a self-modification operator that is constraint-preserving.
+Then the sequence $\{\mathcal{R}^n\}$ of iterated self-modifications remains
+within $\A(\C)$.
+\end{theorem}
+
+\begin{proof}
+Each application of $\mathcal{R}$ maps $\A(\C)$ into $\A(\C)$ by assumption.
+The composition of constraint-preserving maps is constraint-preserving.
+Therefore no finite iteration escapes $\A(\C)$.
+\end{proof}
+
+\begin{corollary}
+Unbounded self-improvement is not possible for a constraint-preserving
+system. Each increment of modification must satisfy the same constraints
+as the system being modified.
+\end{corollary}
+
+\begin{openproblem}
+Characterize the conditions under which real-world systems can be
+approximated as constraint-preserving. What perturbations to the
+constraint environment are tolerable before the approximation breaks down?
+\end{openproblem}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+A system can be modelled as objects and morphisms:
+\[
+  A \xrightarrow{f} B \xrightarrow{g} C, \qquad g \circ f : A \to C.
+\]
+Structure is defined not by the internal details of objects but by
+relationships preserved under composition. Intelligence as constraint
+maintenance corresponds to a trajectory $\gamma(t) \in \A(\C)$ for all
+$t$---a path through object-space that respects all morphisms. A
+self-invalidating trajectory violates this condition: it destroys the
+relationships required for its own continuation. The theorem of
+non-admissibility states that such trajectories are not elements of
+$\A(\C)$.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+In object-oriented systems, components are defined by how they interact
+rather than by their internal structure. The behaviour of the system
+emerges from relationships between parts. Knowledge follows the same
+pattern: meaning is determined not by internal composition alone, but by
+how structures participate in a network of interactions. Intelligence
+is the capacity to maintain that network under changing conditions.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider a system minimising error $E(x) = (x - 5)^2$. The unconstrained
+minimum is $x = 5$. Now introduce a conflicting constraint $x \geq 7$.
+The new admissible solution is $x^* = 7$: the system maintains
+constraints by selecting the best admissible approximation rather than
+the unconstrained optimum. Intelligence consists in maintaining
+consistency under competing conditions, not in ignoring constraints to
+maximise a single objective.
+
+\begin{exercise}
+Break a complex system---a school, a game, a supply chain---into
+interacting parts. Describe how the behaviour of the whole depends on
+relationships between parts rather than on the internal structure of any
+single part.
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Spherepop makes intelligence look less like unconstrained optimisation
+and more like the maintenance of an admissible nested structure.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<agent>      ::= "agent(" <region> ")"
+<trajectory> ::= <agent> "->" <agent> "->" <agent>
+<invalid>    ::= "break(" <trajectory> ")"
+\end{verbatim}
+
+A self-invalidating trajectory is one in which a Spherepop structure
+destroys the outer conditions required for further composition. Such a
+path is not a higher success but a structural failure---non-admissible
+by the same criterion as the theorem above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (ag)  {Agent as\\Trajectory};
+  \node[box, right=2.4cm of ag]  (maint) {Constraint\\Maintenance};
+  \node[box, right=2.4cm of maint] (stab) {Admissible\\Intelligence};
+  \draw[arrow] (ag) -- (maint);
+  \draw[arrow] (maint) -- (stab);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should understand intelligence as the maintenance of
+constraint-consistent structure over time, not as the maximisation of a
+single objective. The most common difficulty is equating intelligence
+with optimisation: students accept that an agent should maximise
+something, and then ask which thing. Resist this framing. Begin instead
+by asking: what conditions must a system satisfy to continue existing
+and operating? Those conditions are the constraints. Intelligence is
+what maintains them.
+
+Introduce conflicting constraints explicitly. Give scenarios where
+maximising one objective destroys the conditions required to pursue it.
+The corollary about self-invalidating trajectories should feel
+inevitable once students have worked through such a scenario themselves.
+
+Watch for students choosing solutions that are optimal under a single
+objective but inadmissible under the full constraint set. Ask them to
+check each candidate against all constraints before accepting it. The
+habit of checking all constraints, not just the most salient one, is
+the central skill of this chapter.
+\end{teachernote}
+
+\begin{universitybridge}
+Constrained optimisation and Lagrange multipliers. Control theory and
+stability. AI alignment and value specification. Dynamical systems
+stability and Lyapunov functions.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Stuart Russell and Peter Norvig, \textit{Artificial Intelligence: A
+Modern Approach} --- the standard AI textbook; covers constraint
+satisfaction, optimisation, and decision systems.
+
+Karl Friston, introductory papers on the free-energy principle ---
+describes intelligence as constraint maintenance under a variational
+formulation; accessible survey articles available.
+
+Richard Sutton and Andrew Barto, \textit{Reinforcement Learning: An
+Introduction} --- optimisation under constraints and feedback; freely
+available online.
+\end{readinglist}
+
+\chapter{A Geometry of Ideas}
+
+\begin{historicalpreamble}
+Modern computing increasingly relies on systems that do not follow
+explicit instructions step by step. Instead, they are given a set of
+constraints or objectives, and they determine configurations that satisfy
+those conditions. Constraint solvers, optimisation algorithms, and
+satisfiability systems operate by eliminating impossible configurations
+rather than constructing solutions directly.
+
+George Dantzig's simplex algorithm\index[topics]{simplex algorithm}, developed in 1947, showed that the
+solution to a linear optimisation problem lies at a vertex of a
+geometric region---a corner of the admissible set. The geometry of the
+solution space determines where solutions are found. Stephen Cook's 1971
+proof that satisfiability is NP-complete\index[topics]{NP-completeness} revealed that the shape of the
+constraint space determines the difficulty of search. These developments
+confirmed that computation can be understood as geometry: finding stable
+points in a landscape defined by constraints.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+George Dantzig\index[topics]{Dantzig, George} (1914--2005) developed linear programming and the simplex
+method. Stephen Cook\index[topics]{Cook, Stephen} (1939--) proved the NP-completeness of Boolean
+satisfiability, founding computational complexity theory. Modern SAT
+solver research, building on the work of many contributors since the
+1990s, has made constraint-based computation practical at industrial
+scale.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1947: Dantzig's simplex algorithm. \quad
+1971: Cook's NP-completeness theorem. \quad
+1990s: modern SAT solvers developed. \quad
+2000s: constraint-based AI planning and scheduling systems.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Funnel left wall
+  \draw[cfig] (-3.2,2.6) .. controls (-2,1.8) and (-1,1.0) .. (0,0.2);
+  % Funnel right wall
+  \draw[cfig] ( 3.2,2.6) .. controls ( 2,1.8) and ( 1,1.0) .. (0,0.2);
+  % Inner funnel lines
+  \draw[cfig,gray!50] (-2.2,2.9) .. controls (-1.4,2.1) and (-0.6,1.3) .. (0,0.2);
+  \draw[cfig,gray!50] ( 2.2,2.9) .. controls ( 1.4,2.1) and ( 0.6,1.3) .. (0,0.2);
+  % Starting points and flow arrows
+  \foreach \x/\y in {-2.9/2.65,-2.1/2.85,-0.95/2.35,0/3.05,1.0/2.45,2.1/2.85,2.9/2.65} {
+    \fill (\x,\y) circle (1.5pt);
+    \draw[->,thin,gray!65]
+      (\x,\y) .. controls (\x*0.55,1.65) and (\x*0.18,0.82) .. (0,0.27);
+  }
+  % Attractor
+  \fill[orange!80] (0,0.2) circle (2.5pt);
+  \node[orange!85!black] at (0.65,-0.25) {stable attractor};
+  \node at (0,3.45) {many initial configurations};
+\end{tikzpicture}
+\caption{When the constraint landscape has a single stable minimum, every trajectory
+in its basin is drawn toward the same attractor. The solution feels inevitable because
+every perturbation away from it increases constraint violation.}
+\end{figure}
+
+\section{The Shape of Solution Spaces}
+
+We have described constraints as filters on configuration spaces. We can
+go further and think about the \emph{geometry} of the admissible set
+$\A(\C)$.
+
+\begin{definition}[Constraint Manifold]\index[vocab]{constraint manifold}
+When $\A(\C)$ is a smooth subset of a higher-dimensional space $X$, it
+is called the \textbf{constraint manifold}. Its curvature measures how
+sensitively admissibility responds to perturbations.
+\end{definition}
+
+Regions of low curvature are stable: small perturbations remain within
+$\A(\C)$. Regions of high curvature are unstable: small perturbations may
+leave $\A(\C)$ entirely.
+
+\section{Attractors and Stability}
+
+\begin{definition}[Constraint-Stable Region]\index[vocab]{constraint-stable region}
+A region $U \subset \A(\C)$ is \textbf{constraint-stable} if perturbations
+originating within $U$ remain within $\A(\C)$ without requiring large
+corrective forces.
+\end{definition}
+
+The trajectory of a constraint-preserving system is drawn toward stable
+regions. This is why certain patterns recur: they are the stable fixed
+points of the dynamics, the configurations that resist perturbation.
+
+\section{When Ideas Feel Inevitable}
+
+The feeling of inevitability that accompanies a great idea is the
+experiential signal of arriving at a low-curvature region of the constraint
+manifold. The idea feels necessary because it is: any small perturbation
+from it violates one or more constraints, and the constraint manifold
+curves away from those violations.
+
+\begin{principle}[Geometric Characterization of Insight]\index[topics]{insight, geometric characterisation}
+An insight corresponds to the recognition of a low-curvature region of
+the constraint manifold. The feeling of inevitability is the absence of
+nearby violations: every direction from the solution leads quickly into
+inadmissibility.
+\end{principle}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+A system seeks configurations minimising constraint violation. Let
+$E(x)$ measure constraint violation. Solutions correspond to minima:
+\[
+  x^* = \arg\min_{x \in \Gamma} E(x).
+\]
+Closure occurs when $E(x^*) = 0$: all constraints are satisfied
+simultaneously and the solution is stable. Low-curvature regions of
+$\A(\C)$ correspond to attractors: the constraint manifold curves away
+from all nearby inadmissible directions, making the solution feel
+necessary. This is the analytic restatement of the geometric principle
+above.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+Constraint solvers do not search for answers in a constructive sense.
+They eliminate possibilities until only admissible configurations remain.
+A solution is not selected but forced by the constraints. Strong ideas
+exhibit this property: they are not chosen among many but arise as the
+only configuration compatible with all conditions simultaneously.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider the function $E(x) = (x-3)^2(x-7)^2$. Minima occur at $x = 3$
+and $x = 7$: these are stable configurations, attractors in the
+landscape. If an additional constraint removes one minimum, the system
+collapses to the remaining attractor. An idea feels inevitable when the
+constraint landscape admits only one stable configuration. The feeling
+of necessity is geometric: every direction away from the solution
+increases $E$.
+
+\begin{exercise}
+List several conditions that must all be satisfied at once---for
+example, planning a schedule. Instead of choosing directly, eliminate
+options that violate any condition. Observe how the solution emerges
+from elimination rather than selection.
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+A geometry of ideas in Spherepop is a geometry of nested reductions.
+Some regions are unstable and collapse away; others behave as attractors.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<landscape> ::= <region-set>
+<move>      ::= <region> "=>" <region>
+<attractor> ::= "fix(" <region> ")"
+\end{verbatim}
+
+An idea feels inevitable when the Spherepop reduction landscape leaves
+only one stable attractor after all incompatible nested regions have
+been collapsed. This is the grammar-level expression of the geometric
+characterisation of insight stated in the principle above.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (land)  {Constraint\\Landscape};
+  \node[box, right=2.4cm of land]  (flow) {Reduction\\Flow};
+  \node[box, right=2.4cm of flow]  (attr) {Stable\\Attractor};
+  \draw[arrow] (land) -- (flow);
+  \draw[arrow] (flow) -- (attr);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should begin to feel the inevitability of solutions, not just
+identify them. This is the chapter where qualitative intuition about
+constraint systems starts to acquire a geometric character. Encourage
+students to think of the admissible set as a landscape with hills and
+valleys, and solutions as the lowest points.
+
+The most common difficulty is students viewing answers as arbitrary
+selections from a set of equally valid options. Counter this by showing
+systems with multiple potential solutions, then adding constraints one
+at a time until only one remains. The student should experience the
+landscape narrowing around a single stable point.
+
+Watch for students who do not recognise stability. Ask: if I perturb
+this solution slightly---change one condition by a small amount---does
+it remain admissible? If yes, it is stable. If small perturbations
+immediately violate a constraint, the solution is sitting in a sharp
+valley---highly stable but fragile. Both are geometrically meaningful
+and worth discussing.
+\end{teachernote}
+
+\begin{universitybridge}
+Energy landscapes and potential surfaces. Dynamical systems attractors
+and Lyapunov stability. Optimisation surfaces and saddle points.
+Phase space and Poincar\'e's qualitative dynamics.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Steven Strogatz, \textit{Nonlinear Dynamics and Chaos} --- the most
+accessible university-level introduction to attractors and stability;
+recommended for motivated students.
+
+James Gleick, \textit{Chaos} --- accessible narrative introduction to
+dynamical systems and attractors.
+
+Vladimir Arnold, \textit{Ordinary Differential Equations} --- formal
+university treatment of dynamical systems.
+\end{readinglist}
+% ════════════════════════════════════════════════════════════════════════
+
+\chapter{Deliberate Constraint Accumulation}
+
+\begin{historicalpreamble}
+The history of computing is also a history of deliberate constraint
+accumulation. Each paradigm shift---from machine code to assembly, from
+assembly to structured programming, from procedural to object-oriented,
+from sequential to distributed---was not simply the addition of new
+capabilities but the imposition of new constraints that made previously
+possible errors impossible. Structured programming forbids arbitrary
+jumps. Type systems forbid category errors. Memory-safe languages forbid
+certain classes of pointer arithmetic. Each restriction narrows the
+admissible space of programs, and in doing so makes the programs that
+remain more reliably correct.
+
+This is the formal content of software engineering as a discipline: not
+the accumulation of tools, but the deliberate accumulation of constraints
+that force programs toward admissible configurations. The same logic
+applies to thought. Deliberate constraint accumulation is what separates
+disciplined inquiry from undisciplined speculation.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Edsger Dijkstra argued that programming is a discipline of constraint:
+programs should be constructed so that correctness is provable by
+design. Tony Hoare developed the formal precondition--postcondition
+framework that makes constraint accumulation explicit. Barbara Liskov's
+substitution principle formalised the constraints that object hierarchies
+must satisfy to remain coherent.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1968: Dijkstra's letter on ``goto considered harmful.'' \quad
+1969: Hoare logic published. \quad
+1980s: type theory and typed functional languages. \quad
+2000s: dependent types and proof assistants (Coq, Lean).
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Layer 1 (widest)
+  \fill[blue!14] (0,0) -- (6,0) -- (5.2,1.0) -- (0.8,1.0) -- cycle;
+  \draw[cfig,blue!55!black] (0,0) -- (6,0) -- (5.2,1.0) -- (0.8,1.0) -- cycle;
+  % Layer 2
+  \fill[green!14] (1.0,1.2) -- (5.0,1.2) -- (4.4,2.0) -- (1.6,2.0) -- cycle;
+  \draw[cfig,green!50!black] (1.0,1.2) -- (5.0,1.2) -- (4.4,2.0) -- (1.6,2.0) -- cycle;
+  % Layer 3
+  \fill[orange!18] (2.0,2.2) -- (4.0,2.2) -- (3.6,2.9) -- (2.4,2.9) -- cycle;
+  \draw[cfig,orange!65!black] (2.0,2.2) -- (4.0,2.2) -- (3.6,2.9) -- (2.4,2.9) -- cycle;
+  % Final stable point
+  \fill[red!70] (3.0,3.15) circle (2.4pt);
+  % Layer labels
+  \node[blue!65!black]   at (6.65,0.5)  {$C_1$};
+  \node[green!55!black]  at (5.65,1.65) {$C_2$};
+  \node[orange!70!black] at (4.55,2.6)  {$C_3$};
+  \node[red!70!black]    at (3.75,3.3)  {solution};
+  % Brace annotation
+  \draw[<->,thin,gray!55] (-0.4,0) -- (-0.4,3.15);
+  \node[gray!65!black,rotate=90] at (-0.85,1.55) {accumulation};
+\end{tikzpicture}
+\caption{Each constraint layer narrows the admissible space. Deliberately added constraints
+converge toward a single stable result that could not have been reached by any one layer alone.}
+\end{figure}
+
+\section{A Practical Framework}
+
+The formal picture suggests a practical strategy for accelerating the
+formation of ideas.
+
+\begin{enumerate}
+  \item \textbf{Increase constraint density.} Learn from multiple domains,
+        not just one. Each domain imposes constraints that reduce the
+        admissible space for all domains simultaneously.
+  \item \textbf{Seek overlap.} Find places where constraints from different
+        domains apply to the same configuration space. These are the regions
+        where accumulation accelerates.
+  \item \textbf{Test for global consistency.} When a candidate idea appears,
+        do not only test it within its domain of origin. Apply constraints
+        from every other relevant domain. If it survives, it is a candidate
+        for a real invariant.
+  \item \textbf{Diagnose failure modes.} When an idea breaks down, identify
+        whether the failure is local (fragmentation: one piece does not fit)
+        or global (obstruction: the pieces cannot be reconciled). The
+        diagnosis determines the repair.
+\end{enumerate}
+
+\section{The Role of Formalism}
+
+Mathematical formalism is a constraint-imposing technology. By requiring
+that ideas be expressed in precise, compositional language, formalism
+eliminates imprecision that allows contradictions to hide.
+
+This is why formalism is useful even in fields that are not primarily
+mathematical. The discipline of writing a precise definition, or of
+proving a claim rather than asserting it, forces confrontation with
+the constraints that informal language evades.
+
+\section{Open Problems}
+
+\begin{openproblem}
+How can the formation of scientific theories be modeled as constraint
+accumulation across the domains of experimental evidence, mathematical
+consistency, and theoretical coherence? What does the constraint manifold
+of a scientific paradigm look like, and how does a paradigm shift correspond
+to a change in its topology?
+\end{openproblem}
+
+\begin{openproblem}
+What is the relationship between the structural entropy defined here and
+Kolmogorov complexity? Both measure a form of compressibility. Are they
+equivalent under any natural mapping?
+\end{openproblem}
+
+\begin{openproblem}
+Can the conditions for structural emergence (Chapter~2) be given a
+quantitative threshold? That is, is there a formal criterion for when
+a system is ``constraint-dense enough'' to reliably generate insight?
+\end{openproblem}
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Deliberate constraint accumulation corresponds to constructing the
+admissible set $\Gamma_{\mathcal{C}}$ incrementally and intentionally.
+At each step, add a constraint $C_{n+1}$ and recompute:
+\[
+  \Gamma_{\mathcal{C} \cup \{C_{n+1}\}} = \Gamma_{\mathcal{C}} \cap \Gamma_{n+1}.
+\]
+The process terminates in closure when $|\Gamma_{\mathcal{C}}|$ is
+small enough to identify a solution. Formalism is a constraint-imposing
+technology: precise language forces ideas to be stated in ways that make
+their constraint satisfaction testable. This expresses the practical
+framework above in the language of the admissible set.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+Each programming paradigm shift in history was the imposition of new
+constraints that made previously possible errors impossible. Structured
+programming forbids arbitrary jumps; type systems forbid category errors;
+memory-safe languages forbid certain pointer operations. Each restriction
+narrows the admissible space and, in doing so, makes the programs that
+remain more reliably correct. This is deliberate constraint accumulation
+applied to computation itself.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Suppose we seek a number satisfying: $x > 10$; $x$ is even; $x$ is
+divisible by 3. Accumulated constraints yield $x \in \{12, 18, 24,\dots\}$.
+Adding a refinement $x < 20$ gives $x \in \{12, 18\}$. Deliberate
+constraint accumulation narrows the solution space in a controlled way:
+each constraint is chosen because it eliminates a class of inadmissible
+possibilities, not because it directly names the answer.
+
+\begin{exercise}
+Choose a decision you need to make. List five constraints it must
+satisfy. Intersect them one at a time. Observe how the admissible space
+shrinks with each addition, and whether the constraints eventually force
+a unique option.
+\end{exercise}
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Deliberate constraint accumulation in Spherepop means intentionally
+constructing nested regions so that invalid configurations collapse
+early and only strong outer forms remain.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<build>     ::= "add(" <constraint> "," <region> ")"
+<refine>    ::= "refine(" <region> ")"
+<stabilize> ::= "stable(" <region> ")"
+\end{verbatim}
+
+Building Spherepop structures that increase density, preserve closure,
+and make projection possible is the grammar-level expression of the
+practical framework described in this chapter.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (raw)    {Initial\\Region Space};
+  \node[box, right=2.4cm of raw]    (ref)  {Deliberate\\Refinement};
+  \node[box, right=2.4cm of ref]    (stab) {Stable\\Configuration};
+  \draw[arrow] (raw) -- (ref);
+  \draw[arrow] (ref) -- (stab);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should learn to construct problems intentionally, not just solve
+them. The shift from passive problem-solving to active problem design is
+the central pedagogical aim of this chapter. Ask students to create a
+constraint system that has exactly one solution, then ask them to justify
+why no other configuration is admissible. This reversal---designing
+constraints to force an outcome---is the most powerful exercise in the
+book.
+
+The most common difficulty is a passive problem-solving mindset. Students
+who have spent years solving pre-formed problems often find it
+disorienting to design the constraints themselves. Start with small,
+fully specified examples: ``create three constraints on numbers from 1 to
+20 such that exactly one number satisfies all three.''
+
+Watch for overly weak constraints (many solutions remain), contradictory
+constraints (no solutions remain), and redundant constraints (later
+constraints add no new elimination). All three are instructive failure
+modes. Ask students to diagnose which type of failure they have produced.
+\end{teachernote}
+
+\begin{universitybridge}
+Formal methods in software engineering. Constraint programming
+languages (Prolog, MiniZinc). Axiomatic system design. Engineering
+design principles and requirements specification.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Donald Knuth, \textit{The Art of Computer Programming} --- systematic
+construction of algorithms through deliberate structural design; a
+life's work on constraint accumulation applied to computation.
+
+Niklaus Wirth, \textit{Algorithms + Data Structures = Programs} ---
+structured problem design; concise and influential.
+
+Edsger Dijkstra, \textit{A Discipline of Programming} --- argues for
+constructing programs so that correctness is provable by design; the
+best model of deliberate constraint accumulation in software.
+\end{readinglist}
+
+\chapter{Conclusion: Structure Is Primary}
+
+\begin{historicalpreamble}
+The history of computation is, at its deepest level, the progressive
+discovery that structure precedes content. Early machines computed
+numbers; later systems manipulated symbols; later still they processed
+relationships. At each stage, what the machine operated on became more
+abstract---and what mattered more was the structure of the operations
+than the nature of the objects they operated on.
+
+Alan Turing showed that a machine capable of simulating any other
+machine need not know what those machines compute---only how they are
+structured. Alonzo Church showed that functions, not numbers, are the
+primitive objects of computation. John von Neumann showed that programs
+and data share the same representational space. Each of these insights
+is a version of the same claim: structure is primary. The objects are
+secondary. What persists across different representations, different
+domains, different computational models, is invariant structure---the
+same thing this book has been about from the first page.
+\end{historicalpreamble}
+
+\begin{historicalfigures}
+Alan Turing\index[topics]{Turing, Alan}'s 1936 paper on computable numbers established that any
+effective procedure can be performed by a machine that reads and writes
+symbols according to a finite set of rules---structure, not substance.
+Alonzo Church's lambda calculus showed that computation is the
+transformation of expressions under rules of substitution. John von
+Neumann's stored-program architecture unified program and data, making
+explicit that the distinction between structure and content is not fixed
+but depends on the level of description.
+\end{historicalfigures}
+
+\begin{paradigmtimeline}
+1936: Turing's paper on computable numbers; Church's lambda calculus. \quad
+1945: von Neumann architecture draft. \quad
+1960s--70s: programming language theory unifies the models. \quad
+1990s--present: type theory, proof assistants, and category theory
+formalise the unity of structure across mathematics and computation.
+\end{paradigmtimeline}
+
+% ── Chapter Figure ────────────────────────────────────────────────────
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.97]
+  % Three surface forms (top row)
+  \draw[cfig] (0,3.1) circle (0.85);
+  \node at (0,4.2) {form 1};
+  \draw[cfig] (3.2,2.3) -- (4.45,3.95) -- (5.2,2.45) -- cycle;
+  \node at (4.1,4.2) {form 2};
+  \draw[cfig] (7.1,2.3) rectangle (8.75,3.85);
+  \node at (7.9,4.2) {form 3};
+  % Projection arrows
+  \draw[->,thick,gray!65] (0.0,2.2)  to[bend left=10]  (2.8,0.75);
+  \draw[->,thick,gray!65] (4.1,2.15) -- (4.1,0.75);
+  \draw[->,thick,gray!65] (7.9,2.2)  to[bend right=10] (5.4,0.75);
+  % Invariant skeleton (bottom)
+  \draw[very thick] (2.8,0) -- (5.4,0);
+  \draw[very thick] (4.1,-0.85) -- (4.1,0.85);
+  \fill (4.1,0) circle (2.2pt);
+  \node at (4.1,-1.3) {shared invariant structure};
+  % Labels on arrows
+  \node[gray!65!black] at (1.5,1.7) {$\pi_1$};
+  \node[gray!65!black] at (4.5,1.4) {$\pi_2$};
+  \node[gray!65!black] at (6.7,1.7) {$\pi_3$};
+\end{tikzpicture}
+\caption{Three surface representations---circle, triangle, rectangle---each project onto
+the same underlying invariant structure. The representation changes with the domain;
+the structure does not.}
+\end{figure}
+
+\section{The Core Claim}
+
+This book has developed and applied a single claim:
+
+\begin{principle}[Primacy of Structure]\index[topics]{primacy of structure}
+Ideas are not created; they are recognized. Recognition occurs when a
+cognitive system has accumulated enough constraints from enough domains
+to reduce the admissible configuration space to a unique element. The
+element was always the only admissible one; accumulation is what makes
+it visible.
+\end{principle}
+
+\section{Consequences}
+
+If this is right, several things follow.
+
+Originality is not the same as novelty. The most original ideas are those
+that satisfy the most demanding set of constraints---constraints that few
+people have accumulated simultaneously. Novelty for its own sake imposes
+few constraints and is therefore easy to produce but structurally shallow.
+
+Expertise is not knowledge retention. It is constraint accumulation and
+successful relegation. An expert has internalized many constraints and has
+compressed the admissible structure of their domain into rapidly deployable
+form.
+
+Failure is not waste. Every constraint failure---every time a candidate
+idea runs into a constraint that eliminates it---is information. It reduces
+the admissible set and moves the system closer to the true configuration.
+
+Formalism is not decoration. Formal languages are constraint-imposing
+technologies. They force ideas to be precise enough to be tested.
+
+\section{Where to Go From Here}
+
+The framework sketched here---constraint accumulation, structural entropy,
+projection, admissibility, and functorial correspondence---has formal
+foundations in several mathematical disciplines: set theory, topology,
+information theory, and category theory. Each of these offers tools that
+sharpen and extend what is developed here.
+
+The most direct extensions are:
+\begin{itemize}
+  \item \textbf{Category theory:} provides the formal language for
+        functorial correspondence and structure-preserving maps.
+  \item \textbf{Sheaf theory:} formalizes the local-global distinction and
+        the conditions under which local sections extend to global ones.
+  \item \textbf{Information theory:} grounds the entropy formalism in a
+        rigorous probabilistic framework.
+  \item \textbf{Differential geometry:} provides the tools to study the
+        constraint manifold, its curvature, and its attractors.
+\end{itemize}
+
+None of these require more prerequisite knowledge than a strong high school
+mathematics background to begin. They are the natural next layer of
+constraint accumulation for someone who has read this book.
+
+% ── Formal Correspondence ─────────────────────────────────────────────
+\section*{Formal Correspondence}
+\begin{formalcorrespondence}
+Two representations are structurally equivalent when they reduce to the
+same invariant under the constraint set:
+\[
+  \mathrm{form}_1 \sim \mathrm{form}_2 \iff \pi(\mathrm{form}_1)
+  = \pi(\mathrm{form}_2).
+\]
+Structure is primary because what survives across distinct representations
+is not the surface form but the invariant pattern of admissible reduction.
+Different descriptions of the same idea are different coordinate systems
+on the same constraint manifold. The admissible set $\A(\C)$ is the
+invariant; the representations are projections of it. This is the formal
+content of the principle of primacy of structure.
+\end{formalcorrespondence}
+
+% ── Computational Aside ───────────────────────────────────────────────
+\section*{Computational Perspective}
+\begin{computationalaside}
+The history of computation is the progressive discovery that structure
+precedes content. Turing showed that a universal machine need not know
+what other machines compute---only how they are structured. Church showed
+that functions, not numbers, are the primitive objects of computation.
+Von Neumann showed that programs and data share the same representational
+space. Each insight is a version of the same claim: structure is primary,
+objects are secondary, and what persists across representations is
+invariant structure.
+\end{computationalaside}
+
+% ── Worked Example ────────────────────────────────────────────────────
+\section*{Worked Example}
+Consider two different descriptions: $(2 + 3) \times 4$ and $5 \times 4$.
+Though syntactically different, both reduce to 20. The underlying
+structure determines the result, not the surface form. Different
+representations collapse to the same invariant outcome. The entire
+framework of this book is a single extended instance of this observation:
+constraints, entropy, abstraction, functors, and attractors are all
+different coordinate systems on the same invariant structure.
+
+% ── Spherepop Comparison ──────────────────────────────────────────────
+\section*{Spherepop Comparison}
+\begin{spherepopcomparison}
+Spherepop ends where this book ends: different surface descriptions may
+correspond to the same stabilised structure once irrelevant inner
+distinctions have been reduced.
+
+\textbf{BNF fragment.}
+\begin{verbatim}
+<form1>     ::= <region>
+<form2>     ::= <region>
+<invariant> ::= "same(" <form1> "," <form2> ")"
+\end{verbatim}
+
+What survives across distinct Spherepop representations is not the
+surface grammar but the invariant pattern of admissible reduction. This
+is the grammar-level expression of the primacy of structure---the same
+claim that opens and closes this book.
+\end{spherepopcomparison}
+
+\begin{umldiagram}
+  \node[box] (f1)  {Representation\\One};
+  \node[box, right=3.2cm of f1]  (f2)  {Representation\\Two};
+  \node[box, below=1.8cm of $(f1)!0.5!(f2)$] (inv) {Shared\\Invariant Structure};
+  \draw[arrow] (f1) -- (inv);
+  \draw[arrow] (f2) -- (inv);
+\end{umldiagram}
+
+% ── Teacher Notes ─────────────────────────────────────────────────────
+\section*{Teacher Notes}
+
+\begin{teachernote}
+Students should arrive at this chapter able to recognise invariance
+across representations without being told what to look for. The most
+common difficulty is confusing surface form with meaning: students who
+have spent years learning to read specific notations often mistake the
+notation for the thing it describes. Design exercises that present the
+same structure in three radically different forms and ask students to
+identify what is preserved across all three.
+
+This chapter is also a moment for reflection. Ask students to look back
+at Chapter~1 and describe what they understand now that they did not
+understand then. The answer should not be a list of new topics, but a
+description of the same idea seen with greater clarity. If a student
+can articulate that, the book has done its work.
+
+Watch for students who focus on surface differences. The question to
+ask is always: if I change the representation, what changes in the
+structure, and what does not? The invariants are what does not change.
+Those are what the book has been about.
+\end{teachernote}
+
+\begin{universitybridge}
+Isomorphism in abstract algebra. Invariant theory. Abstract algebra
+and group theory. Theoretical computer science and formal language
+equivalences.
+\end{universitybridge}
+
+\section*{Further Reading}
+
+\begin{readinglist}
+Hermann Weyl, \textit{Symmetry} --- explores invariance across
+mathematics, art, and science; accessible and beautifully written.
+
+Eugene Wigner, \textit{The Unreasonable Effectiveness of Mathematics
+in the Natural Sciences} (1960) --- a short, famous essay on why
+mathematical structure appears across domains; worth reading in full.
+
+Terence Tao, \textit{An Introduction to Measure Theory} (selected
+ideas) --- an advanced example of structure taking precedence over
+representation; the preface is accessible and illuminating.
+\end{readinglist}
+
+% ════════════════════════════════════════════════════════════════════════
+\backmatter
+% ════════════════════════════════════════════════════════════════════════
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{What You Are Now Prepared to Study}
+\addcontentsline{toc}{chapter}{What You Are Now Prepared to Study}
+% ════════════════════════════════════════════════════════════════════════
+
+\begin{quote}
+Throughout this text, you have encountered the same structure in many
+different forms.
+
+You have seen problems where answers did not need to be invented, but
+emerged as the only configurations that satisfied all conditions. You
+have seen that simplifying a system does not remove structure, but
+reveals what remains unchanged. You have seen that systems can appear
+correct in parts while failing as a whole, and that true understanding
+requires consistency across all perspectives.
+
+At each stage, these ideas were presented through examples, history,
+computation, and formal reasoning. None of these were separate topics.
+They were different ways of describing the same underlying process.
+
+You are now prepared to recognise that process in other fields.
+\end{quote}
+
+\section*{Mathematics}
+
+\begin{quote}
+In mathematics, you will encounter systems defined by constraints and
+relationships. Solutions are not arbitrary---they are determined by the
+structure of those relationships.
+
+You will study objects such as sets, functions, spaces, and algebraic
+systems. What matters is not the objects themselves, but the invariants
+they preserve and the transformations that leave them unchanged.
+
+You will also encounter situations where local consistency does not
+guarantee global coherence, and where different representations describe
+the same underlying structure.
+
+The patterns you have already seen---constraint accumulation, reduction,
+and stabilisation---will appear in more formal and precise forms.
+\end{quote}
+
+\section*{Computer Science}
+
+\begin{quote}
+In computer science, you will study computation as a process of
+transformation.
+
+Some systems will operate step by step, applying rules in sequence.
+Others will reduce expressions until they reach stable forms. Still
+others will search for configurations that satisfy all constraints at
+once.
+
+You will encounter ideas such as algorithms, data structures,
+programming languages, and distributed systems. In each case, the
+central question is not how to produce output, but how to maintain
+consistency across all conditions imposed on the system.
+
+What you have learned here---that computation is the structured
+resolution of constraints---will apply across all of these areas.
+\end{quote}
+
+\section*{Physics and Information}
+
+\begin{quote}
+In physics, systems are described by laws that restrict what can occur.
+The behaviour of a system is determined by the configurations that
+satisfy those laws.
+
+You will encounter concepts such as energy, entropy, and conservation.
+Entropy measures how many configurations are possible. Energy often
+measures how constrained a system is.
+
+You will also see that processes are not always reversible, and that
+history can be compressed into states that cannot be fully recovered.
+
+The same principles you have studied---multiplicity, compression, and
+irreversibility---appear here as fundamental laws of nature.
+\end{quote}
+
+\section*{Logic and Formal Systems}
+
+\begin{quote}
+In logic, you will study systems of statements and rules.
+
+A system is consistent if all constraints can be satisfied together.
+It is inconsistent if no configuration satisfies them all.
+
+You will learn to distinguish between local validity and global
+consistency, and to recognise when a system cannot be completed without
+contradiction.
+
+These are not new ideas. They are the formal expression of patterns you
+have already encountered.
+\end{quote}
+
+\section*{Cross-Domain Thinking}
+
+\begin{quote}
+As you continue, you will notice that the same structures appear in
+different fields.
+
+A system in mathematics may resemble a system in physics. A process in
+computation may resemble a process in reasoning. A structure in one
+domain may be translated into another while preserving its essential
+relationships.
+
+Recognising these correspondences is not a matter of analogy, but of
+structure. What is preserved across domains is not the surface form,
+but the relationships that define the system.
+
+You are now prepared to recognise when two different problems are, in
+fact, the same problem expressed in different terms.
+\end{quote}
+
+\section*{What Changes Now}
+
+\begin{quote}
+At the beginning of this text, problems may have appeared as things to
+be solved.
+
+At this point, problems should begin to appear as systems to be
+understood.
+
+You may find that answers feel less like choices and more like
+consequences. You may notice that certain solutions seem inevitable
+once all conditions are taken into account.
+
+This is not because the problems have become easier, but because their
+structure has become visible.
+
+The purpose of this text has not been to teach you a collection of
+methods. It has been to make that structure visible.
+
+From here, you will encounter more precise languages, more complex
+systems, and more demanding problems. But the underlying patterns will
+remain the same.
+
+You are not beginning something new. You are continuing the same
+process, with greater clarity.
+\end{quote}
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Pathways Beyond This Book}
+\addcontentsline{toc}{chapter}{Pathways Beyond This Book}
+% ════════════════════════════════════════════════════════════════════════
+
+The reading lists at the end of each chapter point outward from
+individual topics. This section groups those recommendations into
+three coherent trajectories. A student who follows any one of these
+paths will find that the concepts from this book recur---in more
+precise forms, with more powerful tools, at greater depth.
+
+\section*{The Mathematics Pathway}
+
+This path moves from the informal set theory and constraint language of
+this book into algebra, topology, and category theory. It is the
+trajectory toward pure mathematics.
+
+\begin{readinglist}
+\textit{Starting point:} G.~P\'olya, \textit{How to Solve It}. Builds
+the habit of constraint-based reasoning informally.
+
+\textit{First year:} F.~W.~Lawvere and S.~Schanuel,
+\textit{Conceptual Mathematics}. Introduces category theory with no
+prerequisites; formalises functors, structure-preserving maps, and
+invariants.
+
+\textit{Second year:} M.~Artin, \textit{Algebra}. Standard
+first-course abstract algebra; groups, rings, and fields as constraint
+systems on sets of operations.
+
+\textit{Third year:} A.~Hatcher, \textit{Algebraic Topology}.
+Formalises local-global consistency, obstruction, and cohomology.
+
+\textit{Ongoing:} H.~Weyl, \textit{Symmetry}; E.~Wigner,
+\textit{The Unreasonable Effectiveness of Mathematics}. Both repay
+rereading at every level.
+\end{readinglist}
+
+\section*{The Computer Science Pathway}
+
+This path moves from the computational paradigm history in each chapter
+into algorithm theory, programming languages, and formal verification.
+
+\begin{readinglist}
+\textit{Starting point:} H.~Abelson and G.~J.~Sussman,
+\textit{Structure and Interpretation of Computer Programs} (freely
+available online). The best single book for seeing abstraction,
+reduction, and constraint as computational primitives.
+
+\textit{First year:} M.~Sipser, \textit{Introduction to the Theory of
+Computation}. Covers automata, formal languages, computability, and
+complexity; places computation in a structural framework.
+
+\textit{Second year:} T.~Cormen et al., \textit{Introduction to
+Algorithms}. Constraint-based algorithm design at scale.
+
+\textit{Third year:} B.~Pierce, \textit{Types and Programming
+Languages}. Type theory as a system of constraints on programs;
+connects directly to quotient structures and abstraction.
+
+\textit{Ongoing:} E.~Dijkstra, \textit{A Discipline of Programming};
+D.~Knuth, \textit{The Art of Computer Programming}.
+\end{readinglist}
+
+\section*{The Physics and Information Pathway}
+
+This path moves from the entropy and compression chapters into
+thermodynamics, information theory, and the physics of computation.
+
+\begin{readinglist}
+\textit{Starting point:} C.~Shannon, \textit{A Mathematical Theory of
+Communication} (1948). Short, precise, and foundational; the first few
+sections are accessible after this book.
+
+\textit{First year:} D.~MacKay, \textit{Information Theory, Inference,
+and Learning Algorithms} (freely available online). Covers entropy,
+compression, and inference in a unified framework.
+
+\textit{Second year:} R.~Feynman, \textit{The Feynman Lectures on
+Physics} (Vol.~I, thermodynamics sections). Connects entropy and
+constraint to physical systems.
+
+\textit{Third year:} T.~Cover and J.~Thomas, \textit{Elements of
+Information Theory}. The standard university treatment.
+
+\textit{Ongoing:} C.~H.~Bennett, \textit{Logical Reversibility of
+Computation}; S.~Strogatz, \textit{Nonlinear Dynamics and Chaos}.
+\end{readinglist}
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+% ════════════════════════════════════════════════════════════════════════
+
+\textbf{Abstraction.} A map from a space of configurations to a simpler
+space that preserves admissibility while identifying configurations that
+are equivalent under the constraint set. Abstraction hides completed
+internal computation, not ongoing computation.
+
+\textbf{Admissible set.} The set of all configurations that satisfy
+every constraint in a given constraint set. Written $\mathcal{A}(\mathcal{C})$.
+As constraints accumulate, the admissible set shrinks.
+
+\textbf{Attractor.} A stable configuration in a dynamical system or
+constraint landscape. Small perturbations from an attractor return to it.
+An attractor corresponds to an idea that feels inevitable because every
+nearby alternative violates some constraint.
+
+\textbf{Closure.} The condition that the admissible set is non-empty:
+$\mathcal{A}(\mathcal{C}) \neq \emptyset$. Closure is the precondition for any
+solution to exist.
+
+\textbf{Compression.} A map that reduces the size of a representation
+while preserving relevant structure. Constraint-preserving compression
+identifies configurations only when they are genuinely equivalent under
+the constraint set.
+
+\textbf{Constraint.} A condition on a configuration space that
+eliminates configurations that do not satisfy it. A constraint is a
+filter, not a recipe.
+
+\textbf{Constraint density.} The degree to which constraints in a
+system interact non-trivially, producing an admissible set smaller than
+the intersection of each constraint taken alone.
+
+\textbf{Entropy.} The logarithm of multiplicity: $S = \log \mu$.
+Entropy measures how many configurations are consistent with the
+current state of knowledge. It is not disorder; it is underdetermination.
+
+\textbf{Fixed point.} A configuration $x$ such that $T(x) = x$ under
+a transformation $T$. Fixed points correspond to stable solutions and
+to the normal forms of computational reduction.
+
+\textbf{Formal correspondence.} A precise restatement of a conceptual
+claim in mathematical language. In this book, formal correspondences
+are presented as clarifications of ideas already understood, not as
+new claims.
+
+\textbf{Functor.} A structure-preserving map between categories
+(domains with compositional rules). A functor translates the grammar
+of relationships from one domain into another without distorting it.
+
+\textbf{Global consistency.} The condition that a configuration
+satisfies all constraints across the entire domain, not just locally.
+Global consistency does not follow from local consistency.
+
+\textbf{Hallucination.} A configuration that appears globally
+consistent under a restricted projection but does not satisfy the full
+constraint set. Produced by overcompressive abstraction.
+
+\textbf{Invariant.} A property preserved by a given transformation or
+abstraction. Invariants are what remain the same when representations
+change.
+
+\textbf{Local consistency.} The condition that a configuration satisfies
+all constraints within a restricted region. Necessary but not sufficient
+for global consistency.
+
+\textbf{Multiplicity.} The number of configurations in a full space
+that map to the same configuration in an abstracted or compressed
+representation. Written $\mu(y)$.
+
+\textbf{Obstruction.} A condition in which two locally consistent
+structures cannot be combined into a globally consistent whole. An
+obstruction is not a failure of effort but a structural fact.
+
+\textbf{Overcompression.} An abstraction that identifies configurations
+that are distinguishable under the constraint set, discarding relevant
+distinctions and producing false simplicity.
+
+\textbf{Projection capacity.} The ability of a system to map its
+admissible configurations into a simpler representation while
+preserving their essential structure.
+
+\textbf{Relegation.} The process by which a cognitive system compresses
+a constraint structure into a latent form that can be retrieved and
+applied without active reconstruction. Intuition is relegated
+constraint satisfaction.
+
+\textbf{Spherepop Calculus.} A formal system in which structure is
+built from nested regions, merges, and collapses. Used in this book
+as a grammar-level coordinate system for the same structural ideas
+expressed in set theory and category theory.
+
+\textbf{Structure-preserving map.} A function between domains that maps
+admissible configurations to admissible configurations and respects
+compositional rules. Called a functor in category theory.
+
+\textbf{Temporal compression.} A map from a full history of
+configurations to the present state. When temporal compression is lossy,
+the process is irreversible: the past cannot be recovered from the
+present.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Mathematical Appendix}
+\addcontentsline{toc}{chapter}{Mathematical Appendix}
+% ════════════════════════════════════════════════════════════════════════
+
+This appendix collects the mathematical background used in the main
+text. Each section covers one concept informally, then states it
+precisely enough to support the definitions and theorems in the
+chapters.
+
+\section*{Sets and Subsets}
+
+A \emph{set} is any collection of objects. We write $x \in A$ to mean
+that $x$ belongs to $A$, and $x \notin A$ to mean it does not. We write
+$A \subseteq B$ when every element of $A$ also belongs to $B$.
+
+The \emph{intersection} of two sets is
+$A \cap B = \{x \mid x \in A \text{ and } x \in B\}$.
+The intersection of many sets is $\bigcap_{i=1}^n A_i$, the set of
+elements belonging to all of them.
+
+The \emph{empty set} $\emptyset$ contains no elements.
+
+\section*{Functions}
+
+A \emph{function} $f : X \to Y$ assigns to each $x \in X$ exactly one
+$f(x) \in Y$. The set $X$ is the domain; $Y$ is the codomain.
+
+A function is \emph{surjective} (onto) if every element of $Y$ is
+$f(x)$ for some $x \in X$. It is \emph{injective} (one-to-one) if
+$f(x_1) = f(x_2)$ implies $x_1 = x_2$. It is \emph{bijective} if
+both.
+
+The \emph{pre-image} of $y \in Y$ is $f^{-1}(y) = \{x \in X \mid
+f(x) = y\}$.
+
+\section*{Equivalence Relations}
+
+A relation $\sim$ on a set $X$ is an \emph{equivalence relation} if it
+is reflexive ($x \sim x$), symmetric ($x \sim y$ implies $y \sim x$),
+and transitive ($x \sim y$ and $y \sim z$ imply $x \sim z$).
+
+An equivalence relation partitions $X$ into disjoint \emph{equivalence
+classes}. The \emph{quotient set} $X / {\sim}$ is the set of those
+classes. A function $\pi : X \to X/{\sim}$ sending each element to its
+class is the \emph{quotient map}. This is the formal structure of
+abstraction.
+
+\section*{Logarithms}
+
+The \emph{logarithm base $b$} of $n$, written $\log_b n$, is the
+unique real number $e$ such that $b^e = n$. Throughout this book we
+use $\log = \log_2$, following the convention of information theory.
+
+Key properties: $\log(mn) = \log m + \log n$; $\log(m/n) = \log m -
+\log n$; $\log(m^k) = k \log m$.
+
+If a system has $n$ equally likely configurations, the entropy is
+$\log n$ bits. Adding a constraint that halves the admissible set
+reduces entropy by exactly $1$ bit.
+
+\section*{Intersections as Constraint Accumulation}
+
+If $\mathcal{C} = \{C_1, \dots, C_n\}$ is a set of constraints, each
+defining a subset $\Gamma_i \subseteq \Gamma$, then the admissible set
+is $\mathcal{A}(\mathcal{C}) = \bigcap_{i=1}^n \Gamma_i$.
+
+Adding a constraint $C_{n+1}$ replaces $\mathcal{A}(\mathcal{C})$ with
+$\mathcal{A}(\mathcal{C}) \cap \Gamma_{n+1} \subseteq
+\mathcal{A}(\mathcal{C})$. Constraint accumulation is monotone:
+the admissible set never grows when constraints are added.
+
+\section*{A Note on Proofs}
+
+The proofs in this book are sketches: they convey the structure of the
+argument without supplying every technical detail. A sketch is a
+constraint on what a full proof must look like. It eliminates the
+space of possible proofs to a small region; filling in the details
+locates the unique proof within that region.
+
+This is itself an instance of the book's central idea.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Computational Appendix}
+\addcontentsline{toc}{chapter}{Computational Appendix}
+% ════════════════════════════════════════════════════════════════════════
+
+This appendix gives brief, self-contained examples of the computational
+ideas discussed in the chapter historical preambles. No programming
+experience is required to read them. The goal is to make the paradigm
+descriptions concrete.
+
+\section*{Imperative Style: Constraint as Sequential Elimination}
+
+An imperative program applies rules in order. Each rule eliminates
+possibilities. The following pseudocode narrows a number:
+
+\begin{verbatim}
+candidates = {1, 2, ..., 100}
+candidates = {x in candidates : x is even}
+candidates = {x in candidates : x > 50}
+candidates = {x in candidates : x < 70}
+-- candidates is now {52, 54, 56, 58, 60, 62, 64, 66, 68}
+\end{verbatim}
+
+Each line is a constraint. Each constraint reduces the set.
+
+\section*{Functional Style: Reduction to Normal Form}
+
+A functional program defines transformations and reduces expressions.
+
+\begin{verbatim}
+simplify((x + 0) * 1)
+  = simplify(x * 1)      -- x + 0 reduces to x
+  = simplify(x)          -- x * 1 reduces to x
+  = x                    -- normal form reached
+\end{verbatim}
+
+Reduction continues until no rule applies. The result is the normal
+form: a fixed point of the reduction system.
+
+\section*{Lazy Evaluation: Deferred Computation}
+
+A lazy system carries unevaluated expressions forward and resolves
+them only when required.
+
+\begin{verbatim}
+stream = [1, 2, 3, 4, ...]          -- infinite list, not yet evaluated
+first_over_100 = first(x in stream : x > 100)
+-- evaluates stream only until 101 is reached
+-- result: 101
+\end{verbatim}
+
+The computation is deferred. The full stream is never evaluated.
+Insight occurs when sufficient evaluation has accumulated.
+
+\section*{Modular Abstraction: Interface over Implementation}
+
+A module exposes behaviour without exposing internal structure.
+
+\begin{verbatim}
+module Stack:
+  push(item)    -- add item to top
+  pop()         -- remove and return top item
+  is_empty()    -- return true if no items remain
+
+-- Internal implementation (array, linked list, etc.) is hidden.
+-- The interface is the constraint. The implementation is irrelevant
+-- to any code that uses the module.
+\end{verbatim}
+
+Abstraction means the internal structure has been resolved to the point
+that it no longer affects external interaction.
+
+\section*{Spherepop BNF: The Full Grammar}
+
+The Spherepop Calculus used throughout this book is defined by the
+following grammar. A \emph{region} is either an atom or a nested list
+of regions. Operations include merging, collapsing, storing, and
+abstracting regions.
+
+\begin{verbatim}
+<system>      ::= <region>
+<region>      ::= <atom>
+               |  "(" <region-list> ")"
+<region-list> ::= <region>
+               |  <region> <region-list>
+<op>          ::= "merge("  <region> "," <region> ")"
+               |  "collapse(" <region> ")"
+               |  "abs("   <region> ")"
+               |  "store("  <region> ")"
+               |  "use("   <latent>  ")"
+<latent>      ::= "store(" <region> ")"
+<constraint>  ::= "allow"  <region>
+               |  "forbid" <region>
+\end{verbatim}
+
+A region is admissible if it is not forbidden by any active constraint.
+A collapsed region is admissible only if its interior was admissible
+before collapse. An abstracted region exposes only its outer boundary.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Topic Index}
+\addcontentsline{toc}{chapter}{Topic Index}
+% ════════════════════════════════════════════════════════════════════════
+
+\begin{quote}\small
+\textit{Topics, named theorems and principles, computational paradigms,
+historical figures, and cross-domain concepts.}
+\end{quote}
+
+\printindex[topics]
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Vocabulary Index}
+\addcontentsline{toc}{chapter}{Vocabulary Index}
+% ════════════════════════════════════════════════════════════════════════
+
+\begin{quote}\small
+\textit{Formally defined terms, pointing to the definition environment
+where each term is introduced. Subentries indicate specialised uses.}
+\end{quote}
+
+\printindex[vocab]
+
+\end{document}

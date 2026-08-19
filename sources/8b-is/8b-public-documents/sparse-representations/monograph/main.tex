@@ -1,0 +1,256 @@
+% ============================================================
+% Constraint as Ground: A Process Ontology of Cognition,
+% Computation, and Cosmos
+% Flyxion, Independent Researcher
+% ============================================================
+\documentclass[12pt, openany]{book}
+
+% --- Engine and font stack ---
+\usepackage{fontspec}
+\usepackage{amsfonts}
+\setmainfont{TeX Gyre Pagella}
+
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+
+% --- Layout ---
+\usepackage[
+  paperwidth=6in,
+  paperheight=9in,
+  top=0.85in,
+  bottom=0.85in,
+  inner=0.75in,
+  outer=0.65in,
+  includeheadfoot
+]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Headers and footers ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape Constraint as Ground}
+\fancyhead[RO]{\small\itshape\leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% --- Chapter style ---
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\large\bfseries\centering}
+  {\chaptertitlename\ \thechapter}
+  {12pt}
+  {\Large}
+\titlespacing*{\chapter}{0pt}{30pt}{20pt}
+
+% --- tcolorbox for theorem environments ---
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
+
+\tcbset{
+  defstyle/.style={
+    enhanced, breakable,
+    colback=gray!6,
+    colframe=black!40,
+    fonttitle=\bfseries\small,
+    coltitle=black,
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={colback=white, colframe=black!40},
+    top=4mm, bottom=3mm, left=4mm, right=4mm,
+    parbox=false
+  },
+  thmstyle/.style={
+    enhanced, breakable,
+    colback=black!3,
+    colframe=black!60,
+    fonttitle=\bfseries\small,
+    coltitle=black,
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={colback=white, colframe=black!60},
+    top=4mm, bottom=3mm, left=4mm, right=4mm,
+    parbox=false
+  },
+  propstyle/.style={
+    enhanced, breakable,
+    colback=white,
+    colframe=black!30,
+    fonttitle=\itshape\small,
+    coltitle=black,
+    borderline west={1.5pt}{0pt}{black!50},
+    frame hidden,
+    top=2mm, bottom=2mm, left=5mm, right=3mm,
+    parbox=false
+  }
+}
+
+\newtcolorbox[auto counter, number within=chapter]{definition}[2][]{
+  defstyle, title={Definition \thetcbcounter\ifx&#2&\else\ (#2)\fi}, #1
+}
+\newtcolorbox[auto counter, number within=chapter]{theorem}[2][]{
+  thmstyle, title={Theorem \thetcbcounter\ifx&#2&\else\ (#2)\fi}, #1
+}
+\newtcolorbox[auto counter, number within=chapter]{proposition}[2][]{
+  propstyle, title={Proposition \thetcbcounter\ifx&#2&\else\ (#2)\fi}, #1
+}
+\newtcolorbox[auto counter, number within=chapter]{axiom}[2][]{
+  defstyle, colframe=black!55, title={Axiom \thetcbcounter\ifx&#2&\else\ (#2)\fi}, #1
+}
+\newtcolorbox{remark}{
+  enhanced, breakable,
+  colback=white, colframe=white,
+  borderline west={1pt}{0pt}{black!25},
+  left=5mm, top=1mm, bottom=1mm,
+  parbox=false,
+  fontupper=\small\itshape
+}
+
+% --- Claim-status architecture ---
+% [D] Definition  [P] Phenomenological  [H] Heuristic  [C] Conjecture  [S] Speculative
+\usepackage{marginnote}
+\newcommand{\claimD}{\marginnote{\scriptsize\textsf{[D]}}}
+\newcommand{\claimP}{\marginnote{\scriptsize\textsf{[P]}}}
+\newcommand{\claimH}{\marginnote{\scriptsize\textsf{[H]}}}
+\newcommand{\claimC}{\marginnote{\scriptsize\textsf{[C]}}}
+\newcommand{\claimS}{\marginnote{\scriptsize\textsf{[S]}}}
+
+% Inline claim-status for use within text
+\newcommand{\statusD}{\textsuperscript{\scriptsize\textsf{[D]}}\xspace}
+\newcommand{\statusP}{\textsuperscript{\scriptsize\textsf{[P]}}\xspace}
+\newcommand{\statusH}{\textsuperscript{\scriptsize\textsf{[H]}}\xspace}
+\newcommand{\statusC}{\textsuperscript{\scriptsize\textsf{[C]}}\xspace}
+\newcommand{\statusS}{\textsuperscript{\scriptsize\textsf{[S]}}\xspace}
+
+% Claim-status box for display
+\newtcolorbox{claimstatus}{
+  enhanced, breakable,
+  colback=gray!4, colframe=black!20,
+  left=4mm, right=4mm, top=2mm, bottom=2mm,
+  fontupper=\small,
+  parbox=false
+}
+
+% Analogy-constraint firewall box
+\newtcolorbox{firewall}{
+  enhanced, breakable,
+  colback=black!4, colframe=black!50,
+  fonttitle=\bfseries\small,
+  title={Methodological Constraint},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=white, colframe=black!50},
+  left=4mm, right=4mm, top=4mm, bottom=3mm,
+  parbox=false
+}
+
+% Constraint boundary box (end-of-chapter audit)
+\newtcolorbox{constraintboundary}{
+  enhanced, breakable,
+  colback=white, colframe=black!35,
+  fonttitle=\bfseries\small,
+  title={Constraint Boundary},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=white, colframe=black!35},
+  borderline west={2pt}{0pt}{black!40},
+  frame hidden,
+  left=5mm, right=3mm, top=3mm, bottom=3mm,
+  parbox=false
+}
+
+% --- Math ---
+\usepackage{amsmath, amssymb, mathtools, amsthm}
+\setlength{\headheight}{14pt}
+
+% --- Tables and figures ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, labelsep=period}
+
+% --- Hyperlinks ---
+\usepackage[
+  hidelinks,
+  pdftitle={Constraint as Ground},
+  pdfauthor={Flyxion},
+  pdfsubject={Process Ontology, Cognition, Computation, Cosmology}
+]{hyperref}
+
+% --- Bibliography ---
+\usepackage[authoryear,round,sort]{natbib}
+
+
+% --- Epigraph ---
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.72\textwidth}
+\renewcommand{\epigraphflush}{center}
+
+% --- Part and chapter formatting ---
+\usepackage{titletoc}
+\usepackage{tocloft}
+
+% --- Utilities ---
+\usepackage{xspace}
+\usepackage{csquotes}
+
+% --- Custom commands ---
+\newcommand{\RSVP}{\textsc{rsvp}\xspace}
+\newcommand{\KES}{\textsc{kes}\xspace}
+\newcommand{\CLIO}{\textsc{clio}\xspace}
+\newcommand{\TARTAN}{\textsc{tartan}\xspace}
+\newcommand{\YC}{\textsc{yc}\xspace}
+\newcommand{\Phifield}{\Phi}
+\newcommand{\vfield}{\mathbf{v}}
+\newcommand{\Sfield}{S}
+\newcommand{\Ot}{\Omega_t}
+\newcommand{\Ht}{H_{t+1}}
+\newcommand{\scalar}[1]{\Phi(#1)}
+\newcommand{\flow}[1]{\mathbf{v}(#1)}
+\newcommand{\entropy}[1]{S(#1)}
+
+% ============================================================
+\begin{document}
+
+\frontmatter
+\include{frontmatter/titlepage}
+\include{frontmatter/prefatory}
+\include{frontmatter/methodological}
+\tableofcontents
+
+\mainmatter
+\include{parts/part1}
+\include{chapters/ch01_distributed_manifold}
+\include{chapters/ch02_vocabulary}
+\include{parts/part2}
+\include{chapters/ch03_scaffolded_amplification}
+\include{chapters/ch04_ellul_constraint}
+\include{parts/part3}
+\include{chapters/ch05_yarncrawler_formal}
+\include{chapters/ch06_sheaf_repair}
+\include{chapters/ch07_ecological_cultural_computational}
+\include{parts/part4}
+\include{chapters/ch08_cosmological}
+\include{chapters/ch09_social_institutional}
+\include{chapters/ch10_kes_spherepop}
+\include{parts/part5}
+\include{chapters/ch11_method_as_consequence}
+\include{chapters/ch12_identity_bootstrapping}
+\include{chapters/ch13_conclusion}
+
+\backmatter
+\include{appendices/appA_rsvp_formal}
+\include{appendices/appB_kes_formal}
+\include{appendices/appC_spherepop}
+\include{appendices/appD_tartan}
+\include{appendices/appE_clio}
+\include{appendices/appF_obstruction}
+\include{appendices/appG_juarrero_deacon}
+\include{appendices/appH_stone_piano}
+\include{appendices/appI_companion_index}
+\include{appendices/appJ_perceptual}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

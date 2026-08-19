@@ -1,0 +1,1341 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\linespread{1.05}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=1.2in}
+\usepackage{setspace}
+\setstretch{1.18}
+\usepackage{amsmath,amssymb,amsthm,mathtools,amscd}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
+\usepackage{tikz}
+\usetikzlibrary{fadings,shadings,calc}
+\usepackage{xcolor}
+
+\title{Process, Projection, and Propagative Reality:\\
+Whiteheadian Occasions, RSVP Fields, and the Geometry of Recursive Stabilization}
+\author{Flyxion}
+\date{May 2026}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{derivation}{Derivation}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This essay develops a formal bridge between Whitehead's process ontology, wave-structural accounts of matter, and the RSVP/CLIO/MEM|8 family of frameworks. The central claim is that enduring objects, particles, memories, and observers may be modeled not as primitive substances but as recursively stabilized trajectory structures. Whitehead's actual occasions are interpreted as local concrescences of causal inheritance; RSVP generalizes this into scalar-vector-entropy field dynamics; CLIO formalizes the projection from high-dimensional trajectory space into compressed representational manifolds; and MEM|8 operationalizes persistence as coherence-maintained propagation. The essay derives a common mathematical language in which persistence becomes attractor stability, abstraction becomes projection, collapse becomes accessibility contraction, and matter becomes recursively maintained field coherence. The coupled field systems introduced throughout should be interpreted primarily as structural and variational grammars for process-relational organization rather than as finalized empirical laws of nature.
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+Whitehead's \emph{Process and Reality} replaces the ontology of static substance with an ontology of becoming. The fundamental units of reality are not enduring things but actual occasions, each of which comes into being through its prehension of prior occasions and then becomes available as datum for subsequent occasions. This is not merely a poetic metaphysics. It is a structural proposal: reality is generated through causal inheritance, relational integration, and recursive stabilization.
+
+The RSVP framework may be read as a field-theoretic and informational modernization of this process ontology. Instead of beginning with substances, RSVP begins with fields, trajectories, and accessibility constraints. The scalar field \(\Phi\) represents configurational intensity or potential; the vector field \(\mathbf{v}\) represents directed flow or relaxation; and the entropy-accessibility field \(S\) represents the logarithmic volume of admissible future trajectories. CLIO then introduces a projection-theoretic distinction between a full trajectory space \(X\) and a compressed representational manifold \(M\), with a projection map
+\[
+\pi : X \to M.
+\]
+MEM|8 operationalizes the same intuition computationally: persistence is not stored as inert symbolic content but regenerated through coherence, resonance, routing stability, and recursive phase alignment.
+
+The purpose of this essay is to show that these systems share a common mathematical skeleton. Whitehead's actual occasions correspond to localized concrescences of inherited causal structure. RSVP fields provide the continuous dynamics by which such concrescences stabilize. CLIO explains why abstractions and observations are projections rather than complete descriptions. MEM|8 shows how such structures could be engineered as propagative memory systems. The resulting ontology is processual, relational, and dynamically geometric. This conceptual progression moves from Whitehead's foundational process metaphysics through wave-structural reinterpretations of matter, into the RSVP accessibility-geometric framework, and then through CLIO and MEM|8 toward a Simondonian account of why stabilization never exhausts the preindividual field from which it emerges.
+
+\bigskip
+
+\begin{proposition}[Recursive Stabilization under Constrained Propagative Inheritance]
+\label{prop:stabilization}
+Persistence, memory, abstraction, matter, and organismic identity are not separate ontological kinds, but distinct regimes of recursive stabilization under constrained propagative inheritance.
+\end{proposition}
+
+\begin{proof}[Interpretive proof]
+Let \(X\) denote the full space of admissible trajectories, let \(M\) denote a compressed representational manifold, and let \(\pi:X\to M\) be a projection from processual reality into observable or symbolic form. A structure persists when its successive states remain recoverable under recursive transport; a memory persists when a coherence pattern remains reconstructible under perturbation; matter persists when field configurations stabilize into low-entropy attractors; and abstraction persists when projected invariants remain usable across changing underlying trajectories. In each case, identity is not primitive sameness but stable recoverability under constrained transformation. Thus the apparently distinct categories of object, memory, symbol, and material body may be interpreted as different stabilization regimes within the same general process architecture.
+\end{proof}
+
+The following sections develop the formal content of Proposition~\ref{prop:stabilization} across each component framework in turn.
+
+\section{Whiteheadian Occasions as Local Concrescences}
+
+Let \(\mathcal{O}\) denote the class of actual occasions. An occasion \(o_i \in \mathcal{O}\) is not a substance persisting through time but a completed act of becoming. It arises from a set of prior occasions
+\[
+\mathrm{Past}(o_i) = \{o_j \in \mathcal{O} : o_j \prec o_i\},
+\]
+where \(\prec\) denotes causal precedence.
+
+Whitehead's notion of prehension may be formalized as a weighted inheritance map
+\[
+P_i : \mathrm{Past}(o_i) \to \mathcal{D}_i,
+\]
+where \(\mathcal{D}_i\) is the datum-space available to occasion \(o_i\). If each prior occasion contributes some state \(q_j\), then the concrescent state of \(o_i\) may be modeled as
+\[
+q_i = C_i\left(\{w_{ij} q_j : o_j \prec o_i\}\right),
+\]
+where \(w_{ij}\) encodes the relevance, intensity, or causal weight of prior occasion \(o_j\) for the becoming of \(o_i\), and \(C_i\) is a concrescence operator.
+
+A simple linear approximation is
+\[
+q_i = \sum_{j : o_j \prec o_i} w_{ij} q_j,
+\]
+with normalization
+\[
+\sum_{j : o_j \prec o_i} w_{ij} = 1.
+\]
+However, Whiteheadian concrescence is not merely linear averaging. It includes selection, contrast, exclusion, and integration. A more appropriate formalization is therefore variational:
+\[
+q_i = \arg\min_{q \in \mathcal{Q}} \mathcal{F}_i(q),
+\]
+where
+\[
+\mathcal{F}_i(q)
+=
+\sum_{j : o_j \prec o_i} w_{ij} d(q,q_j)^2
++
+\lambda R(q).
+\]
+Here \(d(q,q_j)\) measures deviation from inherited data, while \(R(q)\) encodes internal consistency, admissibility, or aesthetic coherence. This gives a first mathematical interpretation of Whitehead's doctrine: an actual occasion is a local minimizer of inherited causal tension.
+
+A structurally similar picture has recently emerged in research on latent cognitive architectures. Where conventional approaches to machine reasoning treat thought as a narrated sequence of symbolic tokens, more process-oriented frameworks model cognition as a structured evolution through latent memory states:
+\[
+M_0 \xrightarrow{f_1} M_1 \xrightarrow{f_2} \cdots \xrightarrow{f_k} M_k.
+\]
+Each \(M_i \in \mathbb{R}^d\) is a latent memory state updated by a learned transformation \(f_i\), and the sequence constitutes a causal trajectory of reasoning rather than a linguistic performance. Verbalized explanations, on this view, are optional decodings of the underlying latent trajectory rather than its constitutive substance. This is computationally the same move Whitehead makes metaphysically: the narrated or symbolic output is secondary to the processual inheritance from which it is projected. Concrescence is the latent trajectory; the satisfaction of the occasion is the point at which the trajectory stabilizes; and what appears as symbolic thought is a compression of that stabilization into representational form.
+
+\section{From Concrescence to RSVP Field Dynamics}
+
+RSVP replaces discrete occasions with continuous fields over a manifold \(\Omega\). Let
+\[
+\Phi : \Omega \times \mathbb{R} \to \mathbb{R}
+\]
+be a scalar potential field,
+\[
+\mathbf{v} : \Omega \times \mathbb{R} \to T\Omega
+\]
+a vector flow field, and
+\[
+S : \Omega \times \mathbb{R} \to \mathbb{R}
+\]
+an entropy-accessibility field.
+
+The RSVP state is
+\[
+\mathcal{R}(t) = (\Phi(\cdot,t),\mathbf{v}(\cdot,t),S(\cdot,t)).
+\]
+The simplest coupled dynamics may be written as
+\[
+\partial_t \Phi
+=
+D_\Phi \nabla^2 \Phi
+-
+\mathbf{v}\cdot\nabla \Phi
+-
+\alpha S\Phi,
+\]
+\[
+\partial_t \mathbf{v}
+=
+-\nabla \Phi
++
+\nu \nabla^2 \mathbf{v}
+-
+\beta \nabla S
+-
+\gamma \mathbf{v},
+\]
+\[
+\partial_t S
+=
+D_S \nabla^2 S
++
+\eta |\nabla \Phi|^2
++
+\mu |\nabla \times \mathbf{v}|^2
+-
+\rho S.
+\]
+These equations are not meant as final physical laws but as a minimal field grammar illustrating the structural and variational organization of process-relational dynamics. The scalar field diffuses, is advected by vector flow, and is damped by entropy-accessibility. The vector field responds to scalar gradients, entropy gradients, viscosity-like smoothing, and dissipation. The entropy field increases through gradients and torsional complexity while diffusing and relaxing.
+
+Whiteheadian concrescence appears in RSVP as localized field stabilization. A region \(U \subset \Omega\) functions as an occasion-like event when its field configuration approaches a local attractor. Define an RSVP energy functional
+\[
+\mathcal{E}[\Phi,\mathbf{v},S]
+=
+\int_\Omega
+\left(
+\frac{a}{2}|\nabla \Phi|^2
++
+\frac{b}{2}|\mathbf{v}|^2
++
+\frac{c}{2}|\nabla S|^2
++
+V(\Phi,S)
++
+\kappa |\nabla \times \mathbf{v}|^2
+\right)
+\,dx.
+\]
+The corresponding gradient-flow approximation is
+\[
+\partial_t \mathcal{R}
+=
+-\mathcal{G}^{-1}\frac{\delta \mathcal{E}}{\delta \mathcal{R}},
+\]
+where \(\mathcal{G}\) is a metric on field configuration space. In components,
+\[
+\partial_t \Phi = -G_\Phi^{-1}\frac{\delta \mathcal{E}}{\delta \Phi},
+\quad
+\partial_t \mathbf{v} = -G_v^{-1}\frac{\delta \mathcal{E}}{\delta \mathbf{v}},
+\quad
+\partial_t S = -G_S^{-1}\frac{\delta \mathcal{E}}{\delta S}.
+\]
+Thus a Whiteheadian occasion corresponds to a local episode of field relaxation. It is not a persisting object but a completed stabilization event.
+
+\section{Persistence as Recursive Stabilization}
+
+An enduring object is not fundamental in Whitehead. It is a nexus of occasions. In RSVP terms, an enduring object is a time-indexed family of local field configurations
+\[
+A(t) \subset \Omega
+\]
+such that the restriction
+\[
+\mathcal{R}|_{A(t)}
+\]
+remains dynamically coherent across time.
+
+Let \(d_{\mathcal{R}}\) be a distance between local RSVP configurations. A structure \(A(t)\) is persistent over interval \([t_0,t_1]\) if there exists a transport map
+\[
+T_{t \to t+\Delta t}: A(t) \to A(t+\Delta t)
+\]
+such that
+\[
+d_{\mathcal{R}}\left(
+\mathcal{R}|_{A(t+\Delta t)},
+T_{t \to t+\Delta t}\mathcal{R}|_{A(t)}
+\right)
+< \epsilon
+\]
+for sufficiently small \(\epsilon\).
+
+This gives a formal reconstruction of enduring objecthood. A thing persists not because it remains identical to itself as a substance but because its field configuration remains reconstructible under recursive transport. Identity is therefore not sameness but stable recoverability.
+
+The stability condition may be expressed by a Lyapunov functional \(L\):
+\[
+\frac{dL}{dt} \leq 0.
+\]
+If \(L\) measures deviation from a coherent attractor, then persistence occurs when trajectories are drawn toward a basin
+\[
+\mathcal{B}(A)
+=
+\{\mathcal{R}_0 : \lim_{t\to\infty} \mathcal{R}(t;\mathcal{R}_0)=A\}.
+\]
+This is the RSVP version of Whitehead's nexus. A nexus is a basin of recursive inheritance.
+
+\section{Entropy-Accessibility and the Geometry of Possible Futures}
+
+The entropy field \(S\) should not be interpreted merely as thermodynamic disorder. In RSVP it is better understood as accessibility volume. Let \(\Gamma(x,t)\) denote the set of admissible future trajectories beginning from local configuration \(x\) at time \(t\). Define
+\[
+S(x,t) = \log \mathrm{Vol}(\Gamma(x,t)).
+\]
+High \(S\) means many possible continuations. Low \(S\) means constrained continuation. Classical stability emerges when accessibility contracts.
+
+Differentiating,
+\[
+\partial_t S
+=
+\frac{1}{\mathrm{Vol}(\Gamma)}
+\partial_t \mathrm{Vol}(\Gamma).
+\]
+If recursive coupling reduces the admissible trajectory volume, then
+\[
+\partial_t \mathrm{Vol}(\Gamma) < 0,
+\]
+and therefore
+\[
+\partial_t S < 0.
+\]
+This gives the formal basis for effective collapse without requiring a fundamental collapse postulate. A macroscopic configuration becomes definite when alternative coherent continuations lose accessibility.
+
+In this sense, the apparent transition from quantum-like multiplicity to classical definiteness may be modeled as
+\[
+\mathrm{Vol}(\Gamma_{\mathrm{superposed}}) \to \mathrm{Vol}(\Gamma_{\mathrm{classical}})
+\]
+with
+\[
+\mathrm{Vol}(\Gamma_{\mathrm{classical}})
+\ll
+\mathrm{Vol}(\Gamma_{\mathrm{superposed}}).
+\]
+The world does not need to be metaphysically forced into one state; rather, recursively recoverable alternatives vanish from the admissible future geometry.
+
+The accessibility field admits a natural three-regime taxonomy that maps onto qualitatively distinct types of processual organization. In the first regime, accessibility volume is low and contracting: the system is in harmonic lock, its trajectory tightly constrained to a small basin, and the deviation from predicted continuation is near zero. In the second regime, accessibility is moderate and bounded but not collapsing: the system is in a stochastic field, its trajectory chaotically distributed within a bounded region of high-entropy admissibility. In the third regime, accessibility briefly maximizes and then collapses discontinuously: the system undergoes a Dirac-like impulse, a sudden transient event that resets the admissibility structure entirely before re-entering one of the prior regimes. These three regimes — harmonic lock, bounded stochastic field, and impulsive reset — correspond to the three fundamental modes by which a process can maintain coherent identity across time: through tight periodic recoverability, through bounded entropic wandering within a constraint envelope, or through creative discontinuity followed by rapid re-stabilization.
+
+This taxonomy has a striking practical correlate in signal processing systems that attempt to encode acoustic processes without enumerating individual samples. A system operating on the principle that only topological transitions in the accessibility field warrant explicit transmission will naturally produce zero output during harmonic lock — the process is predictable and the encoder need not speak — some bounded output during stochastic field behavior to maintain the envelope constraints, and a brief intense output at impulsive events. The compression ratio is not a design choice imposed on the signal; it is a structural consequence of the accessibility geometry itself. Silence in the data stream is not the absence of information but the presence of sustained harmonic lock, a state in which the admissibility field is so constrained that all admissible continuations are indistinguishable within the relevant tolerance. This is the RSVP interpretation of entropy-based deadband compression: transmission occurs only when \(\partial_t S\) crosses a threshold, which is to say only when the accessibility field is genuinely changing its topology.
+
+\section{CLIO and the Projection of Process}
+
+CLIO formalizes the distinction between full processual reality and its compressed representation. Let \(X\) be the high-dimensional trajectory space of actual field histories:
+\[
+X = \{\mathcal{R}(t) : t \in I\}.
+\]
+Let \(M\) be a representational manifold consisting of compressed observables, symbolic descriptions, interface states, or measurement outcomes. A projection
+\[
+\pi : X \to M
+\]
+maps full trajectories to reduced representations.
+
+The central danger is treating \(M\) as though it were \(X\). Whitehead's critique of misplaced concreteness is precisely this error. An abstraction is mistaken for the concrete occasion from which it was abstracted.
+
+Let \(x_1,x_2 \in X\). If
+\[
+\pi(x_1)=\pi(x_2),
+\]
+then the representation cannot distinguish \(x_1\) from \(x_2\), even though the full trajectories differ. The fiber over \(m \in M\) is
+\[
+\pi^{-1}(m)=\{x\in X:\pi(x)=m\}.
+\]
+The entropy of representation may be defined as
+\[
+S_\pi(m)=\log \mathrm{Vol}(\pi^{-1}(m)).
+\]
+A representation is precise when \(S_\pi(m)\) is small and ambiguous when \(S_\pi(m)\) is large.
+
+CLIO can therefore be understood as a formal extension of Whitehead's ontological principle. Abstractions have reality only by derivation from actual processes. In projection language, \(M\) has operational reality only because it is induced by \(X\). The error of abstraction occurs when one attempts to reverse this relation and infer that the compressed manifold exhausts the generating process.
+
+This error is not confined to philosophical speculation. It manifests concretely in any system that treats its own symbolic outputs as causally self-sufficient explanations of the processes that generated them. When a reasoning system produces a verbalized trace and then treats that trace as the explanation of its behavior, it is performing exactly the map-territory inversion CLIO formalizes. The trace \(m = \pi(x)\) may be coherent, plausible, and even internally consistent while bearing only a loose relation to the latent trajectory \(x \in X\) from which it was projected. Different trajectories \(x_1, x_2 \in X\) satisfying \(\pi(x_1) = \pi(x_2)\) produce identical symbolic outputs even when the underlying processes are structurally distinct. Confabulation, in this framework, is not an aberrant failure but the predictable consequence of high representational entropy \(S_\pi(m)\): many distinct processes map to the same narrative, and selecting one of those narratives as the explanation does not fix which process actually occurred. The cure is not better narration but access to the latent trajectory space prior to compression.
+
+\section{Wave Structure as a Special Case of Process Stabilization}
+
+Wave-structural theories of matter often model particles as standing-wave centers. A simple incoming and outgoing spherical wave pair may be written
+\[
+\Phi_{\mathrm{in}}(r,t)=\frac{A_0}{r}e^{i(\omega t+kr)},
+\]
+\[
+\Phi_{\mathrm{out}}(r,t)=\frac{A_0}{r}e^{i(\omega t-kr)}.
+\]
+Their superposition is
+\[
+\Phi(r,t)
+=
+\Phi_{\mathrm{in}}+\Phi_{\mathrm{out}}
+=
+\frac{A_0}{r}e^{i\omega t}
+\left(e^{ikr}+e^{-ikr}\right).
+\]
+Using
+\[
+e^{ikr}+e^{-ikr}=2\cos(kr),
+\]
+we obtain
+\[
+\Phi(r,t)=\frac{2A_0}{r}e^{i\omega t}\cos(kr).
+\]
+This is a standing spherical wave structure. The apparent particle is associated with a stable interference center.
+
+Within RSVP, this becomes a special case of field stabilization. A wave-center is not a fundamental object but a localized attractor of propagative coherence. More generally, if \(\Psi\) denotes a propagative field and \(\mathcal{D}\) its evolution operator, then
+\[
+\partial_t \Psi = \mathcal{D}\Psi
+\]
+has a stable coherent structure \(\Psi^\ast\) when
+\[
+\mathcal{D}\Psi^\ast = 0
+\]
+or, more generally,
+\[
+\Psi(t+\tau)=e^{i\theta}\Psi(t)
+\]
+for some period \(\tau\) and phase \(\theta\). This periodic recoverability is the formal basis of standing-wave persistence.
+
+The Wave Structure of Matter program associated with Wolff, Harney, and related authors extends this intuition into a broader ontological proposal: that particles as conventionally understood may be interpreted as localized stability phenomena within a deeper propagative substrate, such that the apparent persistence of matter corresponds not to miniature billiard-ball objects moving through empty space, but rather to self-reinforcing interference structures embedded within a continuous dynamical medium~\cite{wolff1986,wolff1990,harney2007,harney2020,weber2007}. These proposals attempt to replace discrete particle ontology with propagative field structures, and to derive relativistic-looking effects from coupled in-wave and out-wave interactions rather than from purely axiomatic spacetime geometry.
+
+From the perspective of RSVP and related frameworks, this lineage becomes interesting precisely because it partially converges with the broader shift away from static object ontology and toward trajectory-dependent stabilization. However, a significant limitation of many WSM-style formulations is that they tend to remain mechanically literal: wave-center language often functions as a conceptual substitution for the very particle ontology it seeks to replace, inheriting a quasi-classical medium ontology even while criticizing particle metaphysics. Replacing particles with standing-wave centers does not automatically dissolve foundational difficulties unless the new ontology either produces greater predictive coherence or achieves deeper explanatory unification. This criticism is not merely external; it is explicitly raised within the WSM critical literature, where authors argue that many WSM claims are asserted rhetorically rather than rigorously demonstrated.
+
+Where RSVP advances beyond these earlier formulations is in refusing to treat either particles or waves as ultimate explanatory categories. Instead, the framework relocates the primary ontological emphasis toward recursive accessibility structure itself, where both apparent objects and propagative modes emerge as observer-relative stabilizations within evolving trajectory manifolds \(X\) projected onto compressed representational geometries \(M\) via projection operators \(\pi : X \to M\). Under this interpretation, matter becomes less a thing than a recursively sustained low-entropy accessibility basin whose persistence depends upon the continued reinforcement of admissible propagative trajectories across coupled environmental fields. In this sense, WSM-style proposals may be interpreted as historically important transitional attempts to move beyond rigid particle ontology, belonging to a lineage of post-mechanistic field metaphysics stretching from Faraday and Maxwell through Einsteinian field realism toward more recent efforts to geometrize matter and inertia through recursive wave interactions~\cite{faraday1855,maxwell1873,einstein1905,einstein1916}. RSVP generalizes this movement by embedding propagative persistence within informational geometry, entropy-accessibility dynamics, and recursive projection structure.
+
+The limitation of simple wave-structural theories is that they often treat the wave-medium itself as primitive. RSVP generalizes this by making the deeper object not the wave, but the recursive accessibility structure by which wave-like, particle-like, and observer-like phenomena emerge.
+
+\section{Lorentz-Like Scaling and the Open Problem of Accessibility Signature}
+
+The symmetric Doppler construction recovers the Lorentz factor algebraically, but it should not be mistaken for a derivation of the full Lorentz group. The construction proceeds from the classical longitudinal Doppler factors for approaching and receding propagation,
+\[
+D_+ = 1+\frac{v}{c},
+\quad
+D_- = 1-\frac{v}{c},
+\]
+and takes their geometric mean:
+\[
+D_{\mathrm{mean}}
+=
+\sqrt{D_+D_-}
+=
+\sqrt{1-\frac{v^2}{c^2}}.
+\]
+The inverse is
+\[
+\gamma
+=
+\frac{1}{D_{\mathrm{mean}}}
+=
+\frac{1}{\sqrt{1-v^2/c^2}}.
+\]
+This shows that temporal dilation factors of the form \(\gamma\) can arise naturally from reciprocal propagative averaging, and in that narrow sense the construction carries genuine structural insight. However, the symmetric Doppler construction should not be interpreted as a full derivation of Lorentzian spacetime geometry. It recovers only the temporal scaling factor. A complete derivation would require additionally establishing length contraction, the relativity of simultaneity, and the invariance of the spacetime interval
+\[
+ds^2 = -c^2dt^2 + dx^2 + dy^2 + dz^2.
+\]
+Without those further elements, the appearance of \(\gamma\) remains a structural observation rather than a geometric reconstruction.
+
+The deeper RSVP problem is not merely to reproduce \(\gamma\), but to explain why a propagative accessibility metric should acquire indefinite Lorentzian signature in the first place. If one simply assumes a metric \(g_{\mu\nu}\) of signature \((-,+,+,+)\), then the argument becomes circular, since Lorentzian structure has already been inserted into the formalism by hand. The genuine research program is therefore to derive indefinite signature from asymmetries internal to propagative accessibility itself.
+
+One possible route is to distinguish between reversible spatial accessibility and irreversible causal accessibility. Let trajectory variation decompose into a recoverable component \(\delta x_R\), representing lateral variation in admissible future configurations, and an irreversible propagative component \(\delta x_I\), representing causal propagation in a fixed forward direction. A candidate accessibility interval might then take the schematic form
+\[
+d\Sigma^2 = \|\delta x_R\|^2 - c^2\|\delta x_I\|^2.
+\]
+The opposition between recoverable and irreversible variation is what gives this expression its indefinite character: the minus sign reflects not a convention about coordinates but the asymmetry between accessible alternatives and committed propagative steps.
+
+This is not yet a derivation of Lorentzian spacetime. It is a proposal for how indefinite signature might arise from the internal structure of propagative accessibility. The open problem is to show that such an accessibility interval is preserved by the admissible transformation group of RSVP dynamics and that this group reduces, in the appropriate limit, to the Lorentz group. That program, deriving spacetime symmetry from accessibility geometry rather than postulating it, constitutes one of the significant unresolved directions of the broader RSVP research program.
+
+A related observation supports the plausibility of this program. In any system of locally interacting processes governed by propagation speeds, a causal partial order emerges naturally: one event causally precedes another when information from the first can physically reach the second within the relevant propagation bound. Define causal precedence on processual events \((p_i, t_i)\) by
+\[
+(p_i, t_i) \prec (p_j, t_j)
+\quad \Leftrightarrow \quad
+t_j \geq t_i + \frac{d(p_i, p_j)}{c_{\max}},
+\]
+where \(d(p_i, p_j)\) is the distance in admissibility geometry and \(c_{\max}\) is the maximum propagative speed. Events satisfying neither \((p_i, t_i) \prec (p_j, t_j)\) nor its converse are causally disjoint: they may co-evolve without mutual interference. The forward causal cone \(\mathcal{C}^+(p_i, t_i)\) is the set of all events reachable from \((p_i, t_i)\). This structure is precisely the light-cone geometry of special relativity, now derived not from the postulated invariance of a spacetime interval but from the propagative admissibility structure of the field. Causal order, in this reading, is not a background geometric fact about spacetime; it is an emergent partial order on processual events, imposed by the finite speed of propagative accessibility and the topology of the admissibility field.
+
+\section{MEM|8 as Computational Process Ontology}
+
+MEM|8 may be modeled as a network of propagative memory nodes. Let \(z_i(t)\in\mathbb{C}\) denote the complex state of node \(i\), with
+\[
+z_i(t)=A_i(t)e^{i\theta_i(t)}.
+\]
+Coupled phase dynamics may be written as
+\[
+\frac{d\theta_i}{dt}
+=
+\omega_i
++
+\sum_j K_{ij}\sin(\theta_j-\theta_i).
+\]
+Amplitude dynamics may be written as
+\[
+\frac{dA_i}{dt}
+=
+-\lambda_i A_i
++
+\sum_j W_{ij}A_j\cos(\theta_j-\theta_i)
++
+I_i(t).
+\]
+Synchronization occurs when phase differences stabilize:
+\[
+\frac{d}{dt}(\theta_i-\theta_j)\to 0.
+\]
+A coherence measure is
+\[
+C(t)=\left|\frac{1}{N}\sum_{j=1}^N e^{i\theta_j(t)}\right|.
+\]
+Here \(C(t)=1\) indicates perfect phase alignment, while \(C(t)\approx 0\) indicates incoherence.
+
+Memory persistence in MEM|8 can be formalized as the recurrence of a coherent phase-amplitude pattern. Let
+\[
+Z(t)=(z_1(t),\dots,z_N(t)).
+\]
+A memory trace is stable if there exists \(\tau>0\) such that
+\[
+\|Z(t+\tau)-Z(t)\|<\epsilon
+\]
+or, more generally, if the trajectory remains within an attractor basin
+\[
+Z(t)\in\mathcal{B}(\mathcal{A}).
+\]
+This gives a computational analogue of Whiteheadian endurance. A memory is not a static stored object. It is a recursively regenerated nexus of propagative coherence.
+
+The oscillator network acquires additional richness when nodes are organized hierarchically. A parent oscillator defines a coarse temporal coordinate system — a slowly varying phase reference — within which child oscillators track finer periodicities. This parent-child coupling means that the phase offset of a child event need not be specified relative to absolute time but only relative to the current phase of its parent, which the parent's own dynamics continuously maintain. The system therefore encodes temporal structure at multiple scales simultaneously without requiring a global clock or absolute timestamp. A high-level oscillator might lock onto a slow cadence — the rhythm of a conversation, the periodicity of a process — while child oscillators track the finer structure within each cycle. When the parent's dynamics shift, the children inherit the correction automatically through coupling, so that only the parent's deviation from prediction need be explicitly transmitted.
+
+The dynamical parameters governing these oscillators — viscosity, which controls resistance to phase perturbation, and friction, which governs the rate of amplitude decay when input stimulus ceases — give the network a physical expressiveness that goes beyond simple phase-locking models. High viscosity produces an oscillator that bends slowly with incoming perturbations, maintaining its prior phase estimate against momentary environmental noise. Low viscosity produces an oscillator that rapidly conforms to new input, appropriate for tracking rapidly varying processes. Friction determines how long a memory trace persists after the stimulus that generated it has ceased. These parameters jointly determine whether a given coherence structure behaves as a rigid attractor, a plastic adaptive tracker, or a rapidly decaying transient register.
+
+The stochastic regime deserves separate treatment. When the incoming process exhibits such high phase irregularity that no rational frequency ratio can be locked onto — when, in the RSVP language, the accessibility field is in a bounded stochastic mode rather than harmonic lock — the appropriate representation is not an oscillator with a well-defined frequency but a noise field parameterized by its spectral color and envelope. Such a field can be fully specified by a small number of parameters: the characteristic frequency band of the noise, the thickness of its amplitude envelope, and its decay rate. Once these are established, zero additional transmission is required to sustain the field; the decoder generates the stochastic texture locally from a deterministic process seeded by those parameters. The noise field is not absent of structure — it has a definite spectral character and a bounded admissibility envelope — but its structure is of a fundamentally different kind than harmonic lock. It is Simondonian preindividual potential given a bounded computational form: organized indeterminacy that sustains itself within constraints without resolving into periodicity.
+
+Salience can be modeled as coherence-weighted energetic persistence:
+\[
+\sigma_i(t)=A_i(t)^2 C_i(t) e^{-\lambda J_i(t)},
+\]
+where \(C_i\) measures local synchronization and \(J_i\) measures jitter or instability. A high-salience trace is one that maintains energetic amplitude while minimizing incoherent phase noise.
+
+This aligns with RSVP if we identify MEM|8 coherence with low entropy-accessibility basins. Stable cognition occurs where propagative memory structures are neither frozen nor chaotic but dynamically recoverable. In this sense MEM|8 operationalizes many of the intuitions that WSM papers articulate only philosophically: persistence through resonance, routing through propagative stability, synchronization-based salience, and coherence-maintained identity structures. The architecture does not merely assert that stable structures resemble standing waves; it constructs an operational environment in which persistence genuinely emerges through recursive propagative reinforcement across distributed coherence fields.
+
+The deeper implication is that the memory trace \(Z(t)\) is not a record but a trajectory. It is causally upstream of any symbolic output derived from it. The influence of the \(i\)-th memory state on a downstream output \(y\) may be measured by its gradient contribution
+\[
+\mathcal{I}(Z_i \to y) := \frac{\partial y}{\partial Z_i},
+\]
+which is well-defined precisely because the memory dynamics are differentiable. This differentiability is what distinguishes propagative memory from token-level symbolic narration: the latter is a projection from the former, and the projection in general is not invertible. When MEM|8 memory states are interpreted within the RSVP field framework, each state becomes a point in the product field
+\[
+Z_i \;\leftrightarrow\; \bigl(\Phi_i(x),\, \mathbf{v}_i(x),\, S_i(x)\bigr),
+\]
+with the scalar, vector, and entropy-accessibility components carrying the full propagative geometry of the cognitive state rather than collapsing it into a symbolic token. Linguistic output, when generated at all, is an optional virtualization of this field geometry: it summarizes what the trajectory has stabilized into, but it does not constitute the stabilization itself.
+
+This reframes what computation itself is, when viewed at the level of physical process rather than symbolic description. The dominant tradition in programming treats computation as the ordered execution of instructions over centralized mutable state, a model that emerged from historically contingent engineering choices and has been inherited throughout the software stack. Viewed physically, however, computation is constrained propagation across admissibility manifolds: not a sequence of symbolic instructions but a structured activation geometry embedded within a substrate topology. Under this interpretation, control flow becomes activation flow, memory locality becomes geometric proximity, synchronization becomes compatibility of propagation fronts, and scheduling becomes manifold navigation under energetic constraints. The shift is not merely terminological. Sequential models externalize coordination into scheduling mechanisms and synchronization primitives. Constraint-propagation models internalize coordination into the admissibility structure itself. The resulting architecture more closely resembles naturally distributed systems — vascular networks, neural tissue, reaction-diffusion fields — where coherent global behavior emerges through local propagation rules and energetic admissibility conditions rather than centralized orchestration. A persistent cognitive structure, on this view, is a sparse activation regime: it minimizes unnecessary transitions, concentrating energetic expenditure near active propagative frontiers while leaving the surrounding field quiescent. Persistence is therefore not merely attractor stability but thermodynamic sparsity — the capacity to sustain coherent propagation while minimizing irreversible state expenditure.
+
+\section{Whiteheadian Abstraction and Projection Error}
+
+Whitehead's critique of abstraction can be formalized through projection loss. Let \(x\in X\) be a full processual state and \(m=\pi(x)\) its representation. Suppose a system acts on \(m\) rather than \(x\). Let
+\[
+u_M : M \to A
+\]
+be a policy in representational space and
+\[
+u_X : X \to A
+\]
+the ideal policy in full trajectory space. The projection error is
+\[
+E(x)=d_A(u_M(\pi(x)),u_X(x)).
+\]
+When \(E(x)\) is small, representation is adequate. When \(E(x)\) is large, abstraction has become pathological.
+
+Goodhart-style failure appears when optimization pressure is applied directly to \(M\). Let \(J_X(x)\) be the true objective and \(J_M(m)\) a proxy. Optimization in \(M\) selects
+\[
+m^\ast=\arg\max_{m\in M}J_M(m).
+\]
+But the corresponding fiber is
+\[
+\pi^{-1}(m^\ast),
+\]
+and there may exist \(x\in\pi^{-1}(m^\ast)\) such that
+\[
+J_X(x)\ll J_X(x_{\mathrm{desired}}).
+\]
+Thus representation can become detached from process. Whitehead calls this the fallacy of misplaced concreteness. CLIO calls it map-territory collapse.
+
+The quality of a projection \(\pi : X \to M\) can be further characterized by what relational structure it preserves across scales. Three distinct senses of locality are relevant here. Physical locality concerns proximity in the underlying trajectory space \(X\): two trajectories are physically local when they are nearby in the metric of \(X\) and therefore subject to similar causal influences. Logical locality concerns direct relational dependence in the process structure: two occasions are logically local when one directly inherits from the other in the causal order. Semantic locality is the subtler category: two occasions are semantically local when they operate on conceptually related structure or participate in functionally coherent processes, even when they are not in direct causal contact. A high-quality projection preserves semantic locality: semantically related trajectories in \(X\) should remain geometrically proximate in \(M\). A pathological projection violates semantic locality, placing conceptually related processes far apart in the representational manifold and forcing the system to impose artificial coordination overhead to reconnect what the abstraction has separated. The Lipschitz condition
+\[
+d_M(\pi(x_1), \pi(x_2)) \leq L \cdot d_X(x_1, x_2)
+\]
+formalizes physical locality preservation, but semantic locality preservation requires the stronger condition that the fibration structure of \(\pi\) reflects the causal and functional organization of \(X\). Abstractions that fail this condition produce representational manifolds in which meaning is geometrically scattered — and cognitive or computational systems operating on such manifolds must expend unnecessary energy reconstructing the relational coherence that the projection destroyed.
+
+\section{Constrained Novelty and Creative Advance}
+
+We can now propose a general variational principle uniting Whitehead, RSVP, CLIO, and MEM|8. Let \(\mathcal{H}\) denote the space of process histories. A preliminary novelty functional may be written as
+\[
+N(h)=\int_0^T d(h(t),\mathcal{A}_t)^2\,dt,
+\]
+where \(\mathcal{A}_t\) denotes the currently stabilized attractor structure of the system and \(h(t)\) is a candidate processual trajectory. This formulation rewards deviation from established structure, but it cannot distinguish creative advance from incoherent noise, because any random departure from an attractor would score equally with a novel coherent trajectory.
+
+A more adequate definition weights novelty by the boundary structure of coherence. Let \(C:X\to\mathbb{R}\) measure local coherence or recoverability. Creative advance arises neither deep inside stable attractors, where novelty is suppressed by rigid inheritance, nor in regions of pure chaos, where novelty cannot be integrated into any recursive structure. It arises near metastable boundaries where coherence gradients are high. Define
+\[
+N_{\partial}(h)
+=
+\int_0^T
+d(h(t),\mathcal{A}_t)^2
+\,
+\sigma(|\nabla C(h(t))|)
+\,dt,
+\]
+where \(\sigma\) is an increasing bounded function, for example
+\[
+\sigma(u)=\frac{u^2}{1+u^2}.
+\]
+Then novelty is rewarded when it occurs near boundaries of established coherence, rather than as arbitrary departure from order. This formalizes Whitehead's creative advance as constrained novelty at the edge of stabilized process: the system is most open to creative integration precisely where coherence gradients are steepest.
+
+The full variational principle then takes the form
+\[
+\mathcal{S}[h]
+=
+\int_0^T
+\left(
+E_{\mathrm{constraint}}(h)
++
+E_{\mathrm{projection}}(h)
++
+E_{\mathrm{incoherence}}(h)
+-
+\lambda N_{\partial}(h)
+\right)\,dt.
+\]
+Here \(E_{\mathrm{constraint}}\) measures RSVP field tension, \(E_{\mathrm{projection}}\) measures representational distortion, and \(E_{\mathrm{incoherence}}\) measures phase or causal instability. A processual universe cannot minimize tension alone, because pure minimization would lead to trivial equilibrium. Whitehead's creativity requires novelty. The variational principle therefore balances stabilization and novelty, but does so not by simply subtracting a raw deviation term, but by rewarding deviation that arises at the boundaries of coherence structure where it can be recursively integrated.
+
+If \(\lambda=0\), the system collapses into static order. If \(\lambda\) is too large, the system becomes incoherent novelty without persistence. The processual regime lies between these extremes, where novelty is integrated into recursively stable structure near the edges of established attractors.
+
+\section{Metastability, Preindividual Fields, and the Limits of Stabilization}
+
+The emphasis on stabilization throughout the preceding sections should not be allowed to collapse into a static theory of attractors. If RSVP, CLIO, and MEM|8 are interpreted only as theories of convergence, then they risk becoming Aristotelian rather than processual: every structure would merely seek its proper form, every field would descend into its basin, and novelty would become a perturbation rather than a constitutive feature of reality.
+
+Simondon's theory of individuation corrects this tendency~\cite{simondon1989}. Where Whitehead insists that actual occasions arise from relational becoming, Simondon insists that the individual is not the starting point of ontology but the metastable resolution of a preindividual field. An individual emerges from tensions that exceed it, and its emergence does not exhaust the field from which it arose. This is crucial for RSVP because it prevents field stabilization from being interpreted as simple equilibrium. A stabilized structure is not the end of process but a local metastable phase within a reservoir of still-unresolved potential.
+
+Let \(x(t)\in X\) denote a process trajectory. A purely gradient-based model would take the form
+\[
+\dot{x}=-\nabla V(x),
+\]
+where \(V\) is an energy or constraint potential. This model captures relaxation but not individuation in the Simondonian sense, because the system simply descends toward an attractor without any capacity to draw upon unresolved tensions not yet integrated into the current attractor geometry. To represent preindividual potential, the dynamics must include a structured excess term:
+\[
+\dot{x}
+=
+-\nabla V(x)
++
+\xi_P(x,t).
+\]
+Here \(\xi_P(x,t)\) is not mere thermal noise. It represents structured preindividual potential: unresolved gradients, latent incompatibilities, hidden symmetries, and unactualized relational tensions that may drive the system beyond its current attractor geometry. Pure noise would erase structure; preindividual potential preserves structure without yet resolving it into individuality. One may think of the stochastic accessibility regime — bounded indeterminacy within a constraint envelope — as a mathematical model of this preindividual state: not the absence of organization but organization that has not yet individuated into a periodic, tractable coherence structure. The preindividual field is organized chaos with definite spectral character, awaiting the conditions under which its tensions will resolve into harmonic lock.
+
+The covariance structure of \(\xi_P\) should therefore not be assumed isotropic. Instead,
+\[
+\mathbb{E}[\xi_P(x,t)\xi_P(y,s)]
+=
+K_P(x,y,t,s),
+\]
+where \(K_P\) encodes the latent organization of the preindividual field. This kernel carries the memory of unresolved relational tensions in the field prior to individuation, functioning as the RSVP analogue of Simondon's preindividual fund: a reservoir from which each individuation draws without exhausting.
+
+Individuation occurs when this structured potential becomes locally integrated into a metastable configuration. Formally, a structure \(A\subset X\) is metastable if trajectories remain near it for long intervals while retaining possible escape routes:
+\[
+\mathbb{P}\left(x(t)\in U_A \text{ for } 0<t<T\right)\approx 1,
+\]
+but
+\[
+\mathbb{P}\left(x(t)\notin U_A \text{ for some } t>T\right)>0.
+\]
+The individual is therefore neither an eternal substance nor a momentary fluctuation. It is a metastable achievement: stable enough to persist, open enough to transform.
+
+The thermodynamic dimension of this picture deserves emphasis. A metastable individuation is not merely energetically favorable in the sense of occupying a low-energy basin; it is thermodynamically sparse in the deeper sense that it sustains coherent propagation while minimizing unnecessary state transitions. Define the activity volume of a processual trajectory as
+\[
+\mathcal{V}(h) = \int_0^T |\dot{h}(t)|_{\mathrm{irrev}} \, dt,
+\]
+where \(|\dot{h}|_{\mathrm{irrev}}\) counts only irreversible component transitions — state changes that dissipate accessibility rather than merely redistributing it. A metastable individual minimizes \(\mathcal{V}\) relative to the functional complexity it maintains: it achieves coherent organization at low thermodynamic cost by concentrating irreversible transitions near active propagative frontiers while keeping the surrounding field quiescent. By contrast, forced serialization — the artificial imposition of global sequential ordering over what could otherwise be locally distributed process — inflates \(\mathcal{V}\) by requiring unnecessary synchronization, idle waiting, and repeated state serialization. The preindividual field \(\xi_P\) can then be understood not only as structured relational tension but as the latent distributed activation geometry that serialized description cannot access: it is the unresolved potential of processes that could proceed locally without global coordination, suppressed by any representational scheme that demands global sequential consistency before admitting them to the ontology.
+
+This reframes RSVP persistence. A low-entropy accessibility basin is not a final state but a temporary individuation of the plenum. Matter, memory, organism, and concept are metastable resolutions of propagative tension rather than permanent occupants of fixed attractors. MEM|8 memory traces are likewise individuations of coherence fields rather than stored objects: each trace is a metastable latent trajectory whose apparent content is a projection, and whose continued existence depends on the recursive reinforcement of the propagative field conditions that generated it. CLIO abstractions are individuated projections that stabilize certain invariants while leaving the preindividual trajectory space \(X\) partially unresolved.
+
+Simondon therefore strengthens the central thesis of the essay without replacing it. Whitehead shows that reality is composed of occasions of becoming; RSVP gives these occasions field-theoretic and entropic structure; CLIO shows how abstractions arise through projection; MEM|8 operationalizes recursive coherence computationally; and Simondon explains why stabilization never exhausts the potential from which it emerges. The processual universe is not merely a machine for producing stable objects. It is a metastable field of individuation in which stability and novelty continually co-produce one another.
+
+\section{Conclusion}
+
+Whitehead's process philosophy, wave-structural matter theories, RSVP, CLIO, and MEM|8 may be understood as different stages in the same ontological migration away from static substance and toward recursively stabilized becoming. Whitehead supplies the metaphysical grammar: actual occasions, prehension, concrescence, nexus, abstraction, and creative advance. Wave-structural theories supply a physical image: matter as standing propagation rather than inert substance. RSVP supplies field equations and entropy-accessibility geometry. CLIO supplies projection theory and a formal critique of abstraction. MEM|8 supplies a computational architecture in which memory and identity are recursively regenerated through coherence. Simondon supplies the corrective insistence that every stabilization remains metastable: the individual is always a temporary resolution of tensions that exceed it.
+
+The common structure throughout is recursive stabilization under constrained propagative inheritance, but this stabilization must be understood metastably rather than statically. Every persistent object, memory, abstraction, or material structure is a temporary individuation of a deeper preindividual field whose unresolved potentials continue to drive creative advance. Identity is not static self-sameness but stable recoverability. Geometry is not merely a container but an emergent ordering. Matter is not inert stuff but stabilized field coherence. Mind is not a separate substance but a high-grade organizational abstraction from recursively integrated process.
+
+In this unified view, reality is not composed primarily of things but of dynamically constrained acts of becoming whose apparent solidity arises from repeated successful regeneration across fields of causal inheritance, and whose continued creativity arises from the inexhaustibility of the preindividual field from which each stabilization emerges.
+
+\newpage
+\section*{Appendices}
+
+\appendix
+
+\section{Functional Analytic Foundations of RSVP Field Dynamics}
+
+Let \(\Omega \subset \mathbb{R}^n\) be a compact spatial manifold with sufficiently smooth boundary \(\partial\Omega\). The RSVP state space is defined as
+\[
+\mathcal{H}
+=
+H^1(\Omega)
+\times
+H^1(\Omega;\mathbb{R}^n)
+\times
+H^1(\Omega),
+\]
+where
+\[
+\mathcal{R}(t)
+=
+(\Phi(\cdot,t),\mathbf{v}(\cdot,t),S(\cdot,t)).
+\]
+
+The RSVP energy functional is
+\[
+\mathcal{E}[\mathcal{R}]
+=
+\int_\Omega
+\left(
+\frac{a}{2}|\nabla\Phi|^2
++
+\frac{b}{2}|\mathbf{v}|^2
++
+\frac{c}{2}|\nabla S|^2
++
+\kappa |\nabla\times\mathbf{v}|^2
++
+V(\Phi,S)
+\right)\,dx.
+\]
+
+Assuming
+\[
+V(\Phi,S)
+=
+\alpha\Phi^2
++
+\beta S^2
++
+\gamma \Phi^2S
++
+\delta S^4,
+\]
+the variational derivatives are
+\[
+\frac{\delta\mathcal{E}}{\delta\Phi}
+=
+-a\nabla^2\Phi
++
+2\alpha\Phi
++
+2\gamma\Phi S,
+\]
+\[
+\frac{\delta\mathcal{E}}{\delta\mathbf{v}}
+=
+b\mathbf{v}
+-
+2\kappa\nabla\times(\nabla\times\mathbf{v}),
+\]
+\[
+\frac{\delta\mathcal{E}}{\delta S}
+=
+-c\nabla^2S
++
+2\beta S
++
+\gamma\Phi^2
++
+4\delta S^3.
+\]
+
+The gradient-flow dynamics become
+\[
+\partial_t\Phi
+=
+a_\Phi
+\left(
+a\nabla^2\Phi
+-
+2\alpha\Phi
+-
+2\gamma\Phi S
+\right),
+\]
+\[
+\partial_t\mathbf{v}
+=
+a_v
+\left(
+2\kappa\nabla\times(\nabla\times\mathbf{v})
+-
+b\mathbf{v}
+\right),
+\]
+\[
+\partial_tS
+=
+a_S
+\left(
+c\nabla^2S
+-
+2\beta S
+-
+\gamma\Phi^2
+-
+4\delta S^3
+\right).
+\]
+
+Equilibrium states satisfy
+\[
+\frac{\delta\mathcal{E}}{\delta\mathcal{R}}=0.
+\]
+
+Therefore coherent objects correspond to critical points of the RSVP energy landscape.
+
+\section{Accessibility Geometry and Entropic Trajectory Volume}
+
+Let \(X\) denote the full trajectory space of admissible field histories:
+\[
+X
+=
+\{
+\mathcal{R}(t)
+:
+t\in[0,T]
+\}.
+\]
+
+Define the admissible future set at state \(x\in X\):
+\[
+\Gamma(x)
+=
+\{
+y\in X
+:
+y \text{ dynamically reachable from } x
+\}.
+\]
+
+The accessibility entropy is
+\[
+S(x)
+=
+\log\mathrm{Vol}(\Gamma(x)).
+\]
+
+Suppose the flow on \(X\) is generated by vector field \(F\):
+\[
+\dot{x}=F(x).
+\]
+
+The local Jacobian is
+\[
+J(x)=DF(x).
+\]
+
+The divergence controls local accessibility expansion:
+\[
+\nabla\cdot F
+=
+\mathrm{Tr}(J).
+\]
+
+If
+\[
+\mathrm{Tr}(J)<0,
+\]
+then nearby trajectories contract exponentially:
+\[
+\|\delta x(t)\|
+\leq
+e^{\lambda t}
+\|\delta x(0)\|,
+\quad
+\lambda<0.
+\]
+
+Therefore
+\[
+\partial_t S(x)
+<
+0.
+\]
+
+This gives a dynamical interpretation of effective collapse: classical stabilization occurs when local trajectory volume contracts sufficiently rapidly that alternative coherent continuations become inaccessible.
+
+The Lyapunov spectrum
+\[
+\{\lambda_1,\dots,\lambda_n\}
+\]
+provides the local accessibility geometry. In the degenerate case where all Lyapunov exponents are non-positive, the system lies on or within a stable manifold and \(D_A = 0\) by the definition below, corresponding to maximally constrained accessibility.
+
+Define the accessibility dimension
+\[
+D_A
+=
+\sum_{\lambda_i>0}
+\frac{\lambda_i}{|\lambda_{\max}|}.
+\]
+
+Regions with low \(D_A\) correspond to stable persistent structures; regions with high \(D_A\) correspond to chaotic or highly exploratory propagative regimes.
+
+\section{Projection Theory and CLIO Fiber Geometry}
+
+Let
+\[
+\pi : X \to M
+\]
+be a projection from full trajectory space \(X\) into compressed representational manifold \(M\).
+
+The fiber over \(m\in M\) is
+\[
+\mathcal{F}_m
+=
+\pi^{-1}(m).
+\]
+
+Define representational entropy:
+\[
+S_\pi(m)
+=
+\log\mathrm{Vol}(\mathcal{F}_m).
+\]
+
+Suppose optimization acts on representation space:
+\[
+m^\ast
+=
+\arg\max_{m\in M}J_M(m).
+\]
+
+The induced optimization on full trajectory space is
+\[
+x^\ast
+\in
+\pi^{-1}(m^\ast).
+\]
+
+Projection error becomes
+\[
+E(x)
+=
+|J_X(x)-J_M(\pi(x))|.
+\]
+
+Define the expected projection distortion:
+\[
+\mathbb{E}[E]
+=
+\int_X
+|J_X(x)-J_M(\pi(x))|
+\,d\mu(x).
+\]
+
+A representation is faithful if
+\[
+\mathbb{E}[E]\to 0.
+\]
+
+The geometry of abstraction can be characterized by fiber curvature. Let \(g_X\) be a metric on \(X\) and \(g_M\) a metric on \(M\). The projection induces a pullback \(\pi^\ast g_M\). The projection distortion tensor
+\[
+D
+=
+g_X-\pi^\ast g_M
+\]
+has high-norm regions corresponding to representational collapse zones.
+
+\section{Standing-Wave Matter and Stability Analysis}
+
+Suppose matter corresponds to a coherent standing-wave solution
+\[
+\Psi(r,t)
+=
+\frac{2A_0}{r}
+e^{i\omega t}
+\cos(kr).
+\]
+
+The governing wave equation:
+\[
+\partial_t^2\Psi
+=
+c^2\nabla^2\Psi
+-
+V'(\Psi).
+\]
+
+Linearize around equilibrium
+\[
+\Psi=\Psi^\ast+\epsilon\eta.
+\]
+
+Then
+\[
+\partial_t^2\eta
+=
+c^2\nabla^2\eta
+-
+V''(\Psi^\ast)\eta.
+\]
+
+Assume modal decomposition
+\[
+\eta(r,t)
+=
+u_n(r)e^{\lambda_n t}.
+\]
+
+Then eigenmodes satisfy
+\[
+\lambda_n^2u_n
+=
+c^2\nabla^2u_n
+-
+V''(\Psi^\ast)u_n.
+\]
+
+Stability requires
+\[
+\mathrm{Re}(\lambda_n)<0
+\]
+for all perturbative modes. Therefore particles emerge as dynamically stable coherent propagative attractors.
+
+\section{Lorentz Structure from Symmetric Propagative Constraints}
+
+Suppose forward and backward propagative frequencies are
+\[
+\omega_+
+=
+\omega_0
+\left(
+1+\frac{v}{c}
+\right),
+\quad
+\omega_-
+=
+\omega_0
+\left(
+1-\frac{v}{c}
+\right).
+\]
+
+Define geometric mean frequency:
+\[
+\omega_g
+=
+\sqrt{\omega_+\omega_-}
+=
+\omega_0
+\sqrt{
+1-\frac{v^2}{c^2}
+}.
+\]
+
+Define proper temporal rate:
+\[
+d\tau
+=
+\frac{\omega_g}{\omega_0}dt
+=
+\sqrt{
+1-\frac{v^2}{c^2}
+}\,dt,
+\]
+so that
+\[
+dt
+=
+\gamma d\tau,
+\quad
+\gamma
+=
+\frac{1}{
+\sqrt{
+1-v^2/c^2
+}}.
+\]
+
+As noted in the main text, this recovers the Lorentz dilation factor but not the full group structure. The open program is to derive indefinite signature from the asymmetry between recoverable and irreversible trajectory components, as sketched by the candidate interval \(d\Sigma^2 = \|\delta x_R\|^2 - c^2\|\delta x_I\|^2\).
+
+\section{MEM|8 Oscillatory Coherence Networks}
+
+Let
+\[
+z_i(t)
+=
+A_i(t)e^{i\theta_i(t)}
+\]
+represent node \(i\). The coupled oscillator network evolves via
+\[
+\dot{z}_i
+=
+(\alpha_i+i\omega_i-|z_i|^2)z_i
++
+\sum_j K_{ij}(z_j-z_i).
+\]
+
+Separating amplitude and phase:
+\[
+\dot{A}_i
+=
+\alpha_iA_i
+-
+A_i^3
++
+\sum_j K_{ij}
+(A_j\cos(\theta_j-\theta_i)-A_i),
+\]
+\[
+\dot{\theta}_i
+=
+\omega_i
++
+\sum_j
+K_{ij}
+\frac{A_j}{A_i}
+\sin(\theta_j-\theta_i).
+\]
+
+Define coherence order parameter:
+\[
+R(t)
+=
+\left|
+\frac{1}{N}
+\sum_{j=1}^N
+e^{i\theta_j}
+\right|.
+\]
+
+Persistent memory states satisfy \(R(t)\to R^\ast>0\). The coherence free-energy functional:
+\[
+\mathcal{F}
+=
+-
+\sum_{ij}
+K_{ij}
+\cos(\theta_i-\theta_j)
++
+\lambda
+\sum_i
+A_i^2.
+\]
+
+Synchronization corresponds to minimization:
+\[
+\frac{\delta\mathcal{F}}{\delta\theta_i}=0.
+\]
+
+Thus memory persistence emerges from phase-energy minimization under propagative coupling constraints.
+
+\section{Category-Theoretic Reformulation}
+
+Let \(\mathbf{Proc}\) denote the category of process states and propagative transformations, with objects \(\mathrm{Ob}(\mathbf{Proc}) = \{\mathcal{R}, \Psi, X, M\}\) and morphisms \(f : A\to B\) representing propagative evolution or projection.
+
+CLIO projection becomes a functor:
+\[
+\Pi : \mathbf{Proc}\to\mathbf{Rep},
+\quad
+\Pi(g\circ f)
+=
+\Pi(g)\circ\Pi(f).
+\]
+
+A stable identity corresponds to a commutative persistence diagram:
+\[
+\begin{CD}
+A_t @>f_t>> A_{t+\Delta t} \\
+@V\Pi VV @VV\Pi V \\
+M_t @>>g_t> M_{t+\Delta t}
+\end{CD}
+\]
+
+Instability occurs when the diagram fails to commute:
+\[
+\Pi(f_t)\neq g_t\circ\Pi.
+\]
+
+Thus persistence may be interpreted categorically as approximate commutativity under recursive propagative transport.
+
+The sheaf-theoretic structure of distributed process coherence provides a further geometric interpretation. Define a presheaf \(\mathcal{F}\) over the open sets of a process network \(\mathcal{G}\), assigning to each subnetwork \(U \subseteq \mathcal{G}\) the local state space \(\mathcal{F}(U) = \prod_{i \in U} S_i\). For overlapping subnetworks \(U\) and \(V\) with non-empty intersection, the restriction maps require consistency on the shared boundary:
+\[
+s_U\big|_{U \cap V} = s_V\big|_{U \cap V}.
+\]
+A valid distributed processual computation is then a global section \(s \in \Gamma(\mathcal{G}, \mathcal{F})\): an assignment of local states to every node that is consistent across all relational interfaces simultaneously. Coherent individuation in the Simondonian sense corresponds to the existence of such a global section. Failure of individuation — the inability to resolve local propagative tensions into a globally consistent configuration — corresponds to the absence of a global section, which may be detected as an obstruction class in \(\check{H}^1(\mathcal{G}, \mathcal{F})\). Deadlock in distributed process networks is a special case of this general obstruction: a set of processual events forming a cycle in the causal precedence relation, so that each event is waiting for a predecessor that is itself waiting, corresponds precisely to the non-existence of a compatible global section. The sheaf-theoretic language thus unifies Whiteheadian inheritance consistency, RSVP field coherence, and distributed process coordination under a single formal condition: processual stability requires that local propagative constraints admit a globally compatible resolution.
+
+A further consequence of this framework concerns the transmission of semantic patterns across distributed process networks. Suppose a node joins an ongoing distributed computation and encounters a reference to a pattern it does not possess locally. The node cannot integrate its local state with the global section until it acquires the missing pattern, because without it the restriction maps over the relevant boundary fail to satisfy the consistency condition. The node must therefore request the missing pattern from upstream before the global section can be restored. This is not a special engineering protocol but a necessary consequence of sheaf consistency: a distributed process achieves coherent joint behavior if and only if every node possesses the local data required to make its boundary conditions compatible with those of its neighbors. The request for a missing pattern is a request for a missing local section, without which the global section does not exist. Failure to fulfill such a request is a Čech obstruction localized to the neighborhood of the requesting node.
+
+\section{Recursive Concrescence and Fixed-Point Existence}
+
+Define concrescence operator
+\[
+C : X\to X.
+\]
+
+An actualized stable structure satisfies
+\[
+C(x^\ast)=x^\ast.
+\]
+
+In physical and cognitive systems, recursive concrescence operators need not be globally contractive across the entirety of trajectory space. It is sufficient that contractivity holds locally within stability basins surrounding persistent propagative attractors. For such basins, if \(C\) satisfies
+\[
+d(Cx,Cy)
+\leq
+\kappa d(x,y),
+\quad
+0<\kappa<1
+\]
+within the basin, then by Banach's fixed-point theorem there exists a unique local fixed point \(x^\ast\) satisfying \(C(x^\ast)=x^\ast\). This gives a rigorous interpretation of enduring processual identity within a region: an object is a recursively regenerating fixed-point of propagative inheritance dynamics, locally stable without requiring global contractivity. The metastable character of such fixed points, described in the main text, follows from the fact that global trajectory space may contain additional regions beyond the basin where the operator is not contractive.
+
+\section{Spectral Geometry of Persistent Structures}
+
+Let Laplacian operator on RSVP manifold be \(\Delta\), with eigenmodes satisfying
+\[
+\Delta\phi_n
+=
+-\lambda_n\phi_n.
+\]
+
+Field decomposition:
+\[
+\Phi(x,t)
+=
+\sum_n
+a_n(t)\phi_n(x),
+\quad
+\dot{a}_n
+=
+-\lambda_n a_n
++
+N_n(a_1,\dots,a_k).
+\]
+
+Low-eigenvalue modes correspond to globally persistent structures. Define persistence spectral density:
+\[
+P(\lambda)
+=
+|a(\lambda)|^2.
+\]
+
+Long-lived coherent objects correspond to concentration of spectral mass near low-curvature eigenmodes. Thus enduring Whiteheadian nex\={u}s may be interpreted as low-eigenvalue propagative coherence structures embedded within recursive accessibility geometry.
+
+\newpage
+
+\begin{thebibliography}{99}
+
+\bibitem{whitehead1929}
+A.~N.~Whitehead,
+\textit{Process and Reality: An Essay in Cosmology},
+Macmillan, New York, 1929.
+
+\bibitem{whitehead1919}
+A.~N.~Whitehead,
+\textit{An Enquiry Concerning the Principles of Natural Knowledge},
+Cambridge University Press, Cambridge, 1919.
+
+\bibitem{whitehead1920}
+A.~N.~Whitehead,
+\textit{The Concept of Nature},
+Cambridge University Press, Cambridge, 1920.
+
+\bibitem{whitehead1925}
+A.~N.~Whitehead,
+\textit{Science and the Modern World},
+Macmillan, New York, 1925.
+
+\bibitem{leclerc1975}
+I.~Leclerc,
+\textit{Whitehead's Metaphysics: An Introductory Exposition},
+George Allen \& Unwin, London, 1975.
+
+\bibitem{griffin1998}
+D.~R.~Griffin,
+\textit{Unsnarling the World-Knot: Consciousness, Freedom, and the Mind-Body Problem},
+University of California Press, Berkeley, 1998.
+
+\bibitem{wolff1986}
+M.~Wolff,
+``Schr\"odinger's Universe Revisited,''
+\textit{Foundations of Physics},
+vol.~16,
+no.~5,
+pp.~421--441,
+1986.
+
+\bibitem{wolff1990}
+M.~Wolff,
+``The Wave Structure of Matter and Its Interaction with Radiation,''
+\textit{Infinite Energy},
+vol.~2,
+no.~8,
+pp.~45--57,
+1990.
+
+\bibitem{harney2020}
+M.~Harney,
+``A Model and Measurement of Gravitational Waves Based on a Modified Yukawa Potential,''
+2020.
+
+\bibitem{harney2007}
+M.~Harney,
+``A Scalar-Energy Field That Predicts the Mass of the Electron-Neutrino,''
+2007.
+
+\bibitem{weber2007}
+M.~Weber and M.~Harney,
+``Derivation of the Relativistic Lorentz Transformation Using the Wave Structure of Matter,''
+2007.
+
+\bibitem{einstein1905}
+A.~Einstein,
+``Zur Elektrodynamik bewegter K\"orper,''
+\textit{Annalen der Physik},
+vol.~17,
+pp.~891--921,
+1905.
+
+\bibitem{einstein1916}
+A.~Einstein,
+``Die Grundlage der allgemeinen Relativit\"atstheorie,''
+\textit{Annalen der Physik},
+vol.~49,
+pp.~769--822,
+1916.
+
+\bibitem{minkowski1908}
+H.~Minkowski,
+``Raum und Zeit,''
+\textit{Physikalische Zeitschrift},
+vol.~10,
+pp.~104--111,
+1909.
+
+\bibitem{maxwell1873}
+J.~C.~Maxwell,
+\textit{A Treatise on Electricity and Magnetism},
+Clarendon Press, Oxford, 1873.
+
+\bibitem{faraday1855}
+M.~Faraday,
+\textit{Experimental Researches in Electricity},
+Taylor and Francis, London, 1855.
+
+\bibitem{shannon1948}
+C.~E.~Shannon,
+``A Mathematical Theory of Communication,''
+\textit{Bell System Technical Journal},
+vol.~27,
+pp.~379--423, 623--656,
+1948.
+
+\bibitem{prigogine1984}
+I.~Prigogine and I.~Stengers,
+\textit{Order Out of Chaos},
+Bantam Books, New York, 1984.
+
+\bibitem{friston2010}
+K.~Friston,
+``The Free-Energy Principle: A Unified Brain Theory?''
+\textit{Nature Reviews Neuroscience},
+vol.~11,
+no.~2,
+pp.~127--138,
+2010.
+
+\bibitem{ashby1956}
+W.~R.~Ashby,
+\textit{An Introduction to Cybernetics},
+Chapman \& Hall, London, 1956.
+
+\bibitem{wiener1948}
+N.~Wiener,
+\textit{Cybernetics: Or Control and Communication in the Animal and the Machine},
+MIT Press, Cambridge, 1948.
+
+\bibitem{smolin2006}
+L.~Smolin,
+\textit{The Trouble with Physics},
+Houghton Mifflin, Boston, 2006.
+
+\bibitem{barbour1999}
+J.~Barbour,
+\textit{The End of Time},
+Oxford University Press, Oxford, 1999.
+
+\bibitem{deleuze1994}
+G.~Deleuze,
+\textit{Difference and Repetition},
+Columbia University Press, New York, 1994.
+
+\bibitem{bergson1911}
+H.~Bergson,
+\textit{Creative Evolution},
+Henry Holt and Company, New York, 1911.
+
+\bibitem{heidegger1962}
+M.~Heidegger,
+\textit{Being and Time},
+Harper \& Row, New York, 1962.
+
+\bibitem{simondon1989}
+G.~Simondon,
+\textit{L'individuation psychique et collective},
+Aubier, Paris, 1989.
+
+\bibitem{deleuze1988}
+G.~Deleuze,
+\textit{Spinoza: Practical Philosophy},
+City Lights Books, San Francisco, 1988.
+
+\end{thebibliography}
+
+\end{document}

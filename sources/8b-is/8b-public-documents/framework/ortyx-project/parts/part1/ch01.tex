@@ -1,0 +1,455 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part I — Immersion
+%  Chapter 1: The Problem of Compression and the
+%             Loss of Temporal Richness
+% ============================================================
+
+\chapter{The Problem of Compression and the Loss of Temporal Richness}
+\label{ch:compression-loss}
+
+\chapepigraph{We do not merely hear sound. We hear structure within
+sound, and structure within structure. What compression removes is
+not always what it appears to remove.}{Flyxion}
+
+\noindent
+Begin with something that is not in dispute.
+
+Digital audio compression works by discarding information. The
+question that practitioners have debated since the early days of
+perceptual coding is which information can be safely discarded ---
+meaning, which information the auditory system would not have
+processed consciously in any case. The psychoacoustic models
+underlying MP3, AAC, and their successors are built on careful
+measurements of masking thresholds: frequencies that are rendered
+inaudible by neighbouring louder frequencies, temporal components
+too brief to register as distinct events, spatial information that
+listeners cannot resolve. Discard what cannot be heard and the
+bitrate drops dramatically with perceptually negligible loss.
+
+This is a genuinely elegant solution to a real engineering problem,
+and it has worked well enough that the compressed formats have become
+the dominant medium through which most people now experience recorded
+music. The engineering success is not in question. What is in question
+--- and what the \Phoenix{} corpus makes its central concern --- is
+whether the psychoacoustic models that define \enquote{what cannot be
+heard} are drawing the right boundary.
+
+The models were built around conscious perception. They identify what
+listeners cannot report hearing, cannot discriminate in controlled
+conditions, cannot use to identify compressed from uncompressed
+material in blind tests. By those measures, they perform well. But
+the question the Phoenix corpus raises is different: are there aspects
+of temporal and harmonic structure that, while not consciously
+discriminable in isolation, contribute to something broader than
+discrimination --- to fatigue reduction, to immersive depth, to the
+particular quality of attention that sustained musical engagement
+requires? If the answer is yes, then perceptual coding models may
+be correctly specifying one boundary while missing another.
+
+This is not a fringe concern. Research in auditory scene analysis,
+in the psychoacoustics of room acoustics, in the neuroscience of
+auditory attention, and in the phenomenology of musical experience
+has repeatedly suggested that the auditory system processes signal
+structure at timescales and in spectral regions that do not register
+as consciously attended content but that nonetheless influence the
+character of the listening experience. The Phoenix corpus is
+responding to a real and partially open question in perceptual
+science. Understanding it requires taking that question seriously
+before asking how well the corpus answers it.
+
+\section{What Is Lost in Compression}
+\label{sec:what-is-lost}
+
+The standard account of lossy compression loss is spectral: certain
+frequency components are removed or coarsely quantized. This account
+is accurate as far as it goes, but it misses a dimension that becomes
+important when thinking about music rather than speech intelligibility
+or isolated tone discrimination. Music is not a collection of
+frequency components that happen to co-occur in time. It is a
+temporal structure within which frequency components stand in
+relationships --- harmonic relationships, envelope relationships,
+phase relationships, onset relationships --- that carry information
+not reducible to their instantaneous spectral content.
+
+Consider a plucked string. The attack transient contains a brief,
+complex burst of energy spanning a wide frequency range. The
+subsequent decay follows a pattern where different harmonics
+decay at different rates, with the higher harmonics generally
+decaying faster, producing the characteristic timbral evolution
+that distinguishes a plucked string from a bowed one, from a
+struck one, from a synthesized approximation. Perceptual coding
+systems typically handle attack transients by switching to finer
+time resolution during the onset and coarser time resolution during
+the steady-state portion of the signal. They handle harmonic decay
+by quantizing the spectral envelope at each analysis frame.
+
+What these procedures preserve reasonably well: the pitch, the rough
+timbral character, the dynamic envelope, the onset timing. What they
+handle less cleanly: the precise relationships between how individual
+harmonics evolve relative to one another over the course of the note.
+The question is whether those relationships matter. In terms of
+conscious discriminability under ABX conditions, often they do not.
+In terms of what musicians and recording engineers report when
+comparing high-quality transfers to compressed versions of the same
+material, the judgments are more complex: something about the spatial
+coherence, the sense of the instrument occupying a specific acoustic
+space, the quality of decay, changes in ways that is difficult to
+quantify but consistent across listeners.
+
+\begin{epistemicstatus}{Phenomenological}
+The claim that compression alters perceptual qualities beyond
+conscious discriminability is grounded in listener reports and
+practitioner judgments, not in controlled perceptual experiments
+with the specific frameworks described in this monograph. The
+observations are real and replicable at the level of informal
+consensus; their mechanistic explanation remains open.
+\end{epistemicstatus}
+
+The Phoenix corpus takes this phenomenological observation as its
+starting point and proposes a mechanistic account. The account
+centres on what it calls \emph{spectral fracturing}: the disruption
+not of individual frequency components but of the temporal
+relationships between them --- the way harmonics evolve together,
+the way onset transients establish initial harmonic structure, the
+way decay patterns carry information about the physical source. The
+claim is that these relationships are preserved in the original
+signal, that they are selectively destroyed by lossy compression,
+and that their destruction accounts for the perceptual qualities
+that practitioners describe as \enquote{compression artifacts} even
+in cases where standard psychoacoustic metrics suggest the loss
+should be inaudible.
+
+Whether this account is correct is a question that will require
+careful unpacking. For now, it is sufficient to note that the
+diagnostic gesture --- something about temporal relationship
+structure, not just spectral content, is being lost --- is
+consistent with existing literature and worth examining seriously.
+
+\section{The Temporal Dimension of Auditory Structure}
+\label{sec:temporal-dimension}
+
+One of the conceptually interesting moves in the Phoenix corpus is
+the systematic elevation of the temporal dimension of audio signals
+over the spectral dimension. Conventional digital audio processing
+thinks primarily in frequency space: the Fourier transform provides
+the canonical representational basis, and operations on audio are
+typically defined as manipulations of spectral content. The corpus
+proposes an inversion: that temporal structure should be the primary
+representational primitive, and that spectral information should be
+derived from temporal patterns rather than the reverse.
+
+This is not as radical a departure as it might appear. The auditory
+system itself is better understood as a temporal processor than a
+spectral analyser. The cochlea does perform a frequency decomposition,
+but auditory nerve fibres encode information primarily through their
+firing timing patterns, and the higher auditory pathway is exquisitely
+sensitive to inter-aural timing differences, to the temporal fine
+structure of sound within each frequency channel, and to the timing
+relationships between onset events across frequency channels. The
+auditory scene analysis literature, particularly the work following
+from Albert Bregman's foundational studies, has established that
+the perceptual grouping of sound into streams --- the ability to
+hear distinct instruments in a complex mixture --- depends critically
+on temporal coherence: components that start together, modulate
+together, and share onset patterns tend to be grouped together.
+
+The Phoenix corpus is drawing on this body of work, at least
+implicitly, when it argues that temporal stability --- measured
+through the jitter metrics of the \Marine{} --- is the primary
+dimension along which salience should be assessed. A signal whose
+timing is stable, whose peaks arrive at predictable intervals, whose
+amplitude modulations follow a coherent pattern, is a signal that
+the auditory system can group and track. A signal whose timing is
+irregular, whose peaks are displaced from prediction, whose amplitude
+modulations are incoherent, is a signal that resists grouping ---
+that sounds, in experiential terms, degraded, flat, or diffuse.
+
+The technical implementation of this insight is the \Marine{}, and
+it is worth examining in some detail before any critical pressure is
+applied.
+
+\section{The Marine Salience Algorithm: First Encounter}
+\label{sec:marine-first}
+
+The \Marine{} is presented in the Phoenix corpus as a salience
+detector that operates in the time domain, without recourse to the
+Fast Fourier Transform or any global spectral decomposition. Its
+operation is local and sequential: it examines a continuous
+waveform peak by peak, computing at each peak a small set of
+quantities that together constitute a salience estimate for that
+moment in the signal.
+
+The core quantities are straightforward. For each detected peak at
+time $t_i$ with amplitude $a_i$, the algorithm computes the
+instantaneous period $T_i = t_i - t_{i-1}$, the difference between
+the current inter-peak interval and the previous one. It maintains
+exponential moving averages of both period and amplitude:
+\[
+  \bar{T}_i = (1 - \alpha)\bar{T}_{i-1} + \alpha T_i, \qquad
+  \bar{A}_i = (1 - \beta)\bar{A}_{i-1} + \beta a_i,
+\]
+where $\alpha$ and $\beta$ are smoothing parameters. From these
+it derives period jitter $\Jp(i) = |T_i - \bar{T}_i|$ and
+amplitude jitter $\Ja(i) = |a_i - \bar{A}_i|$, measuring how
+much the current peak deviates from the recent local trend.
+
+The salience estimate then combines local energy $E_i$, a harmonic
+alignment score $H_i$ (measuring whether the current peak frequency
+is consistent with a harmonic series), and a jitter-based coherence
+term:
+\[
+  \SalFunc(i) = w_E E_i + w_H H_i
+  + w_J\!\left(\frac{1}{1 + \Jp(i) + \Ja(i)}\right).
+\]
+The jitter term takes values near 1 when timing is highly stable
+and approaches 0 as timing becomes increasingly irregular. The
+weights $w_E$, $w_H$, $w_J$ are parameters of the system.
+
+What is architecturally distinctive about this formulation is the
+O(1) computational complexity per peak: the algorithm maintains
+no global state beyond the running averages and requires no look-ahead.
+This makes it suitable for real-time processing in resource-constrained
+environments, a practical advantage that is separate from any
+theoretical claims about what jitter measures. For embedded audio
+systems, for low-latency processing pipelines, for hardware
+implementations where FFT compute cost is prohibitive, a peak-level
+salience estimator of this kind has clear engineering utility
+regardless of how one evaluates the corpus's broader theoretical
+architecture.
+
+\begin{technote}[Technical Note: O(1) Salience Estimation]
+The \Marine{} achieves constant-time-per-sample operation by
+restricting its state to exponential moving averages over a sliding
+window. The computational footprint per peak is:
+two multiplications and additions (period and amplitude EMA
+updates), two absolute value computations (jitter terms), one
+reciprocal (coherence term), and three multiply-accumulates
+(salience weighted sum). On modern hardware this is a handful of
+clock cycles; on embedded processors it remains tractable without
+dedicated DSP co-processors. The FFT-based alternative for a
+comparable frequency resolution requires $O(N \log N)$ operations
+per frame, where $N$ is the frame length, typically 512--8192
+samples. For real-time applications with strict latency budgets,
+the difference is significant.
+\end{technote}
+
+The conceptual inversion --- treating jitter as structural
+information rather than noise to be suppressed --- is the move
+that gives the algorithm its theoretical interest beyond the
+engineering context. In conventional signal processing, jitter
+is an imperfection to be minimized: clock jitter in digital systems
+degrades performance, timing jitter in audio converters introduces
+distortion. The Marine corpus reframes jitter as a measurement of
+signal quality in a more fundamental sense: a signal with low
+jitter at the peak level is a signal that is organized, structured,
+and likely to carry the kind of temporal coherence that the
+auditory system can group and track. A signal with high jitter
+is one that has been disrupted --- whether by compression artifacts,
+by room reflections, by dynamic range processing, or by the
+underlying incoherence of noise.
+
+This reframing is attractive because it aligns the algorithm's
+primary variable with a genuine property of the signal rather than
+a measurement artifact. Whether the alignment is tight enough to
+support the full weight of the theoretical architecture built on
+top of it is a question for later chapters.
+
+\section{Compression as Temporal Disruption}
+\label{sec:compression-temporal}
+
+With the Marine salience framework in view, it becomes possible to
+state the Phoenix corpus's central diagnostic claim in more precise
+terms. Lossy compression, on this account, acts as a temporal
+disruption mechanism. The window-based transform coding at the heart
+of MP3 and AAC introduces discontinuities at block boundaries that
+manifest as jitter at the peak level of the decoded waveform. The
+psychoacoustic masking models that govern quantization decisions
+operate on the spectral envelope within each block, without
+reference to how peaks in the decoded waveform will relate to each
+other across block boundaries. The result is that the spectral
+content within each block may be well-preserved by psychoacoustic
+standards while the temporal relationships between peaks across
+blocks are systematically disrupted.
+
+This is a specific, testable claim. It predicts that Marine-derived
+jitter measurements should be systematically higher in
+compressed-and-decoded audio than in the original waveform, even
+in cases where the compressed version scores well on conventional
+perceptual quality metrics. It predicts that this jitter increase
+should be concentrated at block boundaries. It predicts that the
+degree of jitter increase should correlate with the aggressiveness
+of the compression --- with the bitrate, with the quantization
+step size, with the degree of spectral coarsening applied.
+
+These are predictions that could in principle be tested with
+existing audio datasets and standard compression tools. The Phoenix
+corpus does not, in the materials examined here, provide such a
+test with the systematic controls that would establish the
+prediction quantitatively. That gap will become important later.
+For now, the claim is noted as a specific and in-principle
+empirically accessible prediction, which already places it in
+a better epistemic position than claims that resist operationalization
+entirely.
+
+\begin{epistemicstatus}{Operationally Grounded}
+The prediction that lossy compression increases Marine-derived jitter
+metrics at block boundaries is specific, measurable, and in principle
+testable with existing tools. The prediction has not been formally
+tested in the Phoenix corpus, but its structure is sound: it specifies
+a measurable quantity, a direction of effect, a mechanistic rationale,
+and a correlation with a known parameter (bitrate). This is the kind
+of claim the \Ortyx{} audit process will classify as survivable pending
+experimental confirmation.
+\end{epistemicstatus}
+
+\section{The Compression--Cognition Analogy}
+\label{sec:compression-cognition}
+
+The Phoenix corpus does not confine its framework to audio processing.
+Having established the Marine salience metric as a tool for detecting
+temporal coherence in audio signals, it extends the framework to a
+much broader claim: that the relationship between salience-filtered
+temporal structure and meaningful signal content is a general
+principle of cognition, not a specific property of the auditory
+modality.
+
+The extension proceeds in several steps. First, the corpus notes
+that the auditory system's preference for temporally coherent signals
+is not unique to hearing: visual processing, proprioception, and
+interoception all exhibit analogous stability preferences. Signals
+that are temporally coherent --- that arrive in predictable patterns,
+that modulate consistently, that fit within established temporal
+frames --- are processed more efficiently, grouped more readily, and
+experienced more richly than signals that are temporally chaotic.
+Second, it observes that this stability preference is itself
+structurally related to the efficiency of representation: a temporally
+coherent signal is more compressible than an incoherent one, because
+its future states are more predictable from its past states. Third,
+it proposes that the relationship between coherence and
+compressibility is not merely an engineering convenience but reflects
+something about the structure of meaningful information: that meaning
+tends to reside in structure that is stable enough to be tracked,
+and that temporal stability is the primary marker of that structure.
+
+This sequence of moves is interesting and partially supported by
+existing cognitive science. The connection between predictive
+processing accounts of perception and compression efficiency is
+well-established in the theoretical neuroscience literature.
+The claim that temporal coherence is a cross-modal salience marker
+is consistent with work on sensory integration and attentional
+selection. The stronger claim --- that temporal stability is the
+\emph{primary} marker of meaningful structure across all modalities
+and cognitive levels --- is where the corpus begins to outrun
+its support.
+
+But that observation belongs to a later chapter. The present task
+is to follow the logic on its own terms, which means allowing the
+extension to unfold before pressing on its joints.
+
+\section{A Historical Note: When Constraint Forced Elegance}
+\label{sec:historical-constraint}
+
+Before examining the Phoenix corpus's specific proposals,
+it is worth marking a historical observation that
+will recur in Part~IV and Part~V. The tension between
+rich signal content and representational economy is
+not new. It was resolved, with striking elegance, by
+hardware scarcity.
+
+The MOS Technology SID chip --- the sound synthesis
+engine of the Commodore 64 --- represents sound not
+as sampled audio but as a procedural specification:
+oscillator parameters, envelope sequences, filter
+modulations, and timing registers that together constitute
+a program for generating sound rather than a recording
+of it. A minutes-long composition fits in a few kilobytes
+not through lossy compression of a waveform but
+through the replacement of the waveform by the
+operator that generates it.
+
+This is the distinction between extensional and
+intensional representation --- a distinction that
+Chapter~19 will formalize in detail. The SID developer
+stored the structure, not the output. Constraint
+forced this choice; but the choice turned out to be
+correct in a deeper sense: the structure is more
+reusable, more compact, and more honest about what
+it is than the output would have been.
+
+The Phoenix corpus's concern with what compression
+destroys --- the temporal microstructure of acoustic
+events --- can be read, at one level, as a lament
+that modern audio codecs made the opposite choice
+from the SID developer: they store a degraded waveform
+rather than a generative operator. Whether this framing
+survives the audit is a question for Parts~II and~III.
+For now, it is sufficient to note that the intuition
+the Phoenix corpus is reaching for --- that there is
+something wrong with representing structure as output
+--- has a genuine engineering precedent.
+
+\section{A Framework That Wants to Unify}
+\label{sec:unification-desire}
+
+Every broad theoretical framework contains, at some level, a
+unification ambition --- a drive toward discovering that apparently
+disparate phenomena share a common underlying structure. This
+ambition is epistemically double-edged. When the underlying structure
+is real, unification produces genuine compression: it allows many
+observations to follow from few principles, reduces the number of
+independent explanatory commitments, and generates non-obvious
+predictions. When the underlying structure is imposed rather than
+discovered, unification produces the opposite: it inflates the
+explanatory vocabulary to accommodate recalcitrant data, forces
+disparate phenomena into a shared frame that distorts both, and
+generates predictions that appear novel but are actually entailed
+by the definitional choices embedded in the framework.
+
+The Phoenix corpus has a strong unification ambition. It wants the
+Marine salience metric to be simultaneously: a tool for audio quality
+assessment, a model of auditory attention, a principle of cognitive
+processing, a framework for AI architecture, and a philosophical
+account of what it means for a signal to be meaningful. These
+ambitions are stated progressively across the corpus, with each
+layer appearing after the previous layer has been established enough
+to lend support.
+
+At the level of audio quality assessment, the ambition is plausible
+and the engineering is concrete. At the level of auditory attention
+modelling, the connection to existing literature is real if
+incomplete. At the level of cognitive processing, the extension
+requires assumptions that are not established by the audio work.
+At the level of AI architecture, the framework is proposing a
+research programme rather than reporting results. At the level of
+philosophical account of meaning, the framework is making claims
+that would require an entirely different order of argument to
+support.
+
+Whether this progressive extension constitutes a genuine scientific
+programme --- one that generates testable predictions at each level
+that could in principle disconfirm the framework --- or whether it
+constitutes what will later be called Semantic Universality Collapse
+($\FailGeo{3}$) --- the expansion of a framework's vocabulary until
+it can assimilate any observation without constraint --- is the
+central question of Parts~II and~III.
+
+For now, the observation is recorded without verdict. The unification
+ambition is noted as present, as partially grounded, and as in need
+of careful level-by-level examination. The reader who finds the
+framework exciting at this point --- who senses in it the possibility
+of a genuinely unified account of signal, attention, cognition, and
+meaning --- is responding to something real. The excitement is not
+irrational. It is data about what the framework is doing well.
+Whatever happens in the chapters that follow, that response deserves
+to be taken seriously as a starting point.
+
+\medskip
+
+The next chapter turns to the most architecturally ambitious
+component of the corpus: the \MEMeight{} wave-interference memory
+system, which extends the salience framework from signal processing
+into a full model of how memory and cognition might be grounded in
+temporal dynamics rather than static representations. It is where
+the framework becomes most original and, not coincidentally, where
+the questions accumulate most rapidly.

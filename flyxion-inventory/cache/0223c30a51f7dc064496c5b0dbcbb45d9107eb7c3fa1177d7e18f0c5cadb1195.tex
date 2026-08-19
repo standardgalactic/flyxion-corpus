@@ -1,0 +1,227 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part IV — Reconstruction
+%  Chapter 18: Memory, Interference, and Field Dynamics
+% ============================================================
+
+\chapter{Memory, Interference, and Field Dynamics}
+\label{ch:memory-field}
+
+\chapepigraph{The question is not whether memory is a field.
+The question is whether treating it as a field generates
+predictions that treating it as storage does not. If it
+does, the field is not a metaphor. It is a hypothesis.}{Flyxion}
+
+\noindent
+The \MEMeight{} architecture's translation into
+RSVP-compatible terms is the most technically demanding
+of the reconstruction tasks, because the \MEMeight{}
+formalism is the most elaborate of the Phoenix corpus's
+formal apparatus. The reconstruction works at two levels:
+the mathematical level, where the wave superposition
+formalism connects to RSVP field dynamics, and the
+conceptual level, where the dissolution of the
+storage--process distinction connects to the RSVP
+principle of constraint-governed trajectory evolution.
+
+\section{Wave Superposition as Field Dynamics}
+\label{sec:wave-field}
+
+The \MEMeight{} global memory field:
+\[
+  \MemField(x,t) = \sum_{i=1}^{N} M_i(x,t)
+  = \sum_{i=1}^{N} A_i(x,t)\,e^{i(\omega_i t + \phi_i(x,t))}
+\]
+is a superposition of complex-valued wave functions
+over a representational space $x$ and time $t$. In
+RSVP-compatible terms, this can be read as a
+parameterization of the RSVP scalar field $\phi(x,t)$
+in the specific case where the field's dynamics are
+governed by wave superposition rather than by the
+general RSVP field equations.
+
+The reading is metaphorical at the current state of
+the reconstruction: it does not follow from the RSVP
+field equations that the field should be a superposition
+of complex exponentials with the specific amplitude
+decay and emotional modulation terms of the \MEMeight{}
+formalism. But the reading is productive: it suggests
+that the \MEMeight{} formalism might be derivable as
+a special case of the RSVP dynamics under specific
+boundary conditions, which is a testable theoretical
+claim.
+
+What is not metaphorical is the interference energy:
+\[
+  E_{\mathrm{int}} = |\MemField|^2
+  = \sum_i |M_i|^2 + \sum_{i \neq j} M_i\overline{M_j}.
+\]
+The cross-term $\sum_{i \neq j} M_i\overline{M_j}$
+encodes $O(N^2)$ pairwise relationships at $O(N)$
+storage cost. This is a mathematical fact about wave
+superposition, independent of the interpretation of
+$x$, $\omega_i$, or $\phi_i$. It is at \LevelI{} and
+requires no RSVP translation to be established. The
+RSVP translation adds the interpretation --- this is
+a form of constraint-governed associative memory ---
+without changing the mathematics.
+
+\section{Memory as Constraint-Governed Trajectory}
+\label{sec:memory-trajectory}
+
+The more significant reconstruction is conceptual.
+The \MEMeight{} architecture proposes that memory is
+not a stored object but an ongoing process: the global
+field $\MemField(x,t)$ is simultaneously the stored
+information and the ongoing dynamics. This dissolution
+of the storage--process distinction is, in RSVP terms,
+the claim that memory is a constraint-governed trajectory
+rather than a state.
+
+In RSVP dynamics, the trajectory of the scalar field
+$\phi(x,t)$ is governed by constraint equations that
+determine how the field can evolve. The field's current
+value at each point constrains its future values;
+the constraints are the memory. Retrieving a memory,
+in this frame, is not accessing a stored object but
+allowing the constrained field dynamics to evolve
+toward the attractor corresponding to the queried
+pattern.
+
+This RSVP framing makes explicit what the \MEMeight{}
+architecture implies: the constraint structure of the
+field --- the pattern of constructive and destructive
+interference that determines which resonances are
+amplified --- is the memory. Not the field values
+themselves, which change continuously, but the pattern
+of constraints that shapes how the field evolves.
+
+\begin{salvage}[Reconstruction: Retrieval as Constraint Relaxation]
+In the RSVP frame, memory retrieval is the application
+of a query that partially specifies the field's
+admissible trajectory space. The query $Q$ constrains
+which field trajectories are admissible; the system
+then evolves toward the constraint-satisfying trajectory
+that is closest to the current field state. The
+``resonance'' in the \MEMeight{} retrieval integral
+$R_i(Q) = |\int Q(x)\overline{M_i(x,t)}\,dx|$ is
+the degree to which memory $M_i$ is consistent with
+the query's constraints. High resonance indicates
+high constraint-compatibility; the memory with highest
+resonance is the one whose admissible trajectory space
+most overlaps with the query's constraints.
+\end{salvage}
+
+\section{The Storage-Process Dissolution in RSVP}
+\label{sec:storage-process-rsvp}
+
+The dissolution of the storage--process distinction
+--- one of the philosophically most interesting features
+of the \MEMeight{} architecture --- is a natural
+consequence of the RSVP field-theoretic framework.
+In RSVP, the scalar field $\phi(x,t)$ evolves according
+to its constraint equations; there is no separate
+``storage medium'' that holds values independently
+of the dynamics. The field's current state is
+simultaneously what the system knows (the stored
+information, represented as constraint patterns) and
+what the system is doing (the ongoing evolution under
+those constraints).
+
+This is not a unique feature of RSVP or \MEMeight{};
+it is characteristic of any field-theoretic representation.
+The electromagnetic field, the gravitational field,
+and quantum fields all exhibit the same property:
+there is no separate ``stored value'' independent of
+the field dynamics. The \MEMeight{} contribution is
+to propose that a similar field-theoretic structure
+should govern the representation of memory in cognitive
+systems, and the RSVP translation situates this
+proposal within a broader theoretical context that
+has developed the field-theoretic approach in other
+domains.
+
+\section{Emotional Modulation as Field Coupling}
+\label{sec:emotional-modulation}
+
+The emotional modulation of amplitude envelopes in
+\MEMeight{}:
+\[
+  A_i(x,t) = A_i^0\exp(-\lambda_i t)(1 + \eta\,e(t))
+\]
+becomes, in the RSVP translation, a coupling between
+the memory field and an external field representing
+the system's affective state. The emotional coupling
+parameter $\eta$ determines how strongly the affective
+field modulates the memory field's dynamics; the
+decay constant $\lambda_i$ represents the rate at
+which memory $M_i$'s contribution to the field
+dissipates in the absence of reinforcement.
+
+This translation does not resolve the operationalization
+gap identified in Chapter~12: $e(t)$ remains without
+a measurement procedure. What the translation does
+is situate the operationalization gap within a more
+general framework: the problem of specifying $e(t)$
+is the problem of operationalizing the affective field
+coupling in a RSVP-compatible system, which connects
+to existing work in computational affective computing
+rather than being unique to the Phoenix corpus.
+
+\section{The Biological Correspondence Hypothesis}
+\label{sec:biological-correspondence}
+
+Chapter~4 identified the biological correspondence
+hypothesis --- the claim that the Marine--\MEMeight{}--\HCFone{}
+architecture corresponds to known properties of
+biological auditory and cognitive systems --- as a
+testable prediction that the Phoenix corpus had not
+yet systematically evaluated. The RSVP translation
+does not provide the missing evaluation, but it
+provides a more precise statement of what the hypothesis
+predicts.
+
+In RSVP-compatible terms, the biological correspondence
+hypothesis claims:
+
+(1)~The auditory system implements something functionally
+equivalent to the Marine jitter metric in its
+pre-attentive processing of sound: it preferentially
+represents signals in low-$\AccEnt$ regions of the
+acoustic trajectory space.
+
+(2)~The hippocampal memory system implements something
+functionally equivalent to \MEMeight{} wave interference
+in its encoding and retrieval of episodic memories:
+memories are represented as interference patterns in
+a network whose dynamics are governed by constraint
+equations analogous to the RSVP field equations.
+
+(3)~Neural population coding in auditory cortex
+implements something functionally equivalent to
+\HCFone{} conformity encoding: correlated neural
+populations are represented efficiently through
+consensus encoding of shared dynamics rather than
+independent encoding of individual firing rates.
+
+Each of these three claims is at \LevelII{} (computational
+metaphor) in its current formulation and would require
+specific experimental designs to elevate to \LevelI{}.
+The RSVP translation makes the experimental requirements
+explicit by specifying what the RSVP-compatible versions
+of these claims predict about measurable neural dynamics.
+
+\medskip
+
+Chapter~19 turns to the Nexus framework --- a new case
+study that enters the monograph at the reconstruction
+stage rather than the immersion stage. Unlike the Phoenix
+corpus, which was the primary object of the audit, the
+Nexus framework is introduced here as a parallel development
+that instantiates the same RSVP principles the reconstruction
+has been developing, but at the level of civilization-scale
+computational infrastructure rather than individual
+cognitive systems. Its inclusion is motivated by the
+observation that the extensional--intensional distinction
+central to the Phoenix critique applies with equal force
+to AI computational memory as a whole.

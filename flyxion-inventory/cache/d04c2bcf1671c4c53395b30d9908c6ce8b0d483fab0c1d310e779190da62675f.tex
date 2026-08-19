@@ -1,0 +1,604 @@
+\documentclass[11pt]{article}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+% Container lacks the Pagella Math OTF; using classic math setup here.
+% For local builds, restore:
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage{amsmath,amssymb}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsthm}
+\usepackage{microtype}
+\emergencystretch=1.5em
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}[definition]{Proposition}
+
+\newcommand{\Op}{\mathcal{O}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\Ecol}{\mathcal{E}}
+\newcommand{\Ex}{\mathsf{X}}
+\newcommand{\Cst}{\mathsf{C}}
+\newcommand{\Reach}{\mathsf{R}}
+\newcommand{\Fut}{\Gamma}
+\newcommand{\Health}{\mathsf{H}}
+
+\title{Operator Ecology}
+\author{Flyxion}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two cities, identical in every recorded particular, are shown to
+diverge not in state but in something a survey cannot record: the
+persistence of the operators --- maintenance, training, governance,
+record-keeping --- that keep each city able to renew itself. The
+essay develops a hierarchy of increasingly demanding notions of
+sameness between systems under damage and repair. State equivalence
+and structural equivalence are shown insufficient first; behavioral
+equivalence, in the sense of coalgebraic bisimulation, improves on
+them but is shown insufficient in turn, since it says nothing about
+a system once its current behavior has already been lost.
+\emph{Regenerative equivalence} --- agreement not in current state or
+behavior but in the capacity to recreate future behavior after damage
+--- is proposed as the operative notion, and an operator ecology,
+following Alicia Juarrero's account of constraint-based causation, is
+defined as the constraint network responsible for maintaining that
+capacity rather than as a mere inventory of operators. The vocabulary
+this yields --- keystone operators, extinction, ecological health ---
+is then shown to already be latent in the finite characterization
+theorem of \emph{Repair Categories and the Local Geometry of
+Continuation}: this essay adds no new theorem to that result, only
+the reading under which its reachability neighborhoods are niches,
+its repair operators are maintenance species, and its reconstructions
+are ecological restorations.
+\end{abstract}
+
+
+% ---------------------------------------------------------------------
+\section{Two Cities}\label{sec:cities}
+
+Consider two cities, alike in every particular that a survey could
+record. The same streets run at the same widths through the same
+neighborhoods. The same buildings stand at the same addresses, built
+to the same codes from the same materials. The same population
+occupies them, distributed across the same trades, the same
+households, the same schools. If a census were taken of either city
+on the day the comparison begins, the two censuses would not
+disagree.
+
+In the first city, the ordinary work of maintenance continues.
+Roads are resurfaced before they crack open. Water and power lines
+are repaired on schedule rather than after failure. Apprentices are
+trained by masters who were themselves once apprentices, and the
+training is not occasional but structured, funded, and expected. Civil
+institutions are staffed, records are kept and consulted, and the
+offices of governance turn over their functions from one occupant to
+the next without the functions themselves lapsing. In the second
+city, this work stops. Not all at once, and not through any single
+catastrophe: the maintenance schedule quietly slips, the apprenticeship
+program loses funding and is not restarted, the records office is
+short-staffed and then unstaffed, the offices of governance persist
+in name after the people who understood how to run them have gone. No
+building falls down on the first day. No law is repealed. Nothing
+visible changes.
+
+For some time, an inspection of either city would find them
+indistinguishable. The buildings are still standing in both. The
+streets are still there. A survey conducted one month after the
+divergence begins, or even one year after, would report two cities
+matching in essentially every recorded particular, because what has
+actually diverged has not yet left a mark on the state that a survey
+records. It has left a mark only on what each city is still capable
+of doing about the state it is in.
+
+Ten years is enough. In the first city, the roads that needed
+resurfacing were resurfaced, the pipes that needed replacing were
+replaced, and a visitor notices nothing remarkable, because
+nothing remarkable has been allowed to happen: this is what
+successful maintenance looks like, which is to say it looks like
+nothing at all. In the second city, the same decade of ordinary wear
+has had nobody to answer it. Roads have cracked and stayed cracked.
+Failures that a trained crew would have caught early have gone
+uncaught and compounded. The office that once coordinated repairs no
+longer has anyone who remembers how the coordination worked, because
+the people who would have taught that knowledge to a successor were
+never funded to do so. The two cities, identical a decade earlier
+down to the address, are no longer close to identical in any sense
+that matters to the people living in them.
+
+Nothing in this account requires an explanation more exotic than the
+one already given. The first city persisted because it retained the
+capacity to keep persisting; the second city changed because it lost
+that capacity while its visible state, for a time, gave no sign of
+the loss. The two cities did not begin to differ in their buildings.
+They began to differ in what each was still able to do about its
+buildings, and the buildings only followed later, as a consequence.
+Whatever is doing the explanatory work in this example, it is not
+captured by comparing the cities' states at any single moment,
+including the moment the comparison began. It has to be found
+somewhere else.
+
+% ---------------------------------------------------------------------
+\section{From Structures to Repairs to Ecologies}\label{sec:reframe}
+
+There is a natural first response to the two cities, and it is worth
+stating before setting it aside, because the essay's argument is a
+sequence of replacements for it rather than a rejection of it outright.
+The natural first response holds that structures persist, and that
+repair is simply one of the things that occasionally happens to them:
+a building stands, and now and again someone fixes it, and the
+building goes on standing as a result. On this view the building is
+the primary fact and the repair is incidental to it, a maintenance
+detail rather than an explanation.
+
+The two cities already show this cannot be the whole account. For a
+decade, the buildings in both cities stood; the standing of the
+buildings was not what distinguished the cities, since both had it
+in equal measure for as long as the comparison remained close. What
+distinguished them was whether repair continued to occur, and the
+divergence in the buildings' actual condition arrived only afterward,
+as a downstream consequence of a difference that had already been
+present in each city's capacity to keep repairing them. This suggests
+a second view: not that structures persist and repair sometimes
+occurs, but that repair occurs, and structures persist because of it.
+On this view the building's continued existence is not primary but
+explained \emph{by} the repair, and the reconstruction work already
+developed elsewhere in this program has largely operated at this
+second level, treating recoverability, diagnosis, and correction as
+the operative facts and the surviving structure as their trace.
+
+This second view is a genuine improvement on the first, but the two
+cities press past it as well, if the comparison is pushed one step
+further back. It is true, and worth holding onto, that City A's
+buildings persisted because they were repaired. But this only
+relocates the question: why did repair continue to occur in City A
+and not in City B? The answer given in Section~\ref{sec:cities} was
+not that City A simply repaired more, as though repair were a
+resource City A had more of in the same way it might have had more
+steel. The answer was that City A retained apprentices who could be
+trained into repairers, records that told the repairers what needed
+attention, and institutions that funded and coordinated the work; City
+B lost these before it lost anything one could point to and call a
+building. Repair did not occur in City A as a brute fact requiring no
+further account. It occurred because the conditions that produce
+repairers, and keep producing them, were themselves still intact.
+Those conditions are the actual subject of this essay, and it will
+call the entities that repair, train, coordinate, and record --- and
+the network of relations among them that keeps each one able to
+function --- an \emph{operator ecology}.\footnote{Stewart Brand's
+\emph{How Buildings Learn} (Viking, 1994) makes a structurally
+similar argument about buildings specifically, distinguishing layers
+of change --- site, structure, skin, services, space plan, and stuff
+--- that persist at different rates. Brand's observation that
+buildings survive when their maintenance and adaptation pathways
+survive is a narrower, architecture-specific version of the claim
+this essay makes about cities in general.}
+
+The three views are not competitors so much as successive depths of
+the same explanation. Structures persist because repair occurs;
+repair occurs because an operator ecology persists. Each step answers
+a question the previous step could state but not resolve, and each
+step is what the two cities were already demonstrating before either
+had a name. What remains is to say what an operator ecology actually
+is, in enough detail that the word is doing explanatory work rather
+than standing in for one.
+
+% ---------------------------------------------------------------------
+\section{Behavior Before State}\label{sec:behavior}
+
+A useful distinction, developed at length in the theory of computation
+and owed in the form used here to Erik Meijer's writing on algebras
+and coalgebras, separates two ways of specifying what a system is. An
+algebraic specification says how a structure is built: a list is
+specified by how it is constructed from an empty list and an element,
+a tree by how it is assembled from smaller trees. A coalgebraic
+specification says instead how a structure behaves once it exists: a
+stream is specified not by how it was built but by what it does when
+observed, namely produce a value and a continuation that will produce
+the next one. The algebraic question is where a structure came from.
+The coalgebraic question is what a structure will keep doing.
+
+This distinction is not merely terminological, because it comes with
+its own notion of sameness. Two coalgebras are called \emph{bisimilar}
+when no sequence of observations can tell them apart, regardless of
+how differently they are built or what internal state each happens to
+occupy at any given moment. A stream implemented as an infinite list
+and a stream implemented as a closure over a counter can be
+bisimilar: every observation of one is matched by an observation of
+the other, forever, even though nothing about their internal
+representations agrees. Bisimulation is, in this sense, a formal
+witness that behavioral sameness and state sameness are different
+relations, and that a theory built to track the first will not always
+agree with a theory built to track the second.
+
+The two cities already made this same point without the vocabulary
+to state it precisely. For as long as the comparison in
+Section~\ref{sec:cities} remained close, the two cities agreed in
+state and had already begun to disagree in what they would go on to
+do: one was maintaining the conditions of its own continuation, and
+the other was not, and no inspection of either city's current
+buildings could have revealed this, because the disagreement lived
+entirely in future behavior rather than present configuration.
+Bisimulation gives a name to exactly the kind of gap the two cities
+exhibit --- state can agree while behavior has already diverged --- and
+establishes, in a setting far more modest than a city, that this gap
+is not a peculiarity of the example but a structural fact about the
+relationship between what a system is and what it does.
+
+It would be a mistake, however, to conclude too quickly from this
+that behavior is the invariant the two cities are really tracking.
+Bisimulation is a relation between systems as they currently stand,
+observed for as long as observation continues; it says nothing about
+what happens to that relation once one of the systems has been
+damaged and both current behavior and current state have been lost.
+That is precisely the situation the two cities are in by the end of
+their first decade, and it is the situation the next section takes
+up.
+
+% ---------------------------------------------------------------------
+\section{Beyond Behavior: Regenerative Equivalence}\label{sec:regen}
+
+It is worth laying out, in order, the notions of sameness that have
+been in play so far, because each is strictly weaker than the last as
+a way of telling two systems apart, and the weakening is exactly the
+direction the two cities have been pushing throughout. \emph{State
+equivalence} asks whether two systems currently agree in every
+recorded particular; this is what a census can settle, and it is what
+the two cities satisfied for most of a decade. \emph{Structural
+equivalence} asks whether two systems are built the same way, which
+is a coarser question than state equivalence but still a question
+about composition rather than conduct. \emph{Behavioral equivalence}
+--- bisimulation, in the vocabulary of Section~\ref{sec:behavior} ---
+asks whether two systems do the same things under observation,
+regardless of how they are built or what state they occupy, and this
+is the notion that first let the two cities' divergence be stated
+honestly, since it was a divergence in what each city was doing, not
+yet in what either city was.
+
+None of these three notions, however, survives what happens to the
+second city. By the end of the decade, City B's behavior has already
+changed along with its state: the roads have visibly cracked, the
+records office is visibly gone. Behavioral equivalence, which
+compares two systems as they currently stand, has nothing left to say
+about the two cities once one of them has already been damaged; it
+can report that they differ, but by then everyone touring either city
+could report the same thing without any theory at all. The question
+that actually matters by this point is not whether the cities
+currently behave alike. It is whether, having been damaged, each city
+retains what it would take to become itself again: whether the
+capacities that produced the original behavior, and would go on
+producing it, are still there to be drawn on.
+
+Call two systems \emph{regeneratively equivalent} if they possess
+sufficiently similar operator ecologies to recreate the same future
+capacities after damage, even once current behavior has diverged or
+been lost outright. This is not a refinement of behavioral
+equivalence in the way structural equivalence is a refinement of
+state equivalence; it is a genuinely different question, asked about
+a system after the fact of its damage rather than in the course of
+its ordinary operation. It is also, on the evidence of the two
+cities, the question whose answer actually predicts what happens
+next. Suppose both cities, ten years in, undergo a comparable
+reconstruction effort: outside help arrives, funding is made
+available, the physical damage is assessed and a rebuilding program
+begins. City A's apprentices, trained continuously through the decade,
+can be set to work immediately, and the records that were kept tell
+the rebuilding program what needs doing and how it was done before.
+City B has no apprentices to set to work and no records telling
+anyone what to rebuild toward; the funding can replace concrete and
+steel, but it cannot, by itself, replace the training pipeline, the
+institutional memory, or the coordinating offices that would put the
+concrete and steel to use. The same reconstruction budget produces a
+restored city in one case and a much slower, much more improvised
+recovery in the other, and the difference is not explained by
+anything the reconstruction budget itself measures.
+
+This suggests the asymmetry that motivates the rest of the essay,
+stated carefully rather than as a bare slogan. It is not that
+structures can never help regenerate operators --- a surviving
+schoolhouse can still house a new apprenticeship program, and a
+recovered archive can still train a new records office, so the
+regeneration is not strictly impossible. The asymmetry is that an
+intact operator ecology regenerates structure as a matter of its
+ordinary function, the way City A's maintenance crews resurfaced
+roads without anyone regarding this as remarkable, whereas an intact
+structure regenerates its operator ecology only contingently, and
+typically requires that some other operator ecology --- a funding
+agency, a training institution imported from elsewhere, a
+government capable of chartering new offices --- do the work of
+regenerating it from outside. Operators reproduce structure as a
+matter of course. Structures reproduce operators only when something
+else, itself already an operator ecology, intervenes to make it
+happen. That difference in reliability, not a categorical impossibility
+in either direction, is what regenerative equivalence is built to
+track, and it is the reason the two cities' first decade, which
+looked for so long like a story about buildings, was a story about
+something else from the beginning.
+
+The claim compresses into a short definition, given here once so that
+later sections can refer back to it rather than restate it in prose.
+Write $\Fut(\Ecol)$ for the set of future operator repertoires that
+an operator ecology $\Ecol$ can recover under admissible damage ---
+the repertoires reachable not by continuing to operate undisturbed,
+but by repairing and rebuilding after some part of $\Ecol$ has been
+lost. Two ecologies $\Ecol_1,\Ecol_2$ are \emph{regeneratively
+equivalent}, written $\Ecol_1\sim_{\Reach}\Ecol_2$, when
+$\Fut(\Ecol_1)=\Fut(\Ecol_2)$: when they can recover exactly the same
+futures, regardless of whether their current operators, or even their
+current behavior, agree at all. City A and City B were, for most of a
+decade, close to state-equivalent and briefly behavior-divergent; what
+Section~\ref{sec:cities} was tracking without the vocabulary for it
+was that they had already ceased to be regeneratively equivalent long
+before either fact became visible.
+
+% ---------------------------------------------------------------------
+\section{Ecologies as Constraint Networks}\label{sec:constraints}
+
+Section~\ref{sec:reframe} named an operator ecology but did not yet
+say what holds one together, and without an answer the word risks
+meaning nothing more than a list: the apprentices, the record-keepers,
+the maintenance crews, the offices of governance, tallied up as though
+counting them were the same as understanding why they persist together
+or fail together. Alicia Juarrero's account of constraint-based
+causation, developed in \emph{Dynamics in Action}, supplies the
+missing piece. Juarrero distinguishes causes that push --- one event
+directly forcing the next, as one billiard ball forces another to
+move --- from causes that constrain, which act not by forcing any
+particular outcome but by narrowing the space of outcomes that remain
+possible. A riverbank does not push the water anywhere; it constrains
+where the water can go, and the water's path is explained by the
+constraint quite as much as by whatever force is moving it downstream.
+
+An operator ecology, on this view, is not usefully described as a
+set of operators at all.
+
+\begin{quote}
+\emph{The ecology is not the operators; it is the network of enabling
+constraints among them.}
+\end{quote}
+
+It is a network of constraints that
+determines which operators remain able to function as other operators
+are gained or lost. The apprenticeship system in City A is not an
+isolated operator that happens to sit next to the others; it is
+constrained by, and constrains in turn, the funding that supports it,
+the master craftsmen who staff it, the records that tell it what
+skills are needed, and the offices of governance that charter its
+existence. Remove the funding and the apprenticeship system does not
+merely weaken --- it can disappear entirely, not because anyone
+touched the apprentices or the masters directly, but because a
+constraint that had been holding the possibility of apprenticeship
+open was withdrawn. This is the pattern that the slow decline of City
+B actually followed: no operator was destroyed in the way a building
+is destroyed by demolition. The conditions that made each operator
+executable were withdrawn one at a time, and the operators lapsed as
+a consequence, in an order that had more to do with which constraints
+were most load-bearing than with which operators were individually
+most valuable.
+
+This gives a working definition worth stating formally even though
+the essay around it remains expository. An operator ecology is a
+constraint network that maintains the conditions under which
+operators remain executable. The ecology is not the operators; it is
+the network of enabling constraints among them, and an intervention
+that touches none of the operators directly can still eliminate any
+number of them by removing a constraint on which their continued
+function depended. This is the sense in which City B's decline was
+already, correctly, described in Section~\ref{sec:cities} as
+beginning nowhere in particular: it began wherever the first
+constraint gave way, and the operators it had been sustaining lapsed
+afterward, sometimes long afterward, in a sequence that traced the
+constraint network rather than any single point of failure within it.
+
+\begin{definition}[Operator ecology]
+An \emph{operator ecology} is a network of operators together with
+the constraints among them that determine which operators remain
+executable as others are gained or lost.
+\end{definition}
+
+The same definition compresses into notation without changing its
+content, and the notation is worth fixing once so that
+Sections~\ref{sec:keystone} and~\ref{sec:reveal} can use it without
+re-deriving it. Write $\Ecol=(\Op,\Cst,\Ex)$ for an operator ecology,
+where $\Op$ is the set of operators, $\Cst\subseteq\Op\times\Op$ is
+the constraint graph --- $(o_i,o_j)\in\Cst$ meaning that $o_i$ helps
+maintain the conditions under which $o_j$ remains executable, the
+formal shape of the apprenticeship-maintains-maintenance relation
+already described above --- and $\Ex:\Op\to\{0,1\}$ is the
+executability predicate, $\Ex(o)=1$ just when $o$ is currently
+executable in $\Ecol$. An operator can be described while extinct:
+$o\in\Op$ while $\Ex(o)=0$, a charter surviving in an archive for an
+apprenticeship program nobody can any longer run. Nothing here adds
+to the prose definition above; it only gives later sections a place
+to point.
+
+% ---------------------------------------------------------------------
+\section{Keystone Operators and Ecological Health}\label{sec:keystone}
+
+The constraint-network definition earns its keep by making a further
+distinction available, one that the two cities already illustrate but
+that the language of Section~\ref{sec:cities} was not yet equipped to
+state. Not every operator matters equally to the network that
+contains it, and the operators that matter most are not necessarily
+the ones that are used most often. Call an operator a \emph{keystone}
+of the ecology it belongs to if its removal collapses a
+disproportionate share of the remaining network --- if, that is, a
+large number of other operators depend on constraints that this one
+operator was helping to hold in place, so that its loss propagates
+far beyond its own function. Apprenticeship is plausibly a keystone
+operator in the two cities: it is not exercised constantly, in the way
+that road maintenance is exercised constantly, but its loss removes
+the mechanism by which every other operator renews itself across a
+generation, so that its absence is not felt immediately but becomes,
+over a decade, the single largest determinant of which other operators
+survive. Literacy, standards, archives, and the offices of governance
+plausibly play the same role for different reasons: none is exercised
+with unusual frequency, and each supports a disproportionate share of
+what the rest of the ecology depends on.
+
+This is a familiar pattern from ecology in the narrower biological
+sense, where a keystone species is likewise not distinguished by
+abundance. An apex predator is typically rare within the system it
+organizes, and its removal is felt not because the predator itself
+was doing much of the system's work directly, but because its
+presence had been constraining the population dynamics of everything
+beneath it. The analogy is not decorative here, because the underlying
+structure is the same one Juarrero's account already supplies: a
+keystone operator, like a keystone species, matters because of the
+constraints it maintains on the rest of the network, not because of
+how frequently it is itself invoked.
+
+The same vocabulary extends naturally to two further notions that the
+essay has been circling since Section~\ref{sec:regen} without naming.
+An operator is \emph{extinct} within an ecology when no executable
+realization of it remains, regardless of whether a description of it
+survives: City B's apprenticeship program can be extinct in this
+sense while a charter document describing it still sits, accurately
+and uselessly, in an archive. And the \emph{health} of an operator
+ecology can be understood, at least informally, as the breadth and
+resilience of the operator repertoire it can still support under
+plausible future damage --- not how much is currently running, but
+how much could still be regenerated if some part of what is currently
+running were lost. Writing $\Health(\Ecol)=\mu(\Fut(\Ecol))$ for some
+measure $\mu$ on the recoverable-futures set of
+Section~\ref{sec:regen} gives this a first formal shape: extinction
+is exactly what decreases $\Health$, restoration is what increases
+it, and keystone loss is what causes it to drop sharply rather than
+gradually, three claims already argued in prose above, now with a
+single quantity underneath all three. A fuller formal treatment
+belongs to the reconstruction machinery already developed elsewhere
+in this program, and is deferred to the next section rather than
+attempted here. Volume is used here only as a first proxy; later work
+may weight futures by repair cost, robustness, or admissibility
+rather than treating every recoverable future as equally valuable.
+
+The keystone notion itself, though, is worth one compact definition,
+since it is the cleanest of the three to state. Write $\Reach(\Ecol)$
+for the reachable executable repertoire of an ecology $\Ecol$ ---
+the operators actually executable given $\Ecol$'s current constraint
+graph --- and define the \emph{impact} of an operator $o$ as
+\[
+K(o) \;=\; \bigl|\Reach(\Ecol)\bigr| \;-\; \bigl|\Reach(\Ecol\setminus\{o\})\bigr|,
+\]
+the size of the repertoire lost by removing $o$ and everything its
+removal disconnects. A keystone operator is simply one with unusually
+large $K(o)$ relative to how often it is itself invoked; apprenticeship
+in the two cities is exactly this, an operator with low invocation
+frequency and disproportionate $K(o)$, since its removal disconnects
+every operator that depended on the next generation of practitioners
+it would otherwise have supplied.
+
+% ---------------------------------------------------------------------
+\section{What the Formalism Already Knew}\label{sec:reveal}
+
+None of the vocabulary introduced in this essay is, in the end, new to
+the program it belongs to. It has been developed here expositorily,
+built up from the two cities rather than derived from an existing
+theorem, but each notion has a direct counterpart already proved
+about in the finite theory of \emph{Repair Categories and the Local
+Geometry of Continuation}, and naming the correspondence is the
+purpose of this section.
+
+The forward and backward reachability neighborhoods of that paper ---
+the sets of states a given state can reach, or be reached from, at
+finite executable cost --- are what this essay has been calling
+niches: the region of an operator ecology that a given operator, or a
+given state within it, actually has access to. A repair operator, in
+the vocabulary of that paper, is exactly a maintenance species in the
+vocabulary of this one, an entity whose presence in the ecology
+constitutes the executable path between two states. Reconstruction,
+which that paper characterizes as the recovery of bidirected
+executable cost rather than the recovery of state identity, is
+restoration in an operator ecology by another name: what a
+reconstruction restores is not the original state but the operator
+repertoire capable of producing the relevant futures again, which is
+precisely the claim City A's successful rebuilding and City B's
+failed one were illustrating in Section~\ref{sec:regen}. Loss of
+executable support --- a state becoming unreachable at any finite
+cost --- is extinction. And an admissibility volume, the size of the
+neighborhood of states and operators still reachable from where a
+system currently stands, is a first formal candidate for the
+ecological health gestured at informally in
+Section~\ref{sec:keystone}.
+
+None of this changes anything about what was already proved. The
+theorem of \emph{Repair Categories} says what it said before this
+essay was written, and nothing here adds a new mathematical claim to
+it. What changes is the reading available to someone who has been
+through the two cities first: a reader who arrives at that paper's
+finite theory already primed to see reachability as niche, repair as
+maintenance, and reconstruction as restoration will recognize the
+formalism as an answer to a question they already have, rather than
+as machinery whose motivation must be taken on faith. That is the only
+claim this section makes, and it is, deliberately, a modest one: the
+calculation was already available; what this essay supplies is the
+understanding of what the calculation means.
+
+% ---------------------------------------------------------------------
+\section{Structures as Frozen Operator Ecologies}\label{sec:conclusion}
+
+The two cities began as a comparison of buildings and ended as a
+comparison of something that never appeared in either city's survey.
+State equivalence could not track it, because for most of a decade
+the two cities agreed in state while already diverging in what
+mattered. Behavioral equivalence came closer, and bisimulation gave a
+precise name to the kind of gap the cities exhibited, but even
+behavioral equivalence had nothing left to say once the damage had
+already occurred and the question became whether either city could
+still become itself again. What actually explained the two cities,
+from the first quiet lapse in City B's maintenance schedule to the
+divergent outcomes of their eventual reconstructions, was the
+condition of their operator ecologies: the constraint networks that
+determined which operators --- training, repair, governance, record-
+keeping --- remained executable as circumstances changed. Structures
+persist because repair occurs; repair occurs because an operator
+ecology persists; and an operator ecology persists because its
+constraints continue to hold each other in place. A structure appears
+static only because the operators that produced it have succeeded in
+making their activity invisible: City A's roads looked unremarkable
+for a decade precisely because the maintenance behind them was
+working. Put as plainly as the claim allows: structures are frozen
+operator ecologies, visible residues of a network of constraints
+that, for as long as it holds, keeps producing them, and that, once
+it fails, leaves the structures standing for a while with nothing
+left to renew them.
+
+This essay's argument does not depend on the intellectual company it
+keeps, but the company is worth naming briefly, since none of it was
+arrived at independently. Spencer-Brown's insistence that a distinction
+must be drawn before anything can be said to exist, and Bateson's
+reformulation of information as a difference that makes a difference,
+already anticipate the move from objects to relations that this essay
+extends one step further, from relations to the constraints that
+maintain them; Bateson's phrase adapts with almost no strain into an
+operator that makes operators possible, which is one more way of
+saying keystone. Juarrero supplies the mechanism by which constraints,
+rather than objects, do the explanatory work, and without her account
+the operator ecology of Section~\ref{sec:constraints} would have
+remained a metaphor rather than becoming the network it is here.
+Meijer's coalgebras and the fact of bisimulation established, in a far
+more modest setting than a city, that behavior can be the right
+invariant to track when state is not, which is the wedge this essay
+needed before it could argue that even behavior falls short. None of
+these figures is the essay's subject. The subject is the two cities,
+and everything else here exists to explain why they diverged the way
+they did.
+
+\begin{thebibliography}{9}
+\bibitem{juarrero} Alicia Juarrero, \emph{Dynamics in Action:
+  Intentional Behavior as a Complex System} (MIT Press, 1999).
+\bibitem{meijer} Erik Meijer, on the algebra/coalgebra distinction and
+  process-first computation in programming language theory; see his
+  writing and talks on coalgebras, bisimulation, and reactive
+  programming.
+\bibitem{bateson} Gregory Bateson, \emph{Steps to an Ecology of Mind}
+  (Chandler Publishing, 1972).
+\end{thebibliography}
+
+\end{document}
+

@@ -1,0 +1,271 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part I — Immersion
+%  Chapter 3: Harmonic Consensus and the Economy of
+%             Structured Representation
+% ============================================================
+
+\chapter{Harmonic Consensus and the Economy of Structured Representation}
+\label{ch:hcf1}
+
+\chapepigraph{If the parts move together, you need only store the
+fact of their moving together, not each part's motion separately.
+The question is whether the world is structured enough for this
+to be generally true.}{Flyxion}
+
+\noindent
+A harmonic series is not a collection of independent frequencies
+that happen to share a common multiple. It is a relational structure:
+the second harmonic is double the fundamental, the third is triple,
+the fourth double the second. When a physical system produces a
+harmonic series --- a vibrating string, a column of resonating air,
+a vocal tract shaped to produce a vowel --- the amplitudes of the
+individual harmonics evolve over time in ways that are not mutually
+independent. They rise and fall together during the attack, decay
+at rates governed by shared physical parameters, and modulate in
+response to the same excitation source.
+
+This relational structure is real. It is not a computational
+convenience or an aesthetic preference. The harmonics of a vibrating
+string are coupled because they share the same string. The harmonics
+of a vocal sound are coupled because they are all driven by the
+same glottal pulse train. The coupling is a physical fact, and it
+means that a complete description of the amplitude evolution of each
+harmonic independently contains enormous redundancy: most of what
+is true about the third harmonic's envelope is already implied by
+what is true about the fundamental's envelope.
+
+The \HCFone{} architecture in the Phoenix corpus proposes to exploit
+this redundancy systematically. Rather than encoding each harmonic
+independently, the system stores the fundamental's amplitude envelope
+as a master template and encodes each harmonic in terms of its
+conformity to or deviation from that template. Harmonics that evolve
+in lockstep with the fundamental require only a single bit to
+describe: they conform. Harmonics that deviate require explicit
+residual encoding. The expected result is a dramatic reduction in
+the information required to represent a harmonic complex,
+proportional to the degree of physical coupling between the harmonics.
+
+\section{The Redundancy of Independent Harmonic Encoding}
+\label{sec:harmonic-redundancy}
+
+Standard spectral audio codecs encode audio by dividing the signal
+into short frames, applying a transform (typically the modified
+discrete cosine transform), and quantizing the resulting spectral
+coefficients according to a psychoacoustic model. Within each frame,
+the amplitude and phase of each spectral component are stored as
+independent values. The independence assumption is computationally
+convenient but discards structural information about how spectral
+components relate to one another.
+
+For harmonic signals --- which constitute a large fraction of
+musical content --- this discarded structural information is
+precisely what \HCFone{} proposes to encode explicitly instead.
+
+Consider a sustained note on a cello at 220~Hz. The harmonics at
+440, 660, 880~Hz and beyond do not evolve independently: the
+bow-string interaction drives all of them simultaneously. If one
+knows how the fundamental's amplitude is evolving, one can predict
+the evolution of most other harmonics with considerable accuracy.
+Standard codecs spend bits encoding this predictable variation.
+
+\begin{technote}[Technical Note: Harmonic Conformity Relation]
+Let the fundamental frequency be $f_0$ with amplitude envelope
+$A_0(t)$, and let the $n$-th harmonic have amplitude envelope
+$A_n(t)$. Define the normalized amplitude velocity:
+\[
+  v_n(t) = \frac{dA_n/dt}{A_n(t)}.
+\]
+The harmonic conformity relation is:
+\[
+  \Gamma_n(t) = \mathbf{1}\!\left(|v_n(t) - v_0(t)| < \varepsilon\right),
+\]
+where $\varepsilon$ is a conformity threshold. The sparse consensus
+encoding is then:
+\[
+  \mathcal{H}_{\mathrm{cons}}
+  = \bigl\{A_0(t),\, f_0,\, \phi_0,\,
+    \Gamma_1, \ldots, \Gamma_N\bigr\},
+\]
+with residual deviations stored only when $\Gamma_n(t) = 0$.
+If $k$ harmonics are non-conforming, the encoding cost is
+$O(1) + O(k)$, compared to $O(N)$ for independent storage.
+\end{technote}
+
+The efficiency gain scales with the physical coupling of the
+instrument. For highly coupled sources --- bowed strings, wind
+instruments in steady state, sustained vocal vowels --- the
+fraction of non-conforming harmonics is expected to be small
+and the compression advantage large. For less coupled sources
+--- percussion, plucked string attacks, complex mixtures ---
+the conformity rate is lower and the advantage diminishes.
+
+\section{Connection to Predictive Coding and Sparse Residual Encoding}
+\label{sec:predictive-coding}
+
+The \HCFone{} framework did not invent residual encoding. Predictive
+coding, dating to the 1950s in the communications engineering
+literature, encodes signals as the difference between a predicted
+value and the actual value. Linear predictive coding of speech,
+differential pulse-code modulation, and motion compensation in
+video codecs all exploit this principle.
+
+The \HCFone{} contribution is the specific application of the
+conformity relation to the harmonic structure of musical audio ---
+a domain-specific optimization that takes advantage of physical
+facts about musical instruments that general-purpose predictive
+coding does not explicitly model.
+
+\begin{epistemicstatus}{Operationally Grounded}
+The efficiency advantage of harmonic consensus encoding over
+independent harmonic encoding is derivable from the conformity
+relation and scales with the physical coupling of the source.
+For strongly coupled harmonic sources, the theoretical advantage
+is significant and testable with existing datasets and codec
+implementations. The claim is well-grounded at \LevelI{}
+(engineering utility) and connects to established literature
+at \LevelII{} (computational metaphor, via predictive coding).
+\end{epistemicstatus}
+
+\section{The Buddy System and Envelope Sharing}
+\label{sec:buddy-system}
+
+The corpus extends the conformity relation into a broader
+architectural principle: a hierarchical structure in which
+harmonics that consistently track one another are grouped into
+families, with the most fundamental component storing the shared
+envelope and remaining members storing only their conformity
+status and phase offsets.
+
+The buddy system has intuitive appeal beyond its compression
+application. It provides a natural account of how a listener
+might group harmonic components into a unified percept: the
+harmonics that ``move together'' are the harmonics that ``belong
+together.'' Bregman's auditory scene analysis framework has
+established that harmonic coherence is one of the primary cues
+the auditory system uses to group spectral components into streams.
+The \HCFone{} conformity relation operationalizes ``evolving
+together'' in a specific, measurable way.
+
+\begin{dangerzone}[Representation Drift]
+The move from ``harmonics that are efficiently encoded together''
+to ``harmonics that the auditory system groups together'' is a
+transition from an engineering claim to a perceptual one. These
+claims may align, and the alignment would be scientifically
+interesting if confirmed. But encoding efficiency is a property
+of the representation; perceptual grouping is a property of the
+listener. Demonstrating their agreement for studied cases does
+not establish that the conformity relation tracks the auditory
+grouping mechanism. The distance between them is exactly where
+representation drift begins.
+\end{dangerzone}
+
+\section{Compression as Discovery of Invariant Structure}
+\label{sec:compression-invariant}
+
+The \HCFone{} materials propose a reframing of what compression
+is. Conventional lossy compression is framed as trade-off:
+information is discarded in exchange for reduced cost.
+The frame is inherently about loss.
+
+\HCFone{} proposes instead: compression is the discovery of
+invariant relational structure. A harmonic complex representable
+as a fundamental plus conformity flags has not had information
+removed; its genuine information content has been identified and
+represented directly. The redundancy eliminated was never real
+information --- it was the artifact of treating structurally
+dependent quantities as independent.
+
+\claimlabeltext{Level~I}{The compression efficiency advantage of
+consensus encoding is real, derivable, and proportional to the
+conformity rate. This is a solid engineering result.}
+
+\claimlabeltext{Level~II}{The reframing of compression as
+``discovery of invariant relational structure'' rather than
+``discarding of information'' is a productive metaphor connecting
+to minimum description length frameworks and Kolmogorov complexity.}
+
+\claimlabeltext{Level~III}{The phenomenological claim that
+listeners experience compressed audio as impoverished --- that
+something genuinely heard is absent rather than measurably
+different --- connects to this framing but is not derivable
+from the information-theoretic account alone.}
+
+\section{The Universality Temptation}
+\label{sec:hcf1-universality}
+
+The same pattern observed in Chapters~1 and~2 appears here.
+Having established harmonic consensus at the level of audio,
+the corpus begins extending it. The conformity relation, originally
+defined for harmonic amplitude envelopes, is proposed as a general
+model of how any system whose components are physically coupled
+can be encoded efficiently.
+
+The cautious version --- that the buddy system might model how
+neural populations encode correlated activity --- is scientifically
+tractable. The bolder version --- that ``cognition is in the
+business of discovering invariant structure'' and consensus encoding
+is its universal implementation --- is a claim at \LevelIII{}
+or \LevelIV{} that the audio compression work does not establish.
+
+It requires an account of how cognitive phenomena that appear to
+involve active generation of structure --- imagination, planning,
+counterfactual reasoning, creative synthesis --- fit within the
+consensus encoding framework, or an argument that they do not
+pose a genuine challenge. The corpus does not provide this.
+
+The pattern appearing for the third consecutive time is worth
+marking explicitly: a framework grounded at \LevelI{} makes
+a genuine engineering contribution, demonstrates real explanatory
+contact at \LevelII{}, and then begins reaching toward
+\LevelIII{} and \LevelIV{} claims its foundation does not
+directly support. This is not a failure mode yet. It is a research
+programme generating ambitions that exceed its current results.
+The question is whether those ambitions are structured to be
+testable.
+
+\section{The Three Frameworks as a System}
+\label{sec:three-frameworks}
+
+The \Marine{} is the perceptual gateway: temporal coherence
+measured as jitter. \MEMeight{} is the cognitive layer: salience-filtered
+events encoded as dynamic interference. \HCFone{} is the
+representational layer: efficient encoding of structured signals
+feeding both the gateway and the memory system.
+
+Together, they constitute a \emph{salience-centered computational
+paradigm}: an alternative to both symbolic AI and deep learning
+grounded in temporal coherence, interference dynamics, and
+relational compression.
+
+\begin{epistemicstatus}{Reconstructive Conjecture}
+The unified paradigm description is a reconstruction --- the
+strongest reading of what the corpus seems to be building toward.
+The individual components are developed separately in the source
+materials; the integration is more programmatic than implemented.
+\end{epistemicstatus}
+
+The shared primitive --- temporal coherence --- runs through all
+three layers. The \Marine{} detects it in incoming signals;
+\MEMeight{} preserves it in memory through resonance; \HCFone{}
+exploits it in compression through the conformity relation.
+Whether this unity is productive or constraining depends on whether
+temporal coherence is as central to cognition as the framework
+assumes.
+
+That tension is the conceptual fault line on which Part~II
+will apply pressure. The framework is internally coherent,
+its shared primitive is real, and its unification ambition
+is genuine. The question is whether the real world is structured
+enough around temporal stability to vindicate the ambition.
+That question cannot be answered from inside the framework.
+
+\medskip
+
+Chapter~4 examines the AI architecture implications of the
+salience-centered paradigm: the proposal that the
+Marine--\MEMeight{}--\HCFone{} stack constitutes not merely a
+signal processing pipeline but an alternative foundation for
+machine intelligence. This is where the framework's ambitions
+become most explicit and where the distance between engineering
+results and architectural claims becomes most visible.

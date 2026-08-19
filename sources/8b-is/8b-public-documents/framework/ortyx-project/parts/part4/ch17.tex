@@ -1,0 +1,246 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part IV — Reconstruction
+%  Chapter 17: Signal, Salience, and Constraint
+% ============================================================
+
+\chapter{Signal, Salience, and Constraint}
+\label{ch:signal-salience-constraint}
+
+\chapepigraph{What the auditory system selects from a continuous
+stream is not the loudest, not the newest, not the most complex.
+It is what fits the smallest admissible trajectory space:
+what is most constrained, most predictable, most organized.
+Whether this is what \emph{matters} is the question the
+framework cannot answer for us.}{Flyxion}
+
+\noindent
+The Marine Salience Algorithm, stripped of the
+consciousness claims and the authenticity ontology,
+is a well-engineered time-domain coherence detector
+with real applications in audio quality assessment
+and perceptual computing. Its translation into
+RSVP-compatible terms does not change this. What
+the translation does is make visible the theoretical
+assumptions that the original formulation carried
+implicitly.
+
+\section{Jitter as Trajectory Constraint Density}
+\label{sec:jitter-trajectory}
+
+In the original Phoenix formulation, period jitter
+$\Jp(i) = |T_i - \bar{T}_i|$ is described as
+measuring the ``incoherence'' of a signal at peak $i$.
+This description is accurate but understates the
+geometric content of the metric. In RSVP-compatible
+terms, jitter measures the local constraint density
+of the signal's trajectory in its state space.
+
+Consider the signal $s(t)$ as tracing a trajectory
+through a state space $X$. At each moment, the
+admissible future trajectories from the current state
+form a set $\AdmTraj(x_t) \subseteq X$. The
+accessibility entropy is:
+\[
+  \AccEnt(x_t) = \log |\AdmTraj(x_t)|.
+\]
+A signal with low jitter --- one whose inter-peak
+intervals are stable and predictable --- is a signal
+whose current state highly constrains future states:
+the admissible trajectory space is small. A signal
+with high jitter has many admissible continuations;
+its current state constrains future states weakly.
+
+The Marine metric thus approximates the inverse
+of accessibility entropy:
+\[
+  \SalFunc(i) \propto \frac{1}{\AccEnt(x_{t_i})}.
+\]
+This translation makes explicit what the original
+formulation implied: the Marine is detecting signals
+that occupy low-entropy, highly constrained regions
+of trajectory space. These are regions where the
+signal's dynamics are, in the information-theoretic
+sense, most determined by its current state.
+
+\begin{technote}[Technical Note: Accessibility and Jitter]
+The proportionality $\SalFunc \propto 1/\AccEnt$
+is a structural observation rather than a derivation.
+To make it a derivation, one would need to specify:
+(1)~the state space $X$ for audio signals,
+(2)~a measure on $\AdmTraj(x_t)$ that yields a
+well-defined accessibility entropy, and
+(3)~a demonstration that low jitter signals, as
+detected by the Marine EMA procedure, correspond
+to signals in low-$\AccEnt$ regions. Steps~(1)
+and~(2) require theoretical work not yet completed.
+Step~(3) requires empirical verification. The
+translation is therefore at \LevelII{} (productive
+metaphor generating a research direction) rather
+than \LevelI{} (established engineering result).
+\end{technote}
+
+\section{The Salience Filter as Constraint-Governed Gating}
+\label{sec:salience-gating}
+
+The Marine filter's selection of high-salience events
+for downstream processing becomes, in RSVP-compatible
+terms, a constraint-governed gating mechanism. The
+filter passes events that are consistent with the
+signal's running admissibility model: events that
+the model predicted were possible, that arrive
+within the model's tolerance for timing and amplitude,
+and that therefore require minimal trajectory revision
+to incorporate.
+
+This translation reveals the connection to predictive
+processing that was noted as a structural observation
+in Chapter~5 and classified as a reconstructive
+conjecture. In the RSVP translation, the connection
+becomes more precise: both the Marine filter and the
+predictive processing framework are selecting events
+based on their compatibility with a running model
+of the signal's admissible trajectory space. The
+Marine filter does this with the specific EMA-based
+procedure; predictive processing accounts do it with
+hierarchical generative models. The shared structure
+is constraint-governed selection.
+
+\begin{salvage}[Reconstruction: Salience as Admissibility Test]
+A constraint-preserving reformulation of the Marine
+salience filter: given a signal $s(t)$ and a running
+model $\mathcal{M}_t$ of the signal's admissible
+trajectory space, the salience of event $e_i$ at
+time $t_i$ is:
+\[
+  \SalFunc(i)
+  = \mathbf{1}\bigl(e_i \in \AdmTraj(\mathcal{M}_{t_i-1})\bigr)
+  \cdot \left(1 - \frac{\AccEnt(\mathcal{M}_{t_i})}
+    {\AccEnt(\mathcal{M}_{t_i-1})}\right).
+\]
+High-salience events are those consistent with the
+running model ($\mathbf{1} = 1$) that reduce the
+accessibility entropy of the model (the fraction
+term is large). This formulation makes explicit
+what the Marine EMA procedure approximates: the
+detection of events that are both predicted and
+constraining.
+\end{salvage}
+
+\section{Harmonic Conformity as Constraint Propagation}
+\label{sec:conformity-propagation}
+
+The \HCFone{} conformity relation $\Gamma_n(t) =
+\mathbf{1}(|v_n(t) - v_0(t)| < \varepsilon)$ acquires
+a natural RSVP interpretation as a constraint propagation
+test. Two harmonics $n$ and $0$ satisfy the conformity
+relation at time $t$ when they are evolving within
+a shared admissible trajectory basin: the constraints
+governing the fundamental's evolution are also governing
+the harmonic's evolution within tolerance $\varepsilon$.
+
+This interpretation connects the \HCFone{} conformity
+relation to the broader RSVP principle that physically
+coupled systems --- systems whose dynamics are governed
+by shared constraints --- can be represented efficiently
+by encoding the constraints once rather than the
+trajectories separately. The $O(1) + O(k)$ encoding
+complexity of consensus encoding is a consequence
+of constraint sharing: most harmonics are in the same
+constraint basin as the fundamental, requiring only
+a binary conformity flag rather than independent
+trajectory specification.
+
+\begin{auditprop}
+\label{ap:conformity-rsvp}
+The harmonic conformity relation $\Gamma_n(t)$ is
+reconstructible as a constraint propagation indicator:
+$\Gamma_n(t) = 1$ when harmonic $n$ is evolving within
+the admissible trajectory basin of the fundamental,
+and $\Gamma_n(t) = 0$ when it is not. This formulation
+connects the \HCFone{} compression result to the RSVP
+principle of constraint-based representation efficiency,
+preserving the engineering result while making its
+theoretical assumptions explicit.
+\end{auditprop}
+
+\section{The Spectral Fracture Hypothesis Revisited}
+\label{sec:spectral-fracture-rsvp}
+
+Chapter~5 noted that the spectral fracture concept ---
+the claim that lossy compression disrupts temporal
+relationships rather than merely reducing spectral
+content --- was phenomenologically real but definitionally
+risky. The RSVP translation provides a more careful
+formulation.
+
+In constraint-propagation terms, what block-based
+transform coding disrupts is not the within-block
+trajectory structure (which the codec preserves
+reasonably well within the psychoacoustic model) but
+the across-block constraint relationships. The
+conformity relation between harmonics is computed
+from amplitude envelope dynamics $v_n(t) = dA_n/dt / A_n$.
+At block boundaries, the decoded waveform's amplitude
+envelopes are determined by the spectral coefficients
+within each block independently; the relationship
+between the envelope dynamics at the end of one block
+and the beginning of the next is not explicitly preserved.
+
+This is a specific, testable claim: the \HCFone{}
+conformity rate should be lower in compressed-and-decoded
+audio at block boundaries than in the original, and
+the drop should be proportional to the aggressiveness
+of the compression. This prediction is at \LevelI{}
+and does not require the authenticity ontology or the
+consciousness hypothesis to be stated. It is the
+recoverable core of the spectral fracture claim.
+
+\begin{epistemicstatus}{Operationally Grounded}
+The claim that lossy compression reduces conformity
+rates at block boundaries, as measured by the \HCFone{}
+conformity relation, is a \LevelI{} prediction derivable
+from the block-based architecture of standard codecs
+and the definition of the conformity relation. It is
+testable with existing tools and datasets. This is
+the constraint-preserving reformulation of the spectral
+fracture claim: it preserves the engineering content
+while discarding the authenticity ontology.
+\end{epistemicstatus}
+
+\section{What the Signal-Level Reconstruction Achieves}
+\label{sec:signal-reconstruction-achievement}
+
+The reconstruction of the signal-level components
+achieves three things.
+
+First, it separates the engineering results from the
+philosophical commitments they were bundled with in
+the original Phoenix formulation. The jitter metric,
+the conformity relation, and the compression predictions
+are all present in $\ThetaStar$, unchanged in their
+engineering content. The consciousness claims, the
+authenticity ontology, and the universality ambitions
+are absent --- not because they are false, but because
+they are not required to state the engineering results.
+
+Second, it makes the research directions generated
+by the engineering results explicit. The proportionality
+$\SalFunc \propto 1/\AccEnt$ is not a derivation; it
+is a hypothesis that could be tested by specifying
+the state space for audio signals and computing both
+quantities. The constraint propagation interpretation
+of the conformity relation suggests a connection to
+the RSVP dynamics that could be explored formally.
+These are genuine research directions generated by
+the reconstruction.
+
+Third, it provides a vocabulary in which the boundary
+conditions of the engineering results can be stated
+clearly. The Marine metric is a low-entropy trajectory
+detector for audio signals in time-domain representation;
+it is not a general-purpose meaning detector, a
+consciousness metric, or an authenticity test. The
+RSVP translation makes this boundary explicit in its
+terminology rather than leaving it implicit in the
+reader's interpretation.

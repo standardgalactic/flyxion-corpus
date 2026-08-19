@@ -1,0 +1,420 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{lmodern}
+\usepackage{natbib}
+
+\title{The RSVP Treatise: Semantic Infrastructure and Modular Computation in an Entropy-Respecting Universe}
+\author{Flyxion}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\part{Foundations}
+
+\section{Chapter 1: Prelude: Of Attention and Entropy}
+
+\subsection{1.1 Introduction: The Economy of Cognitive Capture}
+
+In the early 21st century, digital platforms evolved from facilitators of information exchange to sophisticated engines for extracting cognitive bandwidth, a transformation driven by economic imperatives to monetize attention through advertising, subscriptions, storage upsells, and compute services \citep{zuboff2019}. This attention economy, as critiqued by \citet{lanier2018}, operates as an entropy-extraction regime, systematically constraining cognitive trajectories into low-dimensional attractors to maximize behavioral predictability and platform revenue. Every major tech platform—social media, streaming services, or cloud providers—competes not for products but for cognitive engagement, converting time into data, data into profiles, and profiles into targeted monetization \citep{zuboff2019}.
+
+The Relativistic Scalar-Vector Plenum (RSVP) framework proposes a radical alternative, modeling computation and cognition as field-theoretic processes governed by a scalar field \(\Phi: \Omega \to \mathbb{R}\) encoding semantic coherence, a vector field \(\mathbf{v} \in \Gamma(T\Omega)\) directing semantic flows, and an entropy field \(S: \Omega \to \mathbb{R}_{\geq 0}\) measuring uncertainty \citep{shannon1948, jaynes2003}. Unlike attention-driven systems, which externalize cognition to opaque algorithms \citep{ortega1957}, RSVP prioritizes cognitive sovereignty, ensuring that semantic trajectories evolve according to intrinsic coherence rather than platform-defined attractors \citep{deleuze1987}. This chapter introduces RSVP as a counter-architecture to the coercive optimization of Big Tech, setting the stage for its formalization in subsequent chapters.
+
+\subsection{1.2 Entropy as the Hidden Currency}
+
+Traditional economic models treat attention as a finite commodity, but information theory reveals entropy as the deeper invariant driving cognitive systems \citep{shannon1948, cover2006}. Entropy, measuring the uncertainty of a system, quantifies the cost of prediction in cognitive and computational environments \citep{jaynes2003}. Platforms reduce semantic entropy by herding users into predictable behavioral regions, collapsing the cognitive state-space into local minima of informational novelty. This process, formalized in Appendix A.3, is governed by the entropy field equation:
+\[
+\frac{\partial S}{\partial t} + \nabla \cdot (\mathbf{v} S) = \kappa \nabla^2 S + \Gamma(\Phi, \mathbf{v}),
+\]
+where \(\kappa\) is a diffusion coefficient ensuring entropic smoothing, and \(\Gamma(\Phi, \mathbf{v})\) accounts for external stimuli or algorithmic interventions \citep{shannon1948}. The term \(\nabla \cdot (\mathbf{v} S)\) represents the transport of uncertainty along semantic flows, while \(\kappa \nabla^2 S\) diffuses entropy to prevent local traps, a process analogous to thermodynamic equilibration \citep{jaynes2003}. In attention economies, platforms maximize \(\Gamma\) through coercive attractors, eroding cognitive diversity and autonomy \citep{deleuze1987}.
+
+The ethical cost of this regime is the loss of semantic openness—the capacity to traverse expansive meaning networks \citep{ortega1957}. RSVP counters this by designing systems that respect entropic balance, allowing cognitive trajectories to follow natural gradients of \(\mathbf{v}\) guided by \(\Phi\), as detailed in Chapter 2.
+
+\subsection{1.3 RSVP as a Counter-Architecture}
+
+RSVP reimagines semantic systems as a plenum governed by field-theoretic dynamics, where \(\Phi\) encodes coherence potentials, \(\mathbf{v}\) directs semantic flows, and \(S\) tracks dispersion (Appendix A). This contrasts with the rigid hierarchies of file-based systems, which fragment meaning into inert artifacts \citep{bird1988}. RSVP employs a fibered symmetric monoidal \(\infty\)-category \(\mathcal{C}_{\text{RSVP}}\), where objects represent semantic modules (e.g., concepts, documents) and morphisms encode coherence-preserving transformations \citep{maclane1998, lawvere2009}. Monopolistic platforms induce pathological configurations—regions where \(\mathbf{v}\) collapses into singular attractors, increasing \(S\) and reducing autonomy \citep{deleuze1987}. RSVP restores cognitive freedom by ensuring that semantic flows align with intrinsic gradients, minimizing external interventions \(\mathbf{F}_{\text{ext}}\) (Appendix A.2).
+
+\subsection{1.4 From File Systems to Semantic Manifolds}
+
+Traditional file systems and version control mechanisms like Git enforce semantic closure, rendering knowledge static and prone to entropic loss \citep{bird1988}. RSVP envisions version control as a homotopy-theoretic process, where semantic branches coexist without coercive merging (Appendix C.2) \citep{hatcher2002}. This structure, formalized in Chapter 3, allows for dynamic manifolds that support modular computation, aligning with the philosophical imperative of cognitive autonomy \citep{ortega1957, whitehead1978}.
+
+\subsection{1.5 Toward Cognitive Sovereignty}
+
+RSVP inverts the externalization of cognition inherent in attention economies, fostering an ecology where agents navigate semantic spaces freely \citep{deleuze1987}. The subsequent chapters formalize this vision through field theory (Chapter 2), semantic infrastructure (Chapter 3), agency (Chapter 4), economics (Chapter 5), and ethics (Chapter 6), drawing on mathematical \citep{atiyah1969, gromov1999}, information-theoretic \citep{cover2006}, and philosophical foundations \citep{whitehead1978}.
+
+\section{Chapter 2: RSVP Theory: The Relativistic Scalar-Vector Plenum}
+
+\subsection{2.1 Introduction: From Attention to Semantic Fields}
+
+The attention economy constrains cognitive trajectories to optimize platform revenue, reducing semantic entropy at the cost of autonomy \citep{zuboff2019, lanier2018}. The RSVP framework redefines computation as a field-theoretic process, prioritizing semantic flow over coercion \citep{gromov1999}. This chapter formalizes RSVP’s components: the scalar field \(\Phi\), vector field \(\mathbf{v}\), and entropy field \(S\), as detailed in Appendix A, drawing parallels to physical field theories \citep{baez2011}.
+
+\subsection{2.2 The RSVP Framework: Core Definitions}
+
+RSVP comprises three fields defined over a manifold \(\Omega\):
+\begin{itemize}
+    \item \textbf{Scalar Field (\(\Phi\))}: \(\Phi: \Omega \to \mathbb{R}\), encoding semantic coherence, analogous to a potential in physical systems \citep{gromov1999}.
+    \item \textbf{Vector Field (\(\mathbf{v}\))}: \(\mathbf{v} \in \Gamma(T\Omega)\), governing directional semantic flows, akin to velocity fields in fluid dynamics \citep{baez2011}.
+    \item \textbf{Entropy Field (\(S\))}: \(S: \Omega \to \mathbb{R}_{\geq 0}\), measuring semantic uncertainty \citep{shannon1948}.
+\end{itemize}
+
+These fields interact via a Lagrangian density:
+\[
+\mathcal{L} = \frac{1}{2} |\nabla \Phi|^2 + \frac{1}{2} \mathbf{v} \cdot \mathbf{v} + \lambda S \log S - \mu \Phi \text{div} \mathbf{v},
+\]
+where \(\frac{1}{2} |\nabla \Phi|^2\) ensures coherence stability, \(\frac{1}{2} \mathbf{v} \cdot \mathbf{v}\) penalizes excessive flow, \(\lambda S \log S\) enforces entropic balance, and \(-\mu \Phi \text{div} \mathbf{v}\) couples coherence to flow divergence \citep{atiyah1969}.
+
+\subsection{2.3 Governing Equations and Variational Principles}
+
+The action functional \(\mathcal{S} = \int_{\Omega} \mathcal{L} \, dV\) is minimized using variational calculus \citep{atiyah1969}, yielding Euler-Lagrange equations:
+\begin{align}
+\Delta \Phi &= \mu \text{div} \mathbf{v}, \label{eq:scalar} \\
+\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} &= -\nabla \Phi, \label{eq:vector} \\
+\frac{\partial S}{\partial t} + \text{div} (\mathbf{v} S) &= \lambda \Delta S. \label{eq:entropy}
+\end{align}
+Equation \eqref{eq:scalar} ensures that \(\Phi\) responds to the divergence of semantic flows, Equation \eqref{eq:vector} governs flow evolution under coherence gradients, and Equation \eqref{eq:entropy} transports and diffuses entropy \citep{gromov1999}. These equations form a relativistic system, respecting a generalized Lorentzian structure on \(\Omega\), ensuring causal propagation of semantic information \citep{baez2011}.
+
+\subsection{2.4 Category-Theoretic Formalization}
+
+RSVP operates within a symmetric monoidal \(\infty\)-category \(\mathcal{C}_{\text{RSVP}}\) \citep{maclane1998}, where:
+\begin{itemize}
+    \item \textbf{Objects}: Semantic modules (e.g., concepts, processes).
+    \item \textbf{Morphisms}: Entropy-respecting transformations.
+    \item \textbf{Fibrations}: \(\pi: \mathcal{C}_{\text{RSVP}} \to \mathcal{B}\), embedding modules in contextual domains (Appendix C.3).
+\end{itemize}
+
+Semantic merging is formalized via a functor:
+\[
+F: \mathcal{C}_{\text{RSVP}} \times \mathcal{C}_{\text{RSVP}} \to \mathcal{C}_{\text{RSVP}},
+\]
+computing homotopy colimits \(\text{hocolim}_i X_i\) to integrate branches without loss \citep{hatcher2002}. The diagram:
+\[
+\begin{tikzcd}
+A \arrow[r, "f"] \arrow[d, "g"] & B \arrow[d, "h"] \\
+C \arrow[r, "k"] & D
+\end{tikzcd}
+\]
+ensures coherence via pushouts \citep{lawvere2009}.
+
+\subsection{2.5 RSVP as a Computational Substrate}
+
+RSVP redefines computation as navigation within a semantic plenum, replacing discrete file systems with continuous fields \citep{bird1988}. It ensures entropy-respecting processing, coherence preservation, and modular scalability \citep{milewski2018}.
+
+\subsection{2.6 Conclusion: Toward a Semantic Revolution}
+
+RSVP provides a formal counterpoint to attention economies, enabling semantic infrastructures (Chapter 3) that prioritize cognitive autonomy \citep{whitehead1978}.
+
+\section{Chapter 3: Semantic Infrastructure as Post-Git Architecture}
+
+\subsection{3.1 Introduction: Beyond Hierarchical File Systems}
+
+File-based systems and linear version control (e.g., Git) fragment semantic coherence, exacerbating entropic extraction \citep{lanier2018, bird1988}. RSVP proposes a semantic infrastructure using \(\mathcal{C}_{\text{RSVP}}\) \citep{maclane1998}, as outlined in Chapter 2.
+
+\subsection{3.2 The Limitations of File-Based Systems}
+
+Hierarchical file systems enforce rigid partitions, inducing entropic loss by forcing \(\mathbf{v}\) into singular attractors (Appendix A.2) \citep{cover2006}. Git’s linear merges scale superlinearly, discarding divergent branches \citep{bird1988}. RSVP counters this with dynamic manifolds, evolving via:
+\[
+\frac{\partial \Phi}{\partial t} + \nabla \cdot (\mathbf{v} \Phi) = D \nabla^2 \Phi + f(\mathbf{x}, t),
+\]
+ensuring coherence diffusion \citep{gromov1999}.
+
+\subsection{3.3 Fibered Symmetric Monoidal \(\infty\)-Categories}
+
+Semantic modules are objects in \(\mathcal{C}_{\text{RSVP}}\), fibered over a base category \(\mathcal{B}\) via \(\pi: \mathcal{C}_{\text{RSVP}} \to \mathcal{B}\) \citep{lawvere2009}. Cross-domain integration uses pullbacks:
+\[
+\begin{tikzcd}
+X \times_{\mathcal{B}} Y \arrow[r] \arrow[d] & Y \arrow[d, "\pi_Y"] \\
+X \arrow[r, "\pi_X"] & \mathcal{B}
+\end{tikzcd}
+\]
+ensuring coherence across knowledge domains \citep{maclane1998}.
+
+\subsection{3.4 Homotopy Colimits for Semantic Merging}
+
+Merging employs homotopy colimits (Appendix C.2):
+\[
+\text{hocolim}_i X_i,
+\]
+evolving via:
+\[
+\frac{\partial \Phi_{\text{merge}}}{\partial t} + \nabla \cdot (\mathbf{v}_{\text{merge}} \Phi_{\text{merge}}) = D \nabla^2 \Phi_{\text{merge}} + \sum_i f_i(\mathbf{x}, t),
+\]
+preserving coherence without destructive entropy collapse \citep{hatcher2002}. For example, merging two documents with divergent edits forms a pushout, retaining both semantic branches.
+
+\subsection{3.5 Practical Implementation}
+
+A post-Git VCS uses finite difference solvers for PDEs (Appendix G), implemented in Haskell with simplicial sets for homotopy colimits \citep{milewski2018}. Blockchain ensures tamper-resistance, with Docker containers for modular deployment \citep{bird1988}. This contrasts with Git’s DAG-based model, offering scalable, entropy-respecting version control.
+
+\subsection{3.6 Conclusion: A Modular Substrate}
+
+RSVP’s infrastructure liberates semantic flows, enabling distributed agency (Chapter 4) and entropic economics (Chapter 5) \citep{whitehead1978}.
+
+\part{Theoretical Synthesis}
+
+\section{Chapter 4: Simulated Agency: Consciousness as Sparse Projection}
+
+\subsection{4.1 Introduction: Agency in an Entropic Universe}
+
+RSVP models agency as a sparse projection within the plenum, with consciousness emerging from low-dimensional semantic states \citep{friston2010, tononi2004}. This counters the coercive optimization of attention economies \citep{zuboff2019].
+
+\subsection{4.2 The Chain of Memory: A Recursive Model}
+
+The memory state evolves via:
+\[
+M_{t+1} = \Pi(M_t, I_t; \theta),
+\]
+where \(\Pi\) is a sparse projection operator selecting relevant semantic dimensions, \(I_t\) is external stimuli, and \(\theta\) encodes attractors (Appendix B.1) \citep{pearl2009}. This mirrors Bayesian inference, updating beliefs recursively \citep{hohwy2013}.
+
+\subsection{4.3 Variational Principles for Simulated Agency}
+
+Agency minimizes a free-energy functional:
+\[
+\mathcal{F}[M_t, \Phi, S] = \mathbb{E}_{M_t}[\ln P(I_t \mid M_t)] + \beta S(M_t),
+\]
+balancing predictive accuracy and entropic flexibility \citep{friston2010}. The gradient descent:
+\[
+\frac{\partial M_t}{\partial t} = -\nabla_{M_t} \mathcal{F},
+\]
+is constrained by RSVP PDEs (Appendix A) \citep{jaynes2003].
+
+\subsection{4.4 Category-Theoretic Formalization of Agency}
+
+Agents are functors \(A: \mathcal{T} \to \mathcal{C}_{\text{RSVP}}\), with \(\mathcal{T}\) a poset of temporal states \citep{lawvere2009}. The projection \(\Pi\) is a natural transformation:
+\[
+\Pi: A \to A',
+\]
+ensuring coherence across time \citep{maclane1998}. Cross-domain agency uses pushouts:
+\[
+\begin{tikzcd}
+M_t \arrow[r, "\Pi"] \arrow[d, "\iota"] & M_{t+1} \arrow[d, "\iota'"] \\
+D_1 \arrow[r, "f"] & D_2
+\end{tikzcd}
+\]
+
+\subsection{4.5 HYDRA and TARTAN: Distributed Agency}
+
+HYDRA nodes \(N_i = (\Phi_i, \mathbf{v}_i, S_i)\) couple via:
+\[
+\mathbf{v}_i(t+1) = \sum_j A_{ij} \mathbf{v}_j(t) + f_i(t),
+\]
+with TARTAN as a functor:
+\[
+T: \mathcal{C}_{\text{RSVP}}^{\text{local}} \to \mathcal{C}_{\text{RSVP}}^{\text{global}},
+\]
+ensuring sparse coordination (Appendix D) \citep{bird1988].
+
+\subsection{4.6 Consciousness as Emergent Sparse Projection}
+
+Consciousness emerges as a fixed point:
+\[
+M^* = \arg\min_{M_t} \mathcal{F},
+\]
+robust across domains \citep{tononi2004].
+
+\subsection{4.7 Conclusion: Toward Ethical Agency}
+
+RSVP enables modular, decentralized agency, setting the stage for entropic economics \citep{hanson2003].
+
+\section{Chapter 5: Entropic Economics and Cognitive Commons}
+
+\subsection{5.1 Introduction: Reimagining Economics}
+
+Entropic economics redefines attention as a dynamic flow within a cognitive commons, countering classical scarcity models \citep{zuboff2019, hanson2003].
+
+\subsection{5.2 Attention as a Scalar Commodity}
+
+Attention \(a_i(t)\) satisfies:
+\[
+\sum_i a_i(t) = A_{\text{total}},
+\]
+with flows governed by:
+\[
+\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla)\mathbf{v} = -\nabla \Phi + \nu \nabla^2 \mathbf{v} + \mathbf{F}_{\text{ext}},
+\]
+minimizing external interventions \citep{shannon1948].
+
+\subsection{5.3 Sheaf-Theoretic Entropic Economics}
+
+A sheaf \(\mathcal{F}: \mathcal{O}(\Omega)^{\text{op}} \to \mathcal{C}_{\text{RSVP}}\) ensures local-to-global coherence \citep{maclane1998}. The entropy field evolves via:
+\[
+\frac{\partial S}{\partial t} + \nabla \cdot (\mathbf{v} S) = \kappa \nabla^2 S + \Gamma(\Phi, \mathbf{v}),
+\]
+with \(\Gamma\) accounting for stimuli like cloud storage pricing \citep{cover2006}. Cohomology \(H^1(\Omega, \mathcal{S})\) detects monopolistic traps \citep{hatcher2002}.
+
+\subsection{5.4 Futarchy and Decentralized Governance}
+
+Futarchy maps agents to prediction markets:
+\[
+F_{\text{fut}}: \mathcal{A} \to \mathcal{P},
+\]
+optimizing:
+\[
+U_i(t) = \Phi_i(t) - \lambda S_i(t),
+\]
+ensuring equitable attention allocation \citep{hanson2003].
+
+\subsection{5.5 HYDRA and TARTAN}
+
+TARTAN ensures global coherence (Appendix D) \citep{bird1988], countering compute lock-in.
+
+\subsection{5.6 The Cognitive Commons}
+
+Sheaf cohomology mitigates monopolistic collapse, fostering a decentralized commons \citep{zuboff2019].
+
+\subsection{5.7 Conclusion}
+
+RSVP enables an entropy-respecting economy, leading to entropic ethics \citep{ortega1957].
+
+\section{Chapter 6: Entropic Ethics: Toward Cognitive Sovereignty}
+
+\subsection{6.1 Introduction: The Moral Imperative}
+
+RSVP prioritizes cognitive sovereignty, countering attention extraction \citep{zuboff2019, lanier2018].
+
+\subsection{6.2 The Ethical Pathology of Attention Extraction}
+
+Coercive systems impose \(\mathbf{F}_{\text{ext}}\), eroding autonomy \citep{lanier2018}. The entropy increase:
+\[
+\frac{\partial S}{\partial t} + \nabla \cdot (\mathbf{v} S) = \kappa \nabla^2 S + \Gamma(\Phi, \mathbf{v}),
+\]
+reflects loss of diversity \citep{shannon1948].
+
+\subsection{6.3 Category-Theoretic Ethics}
+
+Agents are functors \(A: \mathcal{T} \to \mathcal{C}_{\text{RSVP}}\) \citep{lawvere2009}, with naturality ensuring ethical transitions.
+
+\subsection{6.4 Sheaf-Theoretic Ethics}
+
+A sheaf \(\mathcal{E}\) ensures coherence \citep{maclane1998}, with \(H^1(\Omega, \mathcal{S})\) detecting conflicts \citep{hatcher2002].
+
+\subsection{6.5 Entropic Ethics in Distributed Architectures}
+
+HYDRA and TARTAN minimize \(\mathbf{F}_{\text{ext}}\) (Appendix D) \citep{bird1988].
+
+\subsection{6.6 Toward Cognitive Sovereignty}
+
+Sovereignty maximizes:
+\[
+U_i(t) = \Phi_i(t) - \lambda S_i(t),
+\]
+supported by global sections \citep{hanson2003, ortega1957].
+
+\subsection{6.7 Conclusion}
+
+RSVP fosters a moral architecture, paving the way for Part III \citep{whitehead1978].
+
+\appendix
+
+\section{Appendix A: RSVP Field Formalism}
+
+\subsection{A.1 Scalar Field (\(\Phi\))}
+
+\[
+\frac{\partial \Phi}{\partial t} + \nabla \cdot (\mathbf{v} \Phi) = D \nabla^2 \Phi + f(\mathbf{x}, t) \cite{gromov1999}.
+\]
+Derivation: Vary \(\mathcal{S} = \int \mathcal{L} \, dV\), yielding coherence-diffusion coupling.
+
+\subsection{A.2 Vector Field (\(\mathbf{v}\))}
+
+\[
+\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla)\mathbf{v} = -\nabla \Phi + \nu \nabla^2 \mathbf{v} + \mathbf{F}_{\text{ext}} \cite{baez2011}.
+\]
+Derivation: Euler-Lagrange equations ensure flow alignment with \(\Phi\).
+
+\subsection{A.3 Entropy Field (\(S\))}
+
+\[
+\frac{\partial S}{\partial t} + \nabla \cdot (\mathbf{v} S) = \kappa \nabla^2 S + \Gamma(\Phi, \mathbf{v}) \cite{shannon1948}.
+\]
+Derivation: Balances transport and diffusion of uncertainty.
+
+\section{Appendix B: Sparse Projection and Simulated Agency}
+
+\subsection{B.1 Chain of Memory}
+
+\[
+M_{t+1} = \Pi(M_t, I_t; \theta) \cite{pearl2009}.
+\]
+Derivation: Sparse projection via low-rank factorization.
+
+\subsection{B.2 Variational Objective}
+
+\[
+\mathcal{F}[M_t, \Phi, S] = \mathbb{E}_{M_t}[\ln P(I_t \mid M_t)] + \beta S(M_t) \cite{friston2010}.
+\]
+Derivation: Balances prediction and entropy.
+
+\section{Appendix C: Category-Theoretic Semantic Infrastructure}
+
+\subsection{C.1 Semantic Modules}
+
+Objects and morphisms in \(\mathcal{C}_{\text{RSVP}}\) \cite{maclane1998}.
+
+\subsection{C.2 Homotopy Colimits}
+
+\[
+\text{hocolim}_i X_i \cite{hatcher2002}.
+\]
+Example: Merging two documents forms a pushout.
+
+\subsection{C.3 Fibered Structure}
+
+\[
+\pi: \mathcal{C}_{\text{RSVP}} \to \mathcal{B} \cite{lawvere2009}.
+\]
+
+\section{Appendix D: HYDRA and TARTAN Formalism}
+
+\subsection{D.1 HYDRA Nodes}
+
+\[
+\mathbf{v}_i(t+1) = \sum_j A_{ij} \mathbf{v}_j(t) + f_i(t) \cite{bird1988}.
+\]
+Stability: Eigenvalues of \(A_{ij}\) ensure convergence.
+
+\subsection{D.2 TARTAN Coordination}
+
+\[
+T: \mathcal{C}_{\text{RSVP}}^{\text{local}} \to \mathcal{C}_{\text{RSVP}}^{\text{global}} \cite{milewski2018}.
+\]
+
+\section{Appendix E: Entropic Economics}
+
+\subsection{E.1 Attention as Commodity}
+
+\[
+\sum_i a_i(t) = A_{\text{total}} \cite{shannon1948}.
+\]
+
+\subsection{E.2 Attention–Entropy Tradeoff}
+
+\[
+U_i(t) = \Phi_i(t) - \lambda S_i(t) \cite{hanson2003}.
+\]
+
+\section{Appendix F: Cosmological Analogy}
+
+\subsection{F.1 Lamphron-Lamphrodyne Dynamics}
+
+\[
+\frac{d \rho}{dt} = -\nabla \cdot (\rho \mathbf{v}) + \eta \nabla^2 \rho \cite{whitehead1978}.
+\]
+
+\section{Appendix G: Implementation Notes}
+
+Finite difference solvers for PDEs, tensor factorization for \(\Pi\), simplicial sets in Haskell, and blockchain/Docker deployment \citep{bird1988, milewski2018}.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

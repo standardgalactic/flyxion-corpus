@@ -1,0 +1,1981 @@
+\documentclass[11pt]{book}
+
+% ── Packages ─────────────────────────────────────────────────────────────
+\usepackage[margin=1.2in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{makeidx}
+\makeindex
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc,arrows.meta,positioning,decorations.pathmorphing}
+
+\tikzset{
+  thickline/.style={line width=0.9pt},
+  softline/.style={line width=0.5pt},
+  point/.style={circle, fill=black, inner sep=1.2pt},
+  guide/.style={dashed, line width=0.5pt},
+  face/.style={fill=gray!10, draw=black, line width=0.5pt},
+  bubble/.style={draw=black, line width=0.8pt},
+  flow/.style={-{Latex[length=2.4mm]}, line width=0.8pt},
+  faint/.style={draw=gray!60}
+}
+
+% ── Typography ───────────────────────────────────────────────────────────
+\setstretch{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries}{\chaptername\ \thechapter}{10pt}{\huge}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% ── Theorem environments ─────────────────────────────────────────────────
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}[definition]{Example}
+\newtheorem{principle}[definition]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Note}
+\newtheorem{activity}[definition]{Activity}
+
+% ── Pedagogical environments ─────────────────────────────────────────────
+\newtheorem{teachernote}{Teacher Note}[chapter]
+
+\newenvironment{deepthought}
+  {\begin{quote}\itshape}
+  {\end{quote}}
+
+\newenvironment{literaryaside}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+\newenvironment{spherepopjunior}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+% ── Title ────────────────────────────────────────────────────────────────
+\title{\textbf{The Architecture of Ideas}\\[6pt]
+\large Constraints, Abstraction, and the Structure of Thinking}
+\author{Flyxion}
+\date{}
+
+% ════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ════════════════════════════════════════════════════════════════════════
+
+\maketitle
+\tableofcontents
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Teacher's Guide: How to Use This Book Over Two Years}
+\addcontentsline{toc}{chapter}{Teacher's Guide}
+% ════════════════════════════════════════════════════════════════════════
+
+This textbook is designed to be taught slowly. The goal is not coverage,
+but structural understanding. Students should not memorize definitions;
+they should learn to recognize patterns that reappear across domains.
+
+The material is divided into two natural phases.
+
+\section*{Year One: Recognition and Constraint Awareness}
+
+The first year focuses on helping students notice that problems are shaped
+by rules. Students should become comfortable identifying constraints in
+different contexts: language, games, physical systems, and everyday decisions.
+
+At this stage, emphasis should be placed on recognition rather than
+formalization, examples rather than definitions, and discussion rather
+than correctness. Students should leave the first year with a strong
+intuitive sense that answers are not arbitrary, but shaped by interacting
+limitations.
+
+\section*{Year Two: Structure, Closure, and Failure}
+
+The second year introduces structure more explicitly. Students revisit the
+same ideas, but now with clearer terminology: constraint density, closure,
+and abstraction. At this stage, students should begin to compare different
+domains, analyze when ideas fail, and recognize the difference between
+local correctness and global coherence. The goal is not technical mastery,
+but structural fluency.
+
+\section*{How to Teach Each Chapter}
+
+Each chapter follows a consistent pattern. Students begin with prerequisites,
+ensuring they have the necessary background intuitions. The main content
+introduces the core idea. Teacher notes highlight common misunderstandings.
+The chapter ends with analogies that translate the idea into familiar
+domains, a Spherepop Corner that renders the same idea as a bubble game
+mechanic, a Hands-On Activity that lets students feel the concept through
+direct experience, a Further Reading section pointing toward real books
+and explorations, and a geometric diagram that gives each chapter a
+single visual anchor. Teachers are encouraged to move slowly and allow
+students to generate their own examples.
+
+\section*{Two-Year Pacing Overview}
+
+\textbf{Year One (Weeks 1--36): Recognition and Constraint Awareness.}
+Weeks 1--4 enter constraint space through games and puzzles before
+introducing the word ``constraint'' formally. Weeks 5--8 work through
+Chapter~1 slowly, tracing single-domain and multi-domain constraints.
+Weeks 9--12 explore the idea that subjects are constraint systems and
+compare domains. Weeks 13--16 build toward the feeling of inevitability
+through accumulation exercises. Weeks 17--20 confront the myth of
+invention and open debate about discovery versus creation. Weeks 21--24
+introduce local versus global understanding informally. Weeks 25--28
+connect practice to faster thinking, framing intuition as stored work.
+Weeks 29--32 explore failure modes---answers that almost work.
+Weeks 33--36 synthesize everything through student-generated constraint
+systems and cross-domain mapping.
+
+\textbf{Year Two (Weeks 1--36): Structure, Closure, and Formalization.}
+Weeks 1--4 re-enter Year One concepts with precise language now applied.
+Weeks 5--8 formalize constraint systems and their interactions.
+Weeks 9--12 introduce solution space and closure mathematically.
+Weeks 13--16 reframe abstraction as reduction and connect it to computation.
+Weeks 17--20 introduce representation, projection, and projection failure.
+Weeks 21--24 formalize local correctness and global consistency.
+Weeks 25--28 explore stability, uniqueness, and multiple solutions.
+Weeks 29--32 analyze misleading structures and optimization without
+understanding. Weeks 33--36 complete the synthesis: students explain
+any system using constraints and build their own frameworks.
+
+\section*{Important Teaching Principle}
+
+Do not rush toward formalization. If a student can explain an idea using
+a real-world analogy, they understand it more deeply than if they can
+repeat a definition. The Deep Thought passages and Spherepop Corners
+are not decorations---they are compression anchors. Students will
+remember the aside and reconstruct the structure from it later. The
+Hands-On Activities are not supplements---they are the primary site of
+learning for many students. The geometric diagram at the end of each
+chapter gives students something to sketch, copy, and return to: a
+spatial memory for a structural idea. The Further Reading sections are
+doorways, not assignments.
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{To the Reader}
+\addcontentsline{toc}{chapter}{To the Reader}
+% ════════════════════════════════════════════════════════════════════════
+
+This book is about a single question: where do ideas come from?
+
+The usual answer---inspiration, genius, talent---turns out to be
+incomplete. This book offers a more precise answer: ideas are
+\emph{convergence phenomena}. They emerge when rules from different
+places pile up until only one answer remains possible.
+
+You will not find this idea strange once you see it in action. In fact,
+you have probably already experienced it---that moment when a long,
+confusing problem suddenly resolves into a clarity that feels obvious
+in retrospect.
+
+This book explains what is happening during that moment, and how to
+create the conditions for it to happen more often.
+
+% ════════════════════════════════════════════════════════════════════════
+\part{How Ideas Form}
+% ════════════════════════════════════════════════════════════════════════
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Constraints: The Rules That Shape Thinking}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I used to think rules were there to stop me from doing things.
+
+Then I realized they were the only reason anything I did worked at all.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Before beginning this chapter, students should be comfortable with
+following simple rules in games or puzzles, understanding that some
+answers are ``not allowed,'' and recognizing that adding rules makes a
+problem easier to solve. Students do not need formal mathematical
+knowledge. They only need experience with structured situations where
+choices are limited.
+
+\begin{teachernote}
+Students often initially interpret constraints as obstacles rather than
+guides. It is important to emphasize that constraints reduce confusion
+rather than increase difficulty. Encourage students to notice how rules
+make problems easier, not harder. Ask them: if a word puzzle had no
+rules at all, would it be easier or harder to solve?
+\end{teachernote}
+
+\section{What Is a Constraint?}
+
+\begin{definition}
+A \textbf{constraint}\index{constraint} is any rule, condition, or limitation that reduces
+the number of possible solutions to a problem.
+\end{definition}
+
+Constraints sound restrictive. But they are actually the engine of discovery.
+Without constraints, every answer is equally possible, which means no
+particular answer stands out. The more constraints you have, the fewer
+solutions survive---and the more precisely you are guided toward the truth.
+
+\begin{teachernote}
+A common mistake is to think that more freedom leads to better thinking.
+In reality, too many possibilities prevent decision-making. Students
+should see that constraints are what make answers visible. A useful
+classroom exercise: ask students to name any animal. Then add constraints
+one at a time (four legs, lives in water, has a shell) and watch the
+space collapse.
+\end{teachernote}
+
+\begin{example}
+You are looking for a word.
+\begin{itemize}
+  \item It has five letters. (Thousands of words qualify.)
+  \item It starts with S. (Fewer now.)
+  \item It ends in E. (Fewer still.)
+  \item It means a rapid movement. (Very few remain.)
+  \item It rhymes with ``lunge.'' (One word: \emph{surge}.)
+\end{itemize}
+No one gave you the answer. The constraints converged on it.
+\end{example}
+
+\section{Domains as Constraint Systems}\index{domains!as constraint systems}
+
+Every subject you study is a system of constraints. Mathematics has rules
+about what operations are valid. Physics has laws about how matter behaves.
+Grammar has rules about how sentences work. Music has rules about intervals
+and rhythm.
+
+\begin{definition}
+A \textbf{domain}\index{domain} is a field of knowledge organized around a specific set
+of constraints on what is possible and what is not.
+\end{definition}
+
+When you learn a subject, you are internalizing its constraints. You are
+building a filter that blocks out wrong answers and lets correct ones through.
+
+\section{Constraint Accumulation}
+
+The most powerful ideas come from people who have accumulated constraints
+from \emph{multiple} domains. When the rules of physics and the rules of
+mathematics both apply to the same problem, the number of possible solutions
+shrinks dramatically. When biology, chemistry, and medicine all point to
+the same answer, that answer becomes nearly unavoidable.
+
+\begin{principle}[Constraint Accumulation]\index{constraint!accumulation}
+The more constraints a system accumulates from different domains, the
+smaller the set of possible solutions becomes---and the more inevitable
+the correct solution appears.
+\end{principle}
+
+\section{Three Conditions for a Real Idea}
+
+Not every collection of rules produces a great idea. Three things are required.
+
+\begin{definition}[Constraint Density]\index{constraint!density}
+A system is \textbf{constraint-dense}\index{constraint-dense} if it has accumulated enough
+constraints from enough different domains that they interact with each
+other in nontrivial ways---meaning they rule out answers that would
+otherwise seem plausible.
+\end{definition}
+
+\begin{definition}[Closure]\index{closure}
+A system reaches \textbf{closure}\index{closure} if there exists at least one configuration
+that satisfies all accumulated constraints simultaneously. Closure is the
+moment an idea becomes possible.
+\end{definition}
+
+\begin{definition}[Projection Capacity]\index{projection capacity}
+A system has \textbf{projection capacity}\index{projection capacity} if it can compress a complex
+structure into a simpler representation without losing the essential
+relationships.
+\end{definition}
+
+\begin{activity}
+Think of a decision you made recently---choosing a route, picking a book,
+solving a problem. List the constraints that shaped your decision. How many
+domains did those constraints come from? Did they converge on a single
+answer?
+\end{activity}
+
+\section*{Everyday Analogies}
+
+The idea of constraints appears in many familiar activities. In music,
+a scale limits which notes can be played. These limits make melodies
+possible. Without them, sound becomes noise. In sports, rules define
+what counts as a valid move. These constraints make strategy possible.
+Without rules, there is no game. In strategy games, each piece or unit
+has limited actions, which allow planning and prediction. When learning
+to ride a bike, your body must follow physical constraints to maintain
+balance---and these constraints eventually become automatic. In hacky
+sacking, control emerges from working within limits of timing, position,
+and motion; mastery is the ability to operate fluidly within those
+limits. In drawing, perspective rules constrain how objects can appear,
+and those constraints allow a flat surface to represent depth. Across
+all of these examples, the same pattern appears: constraints do not
+block action. They make meaningful action possible.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+Imagine you are building shapes out of bubbles.
+
+Some bubbles are allowed. Some bubbles are not.
+
+If a bubble breaks a rule, it pops and disappears.
+
+So what remains are only the bubbles that follow all the rules.
+
+That leftover collection is the ``good set'' of bubbles.
+
+You didn't invent it. You revealed it by removing what couldn't stay.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+In imperative programming, a computer is told exactly what to do, step
+by step. Each instruction narrows what can happen next. By the time the
+program ends, there is only one possible result.
+
+Thinking works the same way. Each constraint is like a line of code. On
+its own, it does very little. But together, they eliminate every
+possibility except one. What looks like an answer appearing is often
+just the final line executing.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Draw a 5$\times$5 grid on paper. Now make three rules: you may only move
+right or up, you may never cross the same square twice, and you must
+reach the top-right corner. Try to find all the possible paths. Then
+add one more rule---for example, you must pass through the center
+square. Notice how the number of possible paths shrinks each time you
+add a rule. You are watching a space of possibilities collapse into a
+smaller set.
+
+\section*{Further Reading}
+
+If you enjoyed thinking about rules and what is allowed or not allowed,
+you might enjoy puzzle books. \textit{The Moscow Puzzles} by Boris
+Kordemsky is full of clever problems where only certain moves are
+possible. \textit{How to Solve It} by George P\'{o}lya explains how
+mathematicians think about solving problems step by step. These books
+show how rules do not limit thinking---they shape it.
+
+\begin{figure}[h]
+\centering
+\tdplotsetmaincoords{68}{118}
+\begin{tikzpicture}[tdplot_main_coords, scale=2.0]
+  % outer cube
+  \draw[thickline] (0,0,0)--(1,0,0)--(1,1,0)--(0,1,0)--cycle;
+  \draw[thickline] (0,0,1)--(1,0,1)--(1,1,1)--(0,1,1)--cycle;
+  \draw[thickline] (0,0,0)--(0,0,1);
+  \draw[thickline] (1,0,0)--(1,0,1);
+  \draw[thickline] (1,1,0)--(1,1,1);
+  \draw[thickline] (0,1,0)--(0,1,1);
+  % inner admissible cube
+  \draw[fill=gray!20,thickline] (0.28,0.28,0.28)--(0.72,0.28,0.28)--(0.72,0.72,0.28)--(0.28,0.72,0.28)--cycle;
+  \draw[fill=gray!12,thickline] (0.28,0.28,0.72)--(0.72,0.28,0.72)--(0.72,0.72,0.72)--(0.28,0.72,0.72)--cycle;
+  \draw[thickline] (0.28,0.28,0.28)--(0.28,0.28,0.72);
+  \draw[thickline] (0.72,0.28,0.28)--(0.72,0.28,0.72);
+  \draw[thickline] (0.72,0.72,0.28)--(0.72,0.72,0.72);
+  \draw[thickline] (0.28,0.72,0.28)--(0.28,0.72,0.72);
+  % arrows inward
+  \draw[flow] (0.08,0.5,0.5)--(0.24,0.5,0.5);
+  \draw[flow] (0.92,0.5,0.5)--(0.76,0.5,0.5);
+  \draw[flow] (0.5,0.08,0.5)--(0.5,0.24,0.5);
+  \draw[flow] (0.5,0.92,0.5)--(0.5,0.76,0.5);
+  \draw[flow] (0.5,0.5,0.92)--(0.5,0.5,0.76);
+\end{tikzpicture}
+\caption{A large space of possibilities compressed into an admissible core.}
+\end{figure}
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Recognition, Not Invention}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+Sometimes I have an idea, and it feels like I made it.
+
+But if I wait long enough, it starts to feel like it was just being
+patient with me.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should be familiar with the idea that constraints narrow
+possibilities, as covered in Chapter~1. They should also have experience
+noticing when an answer ``clicks'' after a period of confusion. No
+additional formal knowledge is required.
+
+\begin{teachernote}
+The central challenge of this chapter is dislodging the ``genius myth''
+without being dismissive of genuine difficulty. The goal is not to tell
+students that ideas are easy---it is to show them that the hard work
+is in accumulating constraints, and that the moment of recognition is
+the reward for that work, not magic that belongs only to certain people.
+\end{teachernote}
+
+\section{The Myth of the Eureka Moment}\index{Eureka moment, myth of}\index{genius, myth of}
+
+We have a cultural habit of imagining great ideas as sudden, magical events.
+Archimedes in the bath. Newton under the apple tree. The lone genius struck
+by lightning.
+
+These stories are not entirely false. There often is a moment of sudden
+clarity. But what those stories leave out is the long accumulation of
+constraints that made the clarity possible. The moment is the visible tip
+of a very long process.
+
+\begin{principle}[Recognition Over Invention]\index{recognition}\index{invention, myth of}
+A great idea is not created at the moment it is expressed. It is
+\emph{recognized}---the accumulated constraints have reduced the solution
+space until only one configuration remains, and the mind finally perceives it.
+\end{principle}
+
+\begin{teachernote}
+Students may push back: ``But someone had to think of it first.'' This
+is exactly right, and worth exploring carefully. Yes, someone had to
+accumulate the right constraints. The claim is not that ideas are
+automatic, but that the moment of expression is a recognition, not a
+creation from nothing. Ask students: if two people accumulate the same
+constraints, do they reach the same idea? History suggests they often do.
+\end{teachernote}
+
+\section{Local Sections and Global Coherence}
+
+Here is a useful way to think about the process.
+
+\begin{definition}[Local Section]\index{local section}
+A \textbf{local section}\index{local section} is a partial understanding that works within a
+limited context but has not yet been tested across all relevant domains.
+\end{definition}
+
+\begin{definition}[Global Coherence]\index{global coherence}
+An idea achieves \textbf{global coherence}\index{global coherence} when it satisfies all its
+constraints simultaneously---not just in one context, but across all
+relevant domains.
+\end{definition}
+
+Most of the time, you work with local sections. You understand one part,
+then another, then another. The breakthrough moment is when all the local
+sections click together into a single globally coherent structure.
+
+\section{Why It Feels Inevitable}\index{inevitability}
+
+When an idea achieves closure, it carries a particular feeling: inevitability.
+The answer seems obvious in retrospect. You wonder how you did not see it
+before.
+
+This feeling is not an illusion. It is evidence that the constraints have
+done their work. The reason the answer feels necessary is that it \emph{is}
+necessary---it is the only configuration that satisfies everything you have
+learned.
+
+\begin{remark}
+The feeling of inevitability is a signal, not a delusion. It means you have
+accumulated enough constraints to genuinely narrow the solution space. Trust
+it cautiously, but do not be surprised when it turns out to be right.
+\end{remark}
+
+\section*{Everyday Analogies}
+
+The experience of recognition rather than invention appears constantly
+in ordinary life. When you finally understand a joke, you did not invent
+the humor---you recognized the structure that was already there. When
+you spot a face in a crowd, you did not create the resemblance---you
+detected a pattern your mind had already stored. When a melody suddenly
+sounds familiar, the music did not change; your accumulated listening
+experience finally aligned with it. In sports, a player who ``reads the
+game'' is not inventing plays---they are recognizing patterns that emerge
+from the constraints of the sport. In strategy games, experienced players
+describe certain positions as ``obviously winning.'' That obviousness is
+recognition built from accumulated study, not a gift present from birth.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+Sometimes bubbles keep changing.
+
+They merge, shrink, or pop.
+
+But sometimes, after enough changes, one bubble stops changing.
+
+It becomes stable.
+
+That means all the pressure has been resolved.
+
+A stable bubble is not random. It is what remains when no more popping
+is needed.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+In functional programming, you do not tell the computer how to do
+something. You describe what must be true, and the system evaluates the
+expression until it reaches a stable form.
+
+An idea behaves like this. It is not assembled piece by piece. It is
+reduced. The final insight is not constructed---it is what remains after
+everything else has been simplified away.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Cut out five to eight irregular paper shapes. Try to fit them together
+into a single closed shape. At first you will try many combinations.
+Then suddenly, one arrangement will click into place. Pay attention to
+that moment. Did you invent the solution, or recognize it? Repeat with
+different pieces and notice how the feeling is similar each time.
+
+\section*{Further Reading}
+
+If you liked the idea of recognizing patterns rather than inventing them,
+you might enjoy \textit{G\"{o}del, Escher, Bach} by Douglas Hofstadter
+(selected chapters), which explores patterns in music, art, and logic.
+\textit{The Cartoon Guide to Computer Science} by Larry Gonick is a fun
+way to see how computers recognize patterns. Books of optical illusions
+also show how your mind tries to recognize structure---even when it is
+not really there.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.2]
+  \draw[thickline] (0,0)--(2,0)--(2.5,0.6)--(2.5,2.2)--(1.7,2.9)--(0.5,2.9)--(0,2.2)--cycle;
+  \draw[fill=gray!15,thickline] (0.7,0.7)--(1.4,0.7)--(1.8,1.2)--(1.8,1.9)--(1.3,2.3)--(0.8,2.3)--(0.7,1.5)--cycle;
+  \draw[flow] (-0.6,1.1)--(0.55,1.1);
+  \draw[flow] (3.0,1.6)--(1.95,1.6);
+  \draw[flow] (1.25,3.35)--(1.25,2.45);
+  \node at (1.25,-0.55) {\small The answer appears when pressure from many sides settles into one shape};
+\end{tikzpicture}
+\caption{Recognition as convergence into a single fitting structure.}
+\end{figure}
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Where Ideas Wait}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I like to think I solve problems by thinking about them.
+
+But most of the time, they solve themselves somewhere I'm not invited.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand constraint accumulation from Chapter~1 and
+the idea that recognition precedes expression from Chapter~2. This
+chapter extends those ideas to what happens below the threshold of
+conscious awareness.
+
+\begin{teachernote}
+This chapter can feel abstract to students who have not yet noticed the
+phenomenon it describes. A useful entry point: ask students to recall
+a time when they could not remember a word or a name, stopped trying,
+and then remembered it hours later. That experience is the direct
+observation of the process this chapter explains.
+\end{teachernote}
+
+\section{Precomputation and Latent Structure}\index{latent structure}\index{background processing}
+
+\begin{definition}[Precomputation]\index{precomputation}
+\textbf{Precomputation}\index{precomputation} is the work the mind does below the threshold of
+conscious awareness, storing constraint interactions and partial solutions
+until they are needed.
+\end{definition}
+
+The human mind does not only think when you are consciously focused. It
+continues processing in the background. Constraints that were loaded into
+memory keep interacting. Partial structures keep testing themselves against
+each other.
+
+This is why insights so often arrive unexpectedly---in the shower, on a walk,
+in the moment before sleep. The conscious mind has relaxed, but the
+background processing was never interrupted.
+
+\begin{teachernote}
+Students may find this idea either thrilling or unsettling---either
+``great, thinking happens automatically'' or ``I can't control my own
+mind.'' Both responses are worth addressing. The important message is
+that the background processing is not random. It is shaped by the
+constraints already accumulated. The richer the constraint field, the
+more productive the background work.
+\end{teachernote}
+
+\section{The Threshold}
+
+Precomputation eventually reaches a threshold. When enough constraints have
+aligned---when a globally coherent structure becomes available---it surfaces
+into conscious awareness.
+
+This is what we experience as the ``click'' of insight. It is not something
+arriving from outside. It is something that was already forming inside,
+becoming available.
+
+\begin{principle}[The Threshold Principle]\index{threshold principle}\index{insight}
+The apparent suddenness of insight is a consequence of the threshold
+structure of constraint satisfaction. Progress is often invisible until
+the moment of completion.
+\end{principle}
+
+\section*{Everyday Analogies}
+
+Precomputation is visible in many everyday situations. A musician who
+sleeps on a difficult passage and plays it more cleanly the next morning
+has experienced it directly. A writer who finds the right word while
+washing dishes has not been distracted---they have let the background
+process complete. In sports, the feeling of being ``in the zone'' often
+follows a period of rest after intense practice. In strategy games,
+players who step away from a stuck position and return often see a move
+immediately that was invisible before. Riding a bicycle involves
+thousands of tiny balance corrections that happen below conscious
+attention---precomputed and relegated, running silently in the background.
+In hacky sacking, the timing for a difficult trick often arrives when
+the player stops forcing it and lets accumulated practice surface.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+If you already built a bubble once, you don't need to rebuild it every
+time.
+
+You can save it.
+
+Later, you can bring it back instantly.
+
+That saved bubble is like a shortcut.
+
+It feels like intuition, but it is really something you built earlier
+and kept.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+Some systems delay work until the last possible moment. They carry
+unevaluated expressions forward, resolving them only when their value
+is required.
+
+The mind often works this way. Problems are not solved when we think
+about them, but when they are finally needed. What feels like sudden
+insight is often the completion of work that was quietly deferred.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Build a small structure using books, boxes, or blocks. Now cover part
+of it so that only the outer shape is visible. Ask someone else to
+guess what is inside. Then reveal the hidden structure. Notice how the
+inside determines the outside, even when it cannot be seen.
+
+\section*{Further Reading}
+
+If you enjoyed thinking about hidden structure, try \textit{The Way
+Things Work Now} by David Macaulay, which shows the inner workings of
+machines in a visual and intuitive way. \textit{Structures: Or Why
+Things Don't Fall Down} by J.\,E.\ Gordon explains how hidden forces
+and structures keep buildings standing. These books help you see what
+is going on beneath the surface.
+
+\begin{figure}[h]
+\centering
+\tdplotsetmaincoords{65}{120}
+\begin{tikzpicture}[tdplot_main_coords, scale=2.0]
+  \draw[faint] (0,0,0) circle (1);
+  \draw[faint] (0,0,0) ellipse (1 and 0.35);
+  \draw[faint] (0,0,0) ellipse (0.42 and 1);
+  \foreach \p in {(0.25,0.2,0.15),(-0.2,0.3,-0.1),(-0.15,-0.25,0.2),(0.3,-0.15,-0.2),(0,0,0.35)}
+    \fill \p circle (0.015);
+  \draw[thickline] (0.25,0.2,0.15)--(-0.2,0.3,-0.1)--(-0.15,-0.25,0.2)--(0.3,-0.15,-0.2)--cycle;
+  \draw[thickline] (0,0,0.35)--(0.25,0.2,0.15);
+  \draw[thickline] (0,0,0.35)--(-0.2,0.3,-0.1);
+  \draw[thickline] (0,0,0.35)--(-0.15,-0.25,0.2);
+  \draw[thickline] (0,0,0.35)--(0.3,-0.15,-0.2);
+  \node at (0,-1.35,0) {\small Hidden structure continues organizing before it becomes visible};
+\end{tikzpicture}
+\caption{A visible surface enclosing a latent internal structure.}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{How Ideas Simplify}
+% ════════════════════════════════════════════════════════════════════════
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Abstraction as Constraint Elimination}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I once tried to understand everything at once.
+
+It turned out nothing made sense until I started ignoring most of it.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should be comfortable with the idea that constraints eliminate
+possibilities. This chapter extends that idea: abstraction is the
+deliberate removal of constraints that do not matter for a given purpose.
+Students should also have experience noticing that the same word or idea
+can appear in different subjects.
+
+\begin{teachernote}
+The hardest part of this chapter is convincing students that ignoring
+detail is a skill, not a failure. Students often believe that the best
+understanding includes every detail. The chapter argues the opposite:
+the best understanding includes exactly the right details and no others.
+Discuss the difference between a map and a photograph. Both represent
+the same territory. Only one is useful for navigation.
+\end{teachernote}
+
+\section{What Abstraction Actually Does}
+
+We are often told that abstraction means making something more general,
+more vague, less specific. This is misleading. Real abstraction does
+something much more precise.
+
+\begin{definition}[Abstraction]\index{abstraction}
+\textbf{Abstraction}\index{abstraction} is the removal of degrees of freedom that are
+irrelevant to a given constraint structure. It eliminates variation that
+does not affect the invariants of the system.
+\end{definition}
+
+The key word is \emph{irrelevant}. Abstraction does not remove things at
+random. It removes exactly the things that do not matter for the structure
+you are trying to understand.
+
+\begin{teachernote}
+Students often confuse abstraction with vagueness. A useful correction:
+vagueness removes important details. Abstraction removes unimportant
+ones. The test is whether the removed information would change the answer
+to the question you are actually asking. If yes, it was essential and
+should not have been removed. If no, it was noise.
+\end{teachernote}
+
+\section{Invariants: What Stays the Same}
+
+\begin{definition}[Invariant]\index{invariant}
+An \textbf{invariant}\index{invariant} is a property that remains unchanged under a class
+of transformations.
+\end{definition}
+
+\begin{example}
+The area of a triangle is $\frac{1}{2} \times \text{base} \times \text{height}$.
+This formula is an invariant. It does not matter whether the triangle is
+large or small, tilted or upright, drawn on paper or described in words.
+The relationship holds.
+\end{example}
+
+Finding invariants is the goal of abstraction. When you abstract, you are
+asking: what stays true across all the variations? That which stays true
+is the structural core.
+
+\section{Why Abstraction Enables Composition}
+
+Without abstraction, ideas from different domains cannot easily combine.
+They are cluttered with domain-specific details that prevent alignment.
+
+\begin{principle}[Abstraction as Precondition for Composition]\index{abstraction!and composition}\index{composition}
+Two ideas from different domains can only be meaningfully compared or
+combined once both have been abstracted to their invariant structure.
+The shared structure becomes visible only after the domain-specific detail
+has been removed.
+\end{principle}
+
+\begin{example}
+The flow of water in a river and the flow of electrical current in a wire
+look nothing alike. But once you abstract both to ``a quantity moving from
+higher to lower potential under resistance,'' they share a single structure.
+That shared structure means everything learned about one can inform the other.
+\end{example}
+
+\section{Reduction and Loss}
+
+Abstraction does involve loss. When you remove detail, the detail is gone.
+This is intentional. The details discarded by abstraction are the ones that
+do not belong to the invariant structure.
+
+The test of a good abstraction is this: does the removed information come
+back when it matters? If you abstracted away something essential, the
+structure will fail to apply to cases it should apply to. If you abstracted
+correctly, the structure will hold wherever it should.
+
+\begin{activity}
+Pick two subjects you study. Choose one concept from each---for example,
+``balance'' in physics (equilibrium) and ``balance'' in a sentence
+(symmetry). What do these two concepts share? What is the invariant
+that appears in both?
+\end{activity}
+
+\section*{Everyday Analogies}
+
+Abstraction appears everywhere that detail is deliberately set aside.
+A recipe abstracts away the brand of flour---that detail does not affect
+the structure of the dish. A musical score abstracts away the specific
+instrument---the relationships between notes survive the translation.
+In sports, a coaching diagram abstracts away the identities of individual
+players and shows only positional roles, which is the invariant that
+matters for strategy. A chess opening abstracts away the specific pieces
+involved and encodes only the structural relationships between control and
+mobility. Hacky sacking technique abstracts away foot placement on any
+given day and focuses on the angle and timing, which are the underlying
+invariants of the move.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+You might have a complicated bubble made of many smaller bubbles.
+
+But if it always behaves the same from the outside, you can treat it
+like just one bubble.
+
+You don't need to look inside every time.
+
+This is called ``treating something as one thing.''
+
+It saves effort and lets you build bigger ideas.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+In large programs, we hide complexity behind interfaces. A function may
+perform many operations internally, but from the outside it appears
+simple and stable.
+
+Abstraction works the same way. Once something has been fully worked
+out, its internal details no longer need to be revisited. It becomes
+a tool. Understanding grows not by remembering every detail, but by
+knowing which details no longer need to be seen.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Draw a detailed picture of your room. Now draw it again, but include
+only what someone would need to navigate it. Then draw it a third time
+as a simple map using only boxes and lines. Compare the three drawings.
+Each one removes detail but keeps certain important relationships.
+That is abstraction.
+
+\section*{Further Reading}
+
+If you liked simplifying complex things into manageable ideas, you
+might enjoy \textit{The Map That Changed the World} by Simon Winchester,
+which shows how one person turned complex geology into a readable map.
+\textit{Math with Bad Drawings} by Ben Orlin explains mathematical ideas
+in a simple and visual way. These books show how powerful it is to focus
+on what matters and ignore what does not.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  \foreach \x/\y in {0/0, 0.8/0.4, 1.4/-0.1, 0.5/-0.8, 1.3/-0.9, 2.0/0.3, 2.1/-0.7}
+    \node[point] at (\x,\y) {};
+  \draw[softline] (0,0)--(0.8,0.4)--(2.0,0.3);
+  \draw[softline] (0,0)--(0.5,-0.8)--(1.3,-0.9)--(2.1,-0.7);
+  \draw[softline] (0.8,0.4)--(1.4,-0.1)--(2.1,-0.7);
+  \draw[softline] (1.4,-0.1)--(2.0,0.3);
+  \draw[flow, line width=1.0pt] (2.8,-0.25)--(4.5,-0.25);
+  \draw[thickline, fill=gray!15] (5.2,0.6) ellipse (1.0 and 1.0);
+  \node at (3.5,-1.6) {\small Abstraction keeps the pattern and hides the internal clutter};
+\end{tikzpicture}
+\caption{A detailed network compressed into a simpler outer unit.}
+\end{figure}
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Coarse-Graining and the Art of the Map}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+Every piece of my plan made perfect sense.
+
+It was only when I put them together that everything went wrong.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand abstraction as the removal of irrelevant
+detail, from Chapter~4. This chapter asks: how do you choose which level
+of detail is the right one? That question requires comfort with the idea
+that the same object can be described at many different resolutions.
+
+\begin{teachernote}
+A useful entry point is to show students the same object at different
+scales: a city on a world map, a neighborhood map, a street map, a
+building floor plan. Each is ``correct.'' Each is useful for different
+purposes. The chapter asks students to develop judgment about which
+level of description serves a given purpose.
+\end{teachernote}
+
+\section{Every Map Throws Information Away}
+
+A street map leaves out the color of every building. A world map leaves
+out every street. A diagram of the solar system leaves out the moons of
+minor planets.
+
+These are not failures. They are decisions about what level of detail serves
+the purpose at hand.
+
+\begin{definition}[Coarse-Graining]\index{coarse-graining}
+\textbf{Coarse-graining}\index{coarse-graining} is the process of grouping together fine-grained
+details into larger categories, preserving structure at the chosen level
+while discarding detail below it.
+\end{definition}
+
+\section{Choosing the Right Level}\index{resolution, choosing the right level}
+
+The most important skill in coarse-graining is choosing the right level of
+resolution for your purpose. Too much detail and the structure is hidden.
+Too little and the structure is lost.
+
+\begin{remark}
+Different problems require different resolutions. A biologist studying
+ecosystems does not need to track individual molecules. A chemist studying
+reactions does not need to track individual quarks. Choosing the right
+resolution is itself a form of expertise.
+\end{remark}
+
+\begin{teachernote}
+The common student error here is thinking there is a ``correct'' level
+of description independent of purpose. Challenge this directly. Ask:
+what level of description is correct for a city? The answer changes
+depending on whether you are trying to navigate it, tax it, design its
+sewers, or write a novel set in it. There is no context-free answer.
+\end{teachernote}
+
+\section{What Survives Coarse-Graining}
+
+What survives when you coarse-grain? The answer is: the invariants. The
+things that hold across many individual cases, the structural relationships
+that persist regardless of detail.
+
+This is another way of saying that coarse-graining and abstraction are
+closely related. Both are ways of moving to a higher level where invariants
+become visible.
+
+\section*{Everyday Analogies}
+
+Coarse-graining is the natural mode of all practical thinking. A sports
+coach watching game film does not track every footstep---they track
+positional structure and patterns of movement. A music teacher listening
+to a student does not analyze every overtone---they track rhythm, pitch
+accuracy, and phrasing. A bicycle mechanic diagnosing a problem does
+not inspect individual molecules of metal---they coarse-grain to the
+level of components. In drawing, a figure study works at the level of
+mass and proportion before line and detail. In hacky sacking, group
+play involves reading the approximate position and trajectory of other
+players, not tracking their exact coordinates. Expertise in any domain
+involves having learned exactly how coarse-grained the description
+needs to be.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+Different bubble arrangements can look exactly the same from the outside,
+even though they are different inside.
+
+So one visible shape might hide many possibilities.
+
+The more hidden possibilities there are, the harder it is to know
+what's really going on inside.
+
+That hidden count is part of how systems behave.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+In distributed systems, each machine may operate correctly on its own,
+yet the entire system can still fail. Messages arrive out of order.
+Assumptions break. Local correctness does not guarantee global coherence.
+
+Ideas behave the same way. A collection of correct parts does not ensure
+a correct whole. True understanding requires that every part agrees with
+every other part, even when viewed from a distance.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Draw several puzzle pieces that look like they should fit together. Make
+each pair of neighboring edges match locally. Now try to assemble all
+of them into a full shape. You may find that everything looks correct
+in pairs, but the whole cannot be completed. This is the difference
+between local correctness and global success.
+
+\section*{Further Reading}
+
+If you liked the idea that something can work in small pieces but fail
+when combined, you might enjoy \textit{Flatland} by Edwin Abbott, a
+short imaginative story about different dimensions and viewpoints.
+In geography, map projections show how local accuracy can distort the
+whole---any atlas with a globe comparison makes this visible. These
+explorations help you think about how small pieces fit into larger
+systems.
+
+\begin{figure}[h]
+\centering
+\tdplotsetmaincoords{70}{115}
+\begin{tikzpicture}[tdplot_main_coords, scale=1.8]
+  \draw[guide] (0,0,0)--(1.3,0,0);
+  \draw[guide] (0,0,0)--(0,1.3,0);
+  \draw[guide] (0,0,0)--(0,0,1.3);
+  \draw[thickline, domain=0:5.5, samples=80, variable=\t]
+    plot ({0.18*\t*cos(140*\t)}, {0.18*\t*sin(140*\t)}, {0.18*\t});
+  \fill (0.12,0.06,1.05) circle (0.03);
+  \draw[flow] (0.55,0.45,1.15)--(0.16,0.08,1.05);
+  \node at (0,-1.0,0) {\small Repeated motion becomes a compact, reusable structure};
+\end{tikzpicture}
+\caption{A long spiral path compressed into a stable reusable form.}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{How Ideas Become Fast}
+% ════════════════════════════════════════════════════════════════════════
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Aspect Relegation}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I thought I was getting faster at thinking.
+
+But really, I was just finishing my thinking ahead of time.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand precomputation from Chapter~3 and abstraction
+from Chapter~4. This chapter explains how the results of completed
+thinking become fast and automatic---and what happens when that
+automation breaks.
+
+\begin{teachernote}
+The key conceptual move in this chapter is separating the experience of
+fast thinking from the claim that it is a different kind of thinking.
+Students often believe experts think differently from novices. The
+chapter argues they think the same way, but they have compressed more
+work into their background processes. This is motivating: expertise
+is accessible because it is the same process, applied more times.
+\end{teachernote}
+
+\section{The Problem with ``Two Systems''}
+
+You have probably heard of ``fast thinking'' and ``slow thinking.'' The
+fast system is described as intuitive and automatic; the slow system as
+deliberate and effortful.
+
+This is a useful starting point, but it is not quite right. It suggests
+that fast and slow are two different \emph{kinds} of thinking. They are
+not. They are the same thinking at different stages of compression.
+
+\begin{definition}[Aspect Relegation]\index{aspect relegation}\index{intuition!as relegated structure}
+\textbf{Aspect relegation}\index{aspect relegation} is the process of compressing a complex
+constraint structure into latent form so that it can be deployed
+without active reconstruction.
+\end{definition}
+
+What we call ``intuition'' is the deployment of a relegated structure.
+It feels fast and effortless because the computational work was done in
+advance.
+
+\section{Temporal Compression}
+
+\begin{definition}[Temporal Compression]\index{temporal compression}
+\textbf{Temporal compression}\index{temporal compression} is the relocation of computational work from
+the present moment into prior experience, reducing the active processing
+required at the time of execution.
+\end{definition}
+
+When you first learn to ride a bicycle, you think about every movement.
+After years of practice, you do not think about it at all. The procedure
+has been relegated---compressed into a form that runs without conscious
+attention.
+
+The same thing happens with intellectual skills. A mathematician who has
+solved many related problems can often see the structure of a new problem
+almost instantly. That speed is not magic; it is temporal compression.
+The relevant constraints were worked out long ago and stored.
+
+\begin{teachernote}
+A useful exercise: ask students to recall the first time they did
+something they now do automatically. Reading is a good example.
+Ask them to imagine what it felt like to decode each letter individually.
+The question is: where did all that effort go? The answer---it was
+compressed and relegated---is the chapter's central insight.
+\end{teachernote}
+
+\section{When Relegation Fails}\index{relegation failure}\index{expertise!when it breaks down}
+
+Relegated structures are built for the conditions under which they were
+learned. When those conditions change, relegation can fail.
+
+\begin{principle}[Relegation Failure]\index{relegation failure}\index{expertise!failure of}
+A relegated structure becomes unreliable when the environment changes in
+ways that violate the constraints under which it was built. At that
+point, active deliberation must replace automatic deployment.
+\end{principle}
+
+The uncomfortable feeling of expertise suddenly not working is the signal
+that the environment has shifted. It is not a sign of incompetence; it is
+a sign that the old constraints are no longer sufficient and new ones must
+be accumulated.
+
+\begin{activity}
+Think of something you learned that once required effort and now feels
+automatic---reading, typing, mental arithmetic. What happened to the
+effort? Is it gone, or did it move somewhere? Now think: has there ever
+been a situation where your automatic response let you down? What had
+changed?
+\end{activity}
+
+\section*{Everyday Analogies}
+
+Relegation is visible in any skilled activity. A musician who has
+practiced a passage hundreds of times no longer thinks about finger
+position---it has been relegated. A basketball player's free throw
+is relegated to the point where thinking about it actively can disrupt
+the shot. In hacky sacking, a player who overanalyzes a kick mid-flight
+often misses it; the kick works when the constraint structure is trusted
+without inspection. A chess player who has studied thousands of games
+recognizes positions rather than analyzing them from scratch. Drawing
+from life becomes faster as the hand learns what the eye already knows.
+In each case, the work was done before the moment of performance.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+You can take a bubble pattern and redraw it in a different system.
+
+If the connections stay the same, the structure is preserved.
+
+It's like translating a drawing into music or motion.
+
+The pieces change, but the relationships stay.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+An interpreted program runs each instruction every time. A compiled
+program translates everything ahead of time, so execution becomes fast
+and direct.
+
+Intuition is like compiled thought. The work has already been done, so
+the answer appears immediately. What feels like speed is often
+preparation that has been hidden from view.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Learn a short sequence of movements---for example: clap, tap, snap,
+turn. Repeat it slowly several times. Now try to perform it without
+thinking about each step. Notice how it becomes faster and smoother.
+You are turning a sequence into a stored pattern. That stored pattern
+can now be reused without reconstruction.
+
+\section*{Further Reading}
+
+If you were interested in how practice becomes automatic, try
+\textit{The Talent Code} by Daniel Coyle, which explains how skills
+are built through repetition and refinement. \textit{Peak} by Anders
+Ericsson (selected sections) explains how experts train and improve.
+These books show how what feels like intuition is often something you
+have built over time.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % landscape with two valleys
+  \draw[thickline] (-4,0) .. controls (-3,1.6) and (-2,1.6) ..
+    (-1,0.3) .. controls (-0.3,-0.7) and (0.3,-0.7) ..
+    (1,0.3) .. controls (2,1.6) and (3,1.6) .. (4,0);
+  \fill (-2.15,0.95) circle (0.06);
+  \fill (2.15,0.95)  circle (0.06);
+  \draw[very thick] (0,0.2)--(0,1.7);
+  \draw[flow] (-2.9,1.45)--(-2.25,1.0);
+  \draw[flow] (2.9,1.45)--(2.25,1.0);
+  \node at (0,-1.0) {\small Some stable states are separated by barriers that small changes cannot cross};
+\end{tikzpicture}
+\caption{Two stable basins separated by a ridge that cannot be crossed by small steps.}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{How Ideas Can Fail}
+% ════════════════════════════════════════════════════════════════════════
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Structural Failures}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+Sometimes an answer looks right because I stop checking it too early.
+
+The problem isn't that it's wrong. It's that it almost works.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand global coherence from Chapter~2 and
+abstraction from Chapter~4. This chapter examines what happens when
+those processes go wrong: when structures appear coherent but are not,
+when abstraction removes too much, and when ideas survive by hiding
+their failures.
+
+\begin{teachernote}
+This chapter introduces the idea that bad thinking is often not
+obviously bad---it is subtly bad. Students are accustomed to thinking
+of errors as clearly visible mistakes. The chapter asks them to develop
+sensitivity to errors that hide, which is a more sophisticated and more
+important skill.
+\end{teachernote}
+
+\section{Local Without Global}
+
+\begin{definition}[Fragmentation]\index{fragmentation}\index{structural failure!fragmentation}
+A \textbf{fragmented}\index{fragmentation} structure is one that appears consistent within
+limited contexts but fails when extended across all relevant domains.
+\end{definition}
+
+Fragmented ideas are common. A theory that explains results in one field
+but contradicts results in another is fragmented. An explanation that works
+for familiar cases but fails for new ones is fragmented.
+
+The test of an idea is not whether it works in one place. It is whether it
+maintains coherence across all the places where it should apply.
+
+\begin{teachernote}
+A powerful classroom exercise: present students with a rule that works
+in three examples but fails in a fourth. Ask them to identify the rule,
+then expose the fourth case. The experience of the structure collapsing
+under extension is the direct feeling of fragmentation. This is more
+memorable than any definition.
+\end{teachernote}
+
+\section{Overcompression}
+
+\begin{definition}[Overcompression]\index{overcompression}\index{structural failure!overcompression}
+\textbf{Overcompression}\index{overcompression} occurs when an abstraction removes distinctions
+that are actually relevant to the constraint structure, producing an
+oversimplified model that fails to capture real structure.
+\end{definition}
+
+Overcompression is the opposite problem from fragmentation. Instead of
+failing across domains, an overcompressed idea seems to work everywhere---
+because it is so vague that it cannot be tested. It survives not by being
+true but by being empty.
+
+\begin{example}
+``Everything happens for a reason'' is maximally overcompressed. It is
+compatible with any observation and therefore explains nothing specific.
+It cannot be tested because it never makes a prediction that could be
+wrong.
+\end{example}
+
+\section{Hallucination: The False Global}
+
+\begin{definition}[Hallucination]\index{hallucination}\index{structural failure!hallucination}\index{false coherence}
+A \textbf{hallucinated structure}\index{hallucination} is a configuration that appears globally
+coherent because inconsistencies have been hidden, discarded, or ignored
+rather than resolved.
+\end{definition}
+
+A hallucinated idea has the feeling of closure without the reality. It
+appears to satisfy all constraints only because some constraints were quietly
+dropped.
+
+The test is whether the idea survives contact with the dropped constraints.
+If re-introducing them causes the structure to fall apart, it was a
+hallucination.
+
+\begin{teachernote}
+The distinction between hallucination and genuine closure is one of
+the most important ideas in this book. Students will encounter it later
+in thinking about artificial intelligence, institutional reasoning, and
+their own beliefs. The key question to install now: which constraints
+are being ignored to make this feel coherent? Teach students to ask
+this question habitually.
+\end{teachernote}
+
+\section{How to Distinguish Real from False}\index{real vs.\ false structure}\index{testing ideas}
+
+A real structure survives challenge. A hallucination resists challenge
+because challenge exposes its gaps. A real structure works across domains.
+A hallucination works only in the domain where it was constructed.
+A real structure makes specific predictions that could be wrong.
+A hallucination is consistent with everything and therefore predictive
+of nothing.
+
+\section*{Everyday Analogies}
+
+Structural failures are recognizable in everyday life once you know
+what to look for. A sports team with a strategy that only works against
+weak opponents has a fragmented strategy---it does not hold under the
+full constraint of strong competition. A music student who has learned
+a piece only in one tempo has an overcompressed version---the structure
+looks present but disappears under performance conditions. In drawing,
+a rule of thumb that works for simple compositions but fails for complex
+ones is fragmented. In hacky sacking, a trick that works only in ideal
+conditions is not truly mastered---real mastery is the structure holding
+under variation. In strategy games, a plan that requires everything to
+go right is fragile: it has not been tested against the full constraint
+space of the opponent's responses.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+An agent is like a bubble that changes over time.
+
+If it changes in a way that destroys its own structure, it cannot
+continue.
+
+So good systems don't just grow.
+
+They maintain the conditions that let them keep existing.
+
+Stability is part of intelligence.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+When debugging a program, the hardest errors are not the ones that
+crash immediately. They are the ones that almost work. The output looks
+reasonable, but something subtle is wrong.
+
+Thinking fails in the same way. The most dangerous ideas are not
+obviously incorrect---they are nearly correct. They survive casual
+inspection, but collapse under careful examination.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Place a small object on a table. Now place a book between you and the
+object. Try to move the object without going around or over the book.
+You cannot. Now remove the restriction and move around it freely.
+Some changes require a completely different path, not just small
+adjustments. The same structure appears in thinking: some ideas cannot
+be reached by gradual revision---they require stepping back and taking
+a different route.
+
+\section*{Further Reading}
+
+If you were interested in why some changes are easy and others are not,
+try \textit{Seven Brief Lessons on Physics} by Carlo Rovelli, which
+introduces ideas about energy and change in a short, readable form.
+In learning, the experience of reaching a plateau before making a
+sudden leap forward is a version of the same idea---some progress only
+comes after a qualitative shift in how you are thinking.
+
+\begin{figure}[h]
+\centering
+\tdplotsetmaincoords{70}{120}
+\begin{tikzpicture}[tdplot_main_coords, scale=1.8]
+  % left block
+  \draw[thickline] (-1,0,0)--(-0.3,0,0)--(-0.3,0.7,0)--(-1,0.7,0)--cycle;
+  \draw[thickline] (-1,0,0.7)--(-0.3,0,0.7)--(-0.3,0.7,0.7)--(-1,0.7,0.7)--cycle;
+  \draw[thickline] (-1,0,0)--(-1,0,0.7);
+  \draw[thickline] (-0.3,0,0)--(-0.3,0,0.7);
+  \draw[thickline] (-0.3,0.7,0)--(-0.3,0.7,0.7);
+  \draw[thickline] (-1,0.7,0)--(-1,0.7,0.7);
+  % right block slightly misaligned
+  \draw[thickline] (0.45,0.15,0)--(1.15,0.15,0)--(1.15,0.85,0)--(0.45,0.85,0)--cycle;
+  \draw[thickline] (0.45,0.15,0.7)--(1.15,0.15,0.7)--(1.15,0.85,0.7)--(0.45,0.85,0.7)--cycle;
+  \draw[thickline] (0.45,0.15,0)--(0.45,0.15,0.7);
+  \draw[thickline] (1.15,0.15,0)--(1.15,0.15,0.7);
+  \draw[thickline] (1.15,0.85,0)--(1.15,0.85,0.7);
+  \draw[thickline] (0.45,0.85,0)--(0.45,0.85,0.7);
+  % mismatch
+  \draw[decorate, decoration={zigzag, segment length=4, amplitude=1.2}, thick]
+    (-0.15,0.35,0.35)--(0.3,0.5,0.35);
+  \node at (0,-0.5,0) {\small Two locally good shapes can still fail to connect};
+\end{tikzpicture}
+\caption{Fragmentation: local coherence without global fit.}
+\end{figure}
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Cognitive Dissonance as Structural Information}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I thought I understood the situation.
+
+But it turned out I only understood the part that was easy to see.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand the distinction between local sections and
+global coherence from Chapter~2, and should have some familiarity
+with the concept of structural failure from Chapter~7. No psychological
+background is required.
+
+\begin{teachernote}
+Many students have been taught that cognitive dissonance is something
+to reduce as quickly as possible. This chapter inverts that. The
+discomfort is information. The appropriate response to information is
+to read it carefully, not to make it stop. This reframe can be
+transformative for students who have been taught to resolve uncertainty
+by choosing a side.
+\end{teachernote}
+
+\section{What Dissonance Actually Is}
+
+Cognitive dissonance---the uncomfortable feeling of holding contradictory
+beliefs---is usually described as a psychological problem to be resolved.
+But it is also information.
+
+\begin{principle}[Dissonance as Diagnostic]\index{cognitive dissonance}\index{dissonance, as diagnostic}\index{gluing failure}
+Cognitive dissonance is the experiential signal of a gluing failure: two
+local sections of your understanding that cannot be consistently reconciled
+at their overlap.
+\end{principle}
+
+The discomfort is pointing at a real structural problem. Something in your
+set of constraints is inconsistent. The appropriate response is not to
+eliminate the feeling by choosing one belief over another, but to examine
+the conflict carefully and find the constraint that needs revision.
+
+\section{Productive and Unproductive Responses}\index{dissonance!productive responses to}
+
+Unproductive responses to dissonance include: avoiding the topic, doubling
+down on one side, or adding new beliefs that paper over the conflict without
+resolving it.
+
+Productive responses include: identifying exactly where the conflict lies,
+tracing each conflicting belief back to its supporting constraints, and
+testing which constraints are most secure.
+
+\begin{teachernote}
+A useful classroom format: present two statements that appear to contradict
+each other but might both be true. Ask students to find the constraint
+that makes each one seem right. Then ask: do these constraints actually
+conflict, or are they simply operating in different domains? The ability
+to locate the exact site of a conflict is the skill this chapter develops.
+\end{teachernote}
+
+\begin{activity}
+Think of a belief you hold strongly. Now think of evidence or argument that
+seems to contradict it. Instead of defending one side, ask: what specific
+constraint is each side relying on? Do these constraints actually conflict,
+or are they talking about different things?
+\end{activity}
+
+\section*{Everyday Analogies}
+
+Dissonance as structural information is visible everywhere that
+contradictions turn out to be productive. A musician who notices that
+a technically correct passage sounds wrong is experiencing dissonance
+between the written constraints and the auditory constraints---and that
+conflict is pointing at something real about phrasing or interpretation.
+A sports player whose trained response keeps failing in a particular
+situation is experiencing the same thing: the relegated structure is
+in conflict with the actual constraint field. In drawing, the discomfort
+of seeing that a technically accurate rendering looks spatially wrong
+is dissonance between the rules of proportion and the rules of visual
+perception. In each case, the right response is not to dismiss the
+feeling---it is to follow it back to the constraint it is pointing at.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+You can have two bubbles that each look fine on their own.
+
+But when you try to connect them, something breaks.
+
+They don't match at the edges.
+
+That means they cannot belong to the same bigger bubble.
+
+Something that works locally may still fail globally.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+When data is compressed, details are removed so the whole can be stored
+or transmitted efficiently. If the compression is done carefully, the
+important structure remains. If not, meaning is lost.
+
+Understanding works the same way. We never hold the full complexity of
+a system. We hold a reduced version of it. The challenge is to remove
+detail without destroying the relationships that matter.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Create a simple pattern using dots and lines on paper. Now recreate
+the same pattern using string or sticks. Then try to clap the pattern
+as a rhythm---each dot a beat, each line the space between. Even though
+the medium changes completely, the structure remains. You are mapping
+one system into another while preserving the relationships that matter.
+
+\section*{Further Reading}
+
+If you liked translating ideas between different systems, you might
+enjoy \textit{Code: The Hidden Language of Computer Hardware and
+Software} by Charles Petzold, which explains how real-world systems
+are translated into electrical signals. \textit{The Music of the
+Primes} by Marcus du Sautoy (selected parts) connects mathematics and
+patterns across different domains. These books show how the same
+structure can appear in many different forms.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % left graph
+  \foreach \p/\name in {(0,0)/a,(1.2,0.8)/b,(1.5,-0.8)/c,(2.6,0)/d}
+    \node[point,label={[font=\small]above:\name}] at \p {};
+  \draw[thickline] (0,0)--(1.2,0.8)--(2.6,0)--(1.5,-0.8)--cycle;
+  \draw[thickline] (1.2,0.8)--(1.5,-0.8);
+  % arrow
+  \draw[flow, line width=1.0pt] (3.2,0)--(5.1,0);
+  % right graph, same connectivity, different geometry
+  \foreach \p/\name in {(6.0,0.4)/A,(7.1,1.0)/B,(7.5,-0.5)/C,(8.7,0.2)/D}
+    \node[point,label={[font=\small]above:\name}] at \p {};
+  \draw[thickline] (6.0,0.4)--(7.1,1.0)--(8.7,0.2)--(7.5,-0.5)--cycle;
+  \draw[thickline] (7.1,1.0)--(7.5,-0.5);
+  \node at (4.35,-1.25) {\small Different surfaces can preserve the same underlying structure};
+\end{tikzpicture}
+\caption{A structure-preserving map between two different-looking systems.}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════
+\part{How Ideas Show Up in the World}
+% ════════════════════════════════════════════════════════════════════════
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Cross-Domain Invariance}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+I kept studying different subjects, hoping they would finally make sense.
+
+Eventually I realized they were all saying the same thing in different
+ways.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should understand invariants from Chapter~4 and the idea that
+abstraction makes cross-domain comparison possible. This chapter shows
+what it looks like when that comparison succeeds: the same structure
+appearing in multiple domains simultaneously.
+
+\begin{teachernote}
+This chapter is where many students experience the book's central
+insight for the first time. The goal is not to convince students of a
+philosophical claim, but to give them the direct experience of
+recognizing the same structure in two places at once. Work slowly
+through the examples. Ask students to supply their own before moving on.
+\end{teachernote}
+
+\section{The Same Grammar in Different Languages}
+
+The word for ``mother'' is different in every language. But the concept
+of a mother---a primary caregiver who is parent to a child---appears in
+every human culture. The surface varies; the structure persists.
+
+This is what cross-domain invariance means. The objects in different fields
+are completely different. The constraints governing their relationships are
+the same.
+
+\begin{principle}[Cross-Domain Invariance]\index{cross-domain invariance}\index{invariant!across domains}
+When the same structural grammar appears in multiple domains under different
+interpretations, the grammar is a candidate for a deep truth that holds
+across all of them.
+\end{principle}
+
+\section{Examples of Shared Structure}\index{shared structure}\index{mathematics!shared structure with other domains}
+
+The same mathematics that describes the growth of a population of bacteria
+also describes the growth of compound interest. The same principles that
+govern equilibrium in chemistry govern equilibrium in economics. The same
+patterns that appear in music appear in the structure of language.
+
+None of these are coincidences. They reflect the same constraint structures
+appearing at different scales and in different materials.
+
+\begin{teachernote}
+Students may be skeptical that these similarities are real rather than
+superficial. The test is whether the analogy makes predictions. If the
+mathematical description of bacterial growth genuinely predicts compound
+interest growth, the shared structure is real. If the analogy only
+works loosely and in one direction, it may be superficial. Teach
+students to ask: does this analogy predict, or does it only describe?
+\end{teachernote}
+
+\section{Functorial Correspondence}
+
+\begin{definition}[Functorial Correspondence]\index{functorial correspondence}\index{structure-preserving map}
+A \textbf{functorial correspondence}\index{functorial correspondence} between two domains is a mapping that
+preserves the compositional grammar---the rules for how things combine and
+transform---while translating the specific objects of one domain into the
+specific objects of another.
+\end{definition}
+
+This is a technical way of saying: the same rules, applied to different stuff.
+A functor translates without distorting the structure.
+
+\begin{remark}
+You do not need to know the mathematical definition of a functor to use
+this idea. The key question is simpler: can the rules of composition from
+one domain be translated into another without losing anything essential?
+If yes, you have found a functorial correspondence.
+\end{remark}
+
+\section*{Everyday Analogies}
+
+Cross-domain invariance is the experience of recognizing a familiar
+shape in an unfamiliar place. The rules of counterpoint in music and
+the rules of logical argument share a structure: each voice or premise
+must be coherent on its own, must not contradict others, and must
+contribute to a whole that is more than the sum of its parts. The
+balance constraints in a drawing composition and the balance constraints
+in a sports formation are not analogous by coincidence---both are
+applications of the same geometric principle about centers of mass
+and visual weight. The way a hacky sack circle maintains its shape
+through individual contributions that do not crowd or abandon the
+center mirrors the way a functioning team maintains coherence through
+distributed but mutually adjusted actions. Recognizing these
+correspondences is not a trick---it is evidence that the underlying
+constraint structures are genuinely shared.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+Two bubble systems can look different on the surface but behave the
+same underneath.
+
+If they follow the same rules and lead to the same outcomes, they share
+the same structure.
+
+What matters is not how something looks, but what stays true when
+everything else changes.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+In object-oriented programming, systems are built from interacting
+components, each with its own responsibilities. The behavior of the
+whole emerges from the interaction of parts.
+
+Knowledge is structured in the same way. Different domains appear
+separate, but they interact through shared patterns. What matters is
+not the parts alone, but how they connect.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Try balancing a ruler or a long stick upright on one finger. You will
+need to constantly adjust your hand to keep it upright. If you stop
+adjusting, it falls. Stability here is not a fixed state---it is
+continuous maintenance of the right conditions. Notice that the same
+principle appears in ecosystems, teams, and conversations: the whole
+stays coherent only because the parts keep adjusting to each other.
+
+\section*{Further Reading}
+
+If you were interested in how systems stay stable, try \textit{What
+If?} by Randall Munroe, which uses playful questions to explore how
+systems behave under unusual conditions. For a more extended treatment,
+selected sections of \textit{The Systems View of Life} by Fritjof Capra
+explore how living systems maintain balance over time. These books help
+you think about how systems survive and adapt.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % admissible corridor
+  \draw[thickline] (0,0.7)  .. controls (2,1.1)  and (4,1.0)  .. (6,0.6);
+  \draw[thickline] (0,-0.7) .. controls (2,-0.4) and (4,-0.5) .. (6,-0.8);
+  % trajectory inside corridor
+  \draw[very thick, -{Latex[length=2.2mm]}]
+    (0.2,0.0) .. controls (1.5,0.2) and (2.5,0.1) ..
+    (3.2,0.0) .. controls (4.2,-0.05) and (5.0,-0.1) .. (5.8,-0.05);
+  % failed exit (crossed out)
+  \draw[faint, -{Latex[length=2.2mm]}] (3.2,0.0)--(3.2,1.3);
+  \draw[faint] (3.0,1.15)--(3.4,1.45);
+  \draw[faint] (3.0,1.45)--(3.4,1.15);
+  \node at (3,-1.5) {\small Intelligence is staying within the conditions for continued movement};
+\end{tikzpicture}
+\caption{A trajectory remains viable by staying inside its admissible corridor.}
+\end{figure}
+
+% ────────────────────────────────────────────────────────────────────────
+\chapter{Intelligence as Constraint Maintenance}
+% ────────────────────────────────────────────────────────────────────────
+
+\begin{deepthought}
+At first, ideas felt like things I had to chase.
+
+Now it feels more like they appear when there's nowhere left for them
+not to.
+\end{deepthought}
+
+\section*{Prerequisites}
+
+Students should have worked through the whole book to reach this point.
+The chapter synthesizes: intelligence is not a mysterious property of
+certain minds. It is the sustained capacity to maintain, accumulate, and
+revise constraint-consistent structure---which is what the entire book
+has been describing.
+
+\begin{teachernote}
+This chapter asks students to take the full inventory of what they have
+learned and reframe it as a description of what intelligence actually is.
+The purpose is not to produce a final definition but to help students
+see that their own work of understanding---done well, done carefully,
+done honestly---is itself an example of the thing being described.
+\end{teachernote}
+
+\section{A Better Definition}
+
+Intelligence is usually defined as the ability to solve problems, or to
+learn, or to adapt. These are all correct, but they are incomplete. They
+describe what intelligence does, not what it is.
+
+\begin{principle}[Intelligence as Constraint Maintenance]\index{intelligence!as constraint maintenance}\index{artificial intelligence}
+Intelligence is the capacity to maintain constraint-consistent structure
+under conditions that threaten it---acquiring new constraints, revising
+inconsistent ones, and preserving globally coherent configurations across
+time and change.
+\end{principle}
+
+\section{What This Means for Artificial Systems}\index{artificial intelligence}\index{optimization, narrow}
+
+A system that maximizes a single number---profit, engagement, clicks---
+is not intelligent in this sense. It is a very effective optimizer within
+a narrow space. The constraints of the broader system (the environment,
+the users, the long-term) are not part of its structure.
+
+A genuinely intelligent system is one that can hold many constraints from
+many domains simultaneously and navigate toward configurations that satisfy
+all of them---including the constraints that govern its own persistence.
+
+\begin{teachernote}
+This section opens a natural discussion about artificial intelligence.
+Students may ask: can a machine be intelligent in this sense? The
+question is genuinely open. What the chapter provides is a criterion:
+not ``can it answer questions'' or ``can it beat humans at games,''
+but ``can it maintain constraint-consistent structure across all the
+domains that matter, including the ones it was not explicitly designed
+for?'' This is a harder bar, and students should appreciate why.
+\end{teachernote}
+
+\section{Conclusion: The Geometry of Thinking}\index{geometry of thinking}\index{constraint field}
+
+When you understand ideas as convergence phenomena---as the endpoints of
+constraint accumulation rather than the starting points of invention---
+the process of learning changes.
+
+You are not collecting facts. You are building a constraint field. Each
+domain you study adds new constraints. Each connection you find between
+domains creates new compatibility conditions. Each failure you investigate
+reveals a constraint you had missed.
+
+The ideas are already out there, constrained by the same physical,
+mathematical, and logical laws that constrain everything else. Your job
+is to accumulate enough constraints, from enough different places, to
+see them.
+
+\begin{principle}[The Core Principle]\index{convergence phenomenon}\index{ideas!as convergence phenomena}
+Ideas are convergence phenomena. They emerge when independently accumulated
+constraints from different domains align to permit a single, globally
+coherent configuration. The completed idea feels inevitable because it is.
+\end{principle}
+
+\section*{Everyday Analogies}
+
+Intelligence as constraint maintenance is visible in the difference
+between competence and brittleness. A musician who can only play a
+piece in one tempo, at one dynamic, in one context, has accumulated
+constraints in a narrow field. A musician who can adapt to a different
+hall, a different ensemble, a sight-reading situation---maintaining
+the essential structure while adjusting to new constraints---is
+demonstrating intelligence in the sense described here. The same
+applies to sport: the player who can only perform their skill in
+practice conditions is not yet fully skilled. Mastery is the constraint
+structure holding under the full range of variations the environment
+can impose. In drawing, the ability to draw from imagination rather
+than only from observation is evidence that the underlying spatial
+constraints have been fully internalized, not just locally applied.
+Intelligence, in any domain, is the structure that persists when the
+familiar scaffolding is removed.
+
+\section*{Spherepop Corner}
+
+\begin{spherepopjunior}
+If you let bubbles change again and again, they often settle into
+certain shapes.
+
+These shapes keep coming back.
+
+They are stable resting points.
+
+An idea can feel ``inevitable'' because everything collapses toward
+the same final bubble.
+\end{spherepopjunior}
+
+\begin{literaryaside}
+A constraint solver does not guess answers. It eliminates impossibilities
+until only one configuration remains. The solution is not chosen---it
+is forced.
+
+The strongest ideas feel like this. They are not selected from many
+options. They are the only structure that satisfies everything at once.
+\end{literaryaside}
+
+\section*{Hands-On Activity}
+
+Drop a marble into a bowl from different positions---left side, right
+side, center, near the rim. No matter where you release it, it rolls
+to the same lowest point. Try different bowls or surfaces with
+differently shaped basins. Notice how the shape of the container
+determines where the marble ends up. Some outcomes are stable resting
+points that many different starting conditions all lead toward. The
+sense of inevitability you feel watching the marble is exactly the
+feeling this book has been describing.
+
+\section*{Further Reading}
+
+If you liked the idea that systems settle into patterns, you might
+enjoy \textit{Chaos} by James Gleick (selected sections), which
+explains how simple rules can produce repeating and stable patterns.
+\textit{Sync} by Steven Strogatz explores how systems fall into rhythm
+and alignment across biology, physics, and social life. \textit{The
+Joy of x} by Steven Strogatz also explains mathematical ideas---
+including what stays the same under change---in a very accessible way.
+These books show how order can emerge from repeated processes, and how
+ideas can feel inevitable precisely because they are.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % basin curve
+  \draw[thickline] (-4,2.0) .. controls (-2,0.8) and (-1,-0.2) ..
+    (0,-1.0) .. controls (1,-0.2) and (2,0.8) .. (4,2.0);
+  % attractor point
+  \fill (0,-1.0) circle (0.07);
+  % descending paths from different starting points
+  \draw[flow] (-3.2,1.5) .. controls (-2.0,0.5) and (-0.8,-0.4) .. (-0.1,-0.95);
+  \draw[flow] (3.1,1.5)  .. controls (2.0,0.5)  and (0.9,-0.3)  .. (0.1,-0.95);
+  \draw[flow] (-1.2,1.0) .. controls (-0.8,0.2) and (-0.4,-0.4) .. (0,-0.95);
+  \node at (0,-2.0) {\small When many paths lead to the same stable form, the result feels inevitable};
+\end{tikzpicture}
+\caption{Different starting points converging on one attractor.}
+\end{figure}
+
+\backmatter
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Vocabulary}
+\addcontentsline{toc}{chapter}{Vocabulary}
+% ════════════════════════════════════════════════════════════════════════
+
+The following terms are introduced and defined in the main text. Each
+entry gives the term, a plain-language restatement of its meaning, and
+the chapter in which it first appears.
+
+\begin{description}
+
+\item[\textbf{Abstraction}] The removal of details that do not affect
+the essential structure of a system, so that what remains can be
+combined with ideas from other domains. \textit{Chapter~4.}
+
+\item[\textbf{Aspect Relegation}] The compression of a complex
+constraint structure into an automatic, background form so that it can
+be used without active reconstruction. What we call intuition is usually
+a relegated structure. \textit{Chapter~6.}
+
+\item[\textbf{Closure}] The condition a system reaches when at least
+one configuration satisfies all of its accumulated constraints
+simultaneously. Closure is the moment an idea becomes possible.
+\textit{Chapter~1.}
+
+\item[\textbf{Coarse-Graining}] The grouping of fine-grained detail
+into larger categories, keeping structure visible at the chosen level
+while discarding everything below it. Every map is a coarse-graining
+of the territory it represents. \textit{Chapter~5.}
+
+\item[\textbf{Cognitive Dissonance}] The uncomfortable feeling produced
+when two beliefs or local sections of understanding cannot be reconciled
+at their overlap. Treated in this book as useful diagnostic information,
+not merely a psychological problem. \textit{Chapter~8.}
+
+\item[\textbf{Constraint}] Any rule, condition, or limitation that
+reduces the number of possible solutions to a problem. Constraints do
+not block thinking---they make specific answers possible by eliminating
+everything else. \textit{Chapter~1.}
+
+\item[\textbf{Constraint Density}] The degree to which accumulated
+constraints interact with each other in nontrivial ways, ruling out
+answers that would otherwise seem plausible. A system must be
+constraint-dense before convergence can occur. \textit{Chapter~1.}
+
+\item[\textbf{Convergence Phenomenon}] An idea or solution that emerges
+because independently accumulated constraints from different domains
+all point toward a single configuration. The result feels inevitable
+because it is the only form that satisfies everything at once.
+\textit{Chapters~1 and~10.}
+
+\item[\textbf{Domain}] A field of knowledge organized around a specific
+set of constraints on what is possible and what is not. Learning a
+domain means internalizing its constraints. \textit{Chapter~1.}
+
+\item[\textbf{Fragmentation}] A structural failure in which an idea
+appears consistent within a limited context but breaks down when
+extended across all relevant domains. Fragmented ideas work locally
+but fail globally. \textit{Chapter~7.}
+
+\item[\textbf{Functorial Correspondence}] A mapping between two domains
+that preserves the rules for how things combine and transform, while
+translating the specific objects of one domain into those of another.
+The same structure, applied to different material. \textit{Chapter~9.}
+
+\item[\textbf{Global Coherence}] The condition an idea achieves when
+it satisfies all of its constraints simultaneously, not just within
+one context but across every relevant domain. \textit{Chapter~2.}
+
+\item[\textbf{Hallucination}] A false sense of closure, produced when
+inconsistencies are hidden or discarded rather than resolved. A
+hallucinated structure has the feeling of a real idea without the
+reality. \textit{Chapter~7.}
+
+\item[\textbf{Invariant}] A property that remains unchanged under a
+specified class of transformations. Finding invariants is the goal of
+abstraction: what stays true across all the variations is the
+structural core. \textit{Chapter~4.}
+
+\item[\textbf{Local Section}] A partial understanding that works within
+a limited context but has not yet been tested across all relevant
+domains. Most learning consists of accumulating and eventually
+connecting local sections. \textit{Chapter~2.}
+
+\item[\textbf{Overcompression}] A failure mode in which an abstraction
+removes distinctions that actually matter, producing a model too vague
+to be tested or disproved. Overcompressed ideas seem to apply
+everywhere precisely because they predict nothing specific.
+\textit{Chapter~7.}
+
+\item[\textbf{Precomputation}] The constraint-interaction work the mind
+does below the threshold of conscious awareness, building toward a
+solution that surfaces as sudden insight when enough constraints have
+aligned. \textit{Chapter~3.}
+
+\item[\textbf{Projection Capacity}] The ability of a system to compress
+a complex structure into a simpler representation without losing the
+essential relationships. \textit{Chapter~1.}
+
+\item[\textbf{Recognition}] The act of perceiving a structure that was
+already latent in the accumulated constraints, rather than constructing
+it from nothing. Genuine insight is recognition, not invention.
+\textit{Chapter~2.}
+
+\item[\textbf{Relegation Failure}] The breakdown of a relegated
+(automated) structure when the environment changes in ways that violate
+the constraints under which it was originally built. The signal that
+deliberate reconstruction is needed. \textit{Chapter~6.}
+
+\item[\textbf{Temporal Compression}] The relocation of computational
+work from the present moment into prior experience, so that what once
+required conscious effort can now be executed automatically.
+\textit{Chapter~6.}
+
+\end{description}
+
+% ════════════════════════════════════════════════════════════════════════
+\chapter*{Topic Index}
+\addcontentsline{toc}{chapter}{Topic Index}
+% ════════════════════════════════════════════════════════════════════════
+
+{\small\printindex}
+
+\end{document}

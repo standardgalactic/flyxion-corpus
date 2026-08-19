@@ -1,0 +1,66 @@
+\documentclass[11pt]{book}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+
+\usepackage[margin=1.3in]{geometry}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+\title{\Huge A Viability Theory of Fusion Reactors \\[0.3em] \large Beyond the Lawson Criterion}
+\author{Flyxion \\ \small Independent Researcher}
+\date{2026}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\tableofcontents
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This book is not a plasma physics textbook, and it is not a work of philosophy borrowed for the occasion of fusion energy. It is an attempt to ask a question that the usual framing of fusion research tends to leave implicit: not how a fusion reaction is achieved, which is by now a solved problem in the narrow sense, but under what conditions a system that contains fusion continues to exist. That question turns out to require its own vocabulary, admissibility, repair, constraint coupling, recursive maintenance, developed here through the demanding case of magnetic confinement fusion, and illustrated at several points through a very different system, the Caldera Reactor, chosen precisely because it shares none of fusion's physics while sharing all of its underlying persistence problem. The chapters that follow build this vocabulary in stages, moving from a reframing of the central question, through the reactor's major physical subsystems, into the formal machinery needed to describe coupled admissibility precisely, and finally outward into the human, institutional, and economic structures without which no amount of plasma physics produces a power plant that lasts.
+
+\mainmatter
+
+\part{The Wrong Question}
+\include{chapters/ch01}
+\include{chapters/ch02}
+\include{chapters/ch03}
+
+\part{The Structure of a Fusion Reactor}
+\include{chapters/ch04}
+\include{chapters/ch05}
+\include{chapters/ch06}
+
+\part{Constraint Dynamics}
+\include{chapters/ch07}
+\include{chapters/ch08}
+\include{chapters/ch09}
+
+\part{Energy as Throughput}
+\include{chapters/ch10}
+\include{chapters/ch11}
+
+\part{Recursive Viability}
+\include{chapters/ch12}
+\include{chapters/ch13}
+\include{chapters/ch14}
+
+\part{The Reactor Ecosystem}
+\include{chapters/ch15}
+\include{chapters/ch16}
+
+\part{Toward a Physics of Viability}
+\include{chapters/ch17}
+\include{chapters/ch18}
+\include{chapters/ch19}
+
+\end{document}

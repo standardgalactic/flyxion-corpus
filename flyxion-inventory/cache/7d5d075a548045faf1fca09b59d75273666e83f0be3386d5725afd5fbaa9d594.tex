@@ -1,0 +1,343 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part II — Tension
+%  Chapter 7: The Appearance of Constraint
+% ============================================================
+
+\chapter{The Appearance of Constraint}
+\label{ch:decorative-formalism}
+
+\chapepigraph{Notation is a promise. Every symbol promises to mean
+something specific, to exclude something, to commit the system that
+uses it to a particular claim about the world. Notation that does
+not keep that promise is not neutral. It is a form of debt.}{Flyxion}
+
+\noindent
+Mathematics is the most powerful tool humans have developed for
+making precise claims. Its power comes from a specific property:
+mathematical statements constrain. A theorem does not merely say
+that something is the case; it says that, given the axioms and the
+definitions, it could not be otherwise. The constraints propagate:
+if you accept the premises and the logic, you are compelled to
+accept the conclusions, and those conclusions exclude possibilities
+that were previously open. This is what gives mathematics its
+explanatory force in science. When a physical theory is expressed
+mathematically, its claims become specific enough to generate
+predictions that distinguish the theory from its competitors.
+
+The Phoenix corpus deploys a substantial mathematical apparatus.
+Wave functions, interference integrals, conformity relations,
+jitter metrics, salience functionals, projection operators ---
+the formalism is dense and technically competent. The question
+this chapter examines is not whether the mathematics is correctly
+executed but whether it is doing the work that mathematics is
+supposed to do: whether it is constraining claims rather than
+merely expressing them in a register that \textit{looks}
+constraining.
+
+\section{What Mathematical Notation Can and Cannot Do}
+\label{sec:notation-function}
+
+Mathematical notation can do three distinct things, and it is
+important to keep them separate.
+
+The first is to make a claim precise. Writing $\Jp(i) =
+|T_i - \bar{T}_i|$ says exactly what period jitter is,
+in a form that admits no ambiguity about what is being
+measured. The definition could be operationalized by
+anyone with access to the signal and the ability to detect
+peaks and compute moving averages. This is notation doing
+its primary work: precision through definition.
+
+The second is to derive consequences. Once jitter is defined,
+one can derive its mathematical properties: its relationship
+to the smoothing parameter $\alpha$, its behaviour in the
+limit of perfectly periodic signals, its expected distribution
+under various noise models. These derivations constrain the
+relationship between the jitter metric and other quantities
+in ways that generate testable predictions. This is notation
+doing its secondary work: constraint propagation through derivation.
+
+The third is to organize a description. Writing
+$\SalFunc(i) = w_E E_i + w_H H_i + w_J(1 + \Jp(i) + \Ja(i))^{-1}$
+expresses the salience functional in a form that is
+visually organized, that makes the contribution of each
+component legible, and that looks like a mathematical object.
+Whether it does more than organize depends on whether the
+weights $w_E$, $w_H$, $w_J$ are specified, whether the
+component measures $E_i$ and $H_i$ are defined in terms
+that admit operationalization, and whether the functional
+form is motivated by a derivation or chosen for convenience.
+
+Notation that does only the third thing --- that organizes
+a description without making it precise enough to generate
+consequences or constrain predictions --- is performing
+what might be called \textit{organizational formalism}.
+It is not wrong; it is useful for communication and for
+keeping track of the parts of a complex claim. But it is
+not yet doing the work of mathematics in its full sense.
+It is a promissory note: a commitment to eventually provide
+the precision and the derivations that would make the
+formalism earn its keep.
+
+\begin{auditprop}
+\label{ap:organizational-formalism}
+Mathematical notation performs organizational formalism
+when it expresses a claim in symbolic form without either
+(i)~providing definitions that admit operationalization,
+or (ii)~deriving consequences that constrain predictions.
+Organizational formalism is not false; it is incomplete.
+Its presence in a framework does not indicate failure but
+marks a site where precision work remains to be done.
+When organizational formalism is consistently mistaken for
+constraint-providing formalism --- by authors or by readers
+--- it constitutes the beginning of the failure mode
+Decorative Formalism~($\FailGeo{1}$).
+\end{auditprop}
+
+\section{The Salience Functional Under Scrutiny}
+\label{sec:salience-scrutiny}
+
+Applying this distinction to the Marine salience functional
+is instructive. The jitter components $\Jp(i)$ and $\Ja(i)$
+are precisely defined and admit straightforward operationalization:
+given a waveform and a peak detector, one can compute them.
+This part of the formalism is doing real constraining work.
+
+The component $H_i$ --- the harmonic alignment score ---
+is less clearly defined. What is a harmonic alignment score?
+The corpus describes it as measuring whether the current
+peak frequency is consistent with a harmonic series, but
+it does not specify: harmonic with respect to which
+fundamental? How is the fundamental identified? What counts
+as ``consistent'' and how is the threshold set? The definition
+is clear enough to understand what it is intended to measure
+but not clear enough to generate a unique implementation.
+Multiple different implementations of $H_i$ are consistent
+with the corpus's description, and they would produce
+different salience estimates for the same signal.
+
+The weights $w_E$, $w_H$, $w_J$ are presented as parameters
+of the system. This is honest: the corpus does not claim
+to derive them from first principles. But if the weights
+are free parameters, the salience functional is not yet
+making a specific claim --- it is expressing the form of
+a claim that would become specific once the weights are
+determined. Determining the weights requires a procedure:
+presumably, optimizing them against some performance metric
+on some dataset. The corpus does not specify this procedure,
+which means the functional as stated is organizational rather
+than constraint-providing.
+
+\begin{dangerzone}[Operational Severance]
+A formalism exhibits Operational Severance when the bridge
+between its symbolic expressions and any measurement
+procedure contains unspecified steps. The Marine salience
+functional as stated has at least two such unspecified
+steps: the operationalization of the harmonic alignment
+score $H_i$ and the determination procedure for the weights
+$w_E$, $w_H$, $w_J$. This does not make the formalism
+useless; it marks the specific points where
+operationalization work is needed before the formalism
+can generate testable predictions. The danger is not
+the incompleteness itself but the possibility that the
+appearance of a complete formal specification might inhibit
+the recognition that the incompleteness exists.
+\end{dangerzone}
+
+\section{The \MEMeight{} Formalism Under Scrutiny}
+\label{sec:mem8-scrutiny}
+
+The \MEMeight{} wave function formalism presents a different
+and more fundamental operationalization challenge. The memory
+field is specified as:
+\[
+  \MemField(x,t) = \sum_{i=1}^{N} A_i(x,t)\,
+  e^{i(\omega_i t + \phi_i(x,t))}.
+\]
+This is a mathematically well-defined object, but its
+operationalization requires answering questions that the
+corpus does not address.
+
+What is the space $x$ over which the field is defined?
+In physical wave equations, $x$ is a spatial coordinate
+and the field is a physical quantity at that location.
+In the \MEMeight{} formalism, $x$ appears to be something
+more abstract --- a ``location'' in some representational
+space. But what space? If $x$ is a neural coordinate,
+what is the topology of that space and how are memories
+localized within it? If $x$ is a semantic coordinate,
+what is the metric and how are distances in it computed?
+
+What are the characteristic frequencies $\omega_i$? In
+physical wave equations, frequencies are determined by
+the physical properties of the medium. In the \MEMeight{}
+formalism, $\omega_i$ is described as the ``characteristic
+frequency'' of memory $M_i$, but how is it assigned?
+Is it derived from the properties of the encoded event?
+Is it learned from data? Is it randomly assigned and
+then refined? These questions have different answers with
+substantially different implications for the architecture's
+behaviour.
+
+How is the retrieval integral $R_i(Q) = |\int Q(x)
+\overline{M_i(x,t)}\,dx|$ computed in practice?
+For a field defined over a continuous space with $N$
+superposed wave functions, computing this integral
+exactly requires both knowledge of the query function
+$Q$ and numerical integration over the representational
+space. The computational cost and the approximations
+required are not specified.
+
+\begin{auditprop}
+\label{ap:formalism-grounding}
+A formalism is physically grounded when each of its
+variables can be assigned a definite referent in the
+domain it models, and each of its operations can be
+implemented by a specified procedure on those referents.
+The \MEMeight{} formalism is not currently physically
+grounded in this sense. It specifies the mathematical
+form of a memory architecture without specifying the
+referents of its variables or the implementation
+procedures of its operations. This is not a failure
+of the formalism; it is a description of its current
+status as organizational rather than constraint-providing.
+\end{auditprop}
+
+\section{The Problem of Decorative Integration}
+\label{sec:decorative-integration}
+
+A specific instance of organizational formalism that appears
+repeatedly in speculative computational systems might be
+called \textit{decorative integration}: the formal
+representation of a relationship between two concepts using
+mathematical notation that asserts the relationship without
+deriving it.
+
+An example appears in the Phoenix corpus's connection between
+the Marine jitter metric and the RSVP accessibility entropy.
+The corpus --- or rather, the present reinterpretive reading
+of the corpus --- suggests:
+\[
+  \SalFunc \propto \frac{1}{\AccEnt},
+\]
+where $\AccEnt = \log|\AdmTraj(x_t)|$ is the accessibility
+entropy of the state $x_t$. This is a conceptually
+interesting connection: it suggests that signal coherence
+and thermodynamic accessibility are related, that the
+signals the Marine finds salient are precisely the signals
+that occupy low-entropy, low-accessibility regions of
+some dynamical state space.
+
+But the equation is not a derivation. It is an assertion
+of proportionality between two quantities defined in
+entirely different frameworks. For it to be more than
+organizational, it would need to specify: what is the
+state $x_t$ for an audio signal, what is the admissible
+trajectory space $\AdmTraj(x_t)$ in this context, how
+is the accessibility entropy computed from the signal's
+properties, and whether the proportionality holds
+quantitatively across the range of signals for which
+both the jitter metric and the accessibility entropy
+can be computed.
+
+None of these questions are answered by writing the
+proportionality symbol. The equation organizes the
+intuition that coherence and accessibility are related;
+it does not establish that they are.
+
+\section{Formalism as Legitimacy Signal}
+\label{sec:formalism-legitimacy}
+
+Mathematical notation carries authority. In contemporary
+intellectual culture, the presence of formal notation is
+often treated as a signal that a claim is rigorous,
+precise, and scientifically grounded. This is reasonable
+when the notation is doing its full work: providing
+precise definitions, deriving consequences, constraining
+predictions. It is misleading when the notation is doing
+only organizational work: expressing an intuition in
+symbolic form without making it more specific than the
+intuition was.
+
+The risk is asymmetric. An author who uses formal notation
+without providing full operationalization may do so
+because the operationalization is obvious or deferred to
+future work, not because the formalism is empty. A reader
+who interprets the notation as signalling constraint
+without checking whether the constraint is actually
+provided may attribute more precision to the framework
+than it currently possesses. The notation creates an
+impression of rigor that is not fully redeemable.
+
+This matters particularly in contexts where mathematical
+competence is used as a sorting mechanism: where the
+ability to produce formally organized arguments is taken
+as evidence that the arguments contain real insight.
+It matters less in contexts where readers are likely to
+ask, for every formal claim, what exactly it predicts
+and how it would be tested. In research contexts where
+the former sorting mechanism is more operative, the risk
+of decorative formalism creating unjustified authority
+is higher.
+
+\begin{dangerzone}[Representation Drift]
+When mathematical notation is used as a legitimacy signal
+rather than as a constraint mechanism, the representation
+--- the formal apparatus of the theory --- begins to
+acquire authority independent of its content. The
+representation drifts from its function (expressing and
+constraining claims) toward a social role (signalling
+intellectual seriousness). This drift is not deliberate
+and is often invisible to the participants. But it has
+real epistemic consequences: it makes it harder to ask
+the most basic question about any formal claim, which
+is whether the formalism is doing genuine work or merely
+performing it.
+\end{dangerzone}
+
+\section{What Survives This Scrutiny}
+\label{sec:survives-scrutiny}
+
+The analysis of this chapter has identified specific
+operationalization gaps in the Phoenix corpus's formalism.
+These gaps are real, and they matter for the framework's
+current epistemic status. But they do not determine the
+framework's ultimate value.
+
+What survives the scrutiny of this chapter is precisely
+the engineering core of the corpus. The peak detection
+algorithm, the exponential moving average updates, the
+jitter computation --- these are fully operationalized.
+The conformity relation $\Gamma_n(t) = \mathbf{1}(|v_n(t)
+- v_0(t)| < \varepsilon)$ is fully operationalized, given
+a definition of the amplitude envelopes $A_n(t)$. The
+compression efficiency advantage of harmonic consensus
+encoding is derivable from the conformity relation and
+does not depend on the underspecified components.
+
+What remains at the organizational stage is everything
+that depends on the broader framework: the \MEMeight{}
+architecture as a general memory system, the consciousness
+claims, the AI architecture proposals. These are not false;
+they are aspirational. They express a research direction
+rather than a research result.
+
+The distinction matters for the Interlude between Parts~III
+and~IV, where the survivable components will be identified
+explicitly. The present chapter's function is to begin
+developing the vocabulary for that classification: to
+distinguish what the formalism is doing from what it appears
+to be doing, without treating the gap as a final verdict.
+
+\medskip
+
+Chapter~8 turns to the second failure geometry: Definitional
+Closure, the structural arrangement in which the conclusions
+of a framework are embedded in its definitional choices rather
+than derived from them. This is, in many ways, the mirror
+image of Decorative Formalism: where Decorative Formalism
+adds the appearance of constraint without the substance,
+Definitional Closure builds constraint so deeply into the
+definitions that no observation from outside the definitional
+system can bear on the framework's claims.

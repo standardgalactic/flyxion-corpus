@@ -1,0 +1,1475 @@
+\documentclass[12pt]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[margin=1.25in]{geometry}
+\usepackage{setspace}
+
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{xcolor}
+\usepackage{parskip}
+
+% ── Typography ─────────────────────────────────────────────────────────────────
+\setstretch{1.15}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}{\normalfont\large\bfseries}{{\thesection}}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{{\thesubsection}}{1em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.5em}
+\titlespacing*{\subsection}{0pt}{1em}{0.3em}
+
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+
+% ── Math shorthand ─────────────────────────────────────────────────────────────
+\newcommand{\sS}{\mathcal{S}}
+\newcommand{\sT}{\mathcal{T}}
+\newcommand{\sG}{\mathcal{G}}
+\newcommand{\reach}{\mathrm{Reach}}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries From Preservation to Reachability:}\\[0.4em]
+  {\large\bfseries Semantic Continuity in an Age of Drift}\\[1.2em]
+  {\normalsize Flyxion}\\[0.2em]
+  {\small\textit{Independent Researcher} \quad
+   \texttt{github.com/standardgalactic}}\\[1.0em]
+  {\small April 17, 2026}\\[0.2em]
+  {\small\textit{revised June 4, 2026}}
+\end{center}
+
+\begin{abstract}
+\noindent
+Contemporary information systems are typically evaluated in terms of
+preservation: archives store documents, platforms retain content, and
+institutions maintain records.
+This paper argues that preservation is neither the correct invariant nor
+the correct design objective for semantic continuity.
+What matters is whether semantic states remain \emph{reachable} from future
+states through available transformations, and whether such reachability
+continues to support processes of reconstruction and reconstitution.
+We formalize the distinction between preservation and reachability, introduce
+\emph{ecphory} as the activation condition required for semantic reconstruction,
+and analyze a series of failure modes in which semantic states persist while
+their accessibility collapses.
+Extending the framework to language, memory, archives, note systems, and
+cultural transmission, we argue that semantic continuity depends on the
+maintenance of continuation paths rather than the storage of isolated states.
+A field-theoretic interpretation is proposed in terms of scalar persistence,
+vector transport, and accessibility fields, leading to a broader conclusion:
+what survives across time is not primarily information or representation, but
+the possibility that fragments may encounter compatible contexts and become part
+of larger reconstructed wholes.
+\end{abstract}
+
+\newpage
+
+% ── 1. Introduction ────────────────────────────────────────────────────────────
+\section{Introduction}
+
+A library that burns is understood as a catastrophe.
+A library whose catalog is deleted, whose call numbers are reassigned, and whose
+shelves are rearranged without documentation is understood as---
+at worst---a management failure.
+Yet in both cases the result is the same: a reader arriving with a reference
+cannot find the book.
+The second library has \emph{preserved} its collection while destroying the
+conditions under which the collection is useful.
+
+This contrast captures the central problem of the present paper.
+Modern digital and institutional systems are organized around preservation:
+the persistence of files, pages, references, and audiences.
+But preservation, in the sense of continued existence, is neither necessary nor
+sufficient for what we actually require from memory systems, which is
+\emph{reachability}: the ability of agents in future states to arrive at past
+semantic content through available transformations.
+
+The distinction matters because preservation and reachability can fail
+independently.
+A state can be preserved but rendered unreachable (the archive that no search
+engine indexes).
+A path can exist but lead nowhere (the link that resolves to a renamed page
+with overwritten content).
+And a system can maintain all its original components while gradually
+eliminating the connections among them.
+
+The argument proceeds in stages.
+Section~2 introduces the formal distinction between preservation and reachability
+and extends it to the concept of reconstitution.
+Section~3 develops reconstitution as the purpose of reachability and introduces
+the principle that a fragment encounters a compatible context and becomes
+something larger than itself.
+Section~4 introduces ecphory as a third condition, distinct from both
+preservation and reachability, required for reconstruction to succeed in
+practice.
+Section~5 presents a taxonomy of failure modes---each a distinct way
+preservation and reachability can come apart---together with the neighborhood
+principle as a constructive counterpart.
+Section~6 extends the analysis to natural language systems, where the same
+structure operates at the scale of generations rather than server cycles.
+Section~7 sketches the constructive implication: what a system must do if it
+aims to preserve reachability rather than merely storage.
+Section~8 develops a field-theoretic interpretation of the three constructive
+conditions, introducing scalar persistence, vector transport, and accessibility
+fields.
+Section~9 and~10 extend the analysis to forgetting, the structural role
+of incompleteness as a continuation operator, and the dynamics of semantic
+momentum.
+Section~11 develops the argument's final implication: that the correct
+invariant for semantic continuity is not preservation or reachability
+but continuation.
+
+A single formulation crystallizes the distinction before the formalism: a system
+can \emph{remember perfectly} while being \emph{unable to recall}.
+Memory, in this sense, is the existence of a state in the system.
+Recall is the existence of a path from here to there.
+The two are independent, and conflating them is the source of most design
+failures in knowledge infrastructure.
+
+% ── 2. Preservation and Reachability ──────────────────────────────────────────
+\section{Preservation and Reachability}
+
+Let a \emph{semantic system} consist of a set of states $\sS$ and a set of
+transformations $\sT$ that agents can apply to move between states.
+These transformations include any operation that constitutes legitimate access or
+navigation in the system: following a hyperlink, querying a search index, looking
+up a citation, using a translation, recalling from a prior interaction.
+The pair $(\sS, \sT)$ induces a directed graph $\sG$ in which states are nodes
+and transformations are edges.
+
+\textbf{Preservation} is the property that a state $s \in \sS$ continues to
+exist over time---that is, that the node remains in the graph.
+
+\textbf{Reachability} is the property that a state $s$ remains in the forward
+closure of the present state $s_0$ under available transformations---that is,
+that there exists a directed path from $s_0$ to $s$ in $\sG$.
+
+The central claim of this paper is:
+
+\begin{quote}
+\textit{A system can preserve elements of $\sS$ while destroying the path
+structure of $\sG$, such that preserved states become unreachable from the
+present.}
+\end{quote}
+
+This claim is not a logical paradox but a structural observation about how
+systems are actually built.
+Nodes and edges are maintained by different mechanisms---storage systems versus
+indexing and linking systems---and they degrade through different processes.
+Preservation is addressed by backup policies, archival standards, and data
+redundancy.
+Reachability is addressed by navigation infrastructure: search, citation,
+cross-referencing, naming consistency.
+Because these are separate engineering concerns, they can fail separately.
+
+Floridi's account of semantic information treats information as meaningful and
+truthful data~\cite{floridi2011}, but the question of \emph{access} to
+information is largely treated as prior to or outside the information-theoretic
+frame.
+Shannon's channel model~\cite{shannon1948} similarly brackets semantic content
+in favor of transmission fidelity.
+What neither framework captures directly is the temporal and navigational
+dimension: whether a receiver in a future state can reconstruct the path to a
+past message through the transformations available at that future time.
+Reachability, as we use the term here, names this gap.
+
+\subsection{Reachability Is Agent-Relative}
+
+Throughout this paper, reachability has been treated as a property of a
+semantic graph together with an agent class capable of traversing that
+graph.
+This dependence deserves explicit emphasis before the analysis proceeds.
+
+A path that exists for one agent may not exist for another.
+The trained archivist, the domain expert, the native speaker, and the
+long-term participant in a community possess transformations unavailable
+to outsiders.
+They inhabit richer effective graphs.
+Consequently, accessibility is not properly defined as a function of
+states alone; it must be indexed by an agent class $A$:
+\[
+  \mathcal{A}(s, A, t) \;=\; \log \lvert \mathcal{P}(s, A, t) \rvert.
+\]
+The same archive, language, or note system therefore contains multiple
+accessibility fields simultaneously, one for each class of agent capable
+of traversing it.
+
+This observation clarifies why preservation projects often appear
+successful from the perspective of specialists while failing from the
+perspective of the general public.
+The preserved states remain reachable for the small population that already
+knows how to navigate the system, even as their accessibility collapses
+for everyone else.
+
+Semantic continuity is therefore never absolute.
+It is always continuity \emph{for some population of traversing agents}.
+A system that narrows the agent class capable of traversal---through
+increased credential requirements, specialist vocabulary, or the
+disappearance of communities with relevant navigational knowledge---reduces
+semantic continuity even when every node and every edge is formally intact.
+The degradation is invisible to standard preservation metrics because it
+occurs not in the stored states but in the population of agents for whom
+those states remain live.
+
+% ── 3. Reachability and Reconstitution ────────────────────────────────────────
+\section{Reachability and Reconstitution}
+
+The formal framework of Section~2 defines reachability as the existence
+of a path from a present state to a past state.
+This definition is necessary but not yet sufficient to explain why
+reachability matters.
+The answer requires a further step.
+
+Reachability matters because it enables \emph{reconstitution}: the
+process by which a partial present state, brought into contact with a
+preserved trace through an available transformation, generates a larger
+semantic structure than either component contained alone.
+
+A preserved document is not valuable because it exists.
+It is valuable because it can participate in reconstructing a meaning
+that a present agent could not have generated independently.
+A citation is valuable not because it points to a node but because
+following the citation enables a reader to reconstruct an argument,
+a method, or a context that reshapes what the reader can subsequently
+understand.
+A language is valuable not because it encodes a lexicon but because
+it enables speakers to reconstruct the conceptual structures that prior
+speakers developed over generations.
+
+This allows us to sharpen the paper's central claim.
+The failure of preservation systems is not merely that they allow states
+to become unreachable.
+It is that they allow \emph{reconstitution events to become impossible}:
+future agents arrive with questions that prior states could answer, but
+the paths that would carry those agents to the relevant states are gone.
+
+We may state the underlying principle as follows:
+
+\begin{quote}
+\textit{A fragment encounters a compatible context and becomes something
+larger than itself.}
+\end{quote}
+
+Reachability is the condition under which this encounter can occur.
+A preserved but unreachable state is a fragment that can never encounter
+a compatible context again.
+It persists as inscription while ceasing to participate in the ongoing
+generation of meaning.
+
+This framing also clarifies the relationship between the six cases.
+Each failure mode is not merely a failure of access; it is a failure
+of reconstitution.
+Namespace laundering makes the reconstruction of prior community meaning
+impossible for agents who approach through the current name.
+Encyclopedic consolidation makes the reconstruction of prior framings
+impossible for agents who arrive through general-purpose search.
+Access restriction makes reconstruction impossible for agents who lack
+credentials.
+Link rot makes it impossible for anyone.
+Archival isolation makes it impossible for all but specialists who
+already possess the navigational knowledge to reach the archive.
+
+The dense local system (Section~5.6), conversely, succeeds not because
+it stores well but because it continuously enables reconstitution: present
+members encounter past states through living practice, and the encounter
+regenerates understanding that no document alone could transmit.
+
+% ── 4. Ecphory and Semantic Recall ────────────────────────────────────────────
+\section{Ecphory and Semantic Recall}
+
+The framework developed so far identifies three conditions for semantic
+continuity: node persistence, edge maintenance, and path coherence.
+But these conditions are necessary, not sufficient.
+Even when all three are satisfied---a state exists, a path exists, and the
+path is coherent---reconstruction may still fail.
+
+This gap is captured by the concept of \emph{ecphory}: the event in which
+a present cue resonates with a preserved trace strongly enough to
+reconstruct a larger semantic state.
+
+Ecphory names the \emph{activation event}, distinct from both preservation
+and reachability.
+A state may be preserved.
+A path to it may exist.
+Yet if the present state does not carry sufficient energy, context, or
+structural compatibility to resonate with the trace, the reconstruction
+does not occur.
+The path exists in principle but is not traversed in practice.
+
+This gives a three-layer framework:
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.2em]
+  \item \textbf{Preservation}: the state continues to exist ($s \in \sS$).
+  \item \textbf{Reachability}: a path from the present to the state exists
+        ($s \in \reach(s_0)$).
+  \item \textbf{Ecphory}: the present state activates the preserved trace,
+        enabling reconstruction of a larger semantic whole.
+\end{enumerate}
+
+Each condition can fail independently.
+A state can be preserved but unreachable (archival isolation).
+A state can be reachable but not ecphorically activated---the path is
+available, but the agent's current state does not carry sufficient
+resonance to complete the reconstruction.
+A cue can be present and a path can be followed, but if the surrounding
+context lacks the structural compatibility to reconstruct the original
+encoding conditions, the traversal terminates without reconstitution.
+
+The ecphoric failure mode is distinct from the infrastructural failure modes
+catalogued in Section~5.
+It is not a failure of storage or infrastructure; it is a failure
+of resonance.
+The agent must not only be able to reach the state; they must arrive in
+a condition capable of activating it.
+
+This has practical implications for system design.
+A retrieval system optimized for reachability delivers agents to the
+relevant node.
+A system optimized for ecphoric activation additionally ensures that
+agents arrive with the contextual preparation required for reconstruction.
+The difference is visible in the contrast between a search result
+(reachability) and a well-designed curriculum (ecphoric preparation):
+the curriculum does not merely provide access to content; it sequences
+prior encounters so that each state the learner has traversed increases
+their capacity to activate the next.
+
+The ecphoric framework also explains a pattern in the failure modes.
+Encyclopedic consolidation (Section~5.2) is particularly damaging not
+only because it removes intermediate nodes but because it removes the
+intermediate states that provided the ecphoric preparation required to
+activate the absorbed content.
+A reader who arrives at a consolidated article without having traversed
+the prior framing may be able to read the words but unable to reconstruct
+the understanding---because the encoding context that made the original
+formulation meaningful has been stripped away along with the intermediate
+nodes.
+
+\subsection{Ecphoric Failure and the Tip-of-the-Tongue State}
+
+The three-layer framework---preservation, reachability, ecphory---predicts
+a class of failure that is distinct from all the infrastructure failure
+modes catalogued in Section~5.
+
+Consider a state $s_m$ that is preserved ($s_m \in \sS$), reachable from
+the present ($s_m \in \reach(s_0)$), and yet not reconstructed.
+The path exists; the agent can in principle follow it; but the present
+state does not carry sufficient resonance with the target trace to
+complete the ecphoric activation.
+
+This failure mode has a precise phenomenological signature.
+It appears subjectively as \emph{partial accessibility}: the agent knows
+that the target state exists, senses its proximity, and may even retrieve
+peripheral features---associated concepts, partial phonological or visual
+form, contextual fragments---without being able to reconstruct the state
+itself.
+
+This is the tip-of-the-tongue phenomenon, and under the present framework
+it is not a retrieval failure.
+It is an ecphoric threshold failure.
+
+Preservation remains intact: the trace is stored.
+Reachability may remain intact: a path from the present state to the
+target exists.
+What fails is activation: the resonance between the current cue and the
+stored trace is insufficient to complete the reconstruction.
+
+The practical consequence is that introducing additional energy into
+the retrieval process---a secondary cue, a change of context, an
+interval of rest that allows the retrieval wave to propagate through
+intermediate states without active interference---can supply the
+additional resonance required for ecphoric completion.
+This explains why tip-of-the-tongue states frequently resolve
+spontaneously, often after attention has been redirected elsewhere:
+the retrieval process continues subthreshold, traversing intermediate
+states until the accumulated resonance crosses the activation boundary.
+
+The tip-of-the-tongue case makes concrete why reachability alone is
+insufficient as an account of semantic continuity.
+A system could be perfectly navigable---every state reachable from
+every other through short paths---and still fail to reconstruct a
+target state if the agent's current configuration lacks the structural
+compatibility required for ecphoric activation.
+Design for semantic continuity must therefore attend not only to path
+structure but to the conditions under which agents arrive at states
+prepared to reconstruct rather than merely to traverse.
+
+% ── 5. A Taxonomy of Discontinuities ──────────────────────────────────────────
+\section{A Taxonomy of Discontinuities}
+
+The following cases are not chosen for comprehensiveness but for
+structural distinctness.
+The first five each represent a different way in which the reachability graph
+$\sG$ can be damaged independently of the state set $\sS$.
+The sixth inverts the pattern, showing that reachability can be sustained
+without formal storage infrastructure at all.
+Together the six constitute what we will call the \emph{minimal generating set}
+of cases for understanding semantic continuity.
+
+\subsection{Namespace Laundering: Identity Drift with Audience Retention}
+
+On large social platforms, named communities---groups, pages, channels---
+accumulate audiences over time.
+The audience constitutes the social infrastructure through which content
+is distributed and meaning is contextually stabilized.
+When a community is renamed or its stated purpose is changed, the audience
+is typically retained while the semantic identity of the community is
+overwritten.
+
+This operation, which we call \emph{namespace laundering}, severs the mapping
+between a name and its prior referent while conserving the distribution
+network.
+Audience members who joined under one semantic contract now participate in
+one that has been silently revised.
+New members encounter the community only in its present form, with no record
+that a prior form existed.
+
+The failure here is not loss of a node but corruption of the edge label.
+The path from a present state to the community's prior meaning passes through
+a name that now points elsewhere.
+The prior meaning is not preserved; it is overwritten at the level of the
+identifier.
+
+\subsection{Encyclopedic Consolidation: Path Compression with Loss}
+
+Reference systems such as Wikipedia stabilize meaning through consolidation:
+articles are merged, disambiguated, or renamed as editors converge on
+preferred framings.
+This process improves navigability in one direction---from the present toward
+canonical content---while eliminating intermediate nodes that represented
+prior framings, minority perspectives, or earlier consensus states.
+
+When an article is merged into another, the prior article's existence is
+recorded only in edit histories, which are not indexed by external search
+and require specific navigational knowledge to access.
+A user arriving from a search query encounters the current consensus without
+any indication that a prior structure existed.
+The prior structure is preserved in the sense that it can be reconstructed
+by someone who already knows to look, but it is not reachable from the
+present by available general-purpose transformations.
+
+This is path compression with loss: the graph is simplified, but the
+simplification is irreversible from the outside.
+
+\subsection{Access Restriction: Gated Edges}
+
+Academic publishing systems preserve a large proportion of the scholarly
+record.
+Digital Object Identifiers~\cite{paskin2010} provide persistent references
+that survive server changes and link decay.
+Articles exist, are indexed, and can be cited.
+But without institutional subscription credentials, the edge from a reference
+to its referent is blocked at the point of traversal.
+
+The node is present in $\sG$.
+The edge exists.
+But the edge is \emph{gated}: traversal is restricted to agents who satisfy
+an external condition unrelated to the semantic content of the document.
+From the perspective of an agent without credentials, the state is
+preserved but unreachable.
+The citation points to an object that cannot be accessed through available
+transformations.
+
+\subsection{Link Rot: Edge Deletion}
+
+Web infrastructure links are edges, and edges degrade.
+Studies of link persistence in scholarly and journalistic contexts consistently
+find substantial decay rates over periods of years~\cite{klein2014}.
+Domains lapse, servers are decommissioned, and URL structures are reorganized
+without redirection.
+The result is a reference that resolves to nothing: a citation without an
+object, a pointer with no target.
+
+This is the most straightforward case---literal edge deletion.
+The node may have existed; it may no longer.
+What is certain is that no path from the present state leads to it.
+The failure is not at the level of preservation policy but at the level of
+infrastructure maintenance: the transformations that once existed no longer
+do.
+
+\subsection{Archival Isolation: Node Preservation with Path Loss}
+
+Archival projects represent the most serious attempt to address
+preservation---the deliberate maintenance of digital states against decay.
+But preservation of a node is not sufficient if no paths lead to it.
+
+The September 11 Digital Archive, maintained by the Roy Rosenzweig Center for
+History and New Media and held by the Library of Congress, preserves a
+substantial record of firsthand accounts and digital artifacts from 2001.
+It is not indexed by major search engines in ways that surface it for
+relevant queries.
+Users who do not already know of its existence typically discover it only
+through secondary references---citations in academic work, mentions in
+archival literature, or the Wayback Machine's own indexing.
+
+The archive is preserved.
+It is not reachable from the present by the transformations available to a
+general-purpose user.
+The path exists---in principle---but requires specific navigational knowledge
+that is itself subject to decay.
+
+This case reveals a deeper point: reachability is not a binary property of
+a system but a function of the navigational resources available to a
+particular class of agent at a particular time.
+More precisely, reachability is a property not of the graph $\sG$ alone,
+but of the pair $(\sG, A)$, where $A$ denotes the capabilities of a given
+agent---the transformations that agent can actually perform.
+Two agents inhabiting the same system may therefore inhabit different
+effective graphs: the credentialed researcher and the uncredentialed reader
+face different subgraphs of $\sG$, as do the trained archivist and the
+general-purpose search user, or the fluent speaker and the monolingual
+outsider.
+An archive reachable by specialists is not reachable in the sense that
+matters for broad semantic continuity.
+
+\subsection{Dense Local Systems: Reachability Without Archival Memory}
+
+The five cases above are all failure modes.
+It is instructive to examine a contrasting case---a system in which
+reachability is effectively guaranteed not by archival infrastructure
+but by path density.
+
+Consider a small, stable community with high identity continuity: a
+neighborhood, a craft guild, a religious congregation, a family that has
+occupied the same region for generations.
+Such communities typically have weak formal archival infrastructure.
+They do not maintain indexed records of past decisions or digitized
+repositories of prior knowledge.
+Yet semantic continuity is often extremely robust.
+
+The reason is structural: the reachability graph $\sG$ is locally dense.
+Every present state is connected to past states through multiple redundant
+paths---overlapping memory among members, repeated narrative, ritual
+re-enactment, shared material culture, and the direct presence of
+individuals who participated in prior events.
+If one path degrades, others remain.
+The system does not need formal preservation because it continuously
+traverses its own history.
+
+This case makes the theoretical point most cleanly: storage is not the
+invariant.
+A system with minimal storage and maximal path density may sustain semantic
+continuity more robustly than a system with comprehensive archives and
+degraded navigation infrastructure.
+The dense local case is not a nostalgic ideal; it is a structural limit
+that clarifies what the failure modes are actually failing to reproduce.
+What large-scale information systems lose when they scale is not primarily
+storage capacity---it is exactly this local redundancy of paths.
+
+\subsection{The Neighborhood Principle}
+
+The dense local system case suggests a general principle that applies
+across scales: reachability is a function of neighborhood structure,
+not merely of node existence.
+
+Let $d(s)$ denote the \emph{local path density} of state $s$: the number
+of independent paths connecting $s$ to other states within a bounded
+traversal radius.
+Then the effective reachability of $s$ is better characterized by $d(s)$
+than by the binary fact of $s$'s existence.
+
+\[
+  \reach(s) \;\approx\; f\bigl(d(s)\bigr)
+\]
+
+A state embedded in a dense neighborhood---surrounded by many other states
+that agents traverse in the course of ordinary activity---is reached
+repeatedly as a byproduct of other searches.
+A state in a sparse neighborhood is reached only by agents who specifically
+seek it, and only if those agents already possess the navigational knowledge
+to approach it.
+
+This has direct implications for note-taking, archival design, and
+knowledge management.
+A note that is placed beside many other frequently-visited notes acquires
+reachability through the traffic of the neighborhood.
+A note filed in isolation---even if correctly categorized---acquires
+reachability only through direct search, which requires the searcher to
+already know what they are looking for.
+
+The practical design principle follows:
+\begin{quote}
+\textit{Do not file a note where it belongs. Place it where it can
+become relevant.}
+\end{quote}
+
+The two criteria diverge whenever the future retrieval context differs
+from the classification context.
+Taxonomies organize states according to present classification---what
+a thing \emph{is} at the moment of filing.
+Neighborhood placement organizes states according to anticipated future
+traversal---\emph{how} and \emph{from where} a thing will be encountered.
+``Where it belongs'' is determined by the taxonomy at the moment of
+filing.
+``Where it can become relevant'' is determined by the predicted traffic
+patterns of the neighborhoods it might inhabit.
+When these differ---as they routinely do in any evolving intellectual
+project---the neighborhood placement is the more durable choice.
+
+The same principle operates at larger scales.
+A language community's semantic heritage is reachable not because
+it is stored but because it is embedded in the neighborhoods that
+living speakers traverse daily---in idioms, rituals, canonical
+texts, and shared narrative.
+When the community disperses and those neighborhoods dissolve, the
+heritage becomes unreachable not because the records have been
+destroyed but because the path density has collapsed.
+
+% ── 6. Language as a Long-Timescale Instance ──────────────────────────────────
+\section{Language as a Long-Timescale Instance}
+
+The five failure modes described above operate at the timescale of years and
+decades.
+The same structure is visible in natural language systems, but the timescale
+is generations, and the mechanisms are social and political rather than
+technical.
+
+Language is not simply a medium of communication; it is a navigation system
+for a vast inherited semantic field.
+A speaker of a language inherits access to a particular subgraph of human
+meaning---the texts, oral traditions, conceptual structures, and
+interpersonal knowledge encoded in that language's history.
+A language shift---whether voluntary or imposed---is not merely a change in
+expressive medium.
+It is a change in the available transformations: the paths that remain
+navigable after the shift are determined by what has been translated,
+preserved, or actively maintained across the discontinuity.
+
+The displacement of minority languages by dominant ones---French displacing
+regional languages in metropolitan France, English reorganizing the
+linguistic landscape of colonial territories, Spanish restructuring prior
+Mesoamerican semantic systems---is precisely a restructuring of the
+reachability graph.
+Prior states (oral traditions, untranslated texts, contextual knowledge
+embedded in grammatical structure) are not destroyed in the moment of
+displacement.
+They become unreachable by the paths available to subsequent generations,
+who inherit the new navigational infrastructure.
+
+The persistence of Arabic as a living navigational system across fourteen
+centuries of geographical dispersal and political transformation is an
+instructive counterexample.
+Arabic maintains its reachability through continuous traversal: liturgical
+practice, Quranic recitation, classical literary education, and an
+unbroken tradition of commentary and cross-referencing.
+The classical texts are not merely preserved; they are \emph{continuously
+reached}, repeatedly, by a large population of agents who maintain the
+transformations that make them accessible.
+This is active path maintenance rather than archival storage.
+
+The contrast between the two cases---a language displaced without maintained
+paths versus a language kept reachable through continuous practice---
+illuminates the constructive requirement.
+It is not enough to record a language; the navigational infrastructure must
+also be sustained.
+
+The same logic applies to institutional language policy.
+Quebec's \emph{Charte de la langue fran\c{c}aise} (1977) is typically analyzed
+as a policy of linguistic protection or identity assertion.
+From the present perspective, it is better understood as a constraint on
+reachability: it enforces, through legal means, the maintenance of edges in
+the francophone semantic graph that would otherwise be eliminated by
+the dominant pressure of English-language commercial and administrative
+infrastructure.
+The policy does not restore already-lost paths; it acts as a boundary
+condition that prevents certain transitions from occurring, maintaining
+connectivity to prior semantic states that would otherwise become
+unreachable within a generation.
+
+This is not an analogy to the technical case.
+It is the same mechanism operating through different implementation media.
+The reachability graph of a language is damaged by the same structural
+operations---edge deletion, path compression, audience redirection---that
+damage the reachability graphs of digital knowledge systems.
+The timescales differ; the underlying structure does not.
+
+% ── 7. The Constructive Requirement ───────────────────────────────────────────
+\section{The Constructive Requirement}
+
+The analysis above yields a requirement, not merely a diagnosis.
+If the goal of a memory system is semantic continuity---the ability of future
+agents to reach past meaning through available transformations---then the
+design question shifts from ``how do we store information?'' to ``how do we
+ensure that future states can reach past states through valid paths?''
+
+This is a stronger condition than preservation.
+It requires attending to three things simultaneously:
+
+\begin{enumerate}[leftmargin=2em,itemsep=0.2em]
+  \item \textbf{Node persistence}: states must continue to exist.
+  \item \textbf{Edge maintenance}: the transformations that connect states must
+        remain available and traversable.
+  \item \textbf{Path coherence}: the composition of available transformations
+        must remain capable of connecting present states to past ones.
+\end{enumerate}
+
+Current systems are organized primarily around the first condition.
+Archival standards, redundant storage, and persistent identifiers address node
+persistence.
+The second and third conditions are largely left to market incentives
+(search engine indexing), institutional inertia (citation practices), and
+individual effort (translation, commentary, cross-referencing).
+
+The asymmetry is not incidental.
+Node persistence is a technical property that can be specified, measured, and
+contractually guaranteed.
+Edge maintenance and path coherence are relational properties that require
+ongoing coordination among the agents who constitute the system.
+They cannot be archived; they must be continuously performed.
+
+This points toward a broader framework in which meaning is treated not as a
+stored object but as a property of a system under transformation---something
+that must remain \emph{invariant under the transformations that the system
+makes available to its agents}.
+Constraint-based accounts of meaning, in which semantic content is defined
+by what it rules out rather than what it encodes, capture this naturally:
+to preserve meaning is to preserve the constraints that make certain
+transitions valid and others not.
+When those constraints are lost---when the paths are severed---the content
+may persist as a physical inscription while losing its operative semantic
+character.
+
+This connection is developed in Section~8, which introduces a field-theoretic
+decomposition of the reachability condition and reinterprets the failure modes
+geometrically under that framework.
+What the present analysis establishes is the conceptual prior step: that
+reachability, not preservation, is the invariant that matters for semantic
+continuity, and that modern information systems are systematically organized
+to maintain the wrong thing.
+
+\subsection{Continuation Requires Friction}
+
+Modern information systems frequently treat friction as an obstacle to be
+eliminated.
+Search engines minimize traversal effort, recommendation systems compress
+path length, and interfaces attempt to remove every intermediate step
+between question and answer.
+
+Yet the complete removal of friction produces a paradox.
+Traversal does not merely recover semantic states; it partially constructs
+them.
+The intermediate encounters, contextual cues, and neighboring structures
+experienced during navigation contribute to the conditions required for
+ecphoric activation.
+A path of zero length may maximize retrieval efficiency while minimizing
+the contextual preparation that makes reconstruction possible.
+
+The dense local systems discussed in Section~5.6 illustrate the opposite
+extreme.
+Their semantic continuity derives not from frictionless access but from
+repeated traversal through overlapping pathways.
+Meaning is maintained because agents continuously move through the graph
+rather than arriving directly at isolated destinations.
+The intermediate steps are not wasted effort; they are the mechanism by
+which each traversal reinforces the accessibility of surrounding states
+and prepares the agent for ecphoric activation at the target.
+
+The objective of a continuation-oriented system is therefore not the
+elimination of friction but the cultivation of \emph{productive friction}:
+enough traversal to maintain contextual coupling and neighborhood density
+without introducing so much resistance that paths become inaccessible.
+
+This suggests a design criterion beyond the three conditions of
+node persistence, edge maintenance, and path coherence.
+A fourth condition might be called \emph{traversal adequacy}: the system
+must route agents through a sufficient density of intermediate states
+that each arrival is prepared to reconstruct rather than merely to
+reach.
+Curricula, annotation systems, guided tours, and contextual recommendation
+all serve this function---not by shortening paths but by ensuring that
+the paths agents traverse build the contextual state required for
+meaningful reconstruction at the destination.
+
+% ── 8. Toward a Field-Theoretic Account ───────────────────────────────────────
+\section{Toward a Field-Theoretic Account}
+
+The three constructive conditions identified in Section~7 have a natural
+interpretation that extends beyond graph theory.
+Node persistence, edge maintenance, and path coherence are not merely
+engineering requirements; they correspond to distinct physical quantities
+in any system where semantic content propagates through a medium rather
+than residing at fixed addresses.
+
+We sketch this correspondence here not as a full formal development but
+as an orientation toward the richer treatment the reachability framework
+points toward.
+
+\subsection{The Scalar--Vector--Entropy Decomposition}
+
+Consider a \emph{continuation field} over the semantic manifold, decomposed
+into three components:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.3em]
+  \item A \textbf{scalar persistence field} $\Phi(x,t)$, recording the
+        local density of states that continue to exist at position $x$
+        and time $t$.
+        High $\Phi$ means the neighborhood is well-populated with
+        preserved nodes.
+        This is the field-theoretic form of node persistence.
+
+  \item A \textbf{vector transport field} $\mathbf{v}(x,t)$, recording
+        the direction and magnitude of available transformations at each
+        point---the flow structure that carries agents from one state
+        to another.
+        Degraded $\mathbf{v}$ corresponds to gated edges, link rot, and
+        path compression: the transformations nominally exist but do not
+        propagate effectively.
+        This is the field-theoretic form of edge maintenance.
+
+  \item An \textbf{accessibility field} $\mathcal{A}(x,t)$, recording
+        the volume of admissible future trajectories emanating from
+        each state.
+        Formally, if $\mathcal{P}(x)$ denotes the set of valid continuation
+        paths from state $x$ through available transformations, the
+        accessibility is:
+        \[
+          \mathcal{A}(x,t) \;=\; \log \lvert \mathcal{P}(x,t) \rvert.
+        \]
+        High $\mathcal{A}$ means the state participates in many possible
+        futures---it can be reached from many directions and leads to many
+        continuations.
+        Low $\mathcal{A}$ means the state is a near-isolated node: preserved
+        but functionally inert.
+        This is the field-theoretic form of path coherence.
+\end{itemize}
+
+Under this decomposition, the central claim of the paper becomes precise.
+A system can maintain high $\Phi$ (storage is intact) while allowing
+$\mathbf{v}$ and $\mathcal{A}$ to collapse.
+The archive that no search engine indexes has high $\Phi$ and
+near-zero $\mathcal{A}$.
+The gated journal article has high $\Phi$, an existing edge in $\mathbf{v}$,
+and an accessibility that varies discontinuously with agent credentials.
+The dense local community has modest $\Phi$ and very high $\mathcal{A}$:
+redundant paths maintain reachability even without formal storage.
+
+The accessibility field $\mathcal{A}$ is the quantity the paper has been
+tracking throughout, under the name reachability.
+The contribution of the field-theoretic framing is to make explicit that
+$\mathcal{A}$ is not a binary property of nodes but a continuous function
+over the semantic manifold---one that can degrade smoothly, concentrate
+in specialist subgraphs, or be maintained by active traversal even in
+the absence of archival infrastructure.
+
+\subsection{Geometric Reinterpretation of the Failure Modes}
+
+The six cases of Section~5 admit a uniform geometric description under
+this framework.
+
+\textbf{Namespace laundering} is a discontinuous transformation of the
+vector field: the edge labels are reassigned so that flows that formerly
+reached a prior state are redirected to a new one.
+$\Phi$ is unchanged; $\mathbf{v}$ is redirected; $\mathcal{A}$ of the
+prior state collapses as incoming paths are severed.
+
+\textbf{Encyclopedic consolidation} is a contraction: intermediate nodes
+are removed and paths are compressed.
+The resulting graph has lower local path multiplicity.
+$\mathcal{A}$ decreases for the absorbed states, which now require
+specialist navigational knowledge---a narrowing of the effective agent
+class $A$---to reach.
+
+\textbf{Access restriction} introduces a potential barrier into the
+vector field: the edge exists in $\sG$ but is traversable only by
+agents whose capability set $A$ satisfies an external credential condition.
+For uncredentialed agents, the effective transport field $\mathbf{v}$
+contains a gap at the point of restriction.
+
+\textbf{Link rot} is literal deletion of transport channels.
+Edges disappear from $\mathbf{v}$; no flow can cross the gap;
+$\mathcal{A}$ of the downstream states falls to zero for agents
+approaching from the deleted direction.
+
+\textbf{Archival isolation} maximizes $\Phi$ while allowing $\mathbf{v}$
+and $\mathcal{A}$ to degrade through neglect of indexing and
+cross-referencing infrastructure.
+The state exists; the paths to it do not.
+
+\textbf{Dense local systems} exhibit the inverse: modest $\Phi$
+compensated by high local path density.
+Multiple redundant edges in $\mathbf{v}$ maintain high $\mathcal{A}$
+even when individual paths degrade.
+This is the structural reason such systems sustain semantic continuity
+robustly without formal archives: the accessibility field is maintained
+by continuous traversal rather than by storage policy.
+
+\subsection{Accessibility as a Continuous Quantity}
+
+The graph-theoretic framework of Section~2 treats reachability as a
+binary property: a state is either reachable from the present or it is
+not.
+This discretization is useful for stating the central claim precisely,
+but it misrepresents the actual structure of semantic systems.
+
+Real semantic systems exhibit \emph{graded accessibility}.
+A state is not simply reachable or unreachable; it is reachable by more
+or fewer agents, through more or fewer paths, with greater or lesser
+effort, at higher or lower probability of successful ecphoric activation.
+The graph is a discrete approximation of an underlying continuous
+accessibility field.
+
+Formally, the directed graph $\sG$ may be understood as a discretization
+of a smooth manifold equipped with a flow structure.
+The nodes are samples from a continuous state space; the edges are
+discrete renderings of what is in reality a continuous transport field
+$\mathbf{v}(x,t)$.
+The binary reachability predicate $s \in \reach(s_0)$ is a threshold
+applied to the continuous accessibility functional
+$\mathcal{A}(x,t) = \log|\mathcal{P}(x,t)|$.
+
+This continuity is empirically visible in each domain the paper has
+considered.
+Archives do not become inaccessible at a single moment; accessibility
+decays as link rot accumulates, indexing degrades, and the agent
+community that knows how to navigate the archive shrinks.
+Languages do not become unreachable overnight; the path density
+thins over generations as speaker communities disperse and
+transmission practices weaken.
+Memories do not disappear; they become progressively harder to
+activate as the cue-trace resonance falls below ecphoric threshold.
+Notes do not vanish; they become functionally inert as the
+neighborhoods surrounding them become less frequently traversed.
+
+In each case, the useful question is not ``is this state reachable?''
+but ``what is the current value of $\mathcal{A}$ at this state, for
+this class of agent, under current field conditions?''
+The binary question asks whether a path exists.
+The continuous question asks how many paths exist, how robust they are
+to perturbation, how large an agent class can traverse them, and how
+much energy a traversal requires.
+
+This continuous framing also clarifies the relationship between the
+failure modes and cognitive states.
+The tip-of-the-tongue state---the subjective experience of partial
+accessibility, of knowing that a memory exists without being able to
+retrieve it---is precisely what high-$\Phi$, low-$\mathcal{A}$ feels
+like from the inside.
+The trace is preserved.
+The paths to it have degraded below the threshold of effortless
+traversal.
+The state is reachable in principle but requires more energy than the
+present cognitive state can supply.
+
+The viscosity of the retrieval medium, the density of the local
+neighborhood, and the resonance between current cue and target trace
+all determine whether a given state lies above or below the ecphoric
+threshold for a given agent at a given moment.
+These are continuous quantities, not binary ones, and the framework
+is impoverished if they are reduced to a simple present/absent
+distinction.
+
+\subsection{Persistence as Continuation}
+
+The deepest implication of the field-theoretic framing is a restatement
+of the paper's central claim in terms that generalize across domains.
+
+A system organizes around \emph{preservation} when it treats $\Phi$ as
+the invariant to be maintained.
+A system organizes around \emph{reachability} when it treats $\mathcal{A}$
+as the invariant.
+
+But $\mathcal{A}$ is not a property of nodes.
+It is a property of the dynamics of the system---of how states participate
+in ongoing processes of traversal, reconstruction, and continuation.
+A state with high $\mathcal{A}$ is not merely reachable in principle;
+it is actively embedded in a web of possible futures.
+It remains coupled to the ongoing evolution of the manifold.
+
+This suggests that the correct invariant is neither preservation nor
+reachability in isolation, but what might be called \emph{continuation}:
+the property that a semantic state remains embedded in live trajectories
+rather than existing as an isolated inscription.
+
+Continuation fails when $\mathbf{v}$ degrades (the transport channels
+decay), when $\mathcal{A}$ collapses (the state ceases to participate
+in possible futures), or when the agent class $A$ capable of performing
+the relevant traversals shrinks below the threshold required to maintain
+active path density.
+Preservation addresses none of these failure modes.
+Active path maintenance, cross-referencing, translation, and institutional
+constraint on edge deletion address all three.
+
+The connection to constraint-based accounts of meaning noted in Section~7
+becomes clearer under this framing.
+Meaning is preserved when the constraints that govern valid transitions
+are maintained---when the rules that make certain paths traversable and
+others not continue to operate across time and across the agent population
+that constitutes the system.
+When those constraints erode, content persists as physical inscription
+while its operative semantic character---its participation in live
+continuation---disappears.
+
+The formal elaboration of this principle, including coupled field equations
+for $(\Phi, \mathbf{v}, \mathcal{A})$ under various degradation and
+maintenance regimes, lies beyond the scope of the present paper.
+What the analysis here establishes is the conceptual prerequisite:
+that any adequate account of semantic continuity must track not only
+whether states exist, but whether they remain embedded in ongoing
+processes of reaching and being reached.
+
+\subsection{Continuation as a Dynamical Quantity}
+
+The accessibility field $\mathcal{A}(x,t)$ captures the current volume of
+admissible continuations available from a state.
+Yet accessibility alone is insufficient to characterize the long-term
+behavior of semantic systems.
+
+A state may possess high accessibility while contributing little to future
+continuation.
+Conversely, a state with modest present accessibility may generate large
+numbers of future traversals through its influence on subsequent states.
+
+This suggests that continuation should be treated as a dynamical quantity
+rather than a static one.
+
+Let $C(x,t)$ denote the \emph{continuation potential} of a state: the
+expected future production of accessibility generated by traversals
+through that state.
+Where $\mathcal{A}$ measures the accessibility currently available,
+$C$ measures the accessibility likely to be produced.
+
+The distinction is analogous to that between stored energy and power.
+Two states may possess identical accessibility while differing radically
+in their capacity to generate future accessibility.
+A forgotten archive may possess substantial latent accessibility but
+generate little future traversal.
+A foundational theorem, a canonical story, or a persistent unresolved
+question may continually regenerate accessibility by routing future
+agents through itself and into the surrounding neighborhood.
+
+Continuation therefore depends not only on the present geometry of the
+semantic manifold but on the manifold's capacity to reproduce that
+geometry through ongoing traversal.
+
+Under this interpretation, the semantic momentum introduced in
+Section~10.1 becomes a special case of continuation dynamics.
+Momentum measures observed traversal persistence at a given time.
+Continuation potential $C(x,t)$ measures the underlying capacity to
+generate such persistence into the future.
+
+The transition from preservation to reachability and from reachability
+to continuation may therefore be understood as a transition from static
+state variables to dynamical ones.
+Preservation asks whether a state exists.
+Reachability asks whether a path exists.
+Continuation asks whether the system actively regenerates the conditions
+required for future paths to exist.
+
+This framing points toward the coupled field equations deferred earlier.
+A complete dynamical theory would specify how $\Phi$, $\mathbf{v}$,
+$\mathcal{A}$, and $C$ evolve together---how traversal builds or erodes
+transport channels, how accessibility collapses or self-reinforces, and
+whether critical transitions or phase changes occur as the continuation
+potential of a semantic system falls below threshold.
+That theory lies beyond the present paper, but the variables it requires
+are now defined.
+
+% ── 9. Forgetting as Path Degradation ─────────────────────────────────────────
+\section{Forgetting as Path Degradation}
+
+The infrastructural and linguistic failure modes catalogued in Sections~5
+and~6 have a cognitive counterpart.
+Forgetting, in the standard model, is the loss of stored content: the
+memory trace degrades, the information disappears, the record is gone.
+The reachability framework suggests a different account.
+
+Forgetting is not primarily the loss of stored content.
+Forgetting is the loss of reconstructive pathways.
+
+The evidence for this distinction is familiar but rarely formalized.
+People regularly report memories that were ``gone'' returning intact
+after years of inaccessibility, triggered by a smell, a phrase, a
+location, or an emotional state that reinstates the original encoding
+context.
+The memory was not absent; it was unreachable.
+The retrieval cue did not create the memory; it restored a path that
+had degraded below traversal threshold.
+
+This distinction has a precise formulation in the reachability framework.
+Let $s_m$ denote a stored memory state.
+Traditional forgetting is the event $s_m \notin \sS$: the node disappears.
+Reachability-based forgetting is the event that $s_m \in \sS$ but
+$s_m \notin \reach(s_0)$: the node persists while the paths from any
+present state $s_0$ to $s_m$ become impassable.
+
+The mechanisms of cognitive path degradation are structurally identical
+to those in digital infrastructure.
+\emph{Cue extinction} is the cognitive analog of link rot: the retrieval
+cues that formerly connected present states to $s_m$ are no longer
+available (the smell is no longer encountered, the social context has
+dissolved, the language of encoding is no longer spoken).
+\emph{Interference} is the analog of namespace laundering: competing
+associations redirect the retrieval flow, so that paths formerly reaching
+$s_m$ now terminate at a different attractor.
+\emph{Contextual shift} is the analog of encyclopedic consolidation:
+the encoding context has been subsumed into a new frame, and the original
+intermediate states are no longer accessible by general-purpose recall.
+
+The practical consequence is that the appropriate response to forgetting
+is not re-encoding but path restoration.
+Re-encoding adds a new node; it does not restore the paths that made
+the original node accessible.
+Path restoration reinstates the cues, contexts, and associative
+neighborhoods that carry retrieval waves from present states to the
+target.
+This is why retrieval practice---repeated traversal of the path from
+present state to memory---is more effective for long-term retention
+than additional study: practice maintains the edges, not just the nodes.
+
+The cognitive analog of the dense local system (Section~5.6) is the
+well-rehearsed skill or deeply familiar domain.
+In such systems, semantic content is maintained not through deliberate
+storage but through continuous traversal.
+The craftsperson who has practiced a skill for decades does not
+``remember'' how to do it in the sense of consulting a stored procedure;
+they maintain the skill because the relevant paths are continuously
+active.
+Forgetting occurs not when the trace is lost but when the practice ceases
+and the paths begin to degrade.
+
+This account also clarifies the relationship between external memory
+systems and internal recall.
+A note placed in a navigable neighborhood---beside other notes that
+will be encountered in the ordinary course of future work---is not
+merely external storage.
+It is path maintenance: the note continuously reinstates a retrieval
+route that would otherwise degrade.
+The failure mode of the forgotten note is not that the information
+disappeared; it is that the surrounding navigational context decayed,
+and no path from any likely future state leads to the note any longer.
+
+% ── 10. Incomplete Structures as Continuation Operators ───────────────────────
+\section{Incomplete Structures as Continuation Operators}
+
+The analysis of forgetting reveals a structural asymmetry that applies
+more broadly: the relationship between closure and reachability is not
+monotone.
+Finished artifacts tend to reduce their own accessibility over time.
+Incomplete artifacts tend to preserve it.
+
+This is not a productivity claim or a celebration of disorganization.
+It is a structural observation about how accessibility is maintained in
+semantic systems.
+
+A fully resolved note, essay, or argument reaches a stable attractor.
+It says what it says.
+The connections it makes are made; the questions it poses are answered;
+the tensions it introduces are discharged.
+As a semantic object, it is closed.
+A closed object participates in a fixed set of future trajectories---those
+defined by its explicit content and the links it currently possesses.
+
+An incomplete structure behaves differently.
+An unresolved question, an unfinished argument, a stub entry, a marginal
+annotation that breaks off mid-thought: each of these maintains an open
+edge in the reachability graph.
+The incompletion is not a gap in storage; it is a forward hook---a
+directed connection into a future state space that has not yet been
+determined.
+
+We may formalize this as follows.
+Let $\partial s$ denote the \emph{open boundary} of a semantic state $s$:
+the set of transformation slots that remain unfilled, questions that remain
+unanswered, or connections that are indicated but not completed.
+Then the accessible future state space of $s$ grows with $|\partial s|$.
+A state with $|\partial s| = 0$ is closed; its continuation set is
+determined entirely by its explicit content and current links.
+A state with large $|\partial s|$ remains coupled to a larger space of
+possible futures---it can be completed in many ways, and different
+completions are activated by different subsequent contexts.
+
+This gives a precise sense in which certain forms of incompleteness
+increase long-term reachability.
+A question survives longer than an answer because it remains connected
+to a larger future state space.
+A question that has been answered is closed; the answer either persists
+in the reader's accessible graph or it does not.
+A question that remains open continues to attract future traversal
+from anyone who encounters the same problem.
+
+The same principle explains a pattern in intellectual history.
+Foundational texts that remain generative across centuries are typically
+not texts that resolve everything.
+They are texts that open more problems than they close---that establish
+a framework rich enough to generate ongoing questions.
+The texts that are merely correct tend toward closure and obsolescence.
+The texts that remain productive tend to maintain large $|\partial s|$:
+they are dense with incompletion, with indicated but unfollowed paths,
+with problems named but not solved.
+
+In practical terms, this suggests that note systems should not optimize
+exclusively for closure.
+A note that records a resolved insight is valuable; a note that records
+an unresolved tension is often more valuable, because the tension
+continues to attract future attention and to generate new connections.
+The marginalia, the stub, the half-written question, and the unfinished
+draft are not failures of organization.
+They are externalized continuation operators: structures that maintain
+open edges in the reachability graph and keep future trajectories
+available.
+
+The optimal note, under this analysis, does three things simultaneously:
+it records a semantic trace (node persistence), it situates the trace
+within a navigable neighborhood (edge maintenance), and it maintains an
+open boundary that keeps the trace coupled to future contexts (path
+coherence through continuation).
+A finished note satisfies the first two conditions.
+A strategically incomplete note satisfies all three.
+
+% ── 10.1 Semantic Momentum ────────────────────────────────────────────────────
+\subsection{Semantic Momentum}
+
+Not all states contribute equally to future continuation.
+Some states generate unusually large numbers of subsequent traversals.
+A frequently cited paper, a foundational text, a central theorem, a
+canonical example, or a persistent unanswered question may continue to
+attract agents long after its original context has disappeared.
+
+We describe this tendency as \emph{semantic momentum}.
+
+Let $\mathcal{T}(s, t)$ denote the expected future traversal rate through
+state $s$ at time $t$.
+States with high semantic momentum continuously regenerate their own
+accessibility by attracting new paths and reactivating old ones.
+Their ongoing traversal maintains high $\mathcal{A}$ even in the absence
+of deliberate preservation effort.
+States with low semantic momentum depend on external maintenance to remain
+reachable; without active curation, their accessibility fields decay.
+
+This distinction clarifies a pattern in intellectual history that
+preservation-centered accounts cannot easily explain.
+Many carefully preserved artifacts become functionally inert: they exist,
+they are indexed, paths to them are maintained, yet they attract no
+traversal and participate in no reconstructions.
+Meanwhile, other artifacts---sometimes poorly preserved, sometimes
+available only in fragmentary form---continue to generate ongoing
+interpretation, citation, and reconstruction.
+
+The difference is not archival quality.
+It is semantic momentum: the capacity of a state to route future agents
+through itself, thereby continuously replenishing the accessibility field
+surrounding it.
+
+States with high semantic momentum often share structural features with
+the incomplete structures discussed earlier.
+They tend to raise questions rather than close them, establish frameworks
+that generate further problems, and maintain large open boundaries
+$|\partial s|$ that keep them coupled to a wide range of future
+investigative trajectories.
+The connection is not coincidental: incompleteness and semantic momentum
+are related aspects of the same underlying property---the capacity of a
+semantic state to remain generative rather than merely persistent.
+
+Continuation therefore depends not only on existing accessibility but on
+the capacity of states to \emph{generate future accessibility}.
+Some states are merely reachable.
+Others actively reproduce the conditions of their own reachability by
+continuously attracting the traversal that keeps them live.
+A theory of semantic continuity that attends only to preservation and
+path structure misses this dynamic: the ongoing generation of
+accessibility through traversal is as important as its initial
+construction.
+
+% ── 10.2 Continuation Across Scales ──────────────────────────────────────────
+\subsection{Continuation Across Scales}
+
+The framework developed in this paper exhibits a property that deserves
+explicit statement: it is \emph{substrate-independent}.
+
+The same continuation structure appears at every scale of analysis
+considered here.
+At the neural and cognitive scale, ecphoric recall requires that retrieval
+cues carry sufficient resonance to reactivate preserved traces through the
+pathways that connect present states to target attractors.
+At the scale of individual knowledge management, notes and artifacts
+persist functionally when they are embedded in navigable neighborhoods
+that future cognitive states will traverse.
+At the institutional scale, archives sustain semantic continuity when
+indexing, cross-referencing, and agent communities maintain the transport
+infrastructure.
+At the linguistic scale, languages remain reachable when communities
+continuously traverse the paths that connect present speakers to inherited
+semantic content.
+At the cultural scale, traditions survive when practices of re-enactment,
+commentary, and transmission continuously regenerate the paths between
+present participants and prior events.
+
+In each case, the mechanism is the same.
+A partial present state---a retrieval cue, a search query, a citation,
+a spoken word, a ritual gesture---encounters a preserved trace through
+an available transformation, and the encounter enables the reconstruction
+of a larger semantic whole that neither component contained independently.
+
+The framework characterizes a \emph{relation} rather than a storage medium.
+This is why the same structure is visible across implementations that
+differ in almost every other respect: neural dynamics, paper notebooks,
+database indices, oral tradition, institutional practice.
+The substrate varies; the relational structure does not.
+
+This scale-invariance is not a coincidence.
+It reflects the fact that semantic continuity is always a matter of
+whether partial structures can encounter compatible contexts---and that
+this condition is independent of the physical medium in which the
+structures are encoded.
+Memory, archives, languages, and institutions are all solutions to the
+same problem: how to preserve the conditions under which such encounters
+remain possible across time, across agents, and across the inevitable
+transformations that any system undergoes.
+
+The principle that states this most concisely:
+
+\begin{quote}
+\textit{A fragment encounters a compatible context and becomes something
+larger than itself.}
+\end{quote}
+
+This is not a metaphor drawn from one domain and applied to others.
+It is a structural description of the process by which semantic continuity
+is maintained at every scale at which it has been examined here.
+The implication is that any system---cognitive, archival, linguistic,
+cultural, or institutional---that aims to sustain meaning across time
+must preserve not objects but the conditions under which this encounter
+remains possible.
+
+% ── 11. From Preservation to Continuation ─────────────────────────────────────
+\section{From Preservation to Continuation}
+
+The argument of this paper has proceeded in stages, and it is worth naming
+the movement explicitly before closing.
+
+The starting point was the distinction between preservation and reachability:
+a system can remember perfectly while being unable to recall.
+The failure modes of Section~5 demonstrated that this is not a theoretical
+edge case but the normal operating condition of contemporary digital
+infrastructure.
+
+The extension to language showed that the same structure operates at the
+timescale of generations, through social and political mechanisms rather
+than technical ones.
+Reachability is not a property of digital systems; it is a property of
+any system that separates the storage of semantic states from the
+maintenance of paths among them.
+
+The constructive requirement (Section~7) named three conditions---node
+persistence, edge maintenance, path coherence---and identified the
+asymmetry: systems are organized almost exclusively around the first while
+the second and third are left to market incentives and individual effort.
+
+The field-theoretic account (Section~8) translated these conditions into
+continuous quantities $(\Phi, \mathbf{v}, \mathcal{A})$, identified the
+accessibility functional $\mathcal{A}(x,t) = \log|\mathcal{P}(x,t)|$ as
+the quantity the paper has been tracking throughout, and introduced the
+continuation potential $C(x,t)$ as the dynamical variable that
+distinguishes states that merely persist from those that actively
+regenerate the conditions of their own reachability.
+
+The sections on ecphory (Section~4), including the tip-of-the-tongue
+analysis (Section~4.1), neighborhood (Section~5.7), forgetting (Section~9),
+incompleteness (Section~10), semantic momentum (Section~10.1), and
+continuation across scales (Section~10.2)
+extended the analysis beyond infrastructure systems to cognitive and cultural
+systems, and identified a common mechanism in each: partial structures that
+enable or block the reconstitution of larger wholes.
+
+What emerges from this sequence is a shift across three levels of description.
+
+\emph{Preservation} treats semantic content as an object to be stored.
+The question is: does the object still exist?
+
+\emph{Reachability} treats semantic content as a node in a navigable graph.
+The question is: does a path from here to there still exist?
+
+\emph{Continuation} treats semantic content as a participant in ongoing
+processes of traversal and reconstruction.
+The question is: does this state remain embedded in live trajectories?
+
+Each level is strictly stronger than the previous.
+A state can be preserved without being reachable.
+A state can be reachable without being in continuation---if the paths
+exist in principle but are never traversed, the state effectively disappears
+from the active semantic manifold.
+
+The correct invariant for semantic continuity is therefore not preservation,
+not reachability, but continuation: the property that a semantic state
+remains coupled to ongoing processes of reconstruction, traversal, and
+future possibility.
+
+This reframing has practical implications that follow directly from the
+analysis.
+Systems designed for preservation optimize storage, redundancy, and
+persistence identifiers.
+Systems designed for reachability additionally optimize indexing,
+cross-referencing, and navigational infrastructure.
+Systems designed for continuation do both of those things and additionally
+maintain the active agent population whose ongoing traversal keeps
+accessibility from collapsing---through institutions, practices, pedagogy,
+translation, commentary, and the deliberate cultivation of communities
+capable of reaching and reconstructing the semantic states in question.
+
+The deepest lesson of the dense local system case (Section~5.6) is that
+continuation does not require formal infrastructure at all.
+What it requires is continuous traversal---the ongoing movement of agents
+through the paths that connect present states to past ones.
+Formal infrastructure is a technology for sustaining traversal at scale
+when the community is too large or too distributed for direct path
+maintenance.
+When that infrastructure fails, it fails by allowing traversal to cease
+while giving the appearance that storage alone is sufficient.
+
+The principle that unifies the cases considered here---digital archives,
+languages, note systems, ecphoric recall, cultural transmission---may be
+stated simply:
+
+\begin{quote}
+\textit{A fragment encounters a compatible context and becomes something
+larger than itself.}
+\end{quote}
+
+Continuation is the condition under which this encounter remains possible.
+What must be preserved is not the object, nor even the relation, but the
+possibility of the encounter itself: the live embedding of semantic
+fragments in the ongoing processes through which meaning is reached,
+reconstructed, and transmitted forward in time.
+
+\newpage
+
+% ── References ────────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+
+\begin{thebibliography}{9}
+
+\bibitem{shannon1948}
+Shannon, C.~E. (1948).
+\newblock A mathematical theory of communication.
+\newblock \textit{Bell System Technical Journal}, 27(3), 379--423.
+
+\bibitem{floridi2011}
+Floridi, L. (2011).
+\newblock \textit{The Philosophy of Information}.
+\newblock Oxford University Press.
+
+\bibitem{paskin2010}
+Paskin, N. (2010).
+\newblock Digital object identifier ({DOI}\textregistered) system.
+\newblock In \textit{Encyclopedia of Library and Information Sciences},
+  3rd~ed. Taylor \& Francis.
+
+\bibitem{klein2014}
+Klein, M., Van de Sompel, H., Sanderson, R., Shankar, H., Balakireva, L.,
+  Liu, K., \& Moretto, R. (2014).
+\newblock Scholarly context not found: One in five articles suffers from
+  reference rot.
+\newblock \textit{PLOS ONE}, 9(12), e115253.
+
+\end{thebibliography}
+
+\end{document}
+

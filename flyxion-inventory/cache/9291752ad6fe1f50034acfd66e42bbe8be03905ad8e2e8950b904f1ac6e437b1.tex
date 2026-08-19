@@ -1,0 +1,655 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part IV — Reconstruction
+%  Chapter 19: The Nexus Framework — Intensional
+%              Computational Memory and the
+%              Sheaf-Theoretic Architecture of Reuse
+% ============================================================
+
+\chapter{The Nexus Framework: Intensional Computational Memory and Civilizational Reuse}
+\label{ch:nexus}
+
+\chapepigraph{A civilization that repeatedly rediscovers the same
+computational truths, discarding each discovery after use, is not
+a civilization with a memory problem. It is a civilization without
+a memory architecture. The problem is not forgetting. It is
+never having built the infrastructure for remembering.}{Flyxion}
+
+\noindent
+This chapter introduces the Nexus framework: a proposal for
+proof-carrying computational memory at civilizational scale.
+The Nexus is not part of the Phoenix corpus. It enters the
+monograph at the reconstruction stage because it instantiates,
+at the level of AI infrastructure, the same structural
+principles that the RSVP reinterpretation has been developing
+for cognitive systems. The Nexus provides a concrete, implementable
+case study in what constraint-preserving memory architecture
+looks like when the constraints are computational rather than
+acoustic or cognitive.
+
+\section{The Redundancy Problem in Contemporary AI Infrastructure}
+\label{sec:redundancy-problem}
+
+Contemporary AI infrastructure exhibits a specific and
+structurally interesting form of waste. Across organizations,
+research groups, and users, computation is continuously
+repeated for tasks that are semantically close to previously
+completed tasks. Embeddings are regenerated for corpora that
+are minor revisions of previously embedded corpora. Benchmark
+suites are rerun under conditions that differ only marginally
+from prior runs. Dependency resolution systems rediscover
+incompatibilities that have been resolved many times
+elsewhere. Language models synthesize responses to queries
+whose semantic content differs only superficially from
+prior queries answered by the same or equivalent models.
+
+This redundancy is not merely inefficiency in the ordinary
+engineering sense. It is a structural consequence of an
+architectural assumption: the assumption that computation
+is fundamentally \emph{extensional}. Extensional computation
+stores mappings from specific inputs to specific outputs.
+Two computations are identical only if their inputs are
+identical under the system's equality relation (typically,
+hashing). Any deviation in input produces a new computation.
+
+The result is a civilization-scale pattern of what might
+be called \emph{redundant entropy production}: the repeated
+expenditure of computational energy to rediscover structural
+relationships that have already been discovered, because
+the infrastructure lacks the mechanisms to recognize that
+a new task is structurally related to a previously completed
+task in ways that would allow the prior work to be partially
+inherited.
+
+\begin{technote}[Technical Note: Extensional vs.\ Intensional Memory]
+An \emph{extensional} computational memory stores:
+\[
+  \text{Cache} : \text{Input} \to \text{Output}.
+\]
+Two inputs are treated as the same if and only if they
+are syntactically identical. An \emph{intensional}
+computational memory stores:
+\[
+  \text{Transform} : \text{ProblemFamily}
+  \times \text{ConstraintSpace}
+  \times \text{ComputationStrategy}
+  \to \text{ReusableOperator}.
+\]
+The reusable object is not the answer but the structure
+of how answers emerge within a family of structurally
+related problems. Intensional memory can recognize when
+a new problem belongs to an existing family and partially
+inherit the prior computation, even if the new problem
+is not syntactically identical to any previously cached
+instance.
+\end{technote}
+
+\section{The Central Proposal: Computation as Operator Crystallization}
+\label{sec:operator-crystallization}
+
+The Nexus framework proposes that computational systems
+should treat inference not as disposable execution but
+as the progressive extraction of reusable operators from
+repeated problem trajectories. Rather than storing the
+output of a computation and discarding the inferential
+path that generated it, a Nexus-style system progressively
+identifies the invariant structures governing entire
+\emph{families} of related tasks.
+
+Consider ten million CUDA build failures. An extensional
+system stores ten million logs and ten million fixes.
+A Nexus system begins extracting: dependency instability
+manifolds (the geometric structure of which package version
+combinations produce failures), compiler incompatibility
+patterns (the equivalence classes of environment conditions
+that produce identical failure modes), reusable repair
+operators (procedures that reliably resolve entire classes
+of failures rather than specific instances), and
+convergence heuristics (rules for which repair strategies
+to attempt first in which environments).
+
+Over time, the system ceases to remember that a specific
+build failed and was fixed. It remembers \emph{why} certain
+classes of problems admit stable solutions, under what
+conditions those solutions remain valid, and how the
+geometry of the problem space can be used to navigate
+new instances more efficiently.
+
+This is the decisive shift:
+
+\begin{center}
+\textit{The system no longer remembers answers.\\
+It remembers the geometry of the problem space itself.}
+\end{center}
+
+In RSVP terms, repeated computation crystallizes into
+low-dimensional operators that represent the constraint
+structure of the problem family. Instead of recomputing
+trajectories $T_1, T_2, T_3, \ldots$ for each new instance,
+the system infers a reusable operator:
+\[
+  \Phi : \text{ConstraintSpace} \to \text{SolutionFamily}
+\]
+that maps problem constraints to admissible solutions.
+Once $\Phi$ is known, future computation is dramatically
+cheaper: the new problem is mapped to its constraint
+representation, $\Phi$ is applied, and the result is
+an admissible solution rather than a new execution
+trajectory.
+
+\section{The Sheaf-Theoretic Architecture}
+\label{sec:sheaf-architecture}
+
+The sheaf-theoretic interpretation of the Nexus framework
+provides a rigorous account of how locally generated
+computational knowledge can be assembled into globally
+consistent reusable infrastructure.
+
+The global computational ecosystem is represented by
+a base space $X$ whose points are \emph{computational
+situations}: particular combinations of datasets,
+environments, model versions, trust assumptions,
+hardware configurations, licensing conditions, and
+temporal snapshots. An open set $U \subseteq X$
+represents a family of sufficiently similar computational
+contexts in which a given result remains valid.
+
+For each open set $U$, the Nexus defines a structure:
+\[
+  \mathcal{F}(U)
+\]
+where $\mathcal{F}$ is a sheaf assigning reusable
+computational knowledge to regions of contextual space.
+A section $s \in \mathcal{F}(U)$ is a valid computational
+artifact over the domain $U$: a cached embedding family,
+a dependency resolution, a proof trace, a benchmark
+result, a validated inference trajectory, or a reusable
+operator.
+
+The key property is \emph{locality}: a result may
+only be valid over a restricted region --- a particular
+model checkpoint, a specific trust domain, a given
+dataset version, a bounded semantic neighborhood.
+Traditional caching systems ignore this locality and
+assume global validity. The sheaf framework encodes
+contextual validity intrinsically.
+
+\textit{Restriction morphisms} formalize the
+specialization of reusable knowledge:
+\[
+  \rho_{UV} : \mathcal{F}(U) \to \mathcal{F}(V),
+  \quad V \subseteq U.
+\]
+A broad dependency solution can be restricted to a
+specific GPU architecture; a general summary can be
+restricted to a domain-specific interpretation. Results
+can be specialized but not arbitrarily generalized.
+
+\textit{The gluing condition} captures the philosophy
+of distributed computational intelligence. If a family
+of overlapping computational regions $\{U_i\}$ covers
+a larger region $U$, and compatible local sections
+$s_i \in \mathcal{F}(U_i)$ agree on overlaps:
+\[
+  s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j},
+\]
+then there exists a unique global section $s \in
+\mathcal{F}(U)$ assembling them. This is how diverse
+organizations contribute locally validated computation
+to a globally coherent knowledge structure: one cleans
+a dataset, another validates a benchmark, another
+resolves dependency chains, another audits safety
+constraints. If their local computational histories
+are compatible on intersections, they glue into a
+coherent larger computational memory.
+
+\begin{auditprop}
+\label{ap:sheaf-wasted-compute}
+In the sheaf-theoretic interpretation of the Nexus
+framework, wasted computation is not merely an
+efficiency problem. It is a \emph{failure of gluing}:
+local computational knowledge exists but the infrastructure
+lacks the formal mechanisms to recognize compatibility,
+preserve provenance, and assemble reusable inferential
+structures across overlapping computational domains.
+The Nexus transforms this from an architectural failure
+into an engineering problem with a formal solution
+structure.
+\end{auditprop}
+
+\section{Type-Theoretic Implementation: Proof-Carrying Reuse}
+\label{sec:type-theoretic}
+
+The type-theoretic implementation of the Nexus framework
+makes reuse a \emph{proof-carrying operation} rather
+than an unconstrained lookup. A computational result
+is indexed not merely by content but by its context
+of validity:
+
+\begin{lstlisting}[language=Haskell, caption={Core Nexus Types (Haskell-like pseudocode)}]
+-- A result is only valid relative to a specific context
+data ResultArtifact context task trust where
+  MkResult ::
+    { outputHash    :: Hash
+    , gpuSeconds    :: Natural
+    , receipt       :: Receipt
+    , validation    :: ValidationProof context task
+    , provenance    :: Provenance
+    } -> ResultArtifact context task trust
+
+-- Reuse requires a proof of admissibility
+class Reusable oldCtx oldTask newCtx newTask where
+  proof :: ReuseProof oldCtx oldTask newCtx newTask
+
+-- Semantic reuse: not identity, but structured compatibility
+data SemanticReuse where
+  MkSemanticReuse ::
+    { sameIntent       :: SameIntent oldTask newTask
+    , compatInputs     :: CompatibleInputs oldTask newTask
+    , envRefines       :: EnvironmentRefines newCtx oldCtx
+    , licenseAllows    :: LicenseAllows oldCtx newCtx
+    , trustAccepts     :: TrustAccepts newCtx oldCtx
+    } -> Reusable oldCtx oldTask newCtx newTask
+\end{lstlisting}
+
+The critical move is that similarity is not sufficient
+for reuse. A candidate prior computation is reusable
+only when the system can construct a \emph{proof} that
+reuse is safe. The proof must establish: environmental
+compatibility, semantic equivalence of intent, licensing
+admissibility, and trust coherence. Without the proof,
+the result is not retrieved, regardless of how similar
+it appears to the current request.
+
+\begin{technote}[Technical Note: The Reuse Pipeline]
+The Nexus computation pipeline:
+\begin{enumerate}
+  \item Normalize the incoming request into a typed
+  \texttt{Task} with explicit constraint fields.
+  \item Construct the \texttt{Context} encoding the
+  current computational situation.
+  \item Search $\mathcal{F}$ for candidate sections
+  whose domains overlap with the current context.
+  \item Attempt to prove \texttt{Reusable} for each
+  candidate. If proof succeeds, retrieve and restrict.
+  \item If no proof succeeds but candidates exist,
+  attempt partial inheritance: extract reusable
+  operators from the candidate's inferential lineage.
+  \item If no reuse is possible, execute the computation
+  and emit a \texttt{Receipt} with full provenance.
+  \item Store the new \texttt{ResultArtifact} in
+  $\mathcal{F}$ with its validity domain.
+\end{enumerate}
+\end{technote}
+
+\section{Authentication Through Fracture Detection}
+\label{sec:fracture-detection}
+
+The same sheaf-theoretic framework that governs
+computational reuse generates a natural account of
+authenticity. In a world increasingly saturated with
+synthetic media, generated research, automated identities,
+and AI-mediated communication, surface plausibility is
+insufficient as an authenticity criterion. Sufficiently
+capable generative systems can replicate local statistical
+features while failing the deeper continuity requirements
+of genuine informational evolution.
+
+The Nexus framework's authenticity criterion is not
+\emph{does this artifact appear real?} but \emph{does
+this artifact's historical trajectory glue coherently?}
+
+Every real-world process leaves layered traces of
+constrained evolution: compression histories, editing
+sequences, temporal consistencies, sensor noise
+distributions, behavioral rhythms, provenance chains,
+and environmental couplings. Synthetic systems often
+replicate local appearance while failing to reproduce
+the deep continuity relationships that bind these layers
+across time. A forged artifact may exhibit locally
+plausible sections while failing global compatibility
+conditions --- the sheaf-theoretic gluing condition.
+
+\begin{auditprop}
+\label{ap:fracture-cohomology}
+In the sheaf-theoretic framework, \emph{fracture
+detection} is the identification of nontrivial
+cohomological obstructions in the informational
+topology of an artifact's history. A fracture
+corresponds to a point where apparently compatible
+local narratives fail to admit coherent global
+reconstruction: incompatible compression signatures,
+contradictory temporal stamps, inconsistent environmental
+couplings, or behavioral patterns inconsistent with
+a shared causal history. Authenticity is not binary
+but geometric: genuine artifacts exhibit deeply
+interdependent trajectories from shared causal histories;
+synthetic constructions exhibit hidden seams from
+disconnected inferential processes.
+\end{auditprop}
+
+This connects directly to the behavioral injection
+framework from the Phoenix corpus (Chapter~4). Context
+poisoning in LLMs is a specific instance of fracture
+injection: the attacker introduces sections into the
+model's contextual field that fail the gluing condition
+with the rest of its computational history, producing
+behavioral discontinuities that exploit the model's
+inability to detect the incompatibility.
+
+\section{The Nexus as Ortyx in Practice}
+\label{sec:nexus-ortyx}
+
+The connection between the Nexus framework and the
+\Ortyx{} Protocol is structural, not merely analogical.
+The Nexus operationalizes, at the level of AI infrastructure,
+the same epistemic principles that Ortyx articulates
+at the level of theoretical frameworks.
+
+The extensional--intensional distinction in computational
+memory is the engineering analog of the Ortyx distinction
+between symbolic continuity and inferential continuity.
+A cache that stores outputs (extensional) is a system
+with symbolic continuity: it can retrieve what it has
+seen before. A Nexus that stores operators and validity
+proofs (intensional) is a system with inferential
+continuity: it can recognize when new problems are
+structurally related to old ones and carry the
+inferential work across.
+
+The sheaf-theoretic gluing condition in the Nexus
+is the engineering analog of the Ortyx constraint
+propagation requirement. A framework that cannot
+satisfy the gluing condition --- whose local knowledge
+cannot be assembled into global knowledge because
+the local sections are incompatible on overlaps ---
+is a framework with high $\AuditP$: its local claims
+do not propagate to global conclusions.
+
+The proof-carrying reuse requirement in the Nexus is
+the engineering analog of the Ortyx falsifiability
+requirement. A system that allows reuse without proof
+is a system with low $\AuditF$: its claims about
+what computations are applicable are not subject to
+external verification. A Nexus that requires a formal
+proof of admissibility before reuse is a system that
+makes its reuse decisions auditable.
+
+\begin{interlude}[The Nexus and Ortyx]
+  The Nexus is what the Ortyx Protocol looks like when
+  instantiated in computational infrastructure. Ortyx
+  asks: does this theoretical claim carry its inferential
+  obligations with it? Nexus asks: does this computation
+  carry its validity conditions with it?
+
+  The answer, in both cases, should be yes.
+  The infrastructure for yes, in both cases,
+  is the work that remains to be done.
+\end{interlude}
+
+\section{The SID Chip and the Prehistory of Intensional Computation}
+\label{sec:sid-prehistory}
+
+The distinction between extensional and intensional
+computational memory is not new. It was forced upon
+developers by hardware scarcity long before it became
+a theoretical concern. The MOS Technology SID chip,
+the sound synthesis device at the heart of the Commodore
+64, provides one of the clearest historical illustrations
+of intensional computation under extreme constraint.
+
+A SID composition is not stored audio. It is a compact
+procedural specification: a set of register values,
+timing sequences, envelope parameters, oscillator
+configurations, and filter modulations that together
+constitute a generative program for producing sound
+in real time. The chip's three oscillators, ring
+modulation, and filter stage are not components of
+a waveform recorder; they are components of a
+transformation engine. The \texttt{.sid} file that
+encodes a composition is closer to a proof of sound
+than to a recording of sound: it specifies the structure
+by which sound is generated, not the sound itself.
+
+This is intensional computation in its purest form.
+The programmer stores not the answer (the waveform)
+but the operator (the register program) that generates
+the answer on demand. The Commodore's 64~KB of RAM
+and 1~MHz processor could not store the waveform;
+they could store the generative structure. The
+constraint forced elegance.
+
+\begin{technote}[Technical Note: SID as Intensional Operator]
+A SID register program can be interpreted as a
+low-dimensional operator $\Phi_{\mathrm{SID}}$:
+\[
+  \Phi_{\mathrm{SID}} : \text{RegisterState}
+  \times \text{Time} \to \text{AudioSample},
+\]
+where the operator is specified by approximately
+29 bytes of register values and the output is an
+audio trajectory of arbitrary length. The compression
+ratio is extraordinary: a multi-minute composition
+may require only a few kilobytes of operator specification.
+This is not lossy compression of a waveform; it is
+the replacement of the waveform by the structure that
+generates it. The operator contains no waveform;
+it contains the rules by which a waveform trajectory
+is produced under constraint.
+\end{technote}
+
+The demoscene culture that developed around the
+Commodore and related constrained hardware --- the
+Amiga, the Atari ST, the ZX Spectrum --- developed
+an entire aesthetic around this kind of intensional
+representation. Tracker music formats (\texttt{.mod},
+\texttt{.xm}, \texttt{.it}) stored note events,
+instrument operators, effect sequences, and timing
+patterns rather than sampled waveforms. The \emph{demo}
+genre stored generative programs rather than recorded
+audiovisual content. The cultural result was a community
+that treated representational economy as a craft virtue:
+the tightest code, the most generative compression,
+the smallest seed producing the richest unfolding.
+
+Contemporary AI infrastructure has largely abandoned
+this aesthetic. The abundance of compute and storage
+has made brute-force extensional approaches viable:
+store the output, regenerate from scratch on variation,
+cache terminal values. The Nexus framework's argument
+is that this abundance has produced a civilization-scale
+inefficiency that will eventually force a return to
+the intensional orientation --- not for aesthetic
+reasons, but for the same reason the SID era required
+it: the cost of redundant regeneration at sufficient
+scale exceeds the cost of building infrastructure
+to preserve and reuse generative structure.
+
+\begin{dangerzone}[Compression \(\neq\) Ontology]
+The SID analogy is a \LevelII{} illustration, not
+a \LevelI{} derivation. The structural parallel between
+SID register programs and Nexus reusable operators
+does not establish that the Nexus design is correct;
+it illustrates why intensional representation is not
+a novel philosophical invention but a recurring
+engineering response to constraint. The historical
+precedent motivates the proposal; it does not validate it.
+\end{dangerzone}
+
+The trajectory has a historical irony. Early computing
+cultures were forced into intensional elegance by
+scarcity. Abundance permitted extensional brute force.
+Civilizational scale reintroduces the scarcity --- of
+energy, of inference cost, of bandwidth relative to
+demand --- that makes intensional infrastructure
+attractive again, but now at vast scale and with
+formal mathematical tools that the demoscene did not
+possess. The SID chip's aesthetic and the Nexus framework's
+architecture are, in this light, two points on the
+same curve.
+
+\section{The i1.is Layer: Trust, Provenance, and Semantic Web Infrastructure}
+\label{sec:i1-layer}
+
+The Nexus framework's sheaf-theoretic architecture
+requires a trust and namespace fabric to govern which
+computational sections are admitted as compatible,
+which provenance chains are recognized as valid, and
+how locally generated knowledge is routed toward its
+appropriate domain of applicability. This function
+--- the administration of admissibility and provenance
+at the infrastructure level --- is the role of what
+might be called a semantic mediation layer.
+
+The i1.is concept (``Imaginary One'' / ``Internet One'')
+proposes such a layer as an AI-native web infrastructure
+component: a trust-aware DNS augmentation and contextual
+resolution layer that operates above raw addressability.
+Current DNS answers the question: \emph{Where is this
+resource located?} The i1.is architecture asks the
+richer question: \emph{What is this resource in relation
+to trust, provenance, semantic continuity, and user intent?}
+
+\begin{epistemicstatus}{Reconstructive Conjecture}
+The i1.is concept is a design proposal rather than
+an implemented system. Its inclusion here is motivated
+by its structural alignment with the Nexus framework's
+theoretical requirements: any realisation of Nexus
+at web scale requires a trust and namespace fabric
+that can manage provenance, admissibility, and contextual
+routing across heterogeneous organizational domains.
+Whether i1.is is the correct instantiation of this
+requirement is an engineering question with a determinate
+answer that depends on implementation experience.
+\end{epistemicstatus}
+
+In sheaf-theoretic terms, the i1.is layer defines
+the Grothendieck topology on the base space $X$ of
+computational situations. A ``cover'' of a computational
+domain is not determined purely by set inclusion but
+by admissible trust relationships: sources satisfying
+cryptographic provenance, licensing compatibility,
+confidence thresholds, and organizational trust
+certificates. This topology determines which local
+sections can be assembled into global knowledge via
+the sheaf's gluing conditions.
+
+The concrete mechanism involves contextual interstitials:
+when a user navigates to a resource, the i1.is layer
+can generate a provenance-aware contextual overlay
+--- a \texttt{creekbar.com.i1.is}-style view --- that
+provides: trust evaluation (a 0--5 confidence indicator
+based on provenance metrics), semantic preview (an
+AI-generated summary of the resource's relationship
+to the user's current context), historical continuity
+(how this resource fits within the user's trajectory),
+and fracture indicators (whether the resource's history
+exhibits cohomological obstructions that suggest
+synthetic or discontinuous generation).
+
+This is the web as semantic topology rather than the
+web as document collection. The mediation layer does
+not replace the underlying resource; it provides a
+structured interpretation of the resource's position
+within the Nexus trust graph and provenance network.
+
+The MEM|8, Nexus, and i1.is components form a layered
+architecture that instantiates the Nexus framework
+at three scales:
+
+\textit{MEM|8} (local temporal memory): preserves
+contextual continuity at the node or user level;
+the local wave interference field that tracks recent
+high-salience events and their mutual resonance
+relationships.
+
+\textit{Nexus} (distributed proof-carrying memory
+mesh): coordinates reusable inferential structure
+across organizations and agents; the sheaf of
+computational knowledge with its restriction morphisms
+and gluing conditions.
+
+\textit{i1.is} (trust and namespace fabric): administers
+admissibility, provenance, and identity continuity
+at the web infrastructure level; the Grothendieck
+topology that determines which sections are recognized
+as compatible.
+
+Together, they constitute a proposal for what AI-native
+internet infrastructure might look like when computation
+is treated as cumulative memory rather than disposable
+execution. The result is not a monolithic intelligence
+but a layered architecture for preserving inferential
+continuity across an increasingly heterogeneous
+computational ecosystem.
+
+\claimlabeltext{Level~I}{The specific engineering
+proposals --- trust-aware DNS augmentation, contextual
+interstitials, proof-carrying receipt systems, fracture
+detection metrics --- are engineering claims with
+testable performance characteristics. They can be
+implemented and evaluated independently of the broader
+theoretical framework.}
+
+\claimlabeltext{Level~II}{The sheaf-theoretic framing
+of web infrastructure is a productive computational
+metaphor that generates specific design requirements
+for provenance management and contextual routing.
+It does not establish that the web is literally a
+sheaf; it provides a vocabulary in which the design
+requirements are precisely statable.}
+
+\claimlabeltext{Level~III}{The phenomenological claim
+that web navigation will increasingly feel like semantic
+exploration rather than document retrieval is a
+speculative but coherent prediction about how
+trust-aware infrastructure would change the character
+of internet interaction.}
+
+\claimlabeltext{Level~IV}{Any claim that i1.is
+constitutes a theory of meaning, or that sheaf-theoretic
+admissibility is the deep ontological structure of
+web resources, would require argument well beyond
+what the engineering proposal provides.}
+
+\section{Audit of the Nexus Framework}
+\label{sec:nexus-audit}
+
+The Nexus framework itself must pass the \Ortyx{}
+audit. Applying the four operators briefly:
+
+$\AuditS$: The sheaf-theoretic account is structurally
+sound; the gluing conditions follow from the sheaf
+axioms. The type-theoretic implementation is
+architecturally coherent. The compression analogy ---
+operators replacing trajectories --- is well-grounded
+in the mathematics of operator theory. Score: high.
+
+$\AuditF$: The framework generates specific, falsifiable
+engineering predictions: a Nexus-style system should
+require fewer GPU operations per task than a comparable
+extensional cache on repeated task families; proof
+construction overhead should be bounded and measurable;
+fracture detection should perform better than
+appearance-based authenticity checks on synthetic media
+datasets. Score: high.
+
+$\AuditP$: The framework's most significant projection
+risk is the analogy from computational to cognitive
+systems --- the implicit claim that the Nexus architecture
+captures something true about how minds should work,
+not merely how computational infrastructure should
+work. This is a \LevelII{} claim and must be kept there.
+Score: moderate (controlled by explicit level labeling).
+
+$\AuditR$: The framework's sheaf and type-theoretic
+vocabulary is rich enough to accommodate broad
+application, creating the risk of the same vocabulary
+migration observed in the Phoenix coherence concept.
+The mitigation is the same: operational specificity
+at each application site. Score: moderate.
+
+The Nexus passes the audit at a level sufficient for
+inclusion in $\ThetaStar$. It is a reconstructible
+proposal that operationalizes RSVP principles in a
+domain where implementation is tractable.

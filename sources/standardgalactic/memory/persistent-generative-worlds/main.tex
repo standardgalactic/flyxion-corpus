@@ -1,0 +1,217 @@
+\documentclass[11pt,oneside]{book}
+
+% --- Engine / fonts ---
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setmonofont{DejaVu Sans Mono}[Scale=0.85]
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% A handful of unicode math-alphabet characters (blackboard, script, and
+% a combining-accent letter) used directly in running prose, outside of
+% math mode, are absent from TeX Gyre Pagella; substitute them from
+% fallback fonts that cover these ranges.
+\usepackage{newunicodechar}
+\newfontfamily\symbolfallback{Latin Modern Math}
+\newfontfamily\accentfallback{DejaVu Sans}
+\newunicodechar{ẑ}{{\accentfallback ẑ}}
+\newunicodechar{ℝ}{{\symbolfallback ℝ}}
+\newunicodechar{𝒢}{{\symbolfallback 𝒢}}
+\newunicodechar{𝒲}{{\symbolfallback 𝒲}}
+\newunicodechar{𝓜}{{\symbolfallback 𝓜}}
+\newunicodechar{𝒫}{{\symbolfallback 𝒫}}
+\newunicodechar{Ṁ}{{\accentfallback Ṁ}}
+\newunicodechar{ᵢ}{{\symbolfallback ᵢ}}
+\newunicodechar{Č}{{\accentfallback Č}}
+
+% --- Layout ---
+\usepackage[a5paper,margin=2.2cm,bindingoffset=0.4cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\Large}{\chaptertitlename\ \thechapter}{10pt}{\Large}
+\titlespacing*{\chapter}{0pt}{20pt}{28pt}
+
+% --- Front matter helpers ---
+\usepackage{titling}
+\usepackage{fancyhdr}
+\setlength{\headheight}{26pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% --- References / TOC ---
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  pdftitle={The Physics of Persistent AI Worlds},
+  pdfauthor={Flyxion},
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black
+}
+\usepackage{bookmark}
+
+\usepackage{verbatim}
+\usepackage{fvextra}
+\fvset{breaklines=true, fontsize=\small}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+
+% Loosen justification tolerance slightly given long unhyphenated
+% mathematical tokens embedded in running prose.
+\tolerance=2000
+\emergencystretch=2em
+
+\newcommand{\booksubtitle}{From Token Prediction to World Evolution}
+\newcommand{\bookalttitle}{Persistent Generative Worlds: A Field Theory of Semantic Simulation}
+
+\begin{document}
+
+% ===================== TITLE PAGE =====================
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Physics of\\[4pt] Persistent AI Worlds\par}
+\vspace{1cm}
+{\Large \booksubtitle \par}
+\vspace{0.6cm}
+{\normalsize\itshape \bookalttitle \par}
+\vfill
+{\Large Flyxion\par}
+\vspace{0.3cm}
+{\normalsize Independent Researcher\par}
+\vspace{1.5cm}
+{\normalsize 2026\par}
+\vspace*{2cm}
+\end{titlepage}
+
+\frontmatter
+
+% ===================== PREFACE (placeholder) =====================
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+This book is an extended argument for a single claim: that a system generating
+observations should be answerable to something that persists independent of
+being observed, rather than merely conditioned on whatever happens to be
+near at hand. It develops that claim from a first symptom, a stone wall
+whose crack moves between two glances, through a complete mathematical and
+engineering architecture, into a set of applications and, finally, into
+what the architecture implies about identity, minds, and civilization once
+taken seriously as more than an engineering convenience.
+
+\chapter*{Roadmap of the Theory}
+\addcontentsline{toc}{chapter}{Roadmap of the Theory}
+This book develops each major concept through four complementary
+perspectives. It begins with intuition, introducing why the concept is
+needed. It then develops the architectural role the concept plays within
+the semantic field. Once the architecture is established, the mathematical
+structures required to formalize it are introduced. Finally, the
+engineering implications are explored through concrete implementations.
+Not every chapter contains all four perspectives; instead, the book
+revisits each concept as progressively richer tools become available.
+
+The book's core cycle recurs throughout, refined further each time it
+reappears:
+\begin{center}
+World \(\to\) Persistent Field (M\textsubscript{t}) \(\to\)
+Observation (O\textsubscript{\(\theta\)}) \(\to\) Cues \(\to\)
+Affordances \(\to\) Neural Proposal (\(\Delta\)\(\psi\)) \(\to\)
+Constraint Projection (\(\Pi\)\textsubscript{C}) \(\to\) Commit \(\to\)
+Updated World (M\textsubscript{t+1}) \(\to\) World
+\end{center}
+
+\begin{center}
+\begin{tabular}{ll}
+Part I & Why the cycle is needed \\
+Part II & The world and observation \\
+Part III & Action and evolution \\
+Part IV & Mathematical guarantees \\
+Part V & Software realization \\
+Part VI & Applications \\
+Part VII & Philosophical consequences \\
+\end{tabular}
+\end{center}
+
+\tableofcontents
+
+\mainmatter
+
+% ===================== PART I =====================
+\part{Why AI Forgets}
+\input{chapters/ch01.tex}
+\input{chapters/ch02.tex}
+\input{chapters/ch03.tex}
+\input{chapters/ch04.tex}
+\input{chapters/ch05.tex}
+
+% ===================== PART II =====================
+\part{The Semantic Field}
+\input{chapters/ch06.tex}
+\input{chapters/ch07.tex}
+\input{chapters/ch08.tex}
+\input{chapters/ch09.tex}
+\input{chapters/ch10.tex}
+\input{chapters/ch11.tex}
+
+% ===================== PART III =====================
+\part{Dynamics}
+\input{chapters/ch12.tex}
+\input{chapters/ch13.tex}
+\input{chapters/ch14.tex}
+\input{chapters/ch15.tex}
+\input{chapters/ch16.tex}
+\input{chapters/ch17.tex}
+
+% ===================== PART IV =====================
+\part{The Mathematics of Persistence}
+\input{chapters/ch18.tex}
+\input{chapters/ch19.tex}
+\input{chapters/ch20.tex}
+\input{chapters/ch21.tex}
+\input{chapters/ch22.tex}
+\input{chapters/ch23.tex}
+\input{chapters/ch24.tex}
+
+% ===================== PART V =====================
+\part{Engineering the World Engine}
+\input{chapters/ch25.tex}
+\input{chapters/ch26.tex}
+\input{chapters/ch27.tex}
+\input{chapters/ch28.tex}
+\input{chapters/ch29.tex}
+\input{chapters/ch30.tex}
+
+% ===================== PART VI =====================
+\part{Applications}
+\input{chapters/ch31.tex}
+\input{chapters/ch32.tex}
+\input{chapters/ch33.tex}
+\input{chapters/ch34.tex}
+\input{chapters/ch35.tex}
+\input{chapters/ch36.tex}
+
+% ===================== PART VII =====================
+\part{Toward Semantic Physics}
+\input{chapters/ch37.tex}
+\input{chapters/ch38.tex}
+\input{chapters/ch39.tex}
+\input{chapters/ch40.tex}
+\input{chapters/ch41.tex}
+\input{chapters/ch42.tex}
+
+% ===================== APPENDICES =====================
+\appendix
+\input{chapters/apxA.tex}
+\input{chapters/apxB.tex}
+\input{chapters/apxC.tex}
+\input{chapters/apxD.tex}
+\input{chapters/apxE.tex}
+\input{chapters/apxF.tex}
+
+\end{document}

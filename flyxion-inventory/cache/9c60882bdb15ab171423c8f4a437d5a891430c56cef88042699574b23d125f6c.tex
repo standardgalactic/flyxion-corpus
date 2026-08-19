@@ -1,0 +1,1521 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{mathpazo}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{mdframed}
+
+% ── Colour palette (muted, academic) ────────────────────────────────────────
+\definecolor{navy}{RGB}{18, 34, 66}
+\definecolor{steel}{RGB}{55, 90, 135}
+\definecolor{slategray}{RGB}{100, 120, 145}
+\definecolor{palegray}{RGB}{243, 245, 248}
+\definecolor{rulegray}{RGB}{160, 180, 200}
+\definecolor{defblue}{RGB}{230, 236, 245}
+
+% ── Hyperref ────────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=steel,
+  urlcolor=steel,
+  citecolor=steel,
+  pdftitle={Pre-Registration Package: Testable Predictions from the Salience-Centered Paradigm},
+  pdfauthor={Flyxion},
+  pdfsubject={Pre-registration; Signal Processing; Auditory Perception; Associative Memory}
+}
+
+% ── Section formatting ───────────────────────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries\color{navy}}{}{0em}{}
+  [\vspace{0.1em}{\color{rulegray}\hrule height 0.4pt}]
+\titleformat{\subsection}{\normalsize\bfseries\color{steel}}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\itshape\color{navy}}{}{0em}{}
+
+% ── Header / footer ─────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{slategray} Pre-Registration Package}
+\fancyhead[R]{\small\color{slategray} Salience-Centered Paradigm — Levels I–III}
+\fancyfoot[C]{\small\color{slategray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{14pt}
+
+% ── Box environments ─────────────────────────────────────────────────────────
+\tcbuselibrary{skins, breakable}
+
+% Prediction template box
+\newtcolorbox{predbox}[1]{
+  enhanced, breakable,
+  title=#1,
+  fonttitle=\bfseries\color{white}\small,
+  colbacktitle=navy,
+  colback=palegray,
+  colframe=rulegray,
+  boxrule=0.5pt,
+  arc=2pt,
+  top=3pt, bottom=3pt, left=6pt, right=6pt,
+  titlerule=0pt,
+  attach boxed title to top left={yshift=-2mm, xshift=5mm},
+  boxed title style={colback=navy, arc=2pt, boxrule=0pt}
+}
+
+% Definition box
+\newtcolorbox{defbox}{
+  enhanced, breakable,
+  colback=defblue,
+  colframe=steel!60,
+  boxrule=0.4pt,
+  arc=2pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fontupper=\small
+}
+
+% Note box
+\newtcolorbox{notebox}{
+  enhanced, breakable,
+  colback=white,
+  colframe=rulegray,
+  boxrule=0.4pt,
+  arc=2pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fontupper=\small\itshape
+}
+
+% ── List settings ────────────────────────────────────────────────────────────
+\setlist[itemize]{itemsep=1pt, topsep=3pt, leftmargin=1.5em}
+\setlist[enumerate]{itemsep=1pt, topsep=3pt, leftmargin=1.5em}
+
+% ── Paragraph spacing ────────────────────────────────────────────────────────
+\setlength{\parindent}{14pt}
+\setlength{\parskip}{0.4ex}
+
+% ── Section spacing ──────────────────────────────────────────────────────────
+\titlespacing*{\section}{0pt}{1.4ex plus 0.4ex minus 0.2ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus 0.3ex minus 0.2ex}{0.4ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.2ex minus 0.1ex}{0.2ex}
+
+% ── Convenience commands ─────────────────────────────────────────────────────
+\newcommand{\mem}{MEM$|$8}
+\newcommand{\hcf}{HCF1}
+\newcommand{\scp}{Salience-Centered Paradigm}
+\newcommand{\dprime}{$d'$}
+
+% ============================================================================
+\begin{document}
+\raggedbottom
+
+% ── Title page ───────────────────────────────────────────────────────────────
+\begin{titlepage}
+\vspace*{1.0cm}
+{\color{navy}\rule{\linewidth}{1.5pt}}
+\vspace{0.4cm}
+
+\begin{center}
+{\LARGE\bfseries\color{navy}
+Pre-Registration Package:\\[0.45em]
+Testable Predictions Derived from the\\[0.45em]
+Salience-Centered Paradigm (Levels~I–III)
+}
+
+\vspace{0.6cm}
+{\large\color{steel}
+Signal Processing $\cdot$ Auditory Perception $\cdot$ Associative Memory Architecture
+}
+
+\vspace{1.0cm}
+\begin{tabular}{rl}
+\textbf{Author:}       & Flyxion (independent researcher) \\[4pt]
+\textbf{Components:}   & Marine Salience Algorithm; \hcf{} Compression; \mem{} \\[4pt]
+\textbf{Scope:}        & Six falsifiable predictions (Sets A, B, C) \\[4pt]
+\textbf{Suitable for:} & OSF, AsPredicted, Registered Reports tracks \\[4pt]
+\textbf{Date:}         & May 2026
+\end{tabular}
+
+\vspace{1.0cm}
+{\color{navy}\rule{\linewidth}{0.7pt}}
+\vspace{0.4cm}
+
+\begin{notebox}
+\textbf{Scope of this document.}
+This package concerns only the empirically tractable claims within Levels~I–III
+of the \scp{} (signal processing, compression architecture, associative memory).
+Level~IV claims (consciousness, authenticity loss, and related constructs) are not
+pre-registered here; they require prior operationalization before experimental
+design is possible.  The goal of this document is not to validate the broader
+paradigm but to derive risky, testable predictions from it — predictions whose
+failure would carry genuine evidential weight.
+\end{notebox}
+
+\end{center}
+\vfill
+{\color{navy}\rule{\linewidth}{1.5pt}}
+\end{titlepage}
+
+% ── Abstract ─────────────────────────────────────────────────────────────────
+\thispagestyle{plain}
+{\centering\large\bfseries\color{navy} Abstract\par}
+\smallskip
+\noindent
+The \scp{} is a research programme proposing that temporal coherence — specifically,
+structured micro-temporal variation (jitter) in harmonic oscillators — constitutes
+signal-level information rather than noise, and that this insight motivates novel
+approaches to perceptual salience estimation, audio compression, and phase-based
+associative memory.  The paradigm spans four levels of increasing abstraction:
+temporal signal processing (Level~I), compression architecture (Level~II),
+memory architecture (Level~III), and speculative claims about consciousness and
+authenticity (Level~IV).
+
+This pre-registration package concerns exclusively Levels~I–III, which generate
+six falsifiable predictions amenable to standard experimental and computational
+methods.  For Levels~I and~II, predictions address (A1)~perceptual detection of
+temporal jitter in harmonic complexes under spectrally controlled conditions,
+(A2)~incremental predictive power of a coherence metric in auditory salience ratings,
+(B1)~linear predictability of upper harmonic envelopes from the fundamental in
+acoustic instruments, and (B2)~bitrate efficiency and perceptual transparency of
+the \hcf{} compression scheme.  For Level~III, predictions address (C1)~quadratic
+storage scaling in phase-encoded associative memory relative to a Hopfield baseline,
+and (C2)~resistance to catastrophic forgetting under sequential learning.
+
+Each template specifies a dependent variable, null hypothesis, statistical criterion,
+sample size with power justification, analysis pipeline, and
+confirmatory/exploratory distinction.  The package follows open-science norms for
+pre-registration and is intended to be filed at OSF, AsPredicted, or an equivalent
+repository.  Negative results are treated as substantive evidence; falsification of
+individual predictions is explicitly distinguished from falsification of the paradigm
+as a whole.
+
+\noindent\textit{Keywords:} auditory salience; temporal coherence; harmonic compression;
+associative memory; pre-registration; falsifiability; signal detection theory;
+open science.
+
+\newpage
+
+% ── TOC ──────────────────────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ── 1. NOTATION AND TERMINOLOGY ───────────────────────────────────────────────
+\section{Notation and Terminology}
+
+The following definitions are fixed for the entirety of this document.
+Terminological consistency matters for pre-registrations because post-hoc
+reinterpretation of key terms can obscure whether a prediction was confirmed or
+disconfirmed.
+
+\begin{defbox}
+\textbf{Temporal jitter.}  Cycle-to-cycle variation in the period of a quasi-periodic
+waveform, quantified as $J = \sigma(T) / \mu(T)$, where $T$ denotes the set of
+measured inter-peak intervals over a specified time window (default: 200~ms).
+Jitter is expressed as a percentage of mean period.
+
+\smallskip
+\textbf{Marine coherence metric ($\kappa$).}  A normalised inverse-jitter quantity
+defined as $\kappa = 1 / (J + \varepsilon)$, where $\varepsilon > 0$ is a small
+regularising constant (default: $10^{-3}$).  Higher $\kappa$ indicates more
+temporally stable oscillation.  The ``Marine'' qualifier refers to the salience
+algorithm in which this metric originates; it does not carry implications about
+consciousness or authenticity.
+
+\smallskip
+\textbf{Spectral prominence ($P$).}  Level of a partial above the local noise
+floor, measured in dB: $P = L_\text{partial} - L_\text{noise}$.
+
+\smallskip
+\textbf{HCF1 (Harmonic Conformity Flag, 1-bit).}  A compression scheme storing a
+master amplitude envelope for the fundamental ($e_1$) and, for each upper harmonic
+$h = 2, \ldots, H$, a single bit indicating conformity to a pre-calibrated linear
+prediction $\hat{e}_h = a_h e_1 + b_h$.  Non-conforming frames store an explicit
+residual.
+
+\smallskip
+\textbf{\mem{} (Modulated Encoding Memory, 8 wave functions per node).}  A proposed
+associative memory architecture in which pairwise associations are encoded as phase
+relationships among complex sinusoidal wave functions.  The hypothesis is that $N$
+wave functions can store $O(N^2)$ associations, contrasting with the $O(N)$
+capacity of standard Hopfield networks.
+
+\smallskip
+\textbf{Constraint horizon.}  The requirement that any empirical claim specify in
+advance what evidence would count against it.  A framework that can accommodate
+every possible outcome is not a scientific theory; it is a descriptive vocabulary.
+All six predictions in this package are designed to have a clear constraint horizon.
+
+\smallskip
+\textbf{Retention (\%).}  In sequential learning experiments (C2): the ratio of
+recall accuracy after learning a second association set to recall accuracy before,
+expressed as a percentage.
+
+\smallskip
+\textbf{Confirmatory vs.\ exploratory.}  Analyses declared in this document before
+data collection are \emph{confirmatory}.  Analyses conducted after data collection,
+whether planned or opportunistic, are \emph{exploratory} and must be labelled as
+such in any resulting publication.
+\end{defbox}
+
+\bigskip
+
+\noindent Throughout this document, notation is standardised as follows:
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ll}
+\toprule
+\textbf{Symbol / term} & \textbf{Meaning} \\
+\midrule
+$f_0$              & Fundamental frequency \\
+$h$                & Harmonic index ($h = 1$ = fundamental) \\
+$e_h(t)$           & Amplitude envelope of harmonic $h$ at time $t$ \\
+$J$                & Jitter (normalised period SD) \\
+$\kappa$           & Marine coherence metric \\
+$P$                & Spectral prominence (dB) \\
+$d'$               & Sensitivity index (signal detection theory) \\
+$R^2$              & Coefficient of determination \\
+$\Delta R^2$       & Incremental explained variance \\
+$N$                & Number of wave functions in \mem{} \\
+$M$                & Number of items forming $M^2$ pairwise associations \\
+\mem{}             & Modulated Encoding Memory architecture \\
+\hcf{}             & Harmonic Conformity Flag (1-bit) compression scheme \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+% ── 2. SCIENTIFIC POSITIONING ─────────────────────────────────────────────────
+\section{Scientific Positioning}
+
+The predictions in this package sit within three established research traditions.
+Anchoring them explicitly prevents the framework's novel terminology from appearing
+to arise in a vacuum.
+
+\subsection{Prediction Set A — Psychoacoustics and Temporal Coding}
+
+The question of whether fine temporal structure contributes to auditory perception
+beyond what is captured by the spectral envelope has a long history.  Phase locking
+in the auditory nerve supports temporal coding up to approximately 4–5~kHz (Rose
+et al., 1967; Palmer \& Russell, 1986).  The role of micro-temporal variation in
+the perception of naturalness and timbral identity has been studied in the context
+of vibrato, mechanical fluctuations in musical instruments, and the perceptual
+consequences of phase randomisation (McAdams, 1984; Beauchamp, 1993).  Auditory
+salience models typically operationalise salience in terms of spectral energy,
+spectral flux, or onset strength (Kayser et al., 2005; Klapuri, 2006); the
+Marine coherence metric represents a proposal that temporal stability constitutes
+an orthogonal salience dimension not captured by these spectral proxies.
+Prediction~A2 tests this directly as an incremental regression effect.
+
+\subsection{Prediction Set B — Perceptual Audio Coding and Harmonic Modelling}
+
+Harmonic signal models underlie a broad family of audio codecs and analysis
+methods, including sinusoidal modelling (McAulay \& Quatieri, 1986), source-filter
+approaches to speech coding (Rabiner \& Schafer, 1978), and structured prediction
+in transform codecs.  The observation that harmonic amplitude envelopes co-vary
+across a note (Prediction~B1) is related to but distinct from standard spectral
+envelope coding: HCF1 exploits inter-harmonic temporal correlation rather than
+across-frequency spectral shape.  In this sense it is closer in spirit to
+predictive coding of envelope trajectories (Spanias, 1994) than to masked-band
+discard strategies used in perceptual codecs such as MP3 and AAC.
+
+\subsection{Prediction Set C — Associative Memory and Attractor Networks}
+
+Hopfield networks (Hopfield, 1982) are the canonical model of content-addressable
+memory with a known storage capacity of approximately $0.138N$ patterns for $N$
+binary units (Amit et al., 1985).  Complex-valued and phase-coded extensions of
+Hopfield-type networks have been studied theoretically (Noest, 1988; Jankowski
+et al., 1996; Aoyagi, 1995) and motivate the claim that phase relationships among
+oscillatory units can encode pairwise associations more efficiently than binary
+state vectors.  The MEM$|$8 architecture is best understood as a proposal within
+this family of complex-valued associative networks.  Predictions C1 and~C2 are
+designed to be interpretable within this existing literature: the quadratic
+capacity claim (C1) is a strong quantitative prediction relative to known Hopfield
+scaling, and the catastrophic forgetting result (C2) connects to the well-studied
+stability-plasticity dilemma (Grossberg, 1987; McCloskey \& Cohen, 1989).
+
+% ── 3. CROSS-LEVEL ARCHITECTURAL UNITY ────────────────────────────────────────
+\section{Cross-Level Architectural Unity}
+
+Although Prediction Sets A, B, and C address distinct experimental domains, they
+are unified by a single underlying principle: \emph{structured redundancy under
+physical constraint}.
+
+Level~I (Prediction Set A) concerns the \textbf{extraction} of structurally
+informative temporal patterns from harmonic signals.  The claim is that jitter is
+not noise to be discarded but signal to be retained because it encodes the physical
+coupling state of the oscillating system.
+
+Level~II (Prediction Set B) concerns the \textbf{representation} of correlated
+harmonic structure.  Given that upper harmonics are driven by shared physical
+dynamics, their amplitude envelopes are expected to be highly predictable from the
+fundamental.  \hcf{} exploits this predictability to achieve compact, lossless
+(within-frame) description of harmonic temporal evolution.
+
+Level~III (Prediction Set C) concerns \textbf{retrieval} under structured relational
+encoding.  If associative memory is implemented via phase relationships among
+oscillatory units, then the information-theoretic capacity of the representation
+scales differently from binary state vectors — specifically, quadratically with the
+number of wave functions.
+
+All three levels therefore concern constrained representation under physically or
+structurally motivated redundancy.  The framework's contribution, if confirmed,
+would be identifying that this principle applies coherently across the domains of
+perception (Level~I), compression (Level~II), and memory (Level~III).
+
+It is important to note that the three levels are architecturally related but
+\emph{empirically independent}.  Falsification of one prediction set does not
+imply falsification of the others.  See Section~\ref{sec:negative} for a systematic
+treatment of what each negative result would and would not entail.
+
+% ── 4. EXPLAINABILITY AS AN INDEPENDENT CONTRIBUTION ─────────────────────────
+\section{Explainability as an Independent Contribution}
+
+A common implicit assumption in systems like \mem{} is that the primary measure
+of success is capacity or efficiency relative to existing architectures.  This
+framing sets a high bar: if the quadratic capacity claim in C1 is not confirmed,
+the architecture might appear to offer nothing.  This section records a secondary
+contribution claim that does \emph{not} depend on the capacity results.
+
+Phase-based associative memory encodes relationships as geometric objects in the
+complex plane.  Each stored association $(i, j)$ corresponds to an angular offset
+$\Delta\phi_{ij}$ between two wave functions.  This has two interpretive
+consequences that standard binary Hopfield networks do not share:
+
+\begin{enumerate}
+  \item \textbf{Geometric interpretability.}  The strength of an association can
+    be read directly from the phase offset magnitude; the direction of retrieval
+    (from $i$ to $j$ vs.\ $j$ to $i$) corresponds to the sign of the angle.
+    A trained weight matrix in a binary Hopfield network offers no analogous
+    geometric decomposition without additional analysis.
+
+  \item \textbf{Graded similarity.}  Items with similar phase profiles are
+    geometrically close in the complex plane, enabling a natural similarity metric
+    without additional distance computation.  This may be useful for approximate
+    nearest-neighbour retrieval in applications where exact matches are rare.
+\end{enumerate}
+
+These properties hold regardless of whether the capacity results in C1 are
+confirmed.  If C1 fails — if the quadratic scaling does not materialize — the
+architecture still offers a transparent, geometrically interpretable
+representation of associative structure that may be preferable to binary
+attractor networks in settings where interpretability matters (e.g., embedded
+systems, explainable AI pipelines, or educational demonstrations of associative
+memory).
+
+This claim is explicitly \emph{not} pre-registered as a falsifiable prediction
+in the present document, because interpretability is a design property, not an
+experimental outcome.  It is recorded here so that the broader value of the
+\mem{} architecture is not contingent on the specific capacity thresholds in C1.
+
+% ── 5. OPERATIONAL BOUNDARY CONDITIONS ────────────────────────────────────────
+\section{Operational Boundary Conditions}
+\label{sec:boundaries}
+
+A well-bounded framework is more tractable, not weaker.  The following are explicit
+non-claims of the Salience-Centered Paradigm as operationalized in this package.
+
+\begin{enumerate}[label=\textbf{B\arabic*.}, leftmargin=2.2em]
+
+  \item \textbf{No claim to proof of consciousness.}  Nothing in Levels~I–III
+    entails or supports claims about conscious experience, phenomenal authenticity,
+    or subjective perception of ``cognitive field'' effects.  The Marine coherence
+    metric is a signal-processing quantity.
+
+  \item \textbf{No rejection of standard psychoacoustic masking.}  The framework
+    does not claim that psychoacoustic masking models (as used in MP3, AAC, and
+    related codecs) are incorrect.  Prediction~A1 is compatible with masking-based
+    models; it tests whether jitter carries additional perceptual information
+    \emph{beyond} masked-band predictions.
+
+  \item \textbf{No claim of current engineering superiority.}  \hcf{} compression
+    is not claimed to outperform existing perceptual codecs in general.
+    Prediction~B2 tests a specific, narrow claim about bitrate reduction for
+    harmonic envelope coding, not end-to-end audio quality.
+
+  \item \textbf{No claim of biological plausibility for \mem{}.}  The \mem{}
+    architecture is a mathematical model.  Predictions C1 and C2 are claims about
+    a defined computational system, not about neural implementation in biological
+    tissue.
+
+  \item \textbf{No claim that Level~IV is false.}  This document takes no position
+    on whether Level~IV claims about consciousness and authenticity are correct.  They
+    are excluded solely because they lack sufficient operationalization to support
+    pre-registered experimental design at this time.
+
+  \item \textbf{No claim that confirmation of Levels~I–III entails Level~IV.}
+    Even if all six predictions are confirmed, that result would not constitute
+    evidence for the Level~IV speculative claims.  The inferential boundary is sharp.
+
+\end{enumerate}
+
+% ── 5. STATISTICAL PHILOSOPHY AND CONFIRMATORY LOGIC ─────────────────────────
+\section{Statistical Philosophy and Confirmatory Logic}
+
+\subsection{Confirmatory versus exploratory analyses}
+
+This package follows the \emph{strong} form of pre-registration: all confirmatory
+analyses are fully specified prior to any data collection, including dependent
+variables, null hypotheses, statistical tests, alpha levels, sample sizes, and
+exclusion criteria.  Analyses not specified here are \emph{exploratory} by default
+and must be labelled as such.  Exploratory analyses are scientifically valuable and
+are not discouraged; the distinction matters solely for inferential status.
+
+\subsection{Effect thresholds and estimation}
+
+Null hypothesis tests are supplemented by explicit effect thresholds wherever
+possible (e.g., $d' > 0.5$, $\Delta R^2 \geq 0.15$, retention $\geq 90\%$).
+These thresholds are motivated by theoretical and practical significance, not by
+statistical convenience.  The goal is to ask not only whether an effect exists but
+whether it is large enough to matter for the claims of the paradigm.
+
+\subsection{Signal detection theory (Predictions A1, A2)}
+
+Signal detection theory (SDT) provides the appropriate framework for perceptual
+discrimination studies because it dissociates sensitivity ($d'$) from response bias
+($c$).  A listener who is more willing to report jitter (liberal criterion) will
+produce more hits but also more false alarms; $d'$ is unaffected by this bias.
+This is important for Prediction~A1 because motivation, attention, and individual
+criterion placement could otherwise confound a simple proportion-correct measure.
+
+\subsection{Incremental regression (Prediction A2)}
+
+The decision to test $\Delta R^2$ rather than a raw correlation reflects the
+incremental logic of the Marine coherence hypothesis: the claim is that coherence
+predicts salience \emph{beyond} spectral prominence, not that it predicts salience
+in isolation.  A model comparison that does not control for prominence would not
+test the paradigm's actual claim.
+
+\subsection{Replication priority}
+
+Narrative coherence of the paradigm is explicitly subordinated to replication
+priority.  If a prediction fails, the result stands.  Post-hoc reinterpretation
+of failed predictions as consistent with the paradigm is not permitted within the
+confirmatory framework; it must be declared exploratory.
+
+% ── 6. RELATION TO EXISTING COMPRESSION PARADIGMS ────────────────────────────
+\section{Relation to Existing Compression Paradigms}
+
+The \hcf{} scheme (Prediction Set B) is most clearly understood by contrast with
+existing approaches to audio compression.
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{3.2cm} p{4.2cm} p{4.8cm}}
+\toprule
+\textbf{Paradigm} & \textbf{What is discarded / predicted} & \textbf{Contrast with HCF1} \\
+\midrule
+Transform coding (MP3, AAC) &
+  Masked spectral bands; fine temporal structure &
+  HCF1 retains all temporal structure; no masking model used \\
+Linear predictive coding (LPC) &
+  Spectral envelope; residual coded separately &
+  HCF1 operates on amplitude envelopes, not the waveform directly \\
+Sinusoidal modelling &
+  Non-sinusoidal residual; parameters tracked per partial &
+  HCF1 exploits inter-harmonic envelope correlation, not per-partial tracking \\
+Predictive envelope coding &
+  Temporal redundancy across frames &
+  HCF1 exploits redundancy \emph{across harmonics} within a frame \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Conceptual comparison of \hcf{} with established compression paradigms.}
+\end{minipage}
+The distinguishing feature of \hcf{} is the hypothesis that upper harmonic
+amplitude envelopes are predictable from the fundamental with sufficient accuracy
+to permit 1-bit flag encoding.  This is an empirical claim (Prediction~B1) that
+must be confirmed before the compression scheme can be evaluated (Prediction~B2).
+The two predictions are therefore logically ordered: B1 is the necessary prior
+condition for B2.
+
+% ── 7. COMPUTATIONAL COMPLEXITY OF MEM|8 ─────────────────────────────────────
+\section{Computational Complexity and Scalability of \mem{}}
+
+Prediction Set C involves a computational architecture that may be unfamiliar to
+readers outside the associative memory literature.  The following summary clarifies
+the relevant asymptotic properties and their experimental implications.
+
+\subsection{Storage complexity}
+
+A \mem{} system with $N$ wave functions has two distinct storage components.
+First, the $N$ oscillator states $\{\phi_k\} \in \mathbb{C}^N$ contribute $O(N)$
+degrees of freedom.  Second, an antisymmetric pairwise offset matrix
+$\Delta_{ij} \in \mathbb{R}^{N \times N}$ (zero diagonal) contributes
+$O(N^2)$ entries — one target angular offset per ordered pair.  It is this
+matrix, not the oscillators alone, that provides the hypothesised relational
+capacity.  The claim that $O(N^2)$ associations can be stored is therefore
+a claim about constraint-satisfaction in the joint oscillator--offset system,
+not a claim that phase continuity alone implies quadratic capacity.
+
+This distinction matters for interpretation: if C1 is confirmed, the result
+would suggest that a phase-relational constraint system exploits pairwise
+angular structure efficiently and exhibits sharp retrieval transitions under
+interference.  If C1 fails, the failure would most likely indicate that the
+relaxation algorithm cannot simultaneously satisfy $O(N^2)$ constraints given
+only $O(N)$ oscillator degrees of freedom.
+
+For comparison, the standard Hopfield network stores at most $\approx 0.138N$
+patterns reliably before interference dominates (Amit et al., 1985).
+
+\subsection{Retrieval complexity}
+
+Retrieval in \mem{} involves nearest-neighbour search in phase space.  For a
+full pairwise comparison this is $O(N^2)$, though approximate retrieval schemes
+could reduce this.  Predictions~C1 and~C2 are agnostic to the retrieval algorithm;
+they concern accuracy at convergence, not speed.
+
+\subsection{Robustness under noise}
+
+A known limitation of phase-coded associative memories is sensitivity to phase
+noise: small errors in the representation of wave functions can produce retrieval
+failures.  The simulations in Predictions~C1 and~C2 use floating-point arithmetic
+and therefore understate real-world noise sensitivity.  Any practical deployment
+would require additional robustness analysis.  The predictions in this package are
+therefore best understood as establishing \emph{upper bounds} on capacity and
+retention under idealised conditions.
+
+\subsection{Scalability}
+
+Experiments~C1 and~C2 use $N \in \{64, 128, 256\}$.  These are toy-scale models.
+Whether the claimed advantages persist at $N \gtrsim 10^4$ (required for practical
+application) is an open question that lies beyond the scope of this pre-registration.
+
+% ── 8. PREAMBLE AND FRAMEWORK ─────────────────────────────────────────────────
+\section{Preamble and Epistemic Framework}
+
+The predictions collected in this package are derived from the technically grounded
+strata of the \scp{}.  The organizing principle throughout is the
+\emph{constraint horizon}: a well-formed empirical claim must specify in advance
+what evidence would count against it.  The framework generates these predictions
+not as confirmatory demonstrations but as genuine empirical risks.  A prediction
+set whose failure would be shrugged off is not a scientific prediction; each of the
+six templates below is designed so that a negative outcome would carry clear
+evidential weight against the corresponding level of the paradigm.
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{1.3cm} p{4.8cm} p{5.5cm}}
+\toprule
+\textbf{Level} & \textbf{Core claim} & \textbf{Status} \\
+\midrule
+I   & Temporal jitter encodes structural information beyond masking &
+      Testable; Prediction Set A \\
+II  & Harmonic envelopes are linearly predictable from the fundamental;
+      1-bit flag compression is efficient &
+      Testable; Prediction Set B \\
+III & Phase-based associative memory yields quadratic capacity and resists
+      catastrophic forgetting &
+      Testable; Prediction Set C \\
+IV  & Ultrasonic frequencies alter brain coherence; spectral fracture produces
+      ``authenticity loss'' &
+      \emph{Excluded — requires prior operationalization} \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\begin{notebox}
+\textbf{Data availability.}  All stimuli, code, and anonymized data will be
+deposited to an open repository (OSF, Zenodo, or equivalent) upon study completion.
+Deviations from the pre-registered analysis plan must be declared in print.
+\end{notebox}
+
+\begin{notebox}
+\textbf{Conflicts of interest.}  The author has a theoretical investment in the
+\scp{}.  Independent replication is therefore especially encouraged.
+\end{notebox}
+
+% ── 9. PREDICTION SET A ───────────────────────────────────────────────────────
+\section{Prediction Set A — Jitter as Structural Information (Level I)}
+
+\subsection{A1 — Jitter Discrimination Threshold}
+
+\begin{predbox}{Template A1}
+
+\textbf{Full title.}
+Detection of temporal jitter in harmonic complexes matched for spectral envelope and pitch.
+
+\subsubsection{Hypothesis}
+
+Listeners can discriminate natural jitter (period variation $\approx 0.5$–$3\%$)
+from perfectly periodic harmonics when spectral envelope, fundamental frequency,
+and amplitude envelope are held constant.  This tests whether jitter constitutes
+an audible signal dimension orthogonal to spectrum and amplitude.
+
+\subsubsection{Falsifiable prediction}
+
+\textbf{Primary (confirmatory):} Mean $d' > 1.0$ across participants (one-tailed
+$t$-test against 1.0; $\alpha = 0.05$, power $= 0.80$).  A threshold of $d' = 1.0$
+corresponds to approximately 76\% correct in 2AFC — a level of sensitivity that
+requires jitter to be more than marginally detectable.  The lower value of
+$d' > 0.5$ ($\approx 60\%$ correct) was rejected during design because it is
+consistent with chance-level performance in many auditory discrimination studies
+and would not demonstrate that jitter carries practically meaningful signal.
+
+\textbf{Secondary (confirmatory):} $d'$ increases monotonically with jitter
+magnitude across three pre-specified levels (0.5\%, 1.5\%, 2.5\% RMS period
+variation).  This is tested via a one-way repeated-measures ANOVA with a
+significant linear contrast ($p < 0.05$).  Both criteria must be met for the
+prediction to be considered confirmed.
+
+\subsubsection{Null hypothesis}
+
+Mean $d' \leq 1.0$, or no monotonic relationship between $d'$ and jitter magnitude.
+
+\subsubsection{Design}
+
+\textbf{Stimuli.}
+Synthesized harmonic complex ($f_0 = 220$~Hz, harmonics 1–10, equal amplitude
+modulo a fixed spectral envelope, duration 500~ms, $\cos^2$ onset/offset ramps
+of 10~ms).
+\begin{itemize}
+  \item \textbf{Condition A (three levels).}  Temporal jitter is generated
+    algorithmically (see below) at RMS period variation of 0.5\%, 1.5\%, and
+    2.5\% of mean period.  Applied by resynthesis from a period sequence; no
+    recorded audio is used directly.
+  \item \textbf{Condition B.}  Identical resynthesis procedure with all period
+    deviations set to zero (perfectly isochronous).
+\end{itemize}
+
+\textbf{Jitter synthesis procedure.}
+For target RMS jitter $J \in \{0.005, 0.015, 0.025\}$: generate $K = 111$
+period values $T_k = T_0(1 + \epsilon_k)$, where $T_0 = 1/220$~s,
+$\epsilon_k \sim \mathcal{N}(0, J^2)$, clipped to $[-3J, 3J]$.  Apply a
+2nd-order Butterworth low-pass filter at 30~Hz to $\epsilon_k$ before use
+(removes inaudibly fast variation while preserving temporal fluctuation in
+the audible jitter range).  Resynthesize each period as one cycle of the
+harmonic complex using randomized starting phases (per-file seed, fixed
+across conditions).  Phase randomization controls waveform morphology and
+fine temporal microstructure across conditions but does not equate spectral
+envelopes, which are explicitly matched.  Stimuli are generated deterministically
+from a fixed seed list; synthesis code is deposited to OSF prior to data collection.
+
+\textbf{Period estimation (for replicator verification):}
+Jitter magnitude in synthesized stimuli should be verified using an
+autocorrelation-based or Hilbert instantaneous-phase period tracker,
+not raw peak detection.  Peak detection in complex harmonic stimuli is
+unreliable because harmonic interference displaces apparent peak locations.
+The verification criterion is: measured $J$ within $\pm 0.002$ of target $J$.
+
+\textbf{Task.}
+Two-interval, two-alternative forced choice (2I-2AFC) with corrective feedback
+after each trial.  Each interval is 500~ms, inter-stimulus gap 300~ms.
+$X$ drawn uniformly from \{A, B\}; participant indicates which interval contained
+jitter.
+
+\textbf{Participants.}
+$N = 30$ normal-hearing adults (audiometric threshold $\leq 20$~dBHL at 0.5–4~kHz).
+Power analysis: $\Delta d' = 1.0$ within-subjects design, 90\% power implies
+$n \approx 22$; 35\% buffer applied.
+
+\textbf{Trials.}
+120 per participant (30 per jitter level $\times$ 3 levels $+$ 30 jitter-absent),
+randomized without replacement per block of 12.
+
+\textbf{Blinding.}
+The experimenter running sessions is blind to the jitter magnitude assigned to
+each stimulus file.  Stimulus files are labelled by a numeric code assigned by
+a separate researcher.  Analysis is conducted on anonymized data files before
+the code is broken.
+
+\subsubsection{Analysis}
+
+Sensitivity is computed as:
+\[
+  d' = z(H) - z(F)
+\]
+where $H$ is the hit rate and $F$ is the false alarm rate.  Signal detection
+theory is used because $d'$ is invariant to response bias, preventing
+criterion differences between participants from inflating or suppressing the
+sensitivity estimate.
+
+\textbf{Primary:} One-sample $t$-test of mean $d'$ (collapsed across jitter
+levels) against 1.0, one-tailed.
+
+\textbf{Secondary:} One-way repeated-measures ANOVA on $d'$ at 0.5\%, 1.5\%,
+and 2.5\% RMS jitter; pre-specified linear contrast.
+
+\textbf{Exclusion criteria:} fewer than 80\% of trials completed; accuracy
+$< 55\%$ on the 10-trial practice block (accuracy is used here rather than
+$d'$ because the practice block is too short for stable SDT estimation).
+
+\textbf{Confirmatory:} both primary and secondary criteria must be met.
+\textbf{Exploratory:} interaction between jitter magnitude and musical training.
+
+\end{predbox}
+
+\subsection{A2 — Marine Coherence Predicts Auditory Salience}
+
+\begin{predbox}{Template A2}
+
+\textbf{Full title.}
+Temporal coherence (Marine coherence metric $\kappa$) adds incremental predictive
+power over spectral prominence in auditory salience ratings.
+
+\subsubsection{Hypothesis}
+
+The Marine coherence metric $\kappa$ predicts listener salience ratings beyond
+what is accounted for by spectral prominence alone.
+
+\subsubsection{Falsifiable prediction}
+
+In a multiple regression, $\hat{\beta}_2 > 0$ with $p < 0.001$, and
+$\Delta R^2 \geq 0.08$ after adding $\kappa$ to a model containing only
+prominence $P$.  The threshold of $\Delta R^2 = 0.08$ reflects published
+benchmarks in auditory salience and psychoacoustic modelling (e.g., Klapuri,
+2006; Kayser et al., 2005) where a single novel predictor accounting for
+8–10\% of unique variance is considered practically meaningful.  A higher
+threshold ($\Delta R^2 \geq 0.15$) was considered but rejected as poorly
+calibrated to the expected magnitude of a single jitter-derived metric relative
+to the strong baseline provided by spectral prominence.
+
+\subsubsection{Null hypothesis}
+
+$\hat{\beta}_2 \leq 0$ or $\Delta R^2 < 0.04$ (coherence adds no practically
+meaningful predictive power beyond spectral prominence).
+
+\subsubsection{Design}
+
+\textbf{Stimuli.}
+100 partials extracted from 10 recorded instrumental notes (piano, violin, guitar,
+voice; notes selected to span the full range of jitter magnitudes observed in
+pilot measurements).  For each partial:
+\begin{itemize}
+  \item Prominence $P$ = dB above local noise floor (estimated via median filter
+    of width 100~Hz in log-frequency).
+  \item Marine coherence metric $\kappa = 1 / (J + 0.001)$, measured over a
+    200~ms central window.
+\end{itemize}
+
+\textbf{Rating task.}
+20 normal-hearing listeners rate each partial in isolation on a 0–100 continuous
+slider labelled ``barely audible'' to ``very salient.''  Each partial is presented
+alone (without harmonic context) once, in individually randomized order.  This
+presentation mode is acknowledged as a limitation: partial salience in isolation
+may differ from salience in a harmonic context.  A naturalistic follow-up study
+is designated exploratory.  Mean rating across listeners is the dependent variable.
+
+\textbf{Blinding.}
+Listeners are blind to all hypotheses.  The analyst computing $\kappa$ is
+separate from the analyst running the regression, to prevent confirmation bias
+in feature extraction choices.
+
+\textbf{Regression models.}
+\begin{align}
+  \text{Model 1:} \quad & \hat{S} = \beta_0 + \beta_1 P \\[4pt]
+  \text{Model 2:} \quad & \hat{S} = \beta_0 + \beta_1 P + \beta_2 \kappa
+\end{align}
+
+The incremental test evaluates whether $\kappa$ explains variance in salience
+over and above spectral prominence.  This is the appropriate test because the
+paradigm claims that temporal coherence is an \emph{orthogonal} salience
+dimension, not a substitute for spectral energy.
+
+\subsubsection{Analysis}
+
+Linear mixed model with listener as a random intercept, or ordinary least squares
+on listener-averaged ratings.  Report $\Delta R^2$ and $F$-test for model
+comparison.  Outlier removal: Cook's $D > 4/n$ for any partial, declared before
+unblinding.
+
+\textbf{Confirmatory:} $\hat{\beta}_2 > 0$, $p < 0.001$, and $\Delta R^2 \geq 0.08$.
+\textbf{Exploratory:} interaction $P \times \kappa$; instrument-family moderator;
+naturalistic harmonic-context replication.
+
+\end{predbox}
+
+\subsection{A2b — Harmonic-Context Replication (Secondary Confirmatory)}
+
+\begin{predbox}{Template A2b}
+
+\textbf{Full title.}
+Marine coherence metric predicts salience of harmonic complexes presented in
+full harmonic context.
+
+\subsubsection{Rationale}
+
+A2 presents partials in isolation, which is acknowledged as ecologically
+limited: temporal coherence effects in auditory perception often require
+harmonic context to manifest via common-fate grouping and fusion.  A2b is a
+pre-registered secondary confirmatory study using naturalistic stimuli.  Both
+A2 and A2b must be reported; they are independent tests of the same hypothesis
+under different stimulus conditions.
+
+\subsubsection{Falsifiable prediction (identical criterion to A2)}
+
+$\hat{\beta}_2 > 0$, $p < 0.001$, and $\Delta R^2 \geq 0.08$.
+
+\textbf{Additional criterion (demotes to exploratory if violated):}
+The $\Delta R^2$ in A2b must be numerically $\geq$ the $\Delta R^2$ in A2.
+If context adds no incremental effect, the harmonic-context result is
+exploratory regardless of significance.
+
+\subsubsection{Null hypothesis}
+
+$\hat{\beta}_2 \leq 0$, or $\Delta R^2 < 0.08$, or $\Delta R^2_\text{A2b} <
+\Delta R^2_\text{A2}$.
+
+\subsubsection{Design}
+
+\textbf{Stimuli.}  50 harmonic complexes (harmonics 1–10 simultaneously) from
+the same 10 instrumental recordings used in A2.  Duration 1~s, 10~ms $\cos^2$
+ramps.
+
+\textbf{Feature aggregation.}  Two pre-registered strategies (both must meet
+criteria for confirmation):
+\begin{itemize}
+  \item \textbf{Max rule:} $P_\text{cmplx} = \max_h P_h$;
+    $\kappa_\text{cmplx} = \max_h \kappa_h$.
+  \item \textbf{Energy-weighted mean:} $P_\text{cmplx} = \sum_h w_h P_h$;
+    $\kappa_\text{cmplx} = \sum_h w_h \kappa_h$, where
+    $w_h = P_h / \sum_h P_h$.
+\end{itemize}
+
+\textbf{Rating task.}  20 normal-hearing listeners (may overlap with A2 sample).
+0–100 slider; mean across listeners is the dependent variable.
+
+\textbf{Analysis.}  Same mixed model as A2; report $\Delta R^2$ per aggregation
+rule.  Confirmation requires both aggregation rules to meet all three criteria.
+
+\textbf{Confirmatory:} as stated.
+\textbf{Exploratory:} comparison of max vs.\ weighted-mean $\Delta R^2$;
+partial vs.\ complex moderation.
+
+\end{predbox}
+
+% ── 10. PREDICTION SET B ──────────────────────────────────────────────────────
+\section{Prediction Set B — HCF1 Compression Architecture (Level II)}
+
+\subsection{B1 — Harmonic Envelope Conformity}
+
+\begin{predbox}{Template B1}
+
+\textbf{Full title.}
+Amplitude envelopes of upper harmonics are linearly predictable from the
+fundamental in acoustic instruments.
+
+\subsubsection{Hypothesis}
+
+For physically coupled harmonic oscillators, the amplitude envelope of each upper
+harmonic is well approximated by a linear function of the fundamental's envelope.
+This is the necessary prior condition for the \hcf{} compression scheme.
+
+\subsubsection{Falsifiable prediction}
+
+Median $R^2 > 0.90$ across harmonics $h = 2, \ldots, 10$, with the lower bound
+of the 95\% bootstrap confidence interval exceeding 0.80.
+
+\subsubsection{Null hypothesis}
+
+Median $R^2 < 0.70$ (harmonic-specific variation dominates; envelopes are not
+jointly predictable from the fundamental).
+
+\subsubsection{Design}
+
+\textbf{Recordings.}
+20 notes per instrument family (different pitches, sampled at 44.1~kHz, minimum
+duration 2~s): plucked string (classical guitar), struck string (piano), bowed
+string (violin), struck membrane (timpani).
+
+\textbf{Analysis procedure.}
+\begin{enumerate}
+  \item Detect $f_0$ per frame (10~ms hop, 50\% overlap) via an autocorrelation
+    method.
+  \item Extract amplitude envelope $e_h(t)$ for harmonics $h = 1, \ldots, 10$
+    via an 8th-order Butterworth bandpass filter (bandwidth $\pm 20\%$ of $hf_0$),
+    followed by full-wave rectification and low-pass filtering at 30~Hz.
+  \item For each harmonic $h = 2, \ldots, 10$, fit by ordinary least squares:
+    \[
+      \hat{e}_h(t) = a_h \cdot e_1(t) + b_h
+    \]
+    Compute $R^2 = 1 - \mathrm{SS}_\text{res} / \mathrm{SS}_\text{tot}$.
+\end{enumerate}
+
+\textbf{Exclusion:} Notes with inharmonicity $> 1\%$ are excluded from the
+confirmatory sample and reported in a separate table.  Inharmonicity is
+operationally defined as the mean absolute deviation of measured partial
+frequencies from their predicted values $h \cdot f_0$, normalized by $f_0$:
+\[
+  \mathrm{Inh} = \frac{1}{H} \sum_{h=1}^{H}
+    \frac{|\hat{f}_h - h \cdot f_0|}{f_0}
+\]
+where $\hat{f}_h$ is the measured frequency of the $h$-th partial (estimated
+via spectral peak picking on a zero-padded FFT).  This definition is fixed
+prior to data collection; the threshold of 1\% is pre-registered and cannot
+be adjusted post-hoc.
+
+A \textbf{sensitivity analysis} is mandatory: the confirmatory $R^2$ test is
+re-run including all excluded notes.  If the result changes sign or crosses the
+threshold boundary, this must be reported prominently.
+
+\subsubsection{Analysis}
+
+Median $R^2$ and 95\% bootstrap confidence interval (10\,000 resamples over
+individual recordings).  Secondary: distribution of slope $a_h$ — expected to
+decrease monotonically with $h$ for most instrument families.
+
+\textbf{Adaptive filter bandwidth (pre-registered exception):}
+If a partial's instantaneous $f_0$ deviates $> 15\%$ from $h \cdot f_0$ for
+$> 10\%$ of frames (e.g., notes with wide vibrato or pitch drift), the
+Butterworth filter bandwidth is widened to $\pm 30\%$ of $h f_0$ for that
+partial.  The proportion of frames triggering this widening must be reported
+per note.  This exception is declared before analysis; post-hoc bandwidth
+adjustment is not permitted.
+
+\textbf{Confirmatory:} $R^2$ threshold.
+\textbf{Exploratory:} differences across instrument families; interaction with
+note duration and pitch register.
+
+\end{predbox}
+
+\subsection{B2 — HCF1 Bit Reduction and Perceptual Transparency}
+
+\begin{predbox}{Template B2}
+
+\textbf{Full title.}
+\hcf{} with 1-bit conformity flags achieves $\geq\!60\%$ bit reduction without
+audible degradation in a blind listening test.
+
+\subsubsection{Hypothesis}
+
+Storing one master envelope and a 1-bit conformity flag per harmonic yields
+substantial bitrate savings while remaining perceptually indistinguishable from
+the original.
+
+\subsubsection{Falsifiable prediction}
+
+(1) Bit reduction $\geq 60\%$, \textbf{and} (2) ABX discrimination accuracy does
+not exceed chance: binomial test $p > 0.05$; equivalently, proportion correct
+$< 0.575$ (upper 95\% one-sided CI for $n = 50$, $p_0 = 0.5$).
+
+\subsubsection{Null hypotheses}
+
+(1) Bit reduction $< 40\%$, \textbf{or} (2) ABX accuracy $> 57.5\%$.
+
+\subsubsection{Design}
+
+\textbf{Compression conditions.}
+
+\emph{Baseline.}  Store envelopes $e_1, \ldots, e_{10}$ independently at 16~bits,
+100~Hz update rate, yielding:
+\[
+  R_\text{baseline} = 10 \times 16 \times 100 = 16{,}000~\text{bits/s}
+\]
+
+\emph{\hcf{}.}  Store $e_1$ at 16~bits, 100~Hz.  For $h = 2, \ldots, 10$, store
+one bit per frame:
+\[
+  \text{flag}_{h,t} = \begin{cases}
+    0 & \text{(conform)} \Rightarrow \hat{e}_h(t) = a_h e_1(t) + b_h \\
+    1 & \text{(nonconform)} \Rightarrow \text{store residual at 16 bits}
+  \end{cases}
+\]
+
+Effective bitrate:
+\[
+  R_\text{HCF1} = \underbrace{16 \times 100}_{\text{fundamental}} +
+                  \underbrace{9 \times 1 \times 100}_{\text{9 flag bits/s}} +
+                  f_\text{nc} \times 9 \times \underbrace{16 \times 100}_{\text{residual/harmonic}}
+                  ~\text{bits/s}
+\]
+where $f_\text{nc} \in [0,1]$ is the empirically measured nonconformity
+fraction.  At zero nonconformity this reduces to $1600 + 900 = 2500$~bits/s;
+at full nonconformity it approaches $1600 + 900 + 14400 = 16900$~bits/s
+($\approx$~baseline).  The 60\% reduction criterion requires that the
+empirically measured $f_\text{nc}$ yield $R_\text{HCF1} \leq 0.4 \times
+16000 = 6400$~bits/s.
+
+\textbf{Listening test.}
+10 audio files (5–15~s each): solo speech, solo piano, jazz trio, string quartet,
+pop vocal, acoustic guitar, orchestral excerpt, electronic music, percussion
+ensemble, mixed ensemble.  20 normal-hearing listeners; 50 ABX trials each.
+$A = \text{original}$, $B = \text{\hcf{}-reconstructed}$, $X = $ random draw.
+
+\subsubsection{Analysis}
+
+Bit reduction computed directly from measured bitrates.  ABX: binomial test
+against $p_0 = 0.5$; non-inferiority margin $= 0.075$.  Pass criterion: reduction
+$\geq 60\%$ \textbf{and} upper CI of proportion correct $< 57.5\%$.
+
+\textbf{Confirmatory:} both criteria jointly.
+\textbf{Exploratory:} effect of musical genre on reduction ratio; correlation
+between $R^2$ from B1 and \hcf{} efficiency per recording.
+
+\end{predbox}
+
+% ── 11. PREDICTION SET C ──────────────────────────────────────────────────────
+\section{Prediction Set C — \mem{} Associative Memory Architecture (Level III)}
+
+\subsection{C1 — Quadratic Storage Capacity via Phase Encoding}
+
+\begin{predbox}{Template C1}
+
+\textbf{Full title.}
+Sharp retrieval transition in \mem{}: testing predicted dense relational
+capacity in a phase-based associative memory architecture.
+
+\subsubsection{Hypothesis}
+
+A \mem{} system with $N$ wave functions and a pairwise offset matrix
+$\Delta_{ij}$ is hypothesised to support dense relational encoding such that
+retrieval accuracy remains high below approximately $M^2/N \approx 1$ and
+degrades sharply near $M^2/N \approx 1$--$2$.  This is motivated by analogy
+to constraint satisfaction phase transitions (e.g., random $k$-SAT), where
+underconstrained systems admit solutions near-perfectly and overconstrained
+systems fail sharply.  The hypothesis is not that a formal proof of $O(N^2)$
+capacity exists, but that the empirical accuracy curve behaves consistently
+with this scaling regime in simulations up to $N = 256$.
+
+\subsubsection{Falsifiable predictions}
+
+\begin{itemize}
+  \item Retrieval accuracy $> 80\%$ when $M^2 \leq N$ (underconstrained regime).
+  \item Retrieval accuracy $< 50\%$ when $M^2 > 2N$ (overconstrained regime).
+  \item \textbf{Sharpness (pre-registered quantitative criterion):}  A logistic
+    function $\hat{a}(x) = 1/(1 + e^{-k(x - x_0)})$ is fit to accuracy as a
+    function of $x = M^2/N$.  The transition is considered sharp if the fitted
+    slope parameter $k > 8$ (relaxed from 10 to account for finite-size effects
+    at $N = 64$).  Alternatively, if the logistic fit converges poorly
+    ($R^2_\text{fit} < 0.80$), the bootstrapped accuracy difference
+    $a(M^2 = N) - a(M^2 = 2N) > 0.4$ is used.  The primary criterion
+    (logistic slope) takes precedence; the fallback is declared before analysis.
+\end{itemize}
+
+These thresholds are empirical predictions, not mathematical guarantees.
+Random constraint systems can become frustrated before naive counting thresholds
+suggest, and finite-size effects may shift the observed transition.  The
+predictions specify what the simulations \emph{should} show if the architecture
+behaves as hypothesised; deviations are informative regardless of direction.
+
+\subsubsection{Null hypothesis}
+
+Accuracy scales linearly with $N$ (no quadratic advantage), or $k \leq 5$ in the
+logistic fit (gradual degradation rather than sharp phase transition).
+
+\subsubsection{Design}
+
+\textbf{Implementation.}
+Floating-point (double precision) simulation of \mem{} with
+$N \in \{64, 128, 256\}$.  The architecture uses two components:
+(1) $N$ wave functions $\psi_k = e^{i\phi_k}$ on the unit circle, and
+(2) an antisymmetric offset matrix $\Delta \in \mathbb{R}^{N \times N}$
+(zero diagonal) storing pairwise target offsets.  It is the offset matrix,
+not the oscillator states alone, that encodes associations.
+
+\medskip
+\noindent\textbf{\mem{} pseudocode (corrected, replication-ready):}
+
+\smallskip
+\noindent\textit{Initialization:}
+\begin{itemize}[topsep=1pt, itemsep=0pt]
+  \item $\phi_k \sim \mathrm{Uniform}[0, 2\pi)$ for $k = 1, \ldots, N$.
+  \item $\Delta_{ij} \leftarrow 0$ for all $i, j$; $\Delta_{ii} = 0$ (enforced).
+\end{itemize}
+
+\noindent\textit{Storage of association $(i, j)$:}
+\begin{enumerate}[topsep=2pt, itemsep=1pt]
+  \item Record target offset: $\Delta_{ij} \leftarrow \angle(\psi_j / \psi_i)$;
+    $\Delta_{ji} \leftarrow -\Delta_{ij}$ (antisymmetric).
+  \item Run relaxation (10 iterations, fixed):
+    \begin{enumerate}[label=\alph*., topsep=1pt, itemsep=0pt]
+      \item Compute current pairwise angles:
+        $C_{ij} = \angle(\psi_j / \psi_i)$ for all $(i,j)$.
+      \item Error matrix: $E_{ij} = \angle(e^{i(\Delta_{ij} - C_{ij})})$
+        (wrapped to $[-\pi, \pi]$).
+      \item Update each wave function:
+        $\phi_k \mathrel{+}= \eta \cdot \mathrm{clip}
+          \!\left(\tfrac{1}{N}\sum_{j}E_{kj} + \tfrac{1}{N}\sum_{i}E_{ik},\;
+          {-0.5},\; {0.5}\right)$
+        with learning rate $\eta = 0.1$.
+      \item Normalize: $\psi_k \leftarrow \psi_k / |\psi_k|$.
+    \end{enumerate}
+\end{enumerate}
+
+\noindent\textit{Retrieval given cue $i$:}
+\begin{enumerate}[topsep=2pt, itemsep=1pt]
+  \item For each candidate $j \neq i$, compute predicted phase:
+    $\hat{\phi}_j = \phi_i + \Delta_{ij}$.
+  \item Angular distance: $d_j = |\angle(e^{i(\hat{\phi}_j - \phi_j)})|$.
+  \item Retrieved item: $j^* = \arg\min_{j \neq i} d_j$.
+  \item Correct if $j^* = j_\text{true}$.
+\end{enumerate}
+
+This specification is complete and self-contained.  Any implementation that
+deviates from this pseudocode — including different relaxation iterations,
+learning rate schedules, or distance metrics — constitutes a variant and must
+be so described.
+
+\textbf{Load conditions.}
+$M \in \bigl\{
+  \lfloor\sqrt{N/2}\rfloor,
+  \lfloor\sqrt{N}\rfloor,
+  \lfloor\sqrt{2N}\rfloor,
+  \lfloor\sqrt{4N}\rfloor
+\bigr\}$,
+yielding four load regimes per $N$.  Association pairs are drawn uniformly at
+random from the $N$ item slots without replacement within each set.
+
+\textbf{Trials.}
+100 independently generated random association sets per $(N, M)$ condition.
+
+\subsubsection{Analysis}
+
+Accuracy plotted as a function of $M^2/N$ with 95\% bootstrap CI over the
+100 association sets.  Logistic regression fit to the accuracy curve;
+slope $k$ extracted and tested against the pre-registered threshold of 8.
+
+\textbf{Validation test (mandatory before full C1 run):}  Run $N = 16$,
+$M^2/N \in \{0.25, 0.5, 1.0, 1.5, 2.0, 3.0\}$, 20 seeds each.  Plot
+accuracy vs.\ $M^2/N$.  If no transition is visible (accuracy remains
+constant $> 80\%$ or $< 50\%$ throughout), the implementation is incorrect
+and must be debugged before proceeding.
+
+\textbf{Confirmatory:} accuracy thresholds at $M^2 \approx N$ and
+$M^2 \approx 2N$; logistic sharpness criterion $k > 8$.
+\textbf{Exploratory:} effect of phase quantisation (fixed-point vs.\
+floating-point); comparison to complex-valued Hopfield networks (Noest, 1988;
+Jankowski et al., 1996) on the same task.
+
+\end{predbox}
+
+\subsection{C2 — Resistance to Catastrophic Forgetting}
+
+\begin{predbox}{Template C2}
+
+\textbf{Full title.}
+\mem{} retains prior associations after sequential learning, unlike Hopfield
+networks at equivalent load.
+
+\subsubsection{Hypothesis}
+
+\mem{} shows $\leq 10\%$ drop in recall accuracy after learning a second
+association set; a standard Hopfield network at the same load drops $\geq 50\%$.
+This tests whether the phase-encoding strategy confers a stability-plasticity
+advantage.
+
+\subsubsection{Falsifiable predictions}
+
+\begin{itemize}
+  \item \mem{} retention $\geq 90\%$ of original accuracy.
+  \item Hopfield retention $\leq 50\%$ of original accuracy.
+  \item Difference significant at $p < 0.001$ (two-sample Welch $t$-test).
+\end{itemize}
+
+\subsubsection{Null hypothesis}
+
+\mem{} retention $< 80\%$, or not statistically different from Hopfield at
+$\alpha = 0.001$.
+
+\subsubsection{Design}
+
+\textbf{Networks.}
+\mem{} ($N = 256$ complex wave functions, retrieval as specified in C1) vs.\
+a \textbf{pair-association Hopfield baseline} ($N = 256$ binary units).
+
+The Hopfield baseline is implemented as a pair-association task, not a pattern
+completion task, to ensure the comparison is fair.  Concretely: each item $i$
+is represented as a random $N/2$-bit binary vector $\mathbf{v}_i$; each pair
+$(i,j)$ is stored as the outer-product Hebbian update on the weight matrix
+$W \mathrel{+}= \mathbf{v}_i \mathbf{v}_j^T + \mathbf{v}_j \mathbf{v}_i^T$.
+Retrieval: given cue $\mathbf{v}_i$, one step of synchronous update yields
+$\hat{\mathbf{v}}_j = \mathrm{sgn}(W \mathbf{v}_i)$; correct if nearest to
+$\mathbf{v}_j$.  This formulation is equivalent to standard Hopfield pattern
+completion on the concatenated pair representation but expressed in the
+association-retrieval frame.
+
+Both architectures are therefore solving the \emph{same task} under the same
+performance metric (proportion of correctly retrieved partners), differing only
+in their internal representations.
+
+\textbf{Procedure.}
+\begin{enumerate}
+  \item Learn association set $A$ ($M = 16$ pairs); measure accuracy on $A$.
+  \item Learn association set $B$ ($M = 16$ new, non-overlapping pairs, using
+    the same update rule without resetting the weight matrix / phase registers).
+  \item Retest accuracy on $A$ (same cues as step 1).
+\end{enumerate}
+
+\[
+  \text{Retention} = \frac{\text{accuracy on } A \text{ after step 3}}
+                          {\text{accuracy on } A \text{ after step 1}} \times 100\%
+\]
+
+\textbf{Repetitions.}  50 independent random seeds per network type (different
+random item vectors / phase initializations).
+
+\subsubsection{Analysis}
+
+Two-sample Welch $t$-test comparing \mem{} vs.\ Hopfield retention distributions.
+Also report: proportion of seeds where \mem{} exceeds Hopfield by $> 20\%$.
+Scatter plot of original vs.\ retained accuracy (one point per seed, per network).
+
+\textbf{Confirmatory:} retention thresholds and network comparison.
+\textbf{Exploratory:} retention as a function of increasing load
+($M \in \{32, 64\}$); comparison to other continual learning baselines
+(e.g., Elastic Weight Consolidation).
+
+\end{predbox}
+
+% ── 12. INTERPRETATION OF NEGATIVE RESULTS ────────────────────────────────────
+\section{Interpretation of Negative Results}
+\label{sec:negative}
+
+A pre-registration that does not specify the consequences of falsification is
+incomplete.  The following table states what each negative outcome would and would
+not entail.
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{1.1cm} p{4.2cm} p{5.8cm}}
+\toprule
+\textbf{Pred.} & \textbf{If falsified (negative outcome)} & \textbf{Implications and limits} \\
+\midrule
+A1 &
+  Listeners cannot detect jitter at $d' > 1.0$, or $d'$ does not increase
+  monotonically with jitter magnitude &
+  Weakens the claim that jitter encodes perceptually salient structural
+  information at practically meaningful levels.  Note: $d' > 0.5$ (weak
+  detection) might still occur; the higher threshold is deliberately set to
+  avoid claiming support from marginal sensitivity.  Does not falsify B or C. \\
+A2 &
+  $\kappa$ adds no salience variance ($\Delta R^2 < 0.08$, $p \geq 0.001$) &
+  Weakens the Marine coherence metric as a perceptual predictor.  Does not
+  falsify the compression claim (B) or memory claim (C).  Would suggest
+  $\kappa$ is an engineering quantity without direct perceptual analogue,
+  but does not preclude its use as a compression or detection feature. \\
+B1 &
+  Harmonic envelopes are not linearly predictable ($R^2 < 0.70$) &
+  Directly undermines the conformity assumption behind \hcf{}.  Makes B2
+  theoretically unmotivated.  Does not affect Level~I (A) or Level~III (C)
+  predictions. \\
+B2 &
+  \hcf{} achieves $< 40\%$ reduction or is audibly distinguishable &
+  Falsifies the specific engineering claim; does not falsify B1.  May indicate
+  that the conformity fraction is instrument- or genre-specific rather than
+  general. \\
+C1 &
+  No quadratic capacity advantage; logistic slope $k \leq 5$; or accuracy does
+  not drop below 50\% at $M^2 = 2N$ &
+  Weakens the central computational claim of \mem{}.  Does not affect Level~I
+  or Level~II predictions.  Even if C1 fails, the geometric interpretability
+  of phase-based encoding (Section~4) remains a valid architectural property. \\
+C2 &
+  \mem{} shows comparable forgetting to Hopfield &
+  Weakens the stability-plasticity claim.  Combined with C1 failure, would
+  substantially undermine the Level~III architecture as specified.  Would not
+  affect psychoacoustic or compression predictions. \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Predicted consequences of falsification for each pre-registered prediction.
+  Predictions are empirically independent; falsification of one does not entail
+  falsification of others.}
+\end{minipage}
+
+\begin{notebox}
+\textbf{Independence of levels.}  The three prediction sets are architecturally
+related (Section~3) but empirically independent.  A complete failure of Set~C
+would leave Sets~A and~B entirely untouched, and vice versa.  This modularity
+is a deliberate feature: it means the package generates genuine evidence regardless
+of which predictions succeed or fail.
+\end{notebox}
+
+% ── 13. REPLICATION PATHWAYS ──────────────────────────────────────────────────
+\section{Replication Pathways}
+
+\subsection{Accessibility by prediction}
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{1.0cm} p{2.8cm} p{3.5cm} p{4.2cm}}
+\toprule
+\textbf{Pred.} & \textbf{Equipment needed} & \textbf{Software} & \textbf{Est.\ runtime} \\
+\midrule
+A1  & Audiometric booth; headphones; standard PC &
+      Python (NumPy, SciPy, PsychoPy) or MATLAB &
+      $\approx 3$~h data collection; 30~min analysis \\
+A2  & Recordings of acoustic instruments; standard PC &
+      Python (librosa, statsmodels) or R &
+      $\approx 1$~h data collection; 1~h analysis \\
+B1  & Recordings (publicly available datasets acceptable) &
+      Python (librosa, SciPy) or MATLAB &
+      $\approx 2$~h analysis per instrument family \\
+B2  & Audiometric booth; headphones; standard PC &
+      Python (SciPy, soundfile, PsychoPy) &
+      $\approx 3$~h data collection; 1~h analysis \\
+C1  & Standard PC (no GPU required) &
+      Python (NumPy, SciPy) &
+      $\approx 2$~h total (all $N$ and $M$ conditions) \\
+C2  & Standard PC (no GPU required) &
+      Python (NumPy) &
+      $\approx 30$~min total \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Replication requirements by prediction.  C1 and C2 are purely
+  computational and require no human participants or specialist equipment.}
+\end{minipage}
+\subsection{Recommended entry points for independent labs}
+
+Predictions C1 and C2 are the easiest entry points for independent replication:
+they require only a standard Python environment, no human participants, no IRB
+approval, and have runtime measured in minutes to hours.  Predictions B1 is the
+next most accessible, as it requires only existing recordings (freely available
+datasets such as the University of Iowa Musical Instrument Samples library are
+suitable).  Predictions A1, A2, and B2 require a listening environment; a quiet
+room with calibrated headphones is sufficient for A1 and A2, though an
+audiometric booth is preferred.
+
+\subsection{Recommended datasets}
+
+\begin{itemize}
+  \item \textbf{B1, A2 (instrumental recordings):}  University of Iowa Electronic
+    Music Studios Musical Instrument Samples; NSynth (Engel et al., 2017);
+    RWC Music Database (Goto et al., 2003).
+  \item \textbf{B2 (audio quality):}  EBU SQAM test sequences; internally generated
+    stimuli following the compression procedure specified above.
+  \item \textbf{A1 (jitter extraction):}  Any high-quality close-microphone
+    recording of an acoustic guitar; jitter parameters specified in Template A1.
+\end{itemize}
+
+% ── 14. SUMMARY TABLE ─────────────────────────────────────────────────────────
+\section{Summary of Pre-Registered Predictions}
+
+\noindent\begin{minipage}{\textwidth}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{1.1cm} p{3.5cm} p{3.5cm} p{2.0cm} p{2.2cm}}
+\toprule
+\textbf{Pred.} & \textbf{Dependent variable} & \textbf{Statistical criterion}
+  & \textbf{Sample} & \textbf{Suggested venue} \\
+\midrule
+A1 & Sensitivity index $d'$ + monotonic magnitude effect &
+  $d' > 1.0$; linear contrast $p < 0.05$ &
+  30 listeners &
+  JASA; Acta Acust. \\
+A2 & $\Delta R^2$, $\hat{\beta}_2$ (isolated partials) &
+  $\Delta R^2 \geq 0.08$, $p < 0.001$ &
+  100 partials, 20 listeners &
+  J.\ Acoust.\ Soc. \\
+A2b & $\Delta R^2$, $\hat{\beta}_2$ (harmonic context) &
+  $\Delta R^2 \geq 0.08$, both aggregation rules &
+  50 complexes, 20 listeners &
+  J.\ Acoust.\ Soc. \\
+B1 & Median $R^2$ (harmonic conformity) &
+  $R^2 > 0.90$ (95\% CI $> 0.80$) &
+  80 recordings &
+  ICASSP; EURASIP \\
+B2 & Bit reduction + ABX accuracy &
+  $\geq 60\%$ reduction \& correct $< 57.5\%$ &
+  10 files, 20 listeners &
+  AES; IEEE TASLP \\
+C1 & Retrieval accuracy vs.\ load &
+  $> 80\%$ at $M^2 \leq N$; $< 50\%$ at $M^2 > 2N$; slope $k > 8$ &
+  100 sets per $(N,M)$ &
+  Neural Comp.; NeurIPS \\
+C2 & Retention (\%) after sequential learning &
+  \mem{} $\geq 90\%$; Hopfield (corrected) $\leq 50\%$; $p < 0.001$ &
+  50 seeds per network &
+  Neural Comp.; ICLR \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Summary of pre-registered predictions with current statistical
+  criteria, sample sizes, and suggested venues.  All thresholds reflect
+  revisions made prior to data collection; the version history is recorded
+  in the OSF repository.}
+\end{minipage}
+
+\subsection*{Shared methodological properties}
+
+All six predictions satisfy the following requirements for confirmatory
+pre-registration:
+
+\begin{itemize}
+  \item \textbf{Falsifiable.}  An explicit null hypothesis is stated for each,
+    identifying what negative evidence would look like.
+  \item \textbf{Operationalized.}  Key variables are defined with explicit
+    measurement procedures: $d'$, $\kappa$, $R^2$, bit reduction, retrieval
+    accuracy, retention.
+  \item \textbf{Scope-limited.}  No prediction appeals to ``consciousness,''
+    ``authenticity,'' or ``cognitive field'' — constructs that remain
+    unoperationalized at Level~IV.
+  \item \textbf{Reproducible.}  Each study is executable by an independent
+    laboratory without privileged access to proprietary instruments or data.
+  \item \textbf{Modular.}  The prediction sets are empirically independent;
+    see Section~\ref{sec:negative} for a systematic account of what each
+    negative outcome would and would not entail.
+\end{itemize}
+
+% ── 15. STANDARD BOILERPLATE ──────────────────────────────────────────────────
+\section{Standard Pre-Registration Boilerplate}
+
+\subsection{IRB and ethics}
+
+Studies involving human participants (A1, A2, B2) require approval from an
+Institutional Review Board or equivalent ethics committee before data collection.
+Participants must provide written informed consent and be compensated at a rate
+consistent with local norms.  Auditory stimuli should be presented at
+$\leq 70$~dBSPL for all listening experiments to avoid risk of hearing damage.
+Computational studies (B1, C1, C2) do not involve human participants and do not
+require IRB review.
+
+\subsection{Data availability statement}
+
+Upon completion of each study, the following materials will be deposited to an
+open repository (OSF, Zenodo, or equivalent under a CC-BY licence):
+\begin{itemize}
+  \item All stimuli, or synthesis code sufficient to reproduce them exactly.
+  \item Raw participant data, anonymized in compliance with applicable regulations.
+  \item Analysis scripts (Python, R, or MATLAB, with inline comments).
+  \item This pre-registration document, version-controlled with commit hash.
+\end{itemize}
+
+\subsection{Deviations from the pre-registered plan}
+
+Any deviation from the analysis pipeline specified above must be declared
+explicitly in the manuscript, with a statement distinguishing confirmatory
+(pre-registered) from exploratory (post-hoc) findings.  Exploratory analyses
+are encouraged and should be reported transparently; the distinction is not a
+judgment of scientific value but a statement of inferential status.
+
+\subsection{Conflicts of interest}
+
+The author has a prior theoretical investment in the \scp{}.  Independent
+replication is therefore especially valuable, and replication teams are encouraged
+to file their own pre-registration citing this document as the source of the
+original predictions.
+
+\subsection{Suggested repositories}
+
+Pre-registrations may be filed at:
+\begin{itemize}
+  \item \href{https://osf.io}{Open Science Framework (OSF)} — recommended for the
+    full package, as it supports version control and time-stamped registration.
+  \item \href{https://aspredicted.org}{AsPredicted} — suitable for individual
+    templates (A1–C2) filed separately.
+  \item Journal-specific Registered Reports tracks at \emph{JASA},
+    \emph{Psychological Science}, \emph{Neural Computation}, or \emph{ICLR}.
+\end{itemize}
+
+\vfill
+{\color{navy}\rule{\linewidth}{0.8pt}}
+{\centering\small\color{slategray}
+Pre-Registration Package — Salience-Centered Paradigm (Levels~I–III)
+\quad $\cdot$ \quad Flyxion (independent researcher)
+\quad $\cdot$ \quad May 2026\par}
+
+\end{document}
+ 

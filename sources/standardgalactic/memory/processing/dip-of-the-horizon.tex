@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,left=1.5in,right=1in,top=1in,bottom=1in,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans Mono}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{ifthen}
+\usepackage{needspace}
+
+\linespread{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\sloppy
+\tolerance=2000
+\emergencystretch=3em
+
+% ---------- page numbering: top right, "N." style, suppressed on title/act pages ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage.}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
+
+% ---------- screenplay element macros ----------
+
+% Scene heading: full caps, no indent, blank line before/after
+\newcommand{\sceneheading}[1]{%
+  \needspace{4\baselineskip}%
+  \par\vspace{1\baselineskip}\noindent #1\par\vspace{0.6\baselineskip}%
+}
+
+% Action / description paragraph: full width, no indent
+\newcommand{\action}[1]{%
+  \par\noindent #1\par\vspace{0.6\baselineskip}%
+}
+
+% Transition (CUT TO:, FADE IN:, etc.): right-aligned, except FADE IN which is left
+\newcommand{\transition}[1]{%
+  \par\vspace{0.3\baselineskip}%
+  \ifthenelse{\equal{#1}{FADE IN:}}%
+    {\noindent #1\par}%
+    {\noindent\hfill #1\par}%
+  \vspace{0.6\baselineskip}%
+}
+
+% Character cue: indented ~2.2in from the left margin (so ~3.7in from page edge)
+\newcommand{\charcue}[1]{%
+  \needspace{3\baselineskip}%
+  \par\vspace{0.3\baselineskip}\noindent\hspace*{2.2in}#1\par%
+}
+
+% Dialogue block: indented block, narrower than full measure
+\newenvironment{dialogue}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{1.1in}%
+    \setlength{\rightmargin}{1.6in}%
+    \setlength{\listparindent}{0pt}%
+    \setlength{\itemindent}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\topsep}{0pt}%
+  }\item[]%
+}{%
+  \end{list}\vspace{0.4\baselineskip}%
+}
+
+% Parenthetical, within a dialogue block
+\newcommand{\parenthetical}[1]{%
+  \hspace*{-0.4in}\hspace*{1.1in}(#1)\par%
+}
+
+% Act break: new page, centered heading
+\newcommand{\actbreak}[1]{%
+  \clearpage\thispagestyle{plain}%
+  \vspace*{2in}%
+  \begin{center}#1\end{center}%
+  \vspace{2\baselineskip}%
+}
+
+\newcommand{\actclose}[1]{%
+  \par\vspace{1.5\baselineskip}\begin{center}#1\end{center}\vspace{1\baselineskip}%
+}
+
+\begin{document}
+
+% ================= TITLE PAGE =================
+\thispagestyle{empty}
+\begin{center}
+\vspace*{2.3in}
+{\Large DIP OF THE HORIZON}\\[0.5in]
+{\normalsize screenplay by}\\[0.15in]
+{\normalsize Flyxion}
+\end{center}
+\vfill
+\begin{flushleft}
+\footnotesize
+Draft, August 2026\\
+\end{flushleft}
+\clearpage
+
+% ================= ACT ONE =================
+\actbreak{ACT ONE}
+\input{act-one_body.tex}
+\actclose{END OF ACT ONE}
+
+% ================= ACT TWO =================
+\actbreak{ACT TWO}
+\input{act-two_body.tex}
+\actclose{END OF ACT TWO}
+
+% ================= ACT THREE =================
+\actbreak{ACT THREE}
+\input{act-three_body.tex}
+\actclose{END OF ACT THREE}
+
+\clearpage
+\thispagestyle{plain}
+\begin{center}
+END OF SCREENPLAY
+\end{center}
+
+\end{document}
+

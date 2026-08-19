@@ -1,0 +1,79 @@
+% main.tex — The Superuser Guide to LaTeX
+% compile with: latexmk (see latexmkrc) or: lualatex main.tex (x2, + makeindex)
+\documentclass{superuserguide}
+
+\title{The Superuser Guide to LaTeX}
+\bookauthor{Flyxion}
+\bookaffiliation{Independent Researcher}
+\bookdate{2026}
+
+% Uncomment to restrict compilation to a subset of chapters while drafting:
+% \includeonly{chapters/03-document-architecture}
+
+\begin{document}
+\input{notation/notation}
+
+\frontmatter
+\makebooktitle
+\input{frontmatter/preface}
+\tableofcontents
+
+\mainmatter
+
+% Part I -- Foundations
+\part{Foundations}
+\include{chapters/01-thinking-like-tex}
+\include{chapters/02-why-latex-works}
+
+% Part II -- Architecture
+\part{Architecture}
+\include{chapters/03-document-architecture}
+\include{chapters/04-version-control}
+\include{chapters/05-build-systems}
+
+% Part III -- Programming in LaTeX
+\part{Programming in LaTeX}
+\include{chapters/06-macros-as-terms}
+\include{chapters/07-conditionals-loops-keyvalue}
+\include{chapters/08-robust-command-design}
+
+% Part IV -- Typography and Fonts
+\part{Typography and Fonts}
+\include{chapters/09-modern-font-technology}
+\include{chapters/10-custom-fonts-symbols-writing-systems}
+\include{chapters/11-mathematics-beyond-basics}
+
+% Part V -- Bibliographies and Reference at Scale
+\part{Bibliographies and Reference at Scale}
+\include{chapters/12-bibliographies-at-scale}
+\include{chapters/13-indexes-glossaries-nomenclature}
+
+% Part VI -- Graphics and Automation
+\part{Graphics and Automation}
+\include{chapters/14-graphics-as-pipeline}
+\include{chapters/15-computation-inside-document}
+
+% Part VII -- Document Engineering
+\part{Document Engineering}
+\include{chapters/16-custom-document-classes}
+\include{chapters/17-title-pages-front-matter}
+\include{chapters/18-publishing-pipelines}
+\include{chapters/19-debugging-like-a-superuser}
+
+% Part VIII -- Professional Workflows
+\part{Professional Workflows}
+\include{chapters/20-writing-book-length-works}
+\include{chapters/21-tex-ecosystem}
+\include{chapters/22-latex-as-one-stage}
+
+\appendix
+\include{appendices/appendix-a}
+\include{appendices/appendix-b}
+\include{appendices/appendix-c}
+\include{appendices/appendix-d}
+
+\backmatter
+\input{bib/bibliography}
+\printindex
+
+\end{document}

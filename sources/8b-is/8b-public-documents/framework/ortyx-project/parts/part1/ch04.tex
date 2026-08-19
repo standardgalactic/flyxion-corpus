@@ -1,0 +1,484 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part I — Immersion
+%  Chapter 4: The Salience-Centered Paradigm as AI Architecture
+% ============================================================
+
+\chapter{The Salience-Centered Paradigm as AI Architecture}
+\label{ch:ai-architecture}
+
+\chapepigraph{Deep learning criticizes symbolic AI for brittleness.
+Symbolic AI criticizes deep learning for opacity. Both criticisms
+are correct. The question is whether a third option exists that
+avoids both failure modes, or whether it merely postpones them.}{Flyxion}
+
+\noindent
+The Phoenix corpus does not confine its ambitions to audio
+processing or cognitive modelling. Its most expansive claim is
+architectural: that the Marine--\MEMeight{}--\HCFone{} stack
+constitutes a foundation for machine intelligence that is
+simultaneously more biologically plausible, more computationally
+efficient, and more epistemically honest than either contemporary
+deep learning or classical symbolic AI.
+
+This claim is made explicitly in the AI architecture documents
+that form the outer layer of the corpus. It is worth examining
+in full, because it is here that the framework's virtues and
+its vulnerabilities are both most clearly on display. The virtues
+are real: the critique of deep learning and symbolic AI is
+substantive, and the alternative proposed is not without genuine
+attractions. The vulnerabilities are also real: the distance
+between the signal processing results of the previous three chapters
+and the AI architecture claims of this one is larger than the
+corpus acknowledges.
+
+That distance is not a reason to dismiss the proposal. It is the
+defining characteristic of a research programme at an early stage.
+The present chapter examines the proposal on its own terms,
+asking what it predicts, what it would need to demonstrate, and
+what would have to be true for it to succeed.
+
+\section{The Critique of Deep Learning}
+\label{sec:critique-dl}
+
+The Phoenix corpus's critique of deep learning is concentrated
+on four objections, each of which has independent standing in
+the existing literature.
+
+The first objection concerns computational cost. Contemporary
+large-scale neural networks require enormous compute resources
+for both training and inference. The energy and hardware demands
+of state-of-the-art language and vision models have grown
+dramatically, and this growth shows no sign of reversing. The
+corpus objects not merely to the cost itself but to what it
+implies about the architecture: if the system requires billions
+of parameters and trillions of multiply-accumulate operations
+to perform tasks that biological systems accomplish with orders
+of magnitude less energy, something in the architectural
+assumptions may be deeply wrong.
+
+The second objection concerns biological plausibility. The
+backpropagation algorithm at the heart of most deep learning
+is widely acknowledged to be biologically implausible: it
+requires weight symmetry between forward and backward passes,
+a global error signal that must propagate through the entire
+network, and precise floating-point arithmetic. Biological
+neural systems do not appear to use any of these mechanisms.
+The corpus argues that this implausibility is not a minor
+implementation detail but a sign that the computational
+principles of deep learning are fundamentally different from
+those of biological intelligence.
+
+The third objection concerns the opacity of learned
+representations. Deep neural networks learn distributed
+representations that are difficult to interpret, audit, or
+verify. The internal representations do not correspond to
+human-legible concepts; errors are not diagnosable from
+inspection; the system's reasoning process is not auditable
+from its outputs. For safety-critical applications, this
+opacity is a serious limitation.
+
+The fourth objection, which is the most philosophically
+interesting, concerns what the corpus calls the ``static
+representation problem.'' Deep learning systems learn
+fixed-parameter models from static datasets. Once trained,
+the model's parameters do not change in response to new
+input; adaptation requires additional training procedures.
+The corpus argues that this is fundamentally at odds with
+the continuous, context-sensitive, temporally dynamic
+character of cognition.
+
+\begin{epistemicstatus}{Operationally Grounded}
+All four objections are well-established in the existing
+critical literature on deep learning. Computational cost
+is a documented and growing concern. Biological implausibility
+of backpropagation is acknowledged by its practitioners.
+Opacity of representations is an active research area under
+the heading of interpretability and explainability.
+The static parameter problem motivates continual learning
+research. None of these objections originates with the
+Phoenix corpus; all are real.
+\end{epistemicstatus}
+
+\section{The Critique of Symbolic AI}
+\label{sec:critique-symbolic}
+
+The corpus's objections to classical symbolic AI are
+complementary to its objections to deep learning, and
+they are similarly grounded in existing literature.
+
+The primary objection is brittleness. Symbolic systems
+operate over explicit representations governed by formal
+rules. This gives them strong guarantees of consistency
+within their representational domain, but it makes them
+fragile at the boundaries of that domain. Real-world input
+rarely arrives in the clean, fully-specified form that
+symbolic systems expect; the result is a long history of
+systems that perform well on well-formed inputs and fail
+ungracefully on anything outside their specification.
+
+The second objection is the grounding problem: symbolic
+systems manipulate formal tokens without any intrinsic
+connection between the tokens and the world they are
+supposed to represent. The meaning of the symbols is
+defined by the programmer's intentions, not by the
+system's relationship to its environment. This limits
+the system's capacity to acquire new meanings from experience.
+
+The third objection, which connects directly to the
+corpus's positive proposal, is temporal impoverishment.
+Classical symbolic AI typically represents the world
+as a static state that can be queried and updated. Time
+is represented as a sequence of discrete state transitions
+rather than as a continuous flow of structured dynamics.
+The corpus argues that this temporal flatness is not
+merely a modelling limitation but a fundamental mismatch
+with the temporal structure of the world that cognition
+must navigate.
+
+\section{The Proposed Alternative}
+\label{sec:proposed-alternative}
+
+Against these twin failures, the Phoenix corpus proposes
+the salience-centered paradigm as a third path. Its
+core architectural commitments are:
+
+\textit{Sparsity over density.} Rather than processing all
+input equally, the Marine salience filter identifies high-value
+events and passes only these to downstream processing. The
+system is not a passive recipient of information but an
+active gatekeeper that decides what deserves processing.
+
+\textit{Temporal dynamics over static representations.}
+Rather than encoding information as fixed-parameter vectors,
+\MEMeight{} represents knowledge as ongoing interference
+patterns in a dynamic field. Representation is not a state
+but a process.
+
+\textit{Relational encoding over independent storage.}
+Rather than encoding signal components as independent values,
+\HCFone{} exploits the physical coupling between components
+to achieve efficient relational representations. Compression
+discovers structure rather than discarding information.
+
+\textit{Biological grounding.} All three architectural
+commitments are motivated by claims about how biological
+sensory and cognitive systems operate: the auditory system
+as a salience-gated temporal processor, biological memory
+as resonance dynamics, neural population coding as
+relational consensus encoding.
+
+The resulting architecture is proposed as simultaneously
+more efficient than deep learning (by avoiding redundant
+computation on low-salience input), more interpretable
+(by making the salience filter's decisions auditable),
+more adaptive (by storing knowledge as dynamic field
+states rather than fixed parameters), and more biologically
+plausible (by grounding each architectural choice in known
+properties of biological systems).
+
+\begin{technote}[Technical Note: Layered Processing Architecture]
+The proposed pipeline can be stated formally as a composition
+of three operators. Let $s(t)$ denote the raw input signal
+stream. The Marine salience filter produces a sparse event
+sequence:
+\[
+  \mathcal{E} = \Marine\bigl(s(t)\bigr)
+  = \{(t_i, a_i, H_i) : \SalFunc(i) > \lambda\}.
+\]
+The \MEMeight{} encoding operator maps high-salience events
+into wave field contributions:
+\[
+  \MemField(x,t) = \MEMeight\bigl(\mathcal{E}\bigr)
+  = \sum_{i \in \mathcal{E}} A_i(x,t)\,e^{i(\omega_i t + \phi_i(x,t))}.
+\]
+The \HCFone{} compression operator provides efficient
+encoding of the harmonic structure within each event:
+\[
+  \hat{e}_i = \HCFone(e_i) = \{A_0(t), f_0, \phi_0,
+              \Gamma_1,\ldots,\Gamma_N\}.
+\]
+The full pipeline is then $\MemField = \MEMeight \circ
+\Marine(s(t))$, with \HCFone{} operating on the representation
+of each event prior to field encoding.
+\end{technote}
+
+\section{Where the Architecture Connects to Existing Research}
+\label{sec:architecture-existing}
+
+The salience-centered paradigm does not exist in isolation
+from prior work. Several of its key ideas have significant
+precedents in existing research programmes, and situating
+the corpus within those programmes helps identify both its
+genuine contributions and its gaps.
+
+The sparsity commitment connects to the neuromorphic computing
+tradition. Spike-based neural network architectures, from
+the early leaky integrate-and-fire models through to modern
+spiking neural networks and Intel's Loihi processor, are
+built around the principle that biological neurons communicate
+via sparse spike events rather than continuous activations.
+The Marine salience filter is structurally similar: it converts
+a continuous signal into a sparse event stream, potentially
+enabling more energy-efficient downstream processing.
+
+The temporal dynamics commitment connects to reservoir
+computing and echo state networks. These architectures
+maintain a high-dimensional dynamical system (the
+``reservoir'') whose current state encodes a memory of
+recent inputs through its dynamics. The \MEMeight{} wave
+field is structurally similar: it is a dynamical system
+whose current state (the interference pattern) encodes
+a memory of recent high-salience events through its
+ongoing dynamics. The key difference is that \MEMeight{}
+specifies the dynamical system explicitly as a wave
+superposition rather than leaving it as an unstructured
+recurrent network.
+
+The relational encoding commitment connects to sparse
+coding and the efficient coding hypothesis in computational
+neuroscience. The efficient coding hypothesis, developed
+by Horace Barlow and elaborated through subsequent decades
+of research, proposes that neural representations are
+organized to minimize redundancy in the representation
+of natural stimuli. The \HCFone{} conformity relation is
+a specific implementation of redundancy minimization applied
+to harmonic audio.
+
+\begin{epistemicstatus}{Reconstructive Conjecture}
+The connections to neuromorphic computing, reservoir computing,
+and the efficient coding hypothesis are structural observations
+by a reader examining the corpus against the background of
+existing literature. The corpus does not always make these
+connections explicitly. Whether the salience-centered paradigm
+extends, replaces, or merely restates these existing frameworks
+in different notation is an empirical question with a determinate
+answer that the corpus has not yet provided.
+\end{epistemicstatus}
+
+\section{What the Architecture Would Need to Demonstrate}
+\label{sec:architecture-needs}
+
+The salience-centered paradigm makes several claims that are
+in principle testable against existing AI benchmarks and
+biological data. Stating these explicitly is useful both
+for evaluating the proposal and for identifying where the
+current corpus falls short.
+
+\textit{Efficiency advantage.} The claim that salience-gated
+processing is more computationally efficient than dense
+processing is testable on standard benchmarks. A system
+that routes only high-salience inputs through expensive
+computation should require fewer operations per unit of
+task performance than a system that processes all inputs
+equally. This prediction has a specific, measurable form.
+
+\textit{Adaptability advantage.} The claim that dynamic
+field representations adapt more gracefully to new input
+than fixed-parameter models is testable in continual
+learning settings. A \MEMeight{}-based system should
+exhibit less catastrophic forgetting when learning new
+tasks than a comparable neural network with fixed parameters.
+This is a specific prediction against a known benchmark.
+
+\textit{Interpretability advantage.} The claim that
+salience-filtered representations are more auditable than
+deep network representations is testable in
+interpretability evaluations. The Marine filter's decisions
+--- which events it passes and why --- should be legible
+in a way that deep network attention patterns are not.
+
+\textit{Biological correspondence.} The claim that the
+architecture is biologically plausible is testable against
+neuroscientific data. The Marine's jitter metric should
+correspond to known properties of auditory nerve firing;
+the \MEMeight{} resonance dynamics should correspond to
+known oscillatory dynamics in memory systems; the \HCFone{}
+conformity relation should correspond to known properties
+of neural population coding.
+
+The Phoenix corpus does not, in the materials examined here,
+provide systematic evidence on any of these four predictions.
+This is the clearest statement of the distance between the
+signal processing results of the first three chapters and
+the AI architecture claims of this one.
+
+\begin{dangerzone}[Ontological Escalation]
+The move from ``this pipeline processes audio efficiently''
+to ``this pipeline is a foundation for machine intelligence''
+involves a categorical jump that the corpus does not bridge
+explicitly. Engineering efficiency in a specific domain does
+not transfer automatically to architectural superiority in
+a general domain. The salience-centered paradigm may be an
+excellent audio processing architecture that is also a
+plausible model of auditory cognition without being a
+general theory of intelligence. Keeping these possibilities
+distinct is not pedantry; it is the difference between a
+genuine contribution and an overclaimed one.
+\end{dangerzone}
+
+\section{The Critique as a Research Programme}
+\label{sec:research-programme}
+
+Despite these gaps, the AI architecture proposal is worth
+taking seriously as a research programme rather than
+dismissing as overreach. Research programmes routinely
+make claims that outrun their current evidence; this is
+how programmes motivate the work needed to close the gap.
+What distinguishes a legitimate research programme from
+a self-sealing speculation is the structure of the claims:
+do they generate specific, falsifiable predictions that
+could in principle disconfirm the programme?
+
+The salience-centered paradigm, read charitably, generates
+specific predictions. It predicts that salience-gated
+architectures will outperform dense architectures on
+efficiency metrics at matched task performance. It predicts
+that dynamic field representations will outperform static
+parameterisations on continual learning benchmarks. It
+predicts that conformity-based encoding will outperform
+independent spectral encoding on harmonic audio
+compression tasks.
+
+These predictions are specific enough to test. Whether
+they are correct is an empirical question. Whether the
+corpus provides sufficient specification of the architecture
+to allow implementation and testing is a question that
+leans toward no --- the formalism is clearer about the
+principles of the architecture than about the engineering
+decisions needed to instantiate it. But the principles
+are clear enough that the engineering decisions are in
+principle determinable.
+
+This distinguishes the salience-centered paradigm from
+frameworks that resist instantiation by design. A proposal
+whose implementation decisions are underspecified but
+determinable is at a different epistemic distance from
+empirical contact than a proposal whose core terms are
+defined in ways that make any outcome consistent with the
+framework's claims. The former is a research programme
+at an early stage; the latter is what Part~III will call
+Definitional Closure.
+
+\section{The Security Analysis Extension}
+\label{sec:security-extension}
+
+One of the more unexpected documents in the Phoenix corpus
+is a security analysis paper that extends the salience-centered
+framework into AI alignment and reasoning integrity. Its
+central claim is that future attacks on AI systems will target
+not executable code but cognitive context: the contextual
+field within which the system's reasoning is grounded.
+
+The argument runs as follows. If cognition is, as the corpus
+proposes, fundamentally shaped by salience structures,
+contextual resonance, and memory interference patterns, then
+the attack surface of a sufficiently sophisticated cognitive
+system is not its input--output interface but its contextual
+field. Poisoning the contextual field --- inserting false
+memories, manipulating salience weightings, corrupting the
+interference patterns that constitute the system's world
+model --- is equivalent, on this view, to poisoning the
+mind rather than the data.
+
+The corpus calls this ``behavioral injection'': a form of
+semantic malware that operates directly on the reasoning
+substrate rather than on the executable layer. It argues
+that as AI systems become more cognitively sophisticated,
+behavioral injection will replace conventional adversarial
+attacks as the primary threat vector.
+
+\claimlabeltext{Level~I}{The observation that context manipulation
+is an effective attack vector on current language models is
+empirically supported. Prompt injection, jailbreaking, and
+context poisoning are documented phenomena with measurable
+effects on model behaviour. This is a genuine engineering
+concern at \LevelI{}.}
+
+\claimlabeltext{Level~II}{The framing of these attacks as
+``behavioral injection'' and ``semantic malware'' is a productive
+computational metaphor that connects AI security concerns to
+the broader framework of salience, context, and interference.
+The metaphor illuminates something real about how context
+affects reasoning.}
+
+\claimlabeltext{Level~III}{The phenomenological claim that
+sufficiently sophisticated AI systems will have something
+analogous to a ``cognitive context'' that can be corrupted
+--- that they will be vulnerable to attacks that feel, from
+the inside, like manipulation of one's own beliefs --- is
+speculative but not absurd.}
+
+\claimlabeltext{Level~IV}{The claim that behavioral injection
+is constitutively equivalent to ``poisoning the mind'' requires
+a theory of mind that the corpus has not established. Whether
+AI systems have minds in the relevant sense is not a settled
+question, and the security analysis inherits this uncertainty.}
+
+The security extension is philosophically interesting because
+it demonstrates the corpus's consistency: the same framework
+that motivates the audio processing architecture motivates
+the security analysis. If cognition is constituted by
+contextual resonance patterns, then attacks on those patterns
+are attacks on cognition itself. The internal coherence is
+real. Whether it corresponds to anything external depends
+on whether the foundational claim about cognition is correct.
+
+\section{An Architecture Built Around a Bet}
+\label{sec:architecture-bet}
+
+The salience-centered AI architecture is, at its core, a bet
+on a specific empirical hypothesis: that temporal coherence
+is the primary organizing principle of meaningful information
+processing, both in biological and artificial systems.
+
+If this bet is correct, the architecture's efficiency
+advantages, biological grounding, and interpretability
+claims all follow. The system would be efficient because
+it would be aligned with the actual structure of the problem;
+biological because it would be implementing the same
+principles that evolution discovered; interpretable because
+the salience filter's decisions would correspond to decisions
+that a human observer would also recognize as selecting
+meaningful content.
+
+If the bet is wrong --- if temporal coherence is one
+organizing principle among several, or if the relevant
+organizing principles vary by domain --- then the architecture's
+apparent unity becomes a constraint. Systems built around
+a single principle perform well on problems that respect
+that principle and fail on problems that do not.
+
+The bet is not obviously wrong. The evidence from auditory
+processing, temporal fine structure, and the neuroscience
+of oscillatory dynamics is genuinely consistent with
+temporal coherence playing a central role. The evidence
+from other cognitive domains is more mixed. Vision, for
+instance, is organized partly around spatial rather than
+temporal structure; language comprehension involves both
+temporal and hierarchical structure in ways that may not
+reduce to the temporal alone.
+
+Whether the bet pays off is an empirical question. What
+matters at this stage --- at the close of Part~I's immersion
+in the framework --- is to have understood what the bet is.
+The salience-centered paradigm is not merely proposing
+a new processing architecture. It is proposing a new
+theory of what meaningful structure is and where it resides.
+That is an ambitious proposal. Its ambition is not a weakness,
+provided it generates the specific predictions needed to
+test whether the bet pays off.
+
+\medskip
+
+Chapter~5 completes Part~I by examining the philosophical
+layer of the corpus: the claims about consciousness,
+authenticity, and the relationship between temporal structure
+and human experience that underlie and motivate the
+engineering and architectural proposals. This is the layer
+where the framework's most expansive claims are concentrated
+and where the distance between observation and interpretation
+is greatest. It is also, for that reason, the layer where
+the immersion phase reaches its natural limit --- where the
+framework's explanatory ambition becomes fully visible and
+the first genuine questions about its structure begin to press.

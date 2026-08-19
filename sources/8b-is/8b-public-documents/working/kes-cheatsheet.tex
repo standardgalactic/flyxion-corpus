@@ -1,0 +1,1015 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{titlesec}
+
+\geometry{margin=0.65in, top=0.75in, bottom=0.75in}
+
+\pagestyle{empty}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\setlength{\columnsep}{1.2em}
+\raggedcolumns
+
+% Section formatting
+\titleformat{\section}[block]
+  {\normalfont\bfseries\small}
+  {}
+  {0pt}
+  {\rule{\linewidth}{0.4pt}\\\vspace{0.1em}}
+  [\vspace{0.1em}]
+
+% Shaded box for compression statements
+\mdfdefinestyle{compbox}{
+  backgroundcolor=gray!10,
+  linecolor=gray!40,
+  linewidth=0.5pt,
+  innerleftmargin=5pt,
+  innerrightmargin=5pt,
+  innertopmargin=4pt,
+  innerbottommargin=4pt,
+  skipabove=4pt,
+  skipbelow=4pt
+}
+
+% ---- Macros ----
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\fM}{\mathfrak{M}}
+\newcommand{\Pp}{\mathcal{P}}
+\newcommand{\Rr}{\mathcal{R}}
+\newcommand{\Svalid}{\mathcal{S}_{\mathrm{valid}}}
+\newcommand{\Adm}{\mathcal{A}_{\mathrm{dm}}}
+\newcommand{\Hcech}{\check{H}}
+\newcommand{\KES}{\mathfrak{S}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{The Kinetic--Event Synthesis (KES)}}\\[0.4em]
+{\large Mathematical Supplement \& Structural Reference}\\[0.2em]
+{\small Flyxion \quad\textbullet\quad Independent Researcher}
+\end{center}
+
+\vspace{0.6em}
+
+\begin{multicols}{2}
+
+% ============================================================
+\section*{1.\enspace Core KES State}
+
+\[
+\KES_t =
+(X_t,\,\Omega_t,\,H_t,\,\Psi_t,\,\M_t,\,\G,\,\mathcal{F})
+\]
+
+\[
+X_t = (\Phi_t,\,\mathbf{v}_t,\,S_t)
+\quad\text{(scalar, vector, entropy)}
+\]
+
+\[
+\Omega_t = \text{admissible future transitions}
+\]
+
+\[
+H_t = \{e_0,e_1,\dots,e_t\}
+\quad\text{(irreversible event log)}
+\]
+
+\[
+\Psi_t = \text{preference / constraint field}
+\]
+
+\[
+\M_t : \Omega_t \to \mathbb{R}
+\quad\text{(valuation measure)}
+\]
+
+\[
+\boxed{\Omega_t \;\longrightarrow\; H_{t+1}}
+\quad\text{(irreversible selection)}
+\]
+
+\[
+\textbf{Reality}
+=
+\text{selection of possibility into history}
+\]
+
+% ============================================================
+\section*{2.\enspace RSVP Field Dynamics}
+
+Scalar plenum density:
+\[
+\partial_t \Phi
+=
+D_\Phi \nabla^2\Phi
+-
+\nabla\cdot(\Phi\mathbf{v})
++
+R_\Phi
+-
+\lambda_\Phi S
+\]
+
+Vector flow (Navier--Stokes type):
+\[
+\partial_t \mathbf{v}
+=
+-(\mathbf{v}\cdot\nabla)\mathbf{v}
++
+\nu\nabla^2\mathbf{v}
+-
+\nabla\Phi
++
+\mathcal{T}(\mathbf{v})
+\]
+
+Entropy production--dissipation:
+\[
+\partial_t S
+=
+D_S\nabla^2S
++
+\sigma(\Phi,\mathbf{v})
+-
+\gamma S
+\]
+
+Coherence conditions:
+\[
+\mathcal{U}_\omega \subset X_t,
+\qquad
+\Phi \uparrow,
+\quad
+\|\mathbf{v}\|_{\mathrm{aligned}}\uparrow,
+\quad
+S\downarrow
+\]
+
+Admissibility field (Barbour extension):
+\[
+\Adm(X_t)
+=
+\bigl\{\,\omega\in\Omega_t
+\;\big|\;
+\kappa(\omega,H_t)\geq\kappa_*
+\,\bigr\}
+\]
+
+where $\kappa$ is recursive admissibility and $\kappa_*$ is the viability threshold.
+Admissibility replaces entropy as the fundamental cosmological selector.
+
+% ============================================================
+\section*{3.\enspace Accessibility \& Temporal Structure}
+
+Global model space (all kinematically possible states):
+\[
+\fM = \bigl\{s_t \mid t\in\mathbb{R}\bigr\}
+\]
+
+History-conditioned accessibility slice:
+\[
+\A_t
+=
+\bigl\{s\in\fM\mid s
+\text{ reachable given }H_t\bigr\}
+\]
+
+Temporal asymmetry (monotone shrinkage):
+\[
+\A_{t+1}^{\mathrm{consistent}}
+\subsetneq
+\A_t^{\mathrm{counterfactual}}
+\]
+
+The superscripts distinguish the \emph{consistent} slice (states compatible with $H_{t+1}$) from the \emph{counterfactual} envelope (states that were open before the selection at $t$).
+
+Viability (non-collapse):
+\[
+\Omega_t \neq \emptyset
+\]
+
+Provenance-stable self invariant:
+\[
+\Phi_{\mathrm{self}}
+=
+\mathrm{Inv}(H_t,\,\Omega_t,\,\A_t,\,\Pp_t)
+\]
+
+Shape-space reduction (Barbour):
+\[
+\fM\big/\!\sim_{\mathrm{gauge}}
+\;\longrightarrow\;
+\mathcal{Q}_{\mathrm{shape}}
+\]
+
+Paths in $\mathcal{Q}_{\mathrm{shape}}$ with maximal $\kappa$
+constitute the physical history.
+
+% ============================================================
+\section*{4.\enspace Prompting as Field Projection}
+
+Constraint-valid structure space:
+$\omega\in\Svalid$
+
+Projection functor:
+\[
+\Pi:\Svalid\to\mathcal{L}
+\]
+
+Rendering operator (stochastic):
+\[
+\mathcal{R}:\mathcal{L}
+\rightsquigarrow
+\widehat{\mathcal{L}}
+\]
+
+Verification / grounding map:
+\[
+\mathcal{V}:
+\widehat{\mathcal{L}}
+\to
+\Svalid\cup\{\bot\}
+\]
+
+Full pipeline:
+\[
+\omega
+\;\xrightarrow{\;\Pi\;}
+p
+\;\overset{\mathcal{R}}{\rightsquigarrow}\;
+\hat{\ell}
+\;\xrightarrow{\;\mathcal{V}\;}
+\omega'
+\]
+
+Compression chain:
+\[
+\text{Constraint}
+\to
+\text{Projection}
+\to
+\text{Rendering}
+\to
+\text{Verification}
+\]
+
+% ============================================================
+\section*{5.\enspace Provenance \& Identity}
+
+Provenance trace:
+\[
+\Pp_t = \Pp(\omega_t),
+\qquad
+\Pp_t
+\Rightarrow
+\omega_t
+\]
+
+Identity as maximal integral curve:
+\[
+\forall t,\quad
+\Pp_t
+\text{ reconstructs }
+\omega_t
+\]
+
+Log sovereignty (state determined by history):
+\[
+X_t = f(H_t)
+\]
+
+Append-only event accumulation:
+\[
+H_{t+1}
+=
+H_t\cup\{e_t\}
+\]
+
+Irreversibility (no right inverse):
+\[
+\Omega_t\to H_{t+1}
+\;\not\Rightarrow\;
+H_t
+\]
+
+Upload incoherence: no isomorphism $\iota: X_t \xrightarrow{\;\sim\;} X_t'$
+preserves $H_t$ under substrate change; identity requires the integral curve, not merely the snapshot.
+
+% ============================================================
+\section*{6.\enspace Expansion Operators}
+
+Expansion:
+\[
+T:\Omega_t\to\Omega_{t+1},
+\qquad
+T(\Omega_t)
+\subseteq
+\Omega(H_{t+1})
+\]
+
+Operator decomposition:
+\[
+T
+=
+T_{\mathrm{phys}}
+\circ
+T_{\mathrm{comp}}
+\circ
+T_{\mathrm{sym}}
+\circ
+T_{\mathrm{sem}}
+\]
+
+Spectral transform compatibility:
+\[
+\mathcal{F}(\Omega_{t+1})
+=
+\mathcal{T}
+\bigl(\mathcal{F}(\Omega_t)\bigr)
+\]
+
+Viability under composition:
+\[
+\Omega_t\neq\emptyset
+\;\Rightarrow\;
+T(\Omega_t)\neq\emptyset
+\]
+
+\[
+\boxed{
+\textbf{Intelligence}
+=
+\text{selection of viable expansion operators}
+}
+\]
+
+% ============================================================
+\section*{7.\enspace Sheaf \& Cohomology Structure}
+
+Let $\mathfrak{U}=\{U_i\}$ be an open cover of $\fM$.
+Local accessibility sheaf $\mathscr{A}$:
+\[
+\mathscr{A}(U_i) = \A_t\cap U_i
+\]
+
+Gluing condition (consistency of local histories):
+\[
+\mathscr{A}(U_i)\big|_{U_i\cap U_j}
+=
+\mathscr{A}(U_j)\big|_{U_i\cap U_j}
+\]
+
+Obstruction to global section:
+\[
+[\,\delta\sigma\,]
+\;\in\;
+\Hcech^1(\mathfrak{U},\,\mathscr{A})
+\]
+
+Vanishing obstruction $\Leftrightarrow$ globally consistent history.
+Non-trivial $\Hcech^1$ encodes irreducible temporal contradictions or
+constraint-incoherent transitions.
+
+\v{C}ech 2-cocycle (triple overlap):
+\[
+\delta^2\sigma_{ijk}
+=
+\sigma_{jk}
+-\sigma_{ik}
++\sigma_{ij}
+=0
+\]
+
+Holonomy of constraint transport around closed loop $\gamma$:
+\[
+\mathrm{Hol}_\gamma(\Psi)
+\;=\;
+\mathcal{P}\exp\!\Bigl(
+\oint_\gamma A_\Psi\,d\ell
+\Bigr)
+\;\in\;
+\mathrm{Aut}(\Omega_t)
+\]
+
+Non-trivial holonomy $\Rightarrow$ axial charge; cf.\ cosmic birefringence as
+global holonomy of the admissibility connection over $\mathcal{Q}_{\mathrm{shape}}$.
+
+% ============================================================
+\section*{8.\enspace Spherepop / KES Connection}
+
+Spherepop operators over event histories:
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Operator & KES interpretation\\
+\midrule
+$\mathrm{Pop}(e)$ & $H_t\to H_t\cup\{e\}$ (append event)\\
+$\mathrm{Bind}(e,c)$ & $\omega\mapsto\omega'$ with constraint $c$\\
+$\mathrm{Collapse}(\omega)$ & $\Omega_t\to H_{t+1}$ (actuation)\\
+$\mathrm{Refuse}(\omega)$ & $\omega\notin\Adm(X_t)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Free traced monoidal structure:
+\[
+(\mathbf{Sp},\,\otimes,\,I,\,\mathrm{Tr})
+\]
+
+Trace encodes feedback loops; append-only $H_t$ prevents trace from
+reversing events. The Spherepop category embeds into $\C$ via:
+\[
+\iota:\mathbf{Sp}\hookrightarrow\C,
+\qquad
+\iota(\mathrm{Pop})\mapsto [\,H_t\to H_{t+1}\,]
+\]
+
+% ============================================================
+\section*{9.\enspace Economic Projection}
+
+Valuation measure:
+\[
+\M_t:\Omega_t^{\mathrm{agg}}
+\to
+\mathbb{R}
+\]
+
+Lossy compression (distinct states collapse):
+\[
+\M_t(\omega_1)
+=
+\M_t(\omega_2),
+\quad
+\omega_1\neq\omega_2
+\]
+
+Extraction regime (Goodhart divergence):
+\[
+\Delta\M_t >0,
+\qquad
+\Delta\Rr_t<0
+\]
+
+Care functional:
+\[
+\mathcal{C}_t:
+\KES_t\to\mathbb{R},
+\qquad
+\M_t \uparrow
+\;\Rightarrow\;
+\mathcal{C}_t \downarrow
+\]
+
+Structural richness:
+\[
+\Rr(\Omega)
+=
+\dim(\Omega)
++
+\mathrm{conn}(\Omega)
++
+\mathrm{coh}(\Omega)
+\]
+
+Platform extraction reads as $\M_t$ maximisation with
+$\Rr(\Omega_{\mathrm{worker}})$ as externality; austerity shrinks
+$\A_t^{\mathrm{public}}$ while preserving $\A_t^{\mathrm{capital}}$.
+
+% ============================================================
+\section*{10.\enspace Markov Failure Case}
+
+Standard generator:
+\[
+P(x_{n+1}\mid x_n),
+\quad
+H_t = \varnothing,
+\quad
+\Pp_t = \varnothing,
+\quad
+\mathcal{V} = \varnothing
+\]
+
+Consequence:
+\[
+\hat{\ell}
+\;\sim\;
+\text{prior manifold}
+\]
+
+Surface novelty vs.\ structural distinction:
+\[
+\delta_{\mathrm{surface}}(\hat{\ell}_1,\hat{\ell}_2) > 0
+\;\not\Rightarrow\;
+\delta_{\mathrm{structural}}(\omega_1,\omega_2) > 0
+\]
+
+Collapse regime: without $H_t$, outputs sample the attractor basin of the
+training distribution; constraint-valid generation requires $\mathcal{V}\neq\varnothing$.
+
+% ============================================================
+\section*{11.\enspace Spectral Text Structure}
+
+Token embedding sequence:
+\[
+x(n)
+\in
+\mathbb{R}^d,
+\quad
+n = 0,\dots,N-1
+\]
+
+Discrete Fourier transform:
+\[
+X(k)
+=
+\sum_{n=0}^{N-1}
+x(n)\,e^{-i2\pi kn/N}
+\]
+
+Spectral signature:
+\[
+\sigma_{\mathrm{text}}
+=
+\bigl|X(k)\bigr|
+\]
+
+Constraint-preserving transform:
+\[
+f:\omega\to\omega',
+\quad
+\mathcal{C}(\omega)=1
+\;\Rightarrow\;
+\mathcal{C}(\omega')=1
+\]
+
+Low-frequency modes carry semantic coherence;
+high-frequency modes carry syntactic variation.
+Structural distinction lives in $\sigma_{\mathrm{text}}$, not surface tokens.
+
+% ============================================================
+\section*{12.\enspace Category Structure}
+
+Possibility category $\C$:
+\[
+\mathrm{Ob}(\C)=\{\Omega\},
+\qquad
+\mathrm{Hom}(\Omega,\Omega')=\{\omega:\Omega\to\Omega'\}
+\]
+
+History as composition:
+\[
+H_t
+=
+\omega_t\circ\cdots\circ\omega_1
+\]
+
+Functors:
+\[
+\Pi:\mathcal{S}\to\mathcal{L}
+\quad\text{(projection)},
+\qquad
+\M_t:\C\to\mathbf{R}
+\quad\text{(valuation)}
+\]
+
+Natural transformation (power shift):
+\[
+\eta:\M_t
+\Rightarrow
+\M_t'
+\]
+
+Alignment functor chain:
+\[
+\mathbf{Val}
+\xrightarrow{F}
+\mathbf{Beh}
+\xrightarrow{G}
+\mathbf{Act},
+\quad
+G\circ F \simeq \mathrm{id}_{\mathbf{Val}}
+\quad\text{(alignment condition)}
+\]
+
+The weak equivalence $\simeq$ rather than strict equality acknowledges that
+behavioural implementation is at best naturally isomorphic to value specification;
+strict identity would require a fully transparent action--value correspondence
+unavailable under bounded rationality.
+
+% ============================================================
+\section*{13.\enspace Master Diagram}
+
+The following square unifies the six primary KES relations---possibility,
+selection, provenance, projection, rendering, and verification---in a single
+commuting structure. The bent arrow $\mathcal{V}$ closes the loop from rendered
+output back into the constraint-valid possibility space, making the cycle
+explicit.
+
+\[
+\begin{tikzcd}[column sep=huge, row sep=large]
+\Omega_t
+\arrow[r,"\mathrm{selection}"]
+\arrow[d,"\Pi"']
+&
+H_{t+1}
+\arrow[d,"\mathcal{P}"]
+\\
+\mathcal{L}
+\arrow[r,squiggly,"\mathcal{R}"']
+&
+\widehat{\mathcal{L}}
+\arrow[ul,bend left=20,"\mathcal{V}"]
+\end{tikzcd}
+\]
+
+Reading the diagram: admissible possibilities $\Omega_t$ are selected into
+history $H_{t+1}$ (top); simultaneously projected via $\Pi$ into linguistic
+space $\mathcal{L}$ (left); stochastically rendered to $\widehat{\mathcal{L}}$
+(bottom); and verified by $\mathcal{V}$ back into the next possibility set
+(diagonal). Provenance $\mathcal{P}$ (right) records the selection event,
+coupling $H_{t+1}$ to the rendered output and grounding the loop.
+
+% ============================================================
+\section*{14.\enspace Fundamental Diagrams}
+
+Projection--rendering pipeline:
+\[
+\begin{tikzcd}[column sep=1.6em]
+\omega
+\arrow[r,"\Pi"]
+&
+p
+\arrow[r,"\mathcal{R}",squiggly]
+&
+\hat{\ell}
+\arrow[r,"\mathcal{V}"]
+&
+\omega'
+\end{tikzcd}
+\]
+
+Temporal shrinkage:
+\[
+\begin{tikzcd}[column sep=1.6em]
+\Omega_t
+\arrow[r]
+&
+H_{t+1}
+\arrow[r]
+&
+\A_{t+1}^{\mathrm{consistent}}
+\;\subset\;
+\A_t^{\mathrm{counterfactual}}
+\end{tikzcd}
+\]
+
+Full rendering cycle:
+\[
+\begin{tikzcd}[column sep=1.4em]
+\Svalid
+\arrow[r,"\Pi"]
+&
+\mathcal{L}
+\arrow[r,squiggly,"\mathcal{R}"]
+&
+\widehat{\mathcal{L}}
+\arrow[r,"\mathcal{V}"]
+&
+\Svalid
+\cup\{\bot\}
+\end{tikzcd}
+\]
+
+Sheaf gluing pullback:
+\[
+\begin{tikzcd}
+\mathscr{A}(U_i\cup U_j)
+\arrow[r]
+\arrow[d]
+&
+\mathscr{A}(U_i)
+\arrow[d]
+\\
+\mathscr{A}(U_j)
+\arrow[r]
+&
+\mathscr{A}(U_i\cap U_j)
+\end{tikzcd}
+\]
+
+% ============================================================
+
+\end{multicols}
+
+\vspace{0.3em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.1em}
+
+{\centering\small\textbf{15.\enspace Compression Statements}\par}
+\vspace{0.3em}
+
+\begin{mdframed}[style=compbox]
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
+\begin{align*}
+\textbf{Time}        &= \text{constraint accumulation} \quad&
+\textbf{Mind}        &= \text{local accessibility with provenance} \\
+\textbf{Self}        &= \text{provenance-stable integral curve} \quad&
+\textbf{Intelligence}&= \text{coherence-preserving expansion} \\
+\textbf{Prompting}   &= \text{field-guided projection} \quad&
+\textbf{Economics}   &= \text{compressed possibility valuation} \\
+\textbf{Care}        &= \text{preservation of structural richness} \quad&
+\textbf{Reality}     &= \Omega_t\;\longrightarrow\;H_{t+1} \\
+\textbf{Identity}    &= \text{maximal integral curve through }H_t \quad&
+\textbf{Cosmology}   &= \text{admissibility geometry on }\mathcal{Q}_{\mathrm{shape}} \\
+\textbf{Power}       &= \eta:\M_t\Rightarrow\M_t' \quad&
+\textbf{Collapse}    &= \rho(D\mathcal{G}_{\KES^*}) > 1
+\end{align*}
+\end{mdframed}
+
+\vspace{0.5em}
+
+\begin{multicols}{2}
+
+% ============================================================
+\section*{16.\enspace Recursive Constraint Geometry}
+
+Constraint propagation over admissible trajectories:
+\[
+\mathcal{C}_{t+1}(\omega)
+=
+\mathcal{C}_t(\omega)
++
+\Delta_{\mathrm{hist}}(\omega,H_t)
+-
+\Delta_{\mathrm{entropy}}(\omega)
+\]
+
+Recursive admissibility flow:
+\[
+\kappa_{t+1}(\omega)
+=
+\kappa_t(\omega)
++
+\int_{\gamma_\omega}
+\Psi_t \cdot d\ell
+-
+S_t(\omega)
+\]
+
+Constraint curvature tensor:
+\[
+\mathfrak{R}_{ij}
+=
+\partial_i\Psi_j
+-
+\partial_j\Psi_i
++
+[\Psi_i,\Psi_j]
+\]
+
+Flat constraint regions satisfy $\mathfrak{R}_{ij}=0$;
+nonzero curvature yields path-ordering dependence:
+\[
+\mathfrak{R}_{ij}\neq0
+\;\Rightarrow\;
+\omega_a\circ\omega_b
+\neq
+\omega_b\circ\omega_a
+\]
+
+\begin{corollary}
+Historical ordering is dynamically significant precisely when
+constraint curvature is non-vanishing.
+\end{corollary}
+
+\begin{corollary}
+Regions of high recursive curvature correspond to strongly irreversible
+civilizational or cognitive transitions.
+\end{corollary}
+
+% ============================================================
+\section*{17.\enspace Provenance Entropy \& Information Flow}
+
+Provenance entropy:
+\[
+S_{\Pp}(H_t)
+=
+-\sum_i
+p_i\log p_i
+\]
+
+where $p_i$ is the recoverability weight of provenance branch $i$.
+
+Recoverability functional:
+\[
+\mathcal{Q}_{\mathrm{rec}}
+=
+\frac{
+\dim(\mathrm{Recoverable}(H_t))
+}{
+\dim(H_t)
+}
+\]
+
+Epistemic fragmentation condition:
+\[
+\partial_t\mathcal{Q}_{\mathrm{rec}} < 0
+\]
+
+Information transport equation:
+\[
+\partial_t I
++
+\nabla\cdot(I\mathbf{v})
+=
+D_I\nabla^2 I
+-
+\lambda_I S
+\]
+
+Constraint-preserving channels satisfy:
+\[
+\frac{d}{dt}\mathcal{C}(\omega_t)\geq0
+\]
+
+\begin{corollary}
+Compression systems maximising transmission while minimising provenance
+necessarily increase semantic ambiguity.
+\end{corollary}
+
+\begin{corollary}
+A civilisation with declining provenance recoverability will increasingly
+substitute symbolic authority for reconstructible derivation.
+\end{corollary}
+
+% ============================================================
+\section*{18.\enspace Narrative Type Theory}
+
+Let $\mathbb{T}$ be the category of admissible narrative types.
+Objects $\tau\in\mathrm{Ob}(\mathbb{T})$ are stable narrative invariants;
+morphisms $f:\tau_i\to\tau_j$ are admissible identity transitions.
+
+Narrative typing judgment:
+\[
+H_t \vdash \tau
+\]
+
+Consistency condition:
+\[
+H_t \vdash \tau_i
+\;\wedge\;
+\tau_i\not\leadsto\tau_j
+\;\Rightarrow\;
+H_t \nvdash \tau_j
+\]
+
+Narrative bifurcation operator:
+\[
+\mathcal{B}:\tau\mapsto\{\tau_1,\tau_2,\dots\}
+\]
+
+Self-coherence invariant:
+\[
+\chi_{\mathrm{self}}
+=
+\int_{H_t}
+\mathrm{Compat}(\tau_t,\tau_{t+1})\,dt
+\]
+
+\begin{corollary}
+Psychological fragmentation corresponds to decreasing path-compatibility
+within the narrative type manifold.
+\end{corollary}
+
+\begin{corollary}
+Stable identity is not static persistence but coherent type evolution
+through irreversible history.
+\end{corollary}
+
+% ============================================================
+\section*{19.\enspace Spectral Constraint Topology}
+
+Decompose $\Omega_t=\bigcup_i\Omega_i$ into local admissibility domains.
+
+Spectral Laplacian:
+\[
+\Delta_\Omega = D - A
+\]
+
+where $D$ is the degree operator and $A$ the accessibility adjacency.
+
+Eigenstructure:
+\[
+\Delta_\Omega\phi_n = \lambda_n\phi_n
+\]
+
+Low-frequency modes ($\lambda_n\approx0$) encode globally coherent
+semantic structures; high-frequency modes ($\lambda_n\gg0$) encode
+localised fluctuations or instability.
+
+Constraint resonance condition:
+\[
+\langle\phi_i,\Psi_t\rangle \gg 0
+\]
+
+Phase-locking:
+\[
+\phi_i(t+\Delta t)
+\approx
+e^{i\theta}\phi_i(t)
+\]
+
+\begin{corollary}
+Long-term civilisations stabilise around low-frequency admissibility
+eigenmodes.
+\end{corollary}
+
+\begin{corollary}
+Memetic instability corresponds to excitation of high-frequency spectral
+components exceeding damping capacity.
+\end{corollary}
+
+% ============================================================
+\section*{20.\enspace The KES Fixed-Point Theorem}
+
+Recursive evolution operator:
+\[
+\KES_{t+1} = \mathcal{G}(\KES_t),
+\qquad
+\KES^* = \mathcal{G}(\KES^*)
+\]
+
+Local stability via spectral radius $\rho$:
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Condition & Regime \\
+\midrule
+$\rho(D\mathcal{G}_{\KES^*})<1$ & Stable expansion \\
+$\rho\approx1$ & Metastable \\
+$\rho>1$ & Collapse \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[Recursive Coherence Theorem]
+A KES trajectory remains structurally viable iff recursive admissibility,
+provenance recoverability, and expansion coherence remain jointly bounded.
+\end{theorem}
+
+\begin{proof}[Sketch]
+If admissibility collapses, the trajectory exits $\Adm(X_t)$.
+If provenance collapses, reconstruction of $\omega_t$ from $\Pp_t$ fails.
+If expansion coherence collapses, $\Omega_t$ fragments into disconnected
+components. Joint boundedness is therefore necessary for persistent
+structural identity.
+\end{proof}
+
+\begin{corollary}
+Intelligence is not maximal optimisation but bounded coherent continuation
+through recursively constrained possibility space.
+\end{corollary}
+
+\begin{corollary}
+The terminal failure mode of civilisations is topological fragmentation of
+their admissibility manifold.
+\end{corollary}
+
+\end{multicols}
+
+\end{document}

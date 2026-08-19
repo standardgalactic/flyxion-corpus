@@ -1,0 +1,230 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  main.tex — master compilation file
+%
+%  Engine: LuaLaTeX (TeX Live 2023)
+%  Run twice for cross-references and bookmarks.
+%
+%  Build command:
+%    lualatex -interaction=nonstopmode main.tex
+% ============================================================
+
+\documentclass[12pt,twoside,openright]{book}
+
+% ── Preamble modules (order matters) ────────────────────────
+\input{preamble/packages}
+\input{preamble/colors}
+\input{preamble/typography}
+\input{preamble/theorem-envs}
+\input{preamble/boxes}
+\input{preamble/macros}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ── Front matter ────────────────────────────────────────────
+\frontmatter
+
+% Title page
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{0.10\textheight}
+{\centering
+  {\color{Ortyx@subtle}\rule{0.55\textwidth}{0.4pt}}\par
+  \vspace{20pt}
+  {\color{Ortyx@rule}\fontsize{28}{34}\selectfont\bfseries
+    The Ortyx Protocol}\par
+  \vspace{16pt}
+  {\color{Ortyx@neutral}\large\itshape
+    Decomposition, Preservation, and\\[4pt]
+    Constraint-Preserving Reinterpretation\\[4pt]
+    of Speculative Computational Systems}\par
+  \vspace{22pt}
+  {\color{Ortyx@subtle}\rule{0.55\textwidth}{0.4pt}}\par
+  \vspace{36pt}
+  {\color{Ortyx@neutral}\Large Flyxion}\par
+  \vspace{12pt}
+  {\color{Ortyx@neutral}\normalsize 2026}\par
+  \vfill
+  {\color{Ortyx@neutral}\small\itshape
+    Independent Research}\par
+  \vspace{20pt}
+}
+\end{titlepage}
+
+% Copyright / imprint page
+\thispagestyle{empty}
+\vspace*{\fill}
+{\small\color{Ortyx@neutral}
+\noindent
+\textit{The Ortyx Protocol:\\
+Decomposition, Preservation, and Constraint-Preserving Reinterpretation\\
+of Speculative Computational Systems}
+
+\medskip
+\noindent
+Copyright \textcopyright{} 2026 Flyxion. All rights reserved.
+
+\medskip
+\noindent
+Published independently under the name Flyxion.\\
+GitHub: \texttt{standardgalactic}
+
+\medskip
+\noindent
+This work may be freely shared for non-commercial scholarly purposes
+with attribution. No part may be reproduced for commercial purposes
+without written permission.
+
+\medskip
+\noindent
+\textit{First edition, 2026.}
+
+\vspace{16pt}
+\noindent
+\textit{Note on the title:} The ortyx is a bird related to the quail,
+known in ancient sources for its migratory discipline and capacity to
+correct against drift without external landmarks. The name is used here
+as an image of directed movement through uncertain epistemic terrain ---
+not by the confidence of a system that knows its destination, but by the
+discipline of one that knows when it is drifting.
+}
+\vspace*{\fill}
+\clearpage
+
+% Epigraph page
+\thispagestyle{empty}
+\vspace*{0.28\textheight}
+{\centering
+  \begin{minipage}{0.72\textwidth}
+    \centering
+    \color{Ortyx@neutral}
+    \itshape
+    ``The test of a framework is not what it can explain,\\
+    but what it would forbid. A theory that forbids nothing\\
+    is not a theory; it is an atmosphere.''
+
+    \vspace{12pt}
+    {\small\upshape --- Flyxion}
+  \end{minipage}
+}
+\vspace*{\fill}
+\clearpage
+
+% Table of contents
+\tableofcontents
+
+% Preface
+\include{frontmatter/preface}
+
+% ── Main matter ─────────────────────────────────────────────
+\mainmatter
+
+% ════════════════════════════════════════════════════════════
+%  PART I — IMMERSION
+% ════════════════════════════════════════════════════════════
+\partinterlude{Part I}{Immersion}{%
+The Phoenix ecosystem is encountered on its own terms.
+Reconstruction precedes judgment. The framework is allowed to
+demonstrate its explanatory power, its compression advantages,
+and its architectural coherence before any pressure is applied.
+The reader who finds the system compelling at this stage is
+responding correctly. That response is the starting point,
+not an error to be corrected.}
+
+\include{parts/part1/ch01}
+\include{parts/part1/ch02}
+\include{parts/part1/ch03}
+\include{parts/part1/ch04}
+\include{parts/part1/ch05}
+
+% ════════════════════════════════════════════════════════════
+%  PART II — TENSION
+% ════════════════════════════════════════════════════════════
+\partinterlude{Part II}{Tension}{%
+The audit voice is born without being named. Asymmetries accumulate:
+some equations constrain outcomes, others merely accompany prose;
+some concepts compress phenomena, others absorb them
+indiscriminately. The reader should feel structural stress before
+the vocabulary for naming it becomes available.}
+
+\include{parts/part2/ch06}
+\include{parts/part2/ch07}
+\include{parts/part2/ch08}
+\include{parts/part2/ch09}
+\include{parts/part2/ch10}
+
+% ════════════════════════════════════════════════════════════
+%  PART III — DECOMPOSITION
+% ════════════════════════════════════════════════════════════
+\partinterlude{Part III}{Decomposition}{%
+The audit operators are deployed. Four failure geometries are
+defined and illustrated. The four inferential levels are
+disentangled. This is the most formally demanding section of
+the book. RSVP is also partially audited here. Nothing passes
+through decomposition unexamined.}
+
+\include{parts/part3/ch11}
+\include{parts/part3/ch12}
+\include{parts/part3/ch13}
+\include{parts/part3/ch14}
+\include{parts/part3/ch15}
+
+% ════════════════════════════════════════════════════════════
+%  INTERLUDE — WHAT SURVIVES COLLAPSE
+% ════════════════════════════════════════════════════════════
+\include{parts/interlude-collapse/interlude}
+
+% ════════════════════════════════════════════════════════════
+%  PART IV — RECONSTRUCTION
+% ════════════════════════════════════════════════════════════
+\partinterlude{Part IV}{Reconstruction}{%
+The reinterpretation functor $\RSVPfunctor : \ThetaS \to \ThetaStar$
+is applied to the survivable components. RSVP does not win by
+assertion; it wins because it survives the audit with fewer
+projection defects and lower recursive closure metrics. The
+question is not whether RSVP is true, but whether the surviving
+structures become more tractable in its language.}
+
+\include{parts/part4/ch16}
+\include{parts/part4/ch17}
+\include{parts/part4/ch18}
+\include{parts/part4/ch19}
+\include{parts/part4/ch20}
+
+% ════════════════════════════════════════════════════════════
+%  PART V — METHODOLOGICAL SYNTHESIS
+% ════════════════════════════════════════════════════════════
+\partinterlude{Part V}{Methodological Synthesis}{%
+The Ortyx Protocol is stated explicitly and subjected to the same
+recursive pressure it applies to everything else.
+$\OrtOp_{n+1} = \AuditOp(\OrtOp_n)$. The book ends not with a
+stable doctrine but with a protocol that survives only through
+continued self-application. That recursion is not a weakness.
+It is the only honest form a methodology of this kind can take.}
+
+\include{parts/part5/ch21}
+\include{parts/part5/ch22}
+\include{parts/part5/ch23}
+\include{parts/part5/ch24}
+
+% ── Appendices ──────────────────────────────────────────────
+\appendix
+
+\include{appendices/appA}
+\include{appendices/appB}
+\include{appendices/appC}
+\include{appendices/appD}
+\include{appendices/appE}
+\include{appendices/appF}
+\include{appendices/appG}
+
+% ── Back matter ─────────────────────────────────────────────
+\backmatter
+
+% Bibliography
+\bibliographystyle{plainnat}
+\bibliography{bibliography/ortyx}
+
+\end{document}

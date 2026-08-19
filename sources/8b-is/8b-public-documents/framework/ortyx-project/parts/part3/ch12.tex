@@ -1,0 +1,342 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part III — Decomposition
+%  Chapter 12: Failure Geometry Analysis
+% ============================================================
+
+\chapter{Failure Geometry Analysis}
+\label{ch:failure-geometry}
+
+\chapepigraph{To name a failure mode is not to condemn a framework.
+It is to specify where the framework's development must go
+if it is to become what it claims to be.}{Flyxion}
+
+\noindent
+Chapter~11 introduced the audit operators and applied them
+at the level of the Phoenix corpus as a whole. Chapter~12
+performs the case-by-case analysis: examining each of the
+four failure geometries in detail, identifying the specific
+loci in the corpus where each applies, and distinguishing
+the degrees of severity that matter for the decomposition
+in the Interlude.
+
+The analysis proceeds in order of increasing severity:
+$\FailGeo{1}$ (Decorative Formalism) is the most benign,
+because operationalization gaps can in principle be closed
+by additional specification work. $\FailGeo{4}$ (Operational
+Severance) is more serious, because it requires not just
+specification but the development of measurement
+infrastructure. $\FailGeo{2}$ (Definitional Closure)
+is more serious still, because closing it requires
+restructuring the framework's foundational choices.
+$\FailGeo{3}$ (Semantic Universality Collapse) is the
+most severe, because at its limit it prevents any
+observation from bearing on the framework's claims.
+
+\section{Failure Geometry 1: Decorative Formalism}
+\label{sec:fg1-analysis}
+
+\subsection{The Harmonic Alignment Score}
+
+The clearest instance of $\FailGeo{1}$ in the Phoenix
+corpus is the harmonic alignment score $H_i$ in the
+Marine salience functional. As noted in Chapter~7,
+this component is described as measuring whether the
+current peak frequency is consistent with a harmonic
+series but is not defined precisely enough to generate
+a unique implementation.
+
+The severity of this instance is low. $H_i$ is operationally
+grounded in concept: one can compute a harmonic alignment
+score for a given peak given a reference fundamental,
+a definition of harmonic series, and a threshold for
+what counts as alignment. The specification needed is:
+(1)~how the reference fundamental is determined, (2)~what
+the definition of harmonic series is (integer multiples,
+near-integer multiples within some tolerance), and (3)~what
+the alignment threshold is and whether it is fixed or
+adaptive. These are engineering decisions that do not
+require new theory; they require commitment.
+
+\begin{auditprop}
+\label{ap:fg1-hcf}
+The harmonic alignment score $H_i$ in the Marine functional
+exhibits $\FailGeo{1}$ at a low severity level. The
+operational gap is closable by engineering specification
+without requiring theoretical revision. The functional
+form of the salience metric is sound; the under-specification
+affects the parameterization, not the architecture.
+\end{auditprop}
+
+\subsection{The Emotional Amplitude Modulation}
+
+A more significant instance of $\FailGeo{1}$ appears in
+the \MEMeight{} emotional amplitude modulation:
+\[
+  A_i(x,t) = A_i^0 \exp(-\lambda_i t)(1 + \eta\, e(t)).
+\]
+The mathematical form is precise. The emotional state
+function $e(t)$ is not. What is $e(t)$? In a system
+that does not have direct access to physiological
+measures of emotional state, $e(t)$ would need to be
+inferred from signal properties. Which signal properties?
+Through what procedure? What scale is $e(t)$ on, and
+what value does it take in neutral or ambiguous contexts?
+
+Unlike $H_i$, this operational gap is not easily closed
+by engineering commitment alone. Operationalizing $e(t)$
+requires a theory of what signals carry emotional content
+and how emotional content is measured from those signals
+--- a non-trivial research programme in its own right.
+The decoration here is at a higher level: the formal
+expression is well-formed, but its realizability
+presupposes a substantial prior solution to the problem
+of affective computing.
+
+\section{Failure Geometry 2: Definitional Closure}
+\label{sec:fg2-analysis}
+
+\subsection{The Authenticity Tautology}
+
+The authenticity concept's most significant instance of
+$\FailGeo{2}$ can be stated precisely. The corpus makes
+the following moves:
+
+\begin{enumerate}
+  \item Authentic audio is audio that faithfully preserves
+  the temporal structure of the original acoustic event.
+  \item Lossy compression disrupts temporal structure
+  (measured by Marine jitter metrics).
+  \item Therefore, lossy compression reduces the
+  authenticity of audio.
+\end{enumerate}
+
+Step~(3) follows from steps~(1) and~(2) in combination
+with the definitional move in step~(1). But step~(1)
+is not an empirical observation about what listeners
+regard as authentic; it is a definitional choice about
+what authenticity means. The argument would be equally
+valid if step~(1) read: ``Authentic audio is audio
+that faithfully preserves the spectral envelope of
+the original'' --- in which case the conclusion about
+lossy compression would not follow, because modern
+codecs preserve spectral envelopes reasonably well.
+
+The choice to define authenticity in terms of temporal
+structure rather than spectral envelope determines the
+conclusion. The conclusion cannot therefore serve as
+evidence for the choice. But the corpus uses the
+apparent fit between the definition and the engineering
+results (the Marine detects what we care about: it
+detects \emph{authenticity}) as though it were
+confirmation of the framework rather than a consequence
+of the definition.
+
+\begin{auditprop}
+\label{ap:fg2-authenticity}
+The Phoenix corpus's authenticity claims exhibit
+$\FailGeo{2}$ in the following specific form: the
+concept of authenticity is implicitly defined in terms
+of the Marine metric's primary variable (temporal
+coherence), and the claim that the Marine detects
+authentic audio is therefore not a discovery but a
+definitional consequence. The severity is moderate:
+the framework could escape $\FailGeo{2}$ by providing
+an independent characterization of authenticity ---
+one that predates and motivates the Marine metric
+rather than following from it --- against which the
+Marine's performance could be evaluated.
+\end{auditprop}
+
+\subsection{Meaningful Structure as Marine Output}
+
+A related instance concerns the concept of ``meaningful
+structure.'' The corpus repeatedly treats high-salience
+Marine output as equivalent to meaningful signal content.
+If meaningful structure is defined as what the Marine
+detects, then the claim that the Marine detects meaningful
+structure is trivially true. But the interesting claim
+--- the one that would provide genuine support for
+the Phoenix paradigm --- is that what the Marine detects
+corresponds to some independently characterized notion
+of meaningfulness. Establishing this requires either
+(i)~a prior, independent operationalization of meaningful
+structure, or (ii)~a demonstration that Marine-classified
+``salient'' content is preferentially processed, remembered,
+and valued by listeners in controlled conditions.
+
+The corpus does not provide either (i)~or (ii)~with
+the systematic controls that would establish the
+correspondence. This is an instance of $\FailGeo{2}$
+at moderate severity.
+
+\section{Failure Geometry 3: Semantic Universality Collapse}
+\label{sec:fg3-analysis}
+
+\subsection{The Coherence Cascade}
+
+The trajectory of the coherence concept traced in Chapter~9
+provides the most systematic instance of $\FailGeo{3}$
+in the Phoenix corpus. At each level of extension, the
+concept's definition broadens to accommodate both positive
+and negative instances: coherent signals are meaningful;
+incoherent signals are degraded; coherence violations
+are attention-capturing; coherence restoration is
+therapeutic; consciousness is coherence; incoherence
+is the pathology that consciousness pathologies share.
+
+The accumulated effect of this cascade is a concept
+that can accommodate any observation about salience,
+attention, memory, and consciousness. This is the formal
+structure of $\FailGeo{3}$: not that the concept is
+wrong, but that it has been broadened until it no longer
+generates specific predictions that could in principle
+fail.
+
+\begin{auditprop}
+\label{ap:fg3-coherence}
+The coherence concept in the Phoenix corpus exhibits
+$\FailGeo{3}$ at high severity. The concept has been
+extended across six distinct domains (signal processing,
+auditory perception, memory, AI architecture, phenomenology,
+consciousness) with successive broadening of its
+operational definition at each step. At the broadest
+extension, the concept can accommodate both the presence
+and absence of any phenomenon in any domain by appeal
+to ``coherence dynamics.'' The severity is high because
+the collapse is domain-wide rather than local: it affects
+all of the corpus's claims that involve the coherence
+concept at the architectural and philosophical levels.
+\end{auditprop}
+
+\subsection{Scope and Salvageability}
+
+The high severity of $\FailGeo{3}$ in the coherence
+cascade does not make the entire Phoenix framework
+unsalvageable. $\FailGeo{3}$ applies to the extended
+uses of the coherence concept; it does not apply to
+the engineering-level uses where the concept retains
+its specific, operationalized definition. The Marine
+jitter metric applied to audio signals is not exhibiting
+$\FailGeo{3}$; it is exhibiting the tight, falsifiable
+version of the coherence concept that the higher-level
+extensions have lost.
+
+The salvage strategy for $\FailGeo{3}$ is to identify
+where the concept retains its specificity and to
+restrict claims to those domains, while treating the
+higher-level extensions as research questions rather
+than established results. This is the strategy that
+Part~IV will apply.
+
+\section{Failure Geometry 4: Operational Severance}
+\label{sec:fg4-analysis}
+
+\subsection{The \texttt{.m8a} Format Revisited}
+
+The consciousness metadata fields of the \texttt{.m8a}
+format provide the clearest illustration of $\FailGeo{4}$.
+The specific fields that exhibit Operational Severance are:
+
+\textit{Emotional coordinates}: No measurement procedure
+specified. No scale. No mapping from signal properties
+or listener responses to coordinate values.
+
+\textit{Resonance frequency}: Ambiguously defined. For
+a physical resonator, the resonance frequency is
+operationally accessible. For an audio file considered
+as a whole, the operational definition is unclear.
+Multiple non-equivalent operationalizations are possible.
+
+\textit{Wave field coordinates}: These presuppose the
+\MEMeight{} field, whose operational basis is itself
+underspecified (see Chapter~7). A coordinate in an
+unspecified field is doubly severed.
+
+\textit{Audio DNA signature}: Named as the ``core
+essence'' of the audio. No measurement procedure or
+formal definition is provided.
+
+\begin{auditprop}
+\label{ap:fg4-m8a}
+The \texttt{.m8a} format specification exhibits $\FailGeo{4}$
+for the consciousness metadata fields at high severity.
+These fields name quantities that would be meaningful
+if measurable but for which no measurement procedure
+has been specified. The severity is high because the
+fields are central to the corpus's claim that the
+\texttt{.m8a} format advances beyond conventional audio
+formats in a specifically cognitive rather than merely
+engineering sense. Without measurement procedures for
+the consciousness metadata fields, this claim reduces
+to a statement about the file's structure (it has fields
+with these names) rather than about its content (these
+fields contain meaningful measurements).
+\end{auditprop}
+
+\subsection{Severed Quantities in the MEM\textbar{}8 Formalism}
+
+Beyond the \texttt{.m8a} format, the \MEMeight{} formalism
+itself contains operationally severed quantities. The
+most significant are the characteristic frequencies
+$\omega_i$ and the representational space variable $x$.
+As noted in Chapter~7, neither has been given a
+measurement procedure that would allow their values
+to be determined from observations.
+
+The severity of this instance of $\FailGeo{4}$ is
+moderate rather than high, because the \MEMeight{}
+formalism's efficiency claims (the $O(N^2)$ implicit
+associations at $O(N)$ storage cost) do not depend
+on the operationalization of $x$ and $\omega_i$;
+they follow from the mathematical structure of the
+wave superposition, regardless of what the wave
+functions represent. The unsalvageable component
+of $\FailGeo{4}$ in \MEMeight{} is therefore the
+consciousness claims that depend on the specific
+physical or computational realization of the field,
+not the associative memory claims that depend only
+on its mathematical properties.
+
+\section{Failure Geometry Interaction}
+\label{sec:fg-interaction}
+
+The four failure geometries do not operate independently.
+They interact in ways that amplify each other's effects.
+
+The most important interaction is between $\FailGeo{2}$
+and $\FailGeo{3}$. When a concept is defined in terms
+of the framework's primary variable ($\FailGeo{2}$),
+the definition can be broadened without limit as the
+primary variable is applied to new domains ($\FailGeo{3}$),
+because the definition tracks the broadening automatically.
+The authenticity concept exhibits this interaction:
+because authenticity is implicitly defined as temporal
+coherence, and because temporal coherence has been
+extended to cover consciousness and all cognitive
+phenomena, authenticity inherits the full scope of the
+coherence cascade without requiring separate definitional
+work.
+
+The interaction between $\FailGeo{1}$ and $\FailGeo{4}$
+is also significant. Decorative Formalism ($\FailGeo{1}$)
+names quantities that appear specific but are
+underspecified; Operational Severance ($\FailGeo{4}$)
+names quantities that appear measurable but have no
+measurement procedure. These can reinforce each other:
+a formally well-organized framework expression
+($\FailGeo{1}$ decoration) that uses operationally
+severed quantities ($\FailGeo{4}$) produces claims
+that appear doubly rigorous --- formally organized
+and technically named --- but are doubly inaccessible.
+
+\medskip
+
+Chapter~13 turns from the failure geometry analysis
+to the four-level taxonomy, examining how the Phoenix
+corpus's claims distribute across the levels of
+engineering utility, computational metaphor, cognitive
+phenomenology, and ontological commitment. This
+distribution determines which claims survive
+decomposition in each of the four levels and which
+require reinterpretation or withdrawal.

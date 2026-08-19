@@ -1,0 +1,87 @@
+% ── Core engine and fonts ───────────────────────────────────
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}[Ligatures=TeX]
+\setmathfont{Latin Modern Math}
+
+% ── Page geometry (6×9 trade monograph) ────────────────────
+\usepackage[
+  paperwidth  = 6in,
+  paperheight = 9in,
+  top         = 1in,
+  bottom      = 1in,
+  inner       = 1.1in,
+  outer       = 0.85in,
+  headheight  = 26pt,
+  headsep     = 14pt,
+  footskip    = 30pt,
+  twoside
+]{geometry}
+
+% ── Microtypography ─────────────────────────────────────────
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+% ── Spacing and paragraphs ──────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage[indent]{parskip}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
+
+% ── Language and quotation ──────────────────────────────────
+\usepackage[english]{babel}
+\usepackage[autostyle,english=american]{csquotes}
+
+% ── Mathematics ─────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+% ── Section titling ─────────────────────────────────────────
+\usepackage{titlesec}
+
+% ── Headers/footers ─────────────────────────────────────────
+\usepackage{fancyhdr}
+
+% ── Epigraphs ───────────────────────────────────────────────
+\usepackage{epigraph}
+
+% ── Coloured boxes ──────────────────────────────────────────
+\usepackage[skins,breakable,hooks,theorems]{tcolorbox}
+
+% ── Framed environments ─────────────────────────────────────
+\usepackage[framemethod=TikZ]{mdframed}
+
+% ── Lists ───────────────────────────────────────────────────
+\usepackage{enumitem}
+
+% ── Figures and tables ──────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ── Code listings ───────────────────────────────────────────
+\usepackage{listings}
+
+% ── Bibliography ────────────────────────────────────────────
+\usepackage[authoryear,round,sort]{natbib}
+
+% ── Hyperref and bookmarks (load last) ──────────────────────
+\usepackage[
+  unicode,
+  colorlinks      = true,
+  linkcolor       = Ortyx@rule,
+  citecolor       = Ortyx@accent,
+  urlcolor        = Ortyx@accent,
+  pdftitle        = {The Ortyx Protocol},
+  pdfauthor       = {Flyxion},
+  pdfsubject      = {Epistemology; Speculative Computation; Audit Methodology},
+  pdfkeywords     = {RSVP; Phoenix Protocol; epistemic audit; salience;
+                     constraint-preserving reinterpretation; speculative systems},
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  pdfpagemode        = UseOutlines,
+  plainpages         = false
+]{hyperref}
+\usepackage{bookmark}

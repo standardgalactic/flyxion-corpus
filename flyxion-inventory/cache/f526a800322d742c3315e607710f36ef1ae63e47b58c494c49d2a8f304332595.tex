@@ -1,0 +1,474 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part III — Decomposition
+%  Chapter 11: The Audit Operators
+% ============================================================
+
+\chapter{The Audit Operators}
+\label{ch:audit-operators}
+
+\chapepigraph{A procedure that cannot be stated is not a procedure.
+It is an intuition. Intuitions can be correct. But they cannot
+be shared, replicated, or applied consistently by people
+who did not have them. The transition from intuition to
+procedure is the transition from insight to method.}{Flyxion}
+
+\noindent
+Parts~I and~II did not produce verdicts. They produced pressure.
+The Phoenix corpus was examined at its strongest, followed
+through its extensions, and observed accumulating structural
+tensions that the framework's own vocabulary was insufficient
+to name. The reader who has worked through those ten chapters
+should arrive at this point with a specific kind of epistemic
+discomfort: the sense that something is structurally wrong
+with the framework, combined with the absence of a precise
+enough vocabulary to say what it is.
+
+Part~III provides that vocabulary. Not as an external imposition
+on the Phoenix corpus but as a natural response to the
+demands that Parts~I and~II have generated. The four failure
+geometries identified in Part~II --- Decorative Formalism,
+Definitional Closure, Semantic Universality Collapse, and
+Operational Severance --- are now formalized as components
+of a systematic audit procedure. That procedure is named,
+for the first time, the \Ortyx{} Protocol.
+
+The naming is deliberate. The protocol has been operating
+throughout Parts~I and~II, but it was unnamed. The transition
+to Part~III marks the moment at which the protocol recognizes
+itself: the moment at which informal diagnostic practice
+becomes explicit methodology. This is consistent with the
+co-development thesis stated in the Preface. The protocol
+does not arrive from outside; it emerges from the demands
+of the auditing activity itself.
+
+\section{The System Triple}
+\label{sec:system-triple}
+
+The first formal requirement of the \Ortyx{} Protocol is
+a notation for the thing being audited. Any theoretical
+framework can be described, at the most general level,
+as a triple:
+\[
+  \SysTriple = (\mathcal{A}, \mathcal{M}, \mathcal{E}),
+\]
+where $\mathcal{A}$ is the set of axioms or foundational
+commitments, $\mathcal{M}$ is the set of mechanisms or
+processes the framework proposes, and $\mathcal{E}$ is
+the set of empirical claims the framework makes about
+the world.
+
+This representation is deliberately coarse. It does not
+capture the full structure of a theoretical framework;
+no compact formal representation can. Its purpose is
+to make three structural features of any framework
+explicit: what it takes for granted ($\mathcal{A}$),
+what it proposes happens ($\mathcal{M}$), and what it
+claims is true of the observable world ($\mathcal{E}$).
+The distinction between these three components is not
+always maintained in the literature, and one of the
+recurring sources of the failure geometries in Part~II
+is the migration of claims between components without
+acknowledgment.
+
+For the Phoenix corpus, a preliminary triple can be stated:
+
+$\mathcal{A}$: Temporal coherence is the primary organizing
+principle of meaningful information; biological sensory
+systems have evolved to prioritize temporally coherent
+signals; the auditory system is an appropriate model
+for general cognitive processing.
+
+$\mathcal{M}$: The Marine salience filter detects temporal
+coherence; the \MEMeight{} field encodes salient events
+as wave functions; the \HCFone{} conformity relation
+compresses harmonic structure relationally; the three
+systems compose into a salience-centered cognitive
+architecture.
+
+$\mathcal{E}$: Lossy compression increases Marine-detectable
+jitter at block boundaries; harmonic consensus encoding
+achieves lower bit rates than independent encoding on
+strongly coupled sources; the \MEMeight{} architecture
+produces more efficient associative retrieval than
+static vector stores; systems trained on salience-filtered
+representations outperform dense systems on specified
+benchmarks.
+
+\begin{technote}[Technical Note: The Audit Triple]
+The system triple $\SysTriple = (\mathcal{A}, \mathcal{M},
+\mathcal{E})$ makes one structural requirement explicit:
+$\mathcal{E}$ must be non-empty and its elements must
+be independently accessible --- meaning, the truth value
+of empirical claims must be determinable by procedures
+that do not presuppose $\mathcal{A}$. A framework in
+which all of $\mathcal{E}$ is entailed by $\mathcal{A}$
+alone, without contribution from $\mathcal{M}$, exhibits
+$\FailGeo{2}$: its empirical claims are definitional
+consequences of its axioms rather than independent
+discoveries about the world.
+\end{technote}
+
+\section{The Four Audit Operators}
+\label{sec:four-operators}
+
+The \Ortyx{} Protocol applies four operators to a system
+triple $\SysTriple$. Each operator returns a score in
+$[0,1]$, where higher scores indicate greater audit
+compliance. The global epistemic stability functional
+$\EpStab(\SysTriple)$ is then a weighted combination
+of the four scores:
+\[
+  \EpStab(\SysTriple) = \alpha\,\AuditS(\SysTriple)
+  + \beta\,\AuditF(\SysTriple)
+  - \gamma\,\AuditP(\SysTriple)
+  - \delta\,\AuditR(\SysTriple),
+\]
+where the positive terms represent structural virtues
+and the negative terms represent structural liabilities.
+The weights $\alpha, \beta, \gamma, \delta > 0$ are
+context-sensitive parameters that reflect the relative
+importance of each dimension for the framework under
+evaluation. Their determination is discussed in Section
+\ref{sec:weight-determination}.
+
+The four operators are:
+
+\subsection{The Structural Consistency Operator \texorpdfstring{$\AuditS$}{S}}
+\label{subsec:structural-consistency}
+
+$\AuditS(\SysTriple)$ measures the degree to which the
+claims in $\mathcal{E}$ are non-trivially derived from
+the combination of $\mathcal{A}$ and $\mathcal{M}$,
+rather than either (i)~entailed by $\mathcal{A}$ alone
+(indicating $\FailGeo{2}$) or (ii)~independent of
+$\mathcal{A}$ and $\mathcal{M}$ (indicating disconnection
+between the framework's theoretical machinery and its
+empirical claims).
+
+A high $\AuditS$ score indicates that the framework's
+mechanisms do real explanatory work: that the empirical
+claims follow from the mechanisms applied to the axioms
+in non-trivial ways that generate predictions beyond
+what the axioms alone would support.
+
+Formally: let $\mathcal{E}_{\mathcal{A}}$ denote the
+claims in $\mathcal{E}$ entailed by $\mathcal{A}$ alone,
+and $\mathcal{E}_{\mathcal{M}}$ denote the claims derivable
+from $\mathcal{M}$ combined with $\mathcal{A}$. Then:
+\[
+  \AuditS(\SysTriple)
+  = \frac{|\mathcal{E}_{\mathcal{M}} \setminus
+    \mathcal{E}_{\mathcal{A}}|}{|\mathcal{E}|},
+\]
+the fraction of empirical claims that are mechanistic
+consequences beyond what the axioms alone predict.
+High values indicate that the mechanisms are doing
+real inferential work.
+
+\subsection{The Falsifiability Operator \texorpdfstring{$\AuditF$}{F}}
+\label{subsec:falsifiability}
+
+$\AuditF(\SysTriple)$ measures the degree to which
+the framework specifies, for each claim in $\mathcal{E}$,
+an observation that would count as disconfirmation.
+This is not the narrow Popperian requirement that a
+single claim must be falsifiable in isolation; it is
+the more practical requirement that the framework's
+practitioners can specify, for each empirical claim,
+what range of observations they would interpret as
+evidence against it.
+
+A low $\AuditF$ score can arise from any of the
+failure geometries: $\FailGeo{1}$ (claims expressed
+in notation too underspecified to generate observations);
+$\FailGeo{2}$ (claims definitionally guaranteed true);
+$\FailGeo{3}$ (claims broadened to accommodate all
+possible observations); $\FailGeo{4}$ (claims expressed
+in terms of quantities with no measurement procedure).
+
+Operationally, $\AuditF$ is assessed by the following
+procedure: for each claim $e \in \mathcal{E}$, ask
+the question ``What observation $O$ would constitute
+evidence against $e$?'' The response admits three
+classifications: (i)~a specific, observable $O$ is
+named (the claim is falsifiable); (ii)~no specific
+$O$ is named but the framework's practitioners agree
+one could in principle be specified (the claim is
+potentially falsifiable); (iii)~any candidate $O$
+can be accommodated by the framework (the claim is
+unfalsifiable within the framework). $\AuditF$ is
+the weighted proportion of claims in category~(i)
+and category~(ii).
+
+\subsection{The Projection Dependence Operator \texorpdfstring{$\AuditP$}{P}}
+\label{subsec:projection-dependence}
+
+$\AuditP(\SysTriple)$ measures the degree to which
+the framework's claims depend on projection operators
+that lose information in ways that cannot be detected
+from within the projected representation. High
+$\AuditP$ scores indicate that the framework is making
+claims about a reduced representation $M$ as if they
+were claims about the underlying space $X$, without
+establishing that the projection $\pi: X \to M$
+is constraint-faithful.
+
+Formally, the projection defect of a framework is:
+\[
+  \ProjDef(\SysTriple) = \sup_{x \in X_{\mathrm{adm}}}
+  \abs{\ConstrX(x) - \ConstrM(\pi(x))},
+\]
+where $\ConstrX$ is the constraint operator on the
+full space and $\ConstrM$ is the induced constraint
+on the reduced representation. A framework with high
+$\AuditP$ score is one whose projection defect is
+large: its claims about the representation do not
+reliably track the constraints operative in the
+underlying space.
+
+For the Phoenix corpus, the most significant projection
+dependence arises in the move from waveform properties
+(the full space) to Marine jitter metrics (the
+reduced representation). The claim that jitter
+detects ``meaningful structure'' is a claim about
+the full space (the signal has meaningful structure)
+made on the basis of a projection (the jitter
+metric). Whether this projection is constraint-faithful
+--- whether signals with low jitter genuinely have
+meaningful structure in any sense independent of
+the framework's definition --- is exactly what
+$\AuditP$ measures.
+
+\subsection{The Recursive Closure Operator \texorpdfstring{$\AuditR$}{R}}
+\label{subsec:recursive-closure}
+
+$\AuditR(\SysTriple)$ measures the degree to which
+the framework has become self-referentially closed:
+the degree to which its own vocabulary is the
+primary resource for evaluating its claims, with
+insufficient purchase available for external
+correction. Formally, this is related to the
+semantic closure metric:
+\[
+  \SemClose(t)
+  = \frac{\norm{F(M_t)}}{\norm{G(X_t)}},
+\]
+where $F(M_t)$ represents the evolution of the
+representation under internal dynamics and $G(X_t)$
+represents the correction available from the underlying
+system. As $\SemClose \to \infty$, the representation
+evolves primarily under its own dynamics, with
+decreasing purchase from external reality.
+
+High $\AuditR$ scores indicate that the framework
+has developed internal mechanisms for accommodating
+potential disconfirmations --- through vocabulary
+migration, definitional expansion, or reinterpretation
+strategies --- in ways that insulate it from the
+corrective pressure that would otherwise force revision.
+
+\section{Applying the Operators to the Phoenix Corpus}
+\label{sec:applying-operators}
+
+With the operators defined, they can be applied
+systematically to the Phoenix triple.
+
+\subsection{Structural Consistency}
+
+The Phoenix corpus's $\AuditS$ score is highest for
+the engineering components. The claim that lossy
+compression increases Marine-detectable jitter is
+a non-trivial consequence of the Marine mechanism
+applied to the axiom that block-based transform
+coding introduces block boundary discontinuities.
+The claim that harmonic consensus encoding reduces
+bit rate is a non-trivial consequence of the \HCFone{}
+mechanism applied to the axiom that strongly coupled
+harmonic sources have high conformity rates.
+
+The $\AuditS$ score drops for the architectural and
+philosophical claims. The claim that temporal coherence
+constitutes the organizing principle of consciousness
+is not a non-trivial consequence of the Marine and
+\MEMeight{} mechanisms; it is a claim at a different
+level that the mechanisms cannot reach without
+additional bridging principles that the corpus has
+not established.
+
+\begin{auditprop}
+\label{ap:structural-consistency-result}
+The Phoenix corpus exhibits high structural consistency
+($\AuditS$ close to 1.0) for its engineering-level
+claims ($\mathcal{E}_{\mathrm{eng}}$) and substantially
+lower structural consistency ($\AuditS < 0.5$) for
+its architectural and philosophical claims
+($\mathcal{E}_{\mathrm{arch}}, \mathcal{E}_{\mathrm{phil}}$).
+The mechanisms in $\mathcal{M}$ do real inferential
+work at the engineering level but do not reach the
+philosophical claims without steps that are either
+axiomatic imports or definitional moves.
+\end{auditprop}
+
+\subsection{Falsifiability}
+
+The Phoenix corpus's $\AuditF$ score is highest for
+the jitter and conformity claims. The prediction that
+Marine-derived jitter is higher in compressed audio
+than in the original at block boundaries is specific
+enough that an experiment could confirm or deny it.
+The conformity rate prediction is similarly specific.
+
+The $\AuditF$ score drops sharply for the consciousness
+and authenticity claims. As Chapter~9 established,
+the temporal coherence concept has been broadened to
+the point where both coherent and incoherent salience
+can be accommodated. The authenticity concept has been
+noted as potentially functioning as a definitional
+label rather than an independently measurable property.
+For these claims, no specific disconfirming observation
+has been specified.
+
+\subsection{Projection Dependence}
+
+The Phoenix corpus's $\AuditP$ score is elevated
+throughout. The fundamental move of the corpus ---
+inferring meaningful structure from signal properties
+--- is a projection-dependent inference that the corpus
+has not established as constraint-faithful. The most
+significant projection dependence occurs in the
+consciousness claims, where properties of the \MEMeight{}
+field (a formal representation) are attributed to
+conscious experience (the underlying space) without
+establishing the constraint relationship between them.
+
+\subsection{Recursive Closure}
+
+The Phoenix corpus's $\AuditR$ score is moderate and
+growing. The vocabulary migration of ``coherence'' across
+levels (Chapter~6) is one mechanism of recursive closure:
+observations in any domain can be redescribed using
+the coherence vocabulary in ways that make them appear
+confirmatory. The accommodation strategy for unexpected
+salience (Chapter~9) is another: any observation can
+be reinterpreted as a coherence phenomenon. These are
+the beginning of closure dynamics, not yet runaway
+closure, which is why the score is moderate rather
+than maximal.
+
+\section{The Weight Determination Problem}
+\label{sec:weight-determination}
+
+The global epistemic stability functional $\EpStab$ depends
+on weights $\alpha, \beta, \gamma, \delta$ that are not
+determined by the formal specification of the operators.
+This is a genuine limitation of the framework, and it
+deserves explicit acknowledgment.
+
+The weights reflect context-sensitive judgments about
+which epistemic virtues are most important for a given
+framework at a given stage of development. For a framework
+at an early stage, where mechanisms are being proposed
+and evidence is not yet available, a high weight on
+$\AuditF$ (falsifiability) relative to the others is
+appropriate: the framework should be generating testable
+predictions even if they have not yet been tested.
+For a framework at a mature stage, where extensive
+empirical work has been done, a high weight on
+$\AuditS$ (structural consistency) reflects the
+importance of mechanisms actually deriving the
+observed results rather than merely accommodating them.
+
+This weight-sensitivity is not a bug in the audit
+protocol; it is a feature. Different stages of
+scientific development warrant different epistemic
+standards, and an audit protocol that applied
+identical standards across all stages would either
+be too demanding for early-stage proposals or too
+permissive for mature theories. The Ortyx Protocol
+makes the weight-sensitivity explicit rather than
+hiding it.
+
+\begin{auditprop}
+\label{ap:context-sensitivity}
+The \Ortyx{} audit is context-sensitive with respect
+to the weights $\alpha, \beta, \gamma, \delta$ of
+the epistemic stability functional. For a given
+framework, the appropriate weights depend on: (i)~the
+stage of development of the framework, (ii)~the
+domain in which it operates, and (iii)~the purposes
+for which the audit is conducted. An audit protocol
+that does not acknowledge its own weight-sensitivity
+is itself exhibiting a form of Definitional Closure:
+it has built its evaluative conclusions into its
+parameter choices without acknowledging that those
+choices could be otherwise.
+\end{auditprop}
+
+\section{The Decomposition}
+\label{sec:decomposition}
+
+With the operators applied, the formal decomposition
+of the Phoenix corpus can be stated:
+
+\audittrace{\SysTriple_{\mathrm{Phoenix}}}{\ThetaS}{\ThetaU}
+
+The survivable component $\ThetaS$ contains:
+
+\begin{itemize}
+  \item The Marine jitter metric and its engineering
+  applications: fully operationalized, with testable
+  predictions about jitter distributions in compressed
+  versus uncompressed audio.
+  \item The harmonic conformity relation and the
+  consensus encoding architecture: engineering-level
+  claims with a sound theoretical basis and testable
+  efficiency predictions.
+  \item The associative memory efficiency of wave
+  superposition: established in the holographic memory
+  literature, with the \MEMeight{} formalism providing
+  a specific parameterization that admits comparison
+  with alternatives.
+  \item The predictive processing alignment: the
+  structural parallel between salience-gated encoding
+  and predictive processing error signals, which
+  motivates a research connection to the neuroscience
+  literature.
+  \item The behavioral injection / context poisoning
+  framework: at \LevelI{}, as a description of a
+  real vulnerability class in current AI systems.
+\end{itemize}
+
+The unstable component $\ThetaU$ contains:
+
+\begin{itemize}
+  \item The consciousness claims: not derivable from
+  the engineering mechanisms, operationally severed,
+  and exhibiting high projection dependence.
+  \item The authenticity claims: exhibiting Definitional
+  Closure risk, operationally severed, and broadened
+  to near-universal accommodation.
+  \item The strong AI architecture claims: the assertion
+  that the salience-centered paradigm constitutes a
+  general foundation for machine intelligence, rather
+  than a promising research programme in specific domains.
+  \item The Ultrasonic Consciousness Hypothesis:
+  empirically contested and operationally severed
+  in its Phoenix formulation.
+\end{itemize}
+
+\medskip
+
+This decomposition is not a final verdict. It is a
+structural diagnosis at the current state of the
+framework's development. Some of what is currently in
+$\ThetaU$ may migrate to $\ThetaS$ if the framework
+provides the operationalization and falsification
+structure that currently separates them. The Interlude
+between Parts~III and~IV will examine what form that
+migration would take.
+
+Chapter~12 applies the decomposition to the
+individual failure geometries systematically, providing
+a case-by-case audit of the Phoenix corpus against
+the formal criteria developed in this chapter.

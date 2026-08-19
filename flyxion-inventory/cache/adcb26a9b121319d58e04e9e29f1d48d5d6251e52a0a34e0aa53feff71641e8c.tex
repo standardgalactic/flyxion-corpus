@@ -1,0 +1,433 @@
+% ============================================================
+%  THE ORTYX PROTOCOL
+%  Part I — Immersion
+%  Chapter 2: Wave-Based Memory and the Architecture
+%             of Temporal Cognition
+% ============================================================
+
+\chapter{Wave-Based Memory and the Architecture of Temporal Cognition}
+\label{ch:mem8}
+
+\chapepigraph{Memory is not a filing system. It is a field that
+reorganizes itself around what matters most at this moment. The
+question is whether we can say, precisely, what reorganization means.}{Flyxion}
+
+\noindent
+The \Marine{} is, at its core, a filter. It takes a continuous
+signal and identifies within it the moments and regions where
+structure is dense, timing is stable, and coherence is high. What
+it produces is not a reconstruction of the signal but a map of
+where the signal is most itself --- most organized, most
+constraining, most likely to carry information that the downstream
+system can use.
+
+The natural question is: what is the downstream system?
+
+In the Phoenix corpus, the answer is \MEMeight{}: a wave-based
+memory architecture that proposes to store, retrieve, and integrate
+information not as discrete symbolic tokens or static vector
+embeddings but as patterns of interference in a dynamic field.
+Where the \Marine{} treats salience as a temporal phenomenon ---
+something that emerges from the timing relationships between signal
+events --- \MEMeight{} treats memory itself as a temporal phenomenon:
+something that exists not as a stored object but as a standing
+pattern of constructive and destructive interference between
+simultaneously active wave functions.
+
+This is a substantial conceptual move. Its implications reach well
+beyond audio processing into questions about the nature of
+representation, the relationship between memory and dynamics, and
+the computational substrate of cognition. Whether it constitutes a
+genuine theoretical advance or a productive metaphor in need of
+operationalization is not a question to be pressed here. The
+present chapter follows the architecture on its own terms, examining
+what it claims, what it predicts, and what kind of computational
+system it actually describes when the mathematical formalism is
+read carefully.
+
+\section{The Representational Problem \MEMeight{} Addresses}
+\label{sec:mem8-problem}
+
+Contemporary machine learning systems store information in the form
+of high-dimensional vectors. A trained language model holds its
+knowledge in billions of floating-point weights, organized into
+matrices that mediate the relationship between input representations
+and output distributions. A retrieval-augmented system stores
+documents as dense vector embeddings in a database, using approximate
+nearest-neighbour search to find semantically related content. Both
+architectures share a common assumption: that the representational
+unit is a point in a high-dimensional space, and that similarity is
+a matter of proximity in that space.
+
+The Phoenix corpus identifies two limitations of this approach that
+it regards as fundamental rather than merely engineering challenges
+to be overcome with more computation. The first is the static
+character of the representation: a vector embedding is a snapshot
+of a relationship between an input and a training objective, fixed
+at training time and independent of the dynamic context in which
+it is later used. The second is the separation between storage and
+process: the embedding exists as a stored object, and retrieval
+is a separate operation performed on that object, with no intrinsic
+connection between the dynamics of retrieval and the dynamics of
+what is being retrieved.
+
+The corpus contrasts this with what it characterizes as biological
+memory: a system in which representations are not stored as static
+objects but arise continuously from the dynamics of an active field,
+in which retrieval is not a lookup operation but a resonance process,
+and in which the context of retrieval modifies the representation
+that is retrieved --- not as a secondary effect but as a fundamental
+feature of how the system works. Memory, on this account, is not
+something the system has; it is something the system does.
+
+This contrast is recognizable to anyone familiar with the
+connectionist and dynamical systems traditions in cognitive science.
+Hopfield networks, attractor dynamics, holographic reduced
+representations, liquid state machines, and echo state networks
+have all explored aspects of this territory. The Phoenix corpus
+is not the first to propose that interference-based or wave-based
+representations might capture something that static embeddings
+miss. What it contributes is a specific formalism and a connection
+to the Marine salience framework that gives the representational
+proposals a grounding in signal processing rather than abstract
+computational theory.
+
+\section{The \MEMeight{} Formalism}
+\label{sec:mem8-formalism}
+
+The mathematical core of \MEMeight{} represents individual memory
+states as complex-valued wave functions. A single memory $M_i$ is
+written:
+\[
+  M_i(x,t) = A_i(x,t)\,e^{i(\omega_i t + \phi_i(x,t))},
+\]
+where $A_i(x,t)$ is a spatially and temporally varying amplitude
+envelope, $\omega_i$ is a characteristic frequency, and
+$\phi_i(x,t)$ is a spatially and temporally varying phase. The
+global memory field is the superposition of all active memories:
+\[
+  \MemField(x,t) = \sum_{i=1}^{N} M_i(x,t).
+\]
+Memory retrieval under a query $Q$ is modelled as a resonance
+process: the retrieval score for memory $M_i$ under query $Q$ is:
+\[
+  R_i(Q) = \left|\int Q(x)\,\overline{M_i(x,t)}\,dx\right|,
+\]
+where $\overline{M_i}$ denotes complex conjugation. Memories with
+high overlap between the query function and their complex conjugate
+--- memories that are, in a precise sense, in resonance with the
+query --- yield high retrieval scores. Memories that are orthogonal
+to the query contribute negligibly.
+
+The interference energy of the global field is:
+\[
+  E_{\mathrm{int}} = |\MemField|^2
+  = \sum_i |M_i|^2 + \sum_{i \neq j} M_i\overline{M_j}.
+\]
+The first term is the sum of individual memory energies; the second
+is the cross-term that captures the interference between memories.
+Constructive interference --- mutual reinforcement between memories
+that are phase-aligned --- amplifies the field contribution of both.
+Destructive interference --- cancellation between memories that are
+phase-opposed --- suppresses memories that conflict with the current
+field configuration.
+
+\begin{technote}[Technical Note: Interference as Implicit Association]
+The cross-term $\sum_{i \neq j} M_i\overline{M_j}$ encodes
+associative relationships without explicit storage. Two memories
+$M_i$ and $M_j$ that share similar frequencies ($\omega_i \approx
+\omega_j$) and phase relationships ($|\phi_i - \phi_j| < \delta$)
+will constructively interfere, raising each other's contribution
+to the global field. This is computationally analogous to the
+weight matrix in a Hopfield network, but here the associative
+structure is implicit in the phase relationships of the wave
+functions rather than stored explicitly in a weight matrix. The
+representational economy is real: $N$ wave functions encode
+$O(N^2)$ pairwise associations without $O(N^2)$ storage. Whether
+this economy is exploitable in a practical implementation requires
+specifying how the wave functions are physically or computationally
+realized --- a question the corpus addresses partially.
+\end{technote}
+
+The amplitude envelope of each memory is modulated by an emotional
+state function $e(t)$ and subject to exponential decay:
+\[
+  A_i(x,t) = A_i^0 \exp(-\lambda_i t)\bigl(1 + \eta\, e(t)\bigr),
+\]
+where $\lambda_i$ is the decay constant for memory $M_i$, $A_i^0$
+is its initial amplitude, and $\eta$ is the coupling strength
+between emotional state and memory amplitude. Memories coupled
+to high emotional arousal --- large $|e(t)|$ --- decay more slowly
+and contribute more strongly to the field.
+
+Cross-modal binding, in this formalism, arises when memories from
+different sensory modalities share characteristic frequencies:
+\[
+  \omega_i^{(a)} \approx \omega_j^{(v)},
+\]
+where the superscripts denote auditory and visual modalities
+respectively. When an auditory memory and a visual memory have
+compatible characteristic frequencies, they constructively interfere
+in the global field, creating a bound multi-modal memory without
+requiring an explicit binding operation or a dedicated binding
+module.
+
+\section{What the Formalism Claims}
+\label{sec:mem8-claims}
+
+Reading the \MEMeight{} formalism carefully, several distinct claims
+can be identified at different levels of specificity.
+
+At the most concrete level, the formalism claims that a wave
+superposition architecture can in principle implement associative
+memory retrieval. This is well-established: holographic associative
+memories have been studied since the 1960s, and the formal
+similarities between the \MEMeight{} retrieval integral and
+holographic correlation are clear. This claim is not novel, but
+it is sound, and locating \MEMeight{} within that tradition gives
+it genuine technical credibility.
+
+At the next level, the formalism claims that the specific features
+of its architecture --- the complex-valued representation, the
+explicit phase dynamics, the emotional modulation of amplitude
+envelopes, the frequency-based cross-modal binding --- constitute
+improvements over existing associative memory frameworks. This is
+a more specific claim that would require comparison with Hopfield
+networks, sparse distributed memory, holographic reduced
+representations, and related architectures under well-defined
+performance criteria. The corpus does not provide this comparison,
+but the claim is in principle evaluable.
+
+At a higher level, the formalism claims that the wave interference
+dynamics of \MEMeight{} model something important about biological
+memory --- that biological memory works, or works in a way that
+is relevantly similar to, interference patterns in a dynamic field.
+This is a neuroscientific claim of substantial ambition. There
+is evidence from oscillatory neuroscience --- from work on gamma
+rhythms, theta-gamma coupling, and hippocampal place cell dynamics
+--- that is at least consistent with the broad contours of an
+interference-based account. Whether it supports the specific
+formalism of \MEMeight{} is a different question.
+
+At the highest level, the formalism claims that temporal dynamics
+--- wave interference, resonance, phase alignment --- constitute
+the right ontological category for cognition in general: that
+intelligence is not computation over stored structures but an
+ongoing pattern of constructive and destructive interference in
+a field organized around salience. This is a philosophical claim
+of the first order. It may be correct. Its connection to the
+earlier, more specific claims is not a matter of derivation but
+of analogy.
+
+\claimlabeltext{Level~I}{Wave superposition can implement associative
+memory retrieval with $O(N^2)$ implicit associations at $O(N)$
+storage cost. This is demonstrated in the holographic memory
+literature independently of the Phoenix corpus.}
+
+\claimlabeltext{Level~II}{The emotional modulation of amplitude
+envelopes and frequency-based cross-modal binding are productive
+computational metaphors for known features of biological memory:
+emotional enhancement of consolidation, and the binding of
+multi-modal memories. Whether these are more than metaphors depends
+on implementation specifics not yet supplied.}
+
+\claimlabeltext{Level~III}{The phenomenology of memory as something
+one does rather than something one has --- memory as resonance
+rather than retrieval --- captures an experiential truth about
+how remembering feels from the inside, and is consistent with
+evidence from autobiographical memory research that retrieval is
+reconstructive rather than reproductive.}
+
+\claimlabeltext{Level~IV}{The claim that temporal wave interference
+constitutes the correct ontological primitive for cognition in
+general is a metaphysical commitment that outstrips the evidence
+provided. Its evaluation would require an argument that rules out
+competing ontological frameworks on principled rather than
+aesthetic grounds.}
+
+\section{The Dissolution of the Storage--Process Distinction}
+\label{sec:storage-process}
+
+One of the philosophically most interesting moves in the \MEMeight{}
+architecture is its treatment of the distinction between memory
+storage and memory process. In classical computational architectures,
+this distinction is architectural: memory is a passive medium that
+holds information, and processing is an active operation performed
+on that information by a separate component. The distinction maps
+onto hardware: RAM and CPU are distinct physical systems with
+distinct functional roles.
+
+\MEMeight{} dissolves this distinction at the level of representation.
+The global field $\MemField(x,t)$ is simultaneously the stored
+information (the superposition of active wave functions) and the
+ongoing process (the dynamic evolution of that superposition under
+interference, decay, and emotional modulation). There is no separate
+storage medium that the process accesses; the process is the storage,
+and the storage is the process.
+
+This dissolution has a precedent in dynamical systems accounts of
+cognition. Rodney Brooks's critique of classical AI, Tim van
+Gelder's dynamical hypothesis, Randall Beer's work on minimally
+cognitive systems, and the broader tradition of embodied and situated
+cognition all argue, in different ways, that the storage--process
+distinction misrepresents the nature of biological cognition. The
+\MEMeight{} architecture is a specific formal proposal for how to
+replace that distinction with something more dynamically adequate.
+
+Whether this dissolution is a genuine theoretical advance or a
+restatement of a known position in more elaborate notation is a
+question that requires comparing the \MEMeight{} formalism with
+existing dynamical systems frameworks in terms of what it explains
+that they do not. The corpus does not make this comparison
+explicitly. The gap is noted here without verdict.
+
+\section{Salience, Memory, and the Marine--MEM\textbar{}8 Interface}
+\label{sec:marine-mem8-interface}
+
+The most architecturally distinctive feature of the Phoenix corpus
+is not either the \Marine{} or \MEMeight{} taken in isolation but
+the proposed interface between them. The Marine identifies
+high-salience moments in an incoming signal stream --- moments
+where jitter is low, energy is high, and harmonic alignment is
+present. These moments are proposed as the inputs to the memory
+system: only high-salience events are encoded into the \MEMeight{}
+field, while low-salience events are filtered out at the perceptual
+gateway.
+
+This salience-gated memory encoding has several attractive
+properties. It produces a sparse encoding naturally: most moments
+in a continuous signal stream are not high-salience, so the memory
+field does not become cluttered with undifferentiated content.
+It creates a natural alignment between what is remembered and what
+was important at the time of encoding, without requiring a separate
+importance-weighting mechanism. It connects perception and memory
+through a shared primitive --- temporal coherence --- rather than
+through an interface that converts one representational format into
+another.
+
+The architecture thereby resembles what predictive processing
+accounts of the brain describe: a hierarchical system in which
+higher levels represent stable, low-surprise structure extracted
+from sensory streams, and in which prediction errors --- moments
+where the incoming signal deviates from expectation --- drive
+both attention and learning. The Marine's jitter metric is, from
+this perspective, an inverse surprise measure: low jitter corresponds
+to signal behaviour that conforms to the running model, while high
+jitter at structurally important moments might correspond to a
+violation of expectation that demands attention rather than stable
+encoding.
+
+The Phoenix corpus does not make this connection to predictive
+processing explicitly, but the structural parallels are close
+enough that they will be useful for the reinterpretation work
+of Part~IV.
+
+\begin{epistemicstatus}{Reconstructive Conjecture}
+The alignment between the Marine--\MEMeight{} interface and the
+predictive processing framework is a structural observation, not
+a claim that the corpus endorses or that has been formally derived.
+It is reconstructive: a parallel noted by a reader examining the
+corpus against the background of existing cognitive science. Whether
+the corpus's authors had this connection in mind, and whether it
+holds up under formal analysis, are open questions. The parallel
+is noted because it will inform the reinterpretation strategy
+of Part~IV, not because it constitutes evidence for the corpus's
+claims.
+\end{epistemicstatus}
+
+\section{The Architecture's Scope Ambition}
+\label{sec:mem8-scope}
+
+The \MEMeight{} architecture, like the Marine salience framework,
+does not confine its claims to a specific processing domain. Having
+proposed wave interference as the mechanism for memory storage and
+retrieval, the corpus extends the framework to cross-modal binding,
+emotional modulation of memory consolidation, cognitive coherence,
+and the general character of what it calls \enquote{consciousness
+patterns.}
+
+Each extension has a different epistemic status. Cross-modal binding
+via frequency resonance is a specific, in-principle-testable
+mechanism: it predicts that memories encoded in close temporal
+proximity to events sharing a characteristic frequency will be
+more strongly associated than memories encoded in temporal proximity
+to events with non-overlapping frequency characteristics. This is
+the kind of prediction that distinguishes the framework from a
+merely descriptive account.
+
+Emotional modulation of amplitude envelopes is similarly specific:
+it predicts that memories encoded during periods of high emotional
+arousal (large $|e(t)|$) will have longer effective decay constants
+$\lambda_i$ and larger contributions to the global field, producing
+stronger and more persistent associations. This is consistent with
+established findings in the neuroscience of emotional memory, which
+is one of the corpus's genuine points of contact with empirical
+literature.
+
+The extension to \enquote{consciousness patterns} is where the
+framework's scope ambition begins to exceed its analytical
+infrastructure. The corpus uses the term in ways that shift between
+levels: sometimes it refers to the global field $\MemField(x,t)$
+as a mathematical object, sometimes to the phenomenological
+experience of awareness, and sometimes to a proposed physical
+substrate of subjectivity. These are three very different referents,
+and the corpus does not always clearly distinguish which is in play.
+
+That slippage is worth marking here, before the formal audit
+vocabulary is available to name it. It does not disqualify the
+architecture. It identifies a site where the framework will need
+to be more careful than it currently is.
+
+\section{Why This Architecture Is Interesting}
+\label{sec:mem8-interesting}
+
+Before moving to the next chapter, it is worth pausing to state
+clearly why the \MEMeight{} architecture merits serious attention
+rather than easy dismissal.
+
+The architecture is interesting because it addresses a genuine
+problem: how to build memory systems that are simultaneously sparse,
+associative, contextually sensitive, and dynamically modulated
+without requiring explicit mechanisms for each of these properties.
+The wave interference framework provides, at least in principle,
+all four properties from a single mathematical structure. Sparsity
+emerges from destructive interference between incompatible memories.
+Associativity emerges from the cross-term interference structure.
+Contextual sensitivity emerges from the query resonance mechanism.
+Dynamic modulation emerges from the emotional amplitude envelope.
+
+That is a genuine economy of theoretical machinery. The question
+is whether the economy is real --- whether the mathematical
+structure actually delivers these properties in a computationally
+realizable form --- or whether it is apparent: a notation that
+describes properties without providing a mechanism for producing
+them.
+
+That question cannot be answered at the level of formalism alone.
+It requires asking: what are the wave functions, physically or
+computationally? What is the space $x$ over which they are defined?
+How are the characteristic frequencies $\omega_i$ assigned? How
+is the emotional state function $e(t)$ computed? How does the
+system resolve the integral $R_i(Q)$ in time that scales with the
+computational demands of a real application?
+
+These are engineering questions, not philosophical ones, and the
+corpus answers them partially. The partial answers are not evasions;
+they are the normal condition of a theoretical framework at an
+early stage of development. What matters at this stage is whether
+the framework is structured in a way that makes the engineering
+questions answerable in principle. That is a more interesting
+question than whether they have been answered in fact, and it is
+the question that Part~III will press.
+
+\medskip
+
+Chapter~3 turns to the harmonic consensus compression framework
+--- the HCF1 architecture --- which proposes a fundamentally
+different approach to representing structured signals. Where
+\MEMeight{} addresses the temporal dynamics of memory, HCF1
+addresses the representational economy of harmonic structure. The
+two frameworks are proposed as complementary components of a unified
+alternative to both classical DSP and contemporary deep learning.
+Together, they form the architectural core of what the Phoenix
+corpus calls a \enquote{salience-centered computational paradigm.}
