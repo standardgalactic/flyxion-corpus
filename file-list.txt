@@ -1,0 +1,1341 @@
+.
+├── README.md
+├── analyze-flyxion-build.sh
+├── build-flyxion-corpus.sh
+├── collect-flyxion-corpus.sh
+├── compile-flyxion-corpus.sh
+├── extract-flyxion-text.sh
+├── flyxion-inventory
+│   ├── errors.log
+│   ├── inventory.raw.tsv
+│   ├── inventory.tsv
+│   ├── summary.txt
+│   └── unique-titles.tsv
+├── flyxion-inventory.sh
+├── metadata
+│   ├── collection-errors.log
+│   ├── collection-manifest.tsv
+│   ├── root-candidates.tsv
+│   └── source-inventory.tsv
+└── sources
+    ├── 8b-is
+    │   ├── 8b-public-documents
+    │   │   ├── cinematic-reconstruction.tex
+    │   │   ├── framework
+    │   │   │   ├── admissibility_principle.tex
+    │   │   │   ├── ortyx-project
+    │   │   │   │   ├── frontmatter
+    │   │   │   │   │   └── preface.tex
+    │   │   │   │   ├── main.tex
+    │   │   │   │   ├── parts
+    │   │   │   │   │   ├── part1
+    │   │   │   │   │   │   ├── ch01.tex
+    │   │   │   │   │   │   ├── ch02.tex
+    │   │   │   │   │   │   ├── ch03.tex
+    │   │   │   │   │   │   ├── ch04.tex
+    │   │   │   │   │   │   └── ch05.tex
+    │   │   │   │   │   ├── part2
+    │   │   │   │   │   │   ├── ch06.tex
+    │   │   │   │   │   │   ├── ch07.tex
+    │   │   │   │   │   │   ├── ch08.tex
+    │   │   │   │   │   │   └── ch09.tex
+    │   │   │   │   │   ├── part3
+    │   │   │   │   │   │   ├── ch11.tex
+    │   │   │   │   │   │   ├── ch12.tex
+    │   │   │   │   │   │   ├── ch13.tex
+    │   │   │   │   │   │   ├── ch14.tex
+    │   │   │   │   │   │   └── ch15.tex
+    │   │   │   │   │   ├── part4
+    │   │   │   │   │   │   ├── ch16.tex
+    │   │   │   │   │   │   ├── ch17.tex
+    │   │   │   │   │   │   ├── ch18.tex
+    │   │   │   │   │   │   ├── ch19.tex
+    │   │   │   │   │   │   └── ch20.tex
+    │   │   │   │   │   └── part5
+    │   │   │   │   │       ├── ch21.tex
+    │   │   │   │   │       ├── ch22.tex
+    │   │   │   │   │       ├── ch23.tex
+    │   │   │   │   │       └── ch24.tex
+    │   │   │   │   └── preamble
+    │   │   │   │       └── packages.tex
+    │   │   │   └── phoenix_preregistration.tex
+    │   │   ├── processing
+    │   │   │   └── semantic_state.tex
+    │   │   ├── semantic_state.tex
+    │   │   ├── sparse-representations
+    │   │   │   └── monograph
+    │   │   │       ├── chapters
+    │   │   │       │   └── ch01_distributed_manifold.tex
+    │   │   │       ├── frontmatter
+    │   │   │       │   ├── methodological.tex
+    │   │   │       │   ├── prefatory.tex
+    │   │   │       │   └── titlepage.tex
+    │   │   │       └── main.tex
+    │   │   └── working
+    │   │       ├── formalism-interface.tex
+    │   │       ├── gesture_review.tex
+    │   │       ├── kes-cheatsheet.tex
+    │   │       ├── propagative_reality.tex
+    │   │       └── silicon_cartography.tex
+    │   └── claimshift
+    │       ├── manifest-protocol-verification-inheritance.tex
+    │       ├── processing
+    │       │   ├── manifest-protocol-verification-inheritance.tex
+    │       │   └── verification-inheritance-transformation.tex
+    │       └── verification-inheritance-transformation.tex
+    ├── peterlodri-sec
+    │   └── vim-philosophy
+    │       ├── beyond-optimal-foraging.tex
+    │       ├── building-forth.tex
+    │       ├── essays
+    │       │   ├── modal-editing.tex
+    │       │   └── thinking-in-vim
+    │       │       └── main.tex
+    │       └── papers
+    │           └── beyond-optimal-foraging
+    │               └── beyond-optimal-foraging.tex
+    └── standardgalactic
+        ├── Centerfuge
+        │   ├── essay
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   └── monograph.tex
+        │   ├── framework
+        │   │   └── Irreversibility as Structure.tex
+        │   ├── principia_ratio_entropica.tex
+        │   ├── principia_ratio_entropica_vol2.tex
+        │   ├── principia_ratio_entropica_vol3.tex
+        │   ├── principia_ratio_entropica_vol4.tex
+        │   ├── principia_ratio_entropica_vol5.tex
+        │   ├── principia_ratio_entropica_vol6.tex
+        │   ├── processing
+        │   │   ├── principia_ratio_entropica.tex
+        │   │   ├── principia_ratio_entropica_vol2.tex
+        │   │   ├── principia_ratio_entropica_vol3.tex
+        │   │   ├── principia_ratio_entropica_vol4.tex
+        │   │   ├── principia_ratio_entropica_vol5.tex
+        │   │   └── principia_ratio_entropica_vol6.tex
+        │   └── sci-fi
+        │       └── kommunikation.tex
+        ├── HYDRA
+        │   ├── hydra.tex
+        │   └── hydra_architecture.tex
+        ├── TARTAN
+        │   ├── accumulation-to-closure.tex
+        │   ├── analysis
+        │   │   └── resonance-without-a-substrate.tex
+        │   ├── music
+        │   │   ├── concrete_cracks_analysis.tex
+        │   │   └── working
+        │   │       └── concrete_cracks_analysis.tex
+        │   ├── persuasion.tex
+        │   ├── processing
+        │   │   ├── transformational_communication-v2.tex
+        │   │   └── transformational_communication.tex
+        │   ├── reconstruction_stability.tex
+        │   ├── tartan.tex
+        │   ├── transformational_communication-v2.tex
+        │   └── transformational_communication.tex
+        ├── abraxas
+        │   └── projects
+        │       └── article.tex
+        ├── alphabet
+        │   ├── Abstraction as Reduction - colophon.tex
+        │   ├── Abstraction as Reduction.tex
+        │   ├── Admissible Histories - Cognition.tex
+        │   ├── Admissible Histories - Computational Biology.tex
+        │   ├── Admissible Histories - Neurocomputing.tex
+        │   ├── Admissible Histories - draft 01.tex
+        │   ├── Admissible Histories.tex
+        │   ├── Against_Indiscriminate_Visibility.tex
+        │   ├── Coherence Before Engagement.tex
+        │   ├── Counterfactual Explanation as Perceptual Control.tex
+        │   ├── Embodied Constraint.tex
+        │   ├── Flower Wars - Bounded Violence.tex
+        │   ├── Flower Wars - Compendium.tex
+        │   ├── Flower Wars - Draft 01.tex
+        │   ├── Flower Wars.tex
+        │   ├── From Minerals to Minds.tex
+        │   ├── Neural Commit Semantics - draft 01.tex
+        │   ├── Neural Commit Semantics.tex
+        │   ├── Never-Predict-Noise-draft-01.tex
+        │   ├── Never-Predict-Noise-draft-02.tex
+        │   ├── Never-Predict-Noise.tex
+        │   ├── SITH Theory.tex
+        │   ├── Scalar-Extraction.tex
+        │   ├── Spectacle Runtime - draft 01.tex
+        │   ├── Spectacle Runtime.tex
+        │   ├── The Ecology of Neoteny - draft 02.tex
+        │   ├── The Ecology of Neoteny - draft 03.tex
+        │   ├── The Ecology of Neoteny.tex
+        │   ├── The Genius of Silence.tex
+        │   ├── The Incoherence - draft 01.tex
+        │   ├── The Incoherence.tex
+        │   ├── The Mortality of Computation.tex
+        │   ├── aphantasia
+        │   │   ├── aphantasia-essay.tex
+        │   │   ├── extending-aphantasia-essay.tex
+        │   │   ├── quantum-spherepop-draft-01.tex
+        │   │   └── quantum-spherepop.tex
+        │   ├── aphantasia-essay.tex
+        │   ├── attention-essay.tex
+        │   ├── axioms.tex
+        │   ├── biology
+        │   │   └── closure_of_closures.tex
+        │   ├── cognition-research
+        │   │   └── essay
+        │   │       └── monograph.tex
+        │   ├── constraint-geometry
+        │   │   └── field-space.tex
+        │   ├── cosmology
+        │   │   ├── front
+        │   │   │   ├── preface.tex
+        │   │   │   └── titlepage.tex
+        │   │   ├── main.tex
+        │   │   ├── multiscale-constraint-flow.tex
+        │   │   └── three_smoothing_mechanisms.tex
+        │   ├── de-architechtura.tex
+        │   ├── de-architectura.tex
+        │   ├── document
+        │   │   ├── admissibility_crisis.tex
+        │   │   ├── autoregression.tex
+        │   │   ├── civic_simulator.tex
+        │   │   └── draft
+        │   │       └── autoregression.tex
+        │   ├── ecology
+        │   │   └── geometry_of_rewiring.tex
+        │   ├── economics
+        │   │   ├── Scalar-Extraction-v02.tex
+        │   │   ├── scalable-alignment-01.tex
+        │   │   ├── scalable-alignment-02.tex
+        │   │   └── scalable-alignment.tex
+        │   ├── essay
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-02
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-03
+        │   │   │   └── monograph.tex
+        │   │   ├── drafts
+        │   │   │   ├── mind_at_work.tex
+        │   │   │   ├── monograph (5).tex
+        │   │   │   ├── monograph (6).tex
+        │   │   │   ├── monograph (7).tex
+        │   │   │   └── monograph (8).tex
+        │   │   └── monograph.tex
+        │   ├── example
+        │   │   ├── against-eventless-ontology.tex
+        │   │   ├── compression-of-expertise.tex
+        │   │   ├── draft
+        │   │   │   └── recursive-continuation.tex
+        │   │   ├── ecology-of-constraints.tex
+        │   │   ├── geometry-of-boredom.tex
+        │   │   ├── hidden-files
+        │   │   │   └── procedural-ontology.tex
+        │   │   ├── history-before-function.tex
+        │   │   ├── procedural-ontology.tex
+        │   │   ├── recursive-continuation.tex
+        │   │   └── threshold-of-deferral.tex
+        │   ├── framework
+        │   │   ├── Cursive Galactic
+        │   │   │   └── unified-encodings.tex
+        │   │   ├── SGA
+        │   │   │   └── unified-encodings.tex
+        │   │   ├── beyond_prediction_error.tex
+        │   │   ├── descent-into-reality.tex
+        │   │   ├── drafts
+        │   │   │   └── everything_is_a_clipboard.tex
+        │   │   ├── everything_is_a_clipboard.tex
+        │   │   └── unified-encodings.tex
+        │   ├── manuscripts
+        │   │   ├── amplitwist-cortical-columns
+        │   │   │   └── essay.tex
+        │   │   ├── cognitive-action
+        │   │   │   └── essay.tex
+        │   │   ├── geodesics_of_attention_v1.tex
+        │   │   ├── geodesics_of_attention_v2.tex
+        │   │   ├── geodesics_of_attention_v3_cursive.tex
+        │   │   ├── geodesics_of_attention_v3_nova.tex
+        │   │   ├── geodesics_of_attention_v3_sga.tex
+        │   │   ├── geometry_of_constraints.tex
+        │   │   ├── geometry_of_constraints_v1.tex
+        │   │   ├── hidden_manifolds.tex
+        │   │   ├── introduction
+        │   │   │   └── essay.tex
+        │   │   ├── normalization_without_convergence.tex
+        │   │   ├── normalization_without_convergence_v1.tex
+        │   │   └── operator-ecology
+        │   │       └── essay.tex
+        │   ├── monograph
+        │   │   └── essay.tex
+        │   ├── physics
+        │   │   ├── Inflation without Expansion.tex
+        │   │   ├── Never-Predict-Noise.tex
+        │   │   ├── archive
+        │   │   │   └── gauge-gravity-v0.tex
+        │   │   ├── cosmology
+        │   │   │   ├── admissible-geometry-v0.tex
+        │   │   │   ├── admissible-geometry-v1.tex
+        │   │   │   ├── admissible-geometry.tex
+        │   │   │   └── persistence_of_structure.tex
+        │   │   ├── gauge-gravity.tex
+        │   │   ├── processing
+        │   │   │   ├── Never-Predict-Noise.tex
+        │   │   │   └── univalent-photonics.tex
+        │   │   └── univalent-photonics.tex
+        │   ├── pipeline
+        │   │   ├── continuation_operators.tex
+        │   │   ├── history_preserving_erasing.tex
+        │   │   ├── merger_coordinate_legibility.tex
+        │   │   ├── pipeline_specification.tex
+        │   │   ├── publication_as_projection.tex
+        │   │   ├── retention_before_retrieval.tex
+        │   │   └── what-survives-reconstruction.tex
+        │   ├── processing
+        │   │   ├── Abstraction as Reduction.tex
+        │   │   ├── Bootstrapping Utopia.tex
+        │   │   ├── Constraint Before Reference.tex
+        │   │   ├── Exaptation Under Delayed Evaluation.tex
+        │   │   ├── SITH Theory - draft 01.tex
+        │   │   ├── SITH Theory - draft 02.tex
+        │   │   ├── SITH Theory.tex
+        │   │   ├── abstraction-draft-04.tex
+        │   │   ├── distributed_industrial_cloud.tex
+        │   │   └── geometry_of_closure.tex
+        │   ├── projects
+        │   │   ├── axioms-for-a-falling-universe.tex
+        │   │   ├── axioms.tex
+        │   │   ├── compiling
+        │   │   │   └── axioms-for-a-falling-universe.tex
+        │   │   ├── entropic-redshift-slides.tex
+        │   │   ├── entropic-redshift-supplement.tex
+        │   │   ├── entropic-redshift.tex
+        │   │   ├── field-ontologies.tex
+        │   │   └── processing
+        │   │       ├── draft-01.tex
+        │   │       └── draft-02.tex
+        │   ├── research
+        │   │   ├── dynamics-of-learning.tex
+        │   │   ├── language_as_constraint_field.tex
+        │   │   ├── noise-becomes-structure.tex
+        │   │   ├── obstruction-cohomology.tex
+        │   │   ├── repair_as_fundamental.tex
+        │   │   ├── screenplay_as_program.tex
+        │   │   ├── semantic_stability.tex
+        │   │   └── topology_of_intention.tex
+        │   ├── resources
+        │   │   ├── admissible-continuation.tex
+        │   │   └── autonomous-systems.tex
+        │   ├── roadmap
+        │   │   ├── collected-works.tex
+        │   │   ├── flyxion_briefing.tex
+        │   │   ├── procedural-attention.tex
+        │   │   └── states_without_histories.tex
+        │   ├── science
+        │   │   ├── the_refractive_self-v1.tex
+        │   │   ├── the_refractive_self-v2.tex
+        │   │   └── the_refractive_self.tex
+        │   ├── screenplay
+        │   │   ├── city_of_brutes.tex
+        │   │   ├── city_of_brutes_inventory.tex
+        │   │   ├── companion.tex
+        │   │   ├── compression_after_expansion.tex
+        │   │   ├── noumenal-attractors.tex
+        │   │   ├── the_fixed_point
+        │   │   │   ├── backmatter
+        │   │   │   │   └── note.tex
+        │   │   │   └── main.tex
+        │   │   ├── the_incoherence
+        │   │   │   ├── main-v1.tex
+        │   │   │   └── main.tex
+        │   │   └── visions-and-boundaries.tex
+        │   ├── soup
+        │   │   ├── book-latex-source
+        │   │   │   ├── main.tex
+        │   │   │   └── parts
+        │   │   │       └── priest-flyxion-correspondence-ledger.tex
+        │   │   ├── consistency-constraints.tex
+        │   │   └── processing
+        │   │       └── consistency-constraints.tex
+        │   ├── working
+        │   │   ├── attention-essay.tex
+        │   │   ├── constraint-propagation.tex
+        │   │   ├── de-architechtura.tex
+        │   │   ├── drafts
+        │   │   │   ├── constraint-propagation.tex
+        │   │   │   └── function_survives_collapse.tex
+        │   │   └── function_survives_collapse.tex
+        │   └── workspace
+        │       ├── essay.tex
+        │       └── monograph.tex
+        ├── animal-social
+        │   ├── background
+        │   │   └── reachability.tex
+        │   └── reachability.tex
+        ├── antivenom
+        │   ├── Aesthetic Saturation.tex
+        │   ├── Against Namespace Laundering - draft 01.tex
+        │   ├── Against Namespace Laundering - draft 02.tex
+        │   ├── Against Namespace Laundering.tex
+        │   ├── Against-the-Extinction-Thesis.tex
+        │   ├── Artificial Coordination.tex
+        │   ├── Aspirational Exhaust.tex
+        │   ├── Authoritative History - overview.tex
+        │   ├── Authoritative History.tex
+        │   ├── Constraint Before Capability.tex
+        │   ├── Culture-and-structural-power.tex
+        │   ├── Dark Patterns.tex
+        │   ├── Induced Homogeneity.tex
+        │   ├── Interface-opacity.tex
+        │   ├── Monetization-of-Redundancy.tex
+        │   ├── Monetizing Uncertainty.tex
+        │   ├── Negative One Indexing.tex
+        │   ├── Optimization without Restraint.tex
+        │   ├── The Assumption of Surplus.tex
+        │   ├── The Commodification of Categories.tex
+        │   ├── The Hostile Interface.tex
+        │   ├── The Polemic Debt.tex
+        │   ├── When Engagement Stops Pointing.tex
+        │   ├── active-inference
+        │   │   ├── surprise-minimization-draft-01.tex
+        │   │   ├── surprise-minimization.tex
+        │   │   ├── unidimary-numbers.tex
+        │   │   └── variational-curvature.tex
+        │   ├── boundaries
+        │   │   ├── escape_velocity.tex
+        │   │   ├── synthetic_trajectories.tex
+        │   │   └── vanity_publishing.tex
+        │   ├── diatribe - draft 01.tex
+        │   ├── diatribe.tex
+        │   ├── economics
+        │   │   ├── participation_without_guarantee.tex
+        │   │   └── structural_convergence.tex
+        │   ├── essay
+        │   │   ├── admissibility_groupoids.tex
+        │   │   ├── counterfactual.tex
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   ├── glossfero-essay.tex
+        │   │   ├── hyperpleonastic-legibility.tex
+        │   │   ├── monograph.tex
+        │   │   ├── paracosms-of-the-strange.tex
+        │   │   └── structural-honesty.tex
+        │   ├── event-history-draft-01.tex
+        │   ├── event-history-draft-02.tex
+        │   ├── event-history.tex
+        │   ├── framework
+        │   │   └── fragility-metacrisis.tex
+        │   ├── futurology
+        │   │   └── xylomorphic-premise.tex
+        │   ├── managed_self.tex
+        │   ├── manuscript
+        │   │   └── essay.tex
+        │   ├── monograph
+        │   │   ├── blockchain-critique.tex
+        │   │   └── unfinishable-games.tex
+        │   ├── opinion
+        │   │   ├── Aesthetic Saturation.tex
+        │   │   └── quiet_battlefield.tex
+        │   ├── persistence
+        │   │   └── proxy_permanence_failure.tex
+        │   ├── philosophy
+        │   │   └── managed_self.tex
+        │   ├── processing
+        │   │   └── Monetization-of-Redundancy.tex
+        │   ├── projects
+        │   │   ├── constraint_closure-1.tex
+        │   │   ├── constraint_closure-2.tex
+        │   │   ├── constraint_closure-3.tex
+        │   │   ├── constraint_closure-4.tex
+        │   │   ├── constraint_closure-5.tex
+        │   │   ├── constraint_closure.tex
+        │   │   ├── ownership-without-understanding.tex
+        │   │   └── survival-is-insufficient.tex
+        │   ├── proxy_integrity.tex
+        │   ├── resources
+        │   │   ├── buffer-world.tex
+        │   │   ├── geometry_of_correction.tex
+        │   │   ├── plenumhub-polyxan.tex
+        │   │   ├── processing
+        │   │   │   ├── buffer-world.tex
+        │   │   │   ├── draft
+        │   │   │   │   └── plenumhub-polyxan.tex
+        │   │   │   ├── geometry_of_correction.tex
+        │   │   │   ├── in_progress
+        │   │   │   │   ├── draft
+        │   │   │   │   │   └── main.tex
+        │   │   │   │   └── main.tex
+        │   │   │   └── plenumhub-polyxan.tex
+        │   │   ├── synthetic_sociality.tex
+        │   │   ├── synthetic_sociality_v2.tex
+        │   │   ├── synthetic_sociality_v3-1.tex
+        │   │   ├── synthetic_sociality_v3-2.tex
+        │   │   ├── synthetic_sociality_v3-3.tex
+        │   │   └── synthetic_sociality_v3.tex
+        │   ├── rhetoric
+        │   │   ├── Friction as Inoculation - Draft 01.tex
+        │   │   ├── Friction as Inoculation - Draft 02.tex
+        │   │   └── Friction as Inoculation.tex
+        │   ├── sociology
+        │   │   └── remote_work.tex
+        │   └── world-models.tex
+        ├── arabic-flashcards
+        │   ├── monograph.tex
+        │   ├── protocol-zero-draft-01.tex
+        │   └── protocol-zero.tex
+        ├── arcanum
+        │   ├── realization-map.tex
+        │   └── synthetic-grounding.tex
+        ├── calculus
+        │   ├── Calculus - diagrams.tex
+        │   ├── Calculus - main text - draft 01.tex
+        │   ├── baseline
+        │   │   ├── admissibility-essay.tex
+        │   │   ├── computing_as_flow.tex
+        │   │   ├── constraint_reachability_relaxation.tex
+        │   │   ├── draft
+        │   │   │   └── computing_as_flow.tex
+        │   │   ├── markov_boundaries.tex
+        │   │   ├── persistent_anomalies.tex
+        │   │   └── preference_fields.tex
+        │   ├── computation
+        │   │   └── adjunction_and_irreversibility.tex
+        │   ├── computational_worlds.tex
+        │   ├── constraint.tex
+        │   ├── constraint_and_transformation_v2.tex
+        │   ├── constraint_v2.tex
+        │   ├── experiments
+        │   │   ├── empirical-paper.tex
+        │   │   ├── prediction-before-interpretation.tex
+        │   │   ├── restorability-boundaries.tex
+        │   │   └── trig-textbook
+        │   │       ├── front
+        │   │       │   └── preface.tex
+        │   │       └── main.tex
+        │   ├── hierarchical-structure
+        │   │   ├── chapters
+        │   │   │   ├── ch01_orientation.tex
+        │   │   │   ├── ch02_discrete.tex
+        │   │   │   ├── ch03_probability.tex
+        │   │   │   ├── ch04_entropy.tex
+        │   │   │   ├── ch05_metrics.tex
+        │   │   │   ├── ch06_constraints.tex
+        │   │   │   ├── ch07_dendrograms.tex
+        │   │   │   ├── ch08_ultrametric.tex
+        │   │   │   ├── ch09_triplets.tex
+        │   │   │   ├── ch10_reconstruction.tex
+        │   │   │   ├── ch11_objectives.tex
+        │   │   │   ├── ch12_hardness.tex
+        │   │   │   ├── ch13_oracle.tex
+        │   │   │   ├── ch14_partial_hc.tex
+        │   │   │   ├── ch15_topdown.tex
+        │   │   │   ├── ch16_approx.tex
+        │   │   │   ├── ch17_complexity.tex
+        │   │   │   ├── ch18_streaming.tex
+        │   │   │   ├── ch19_parallel.tex
+        │   │   │   ├── ch20_curvature.tex
+        │   │   │   ├── ch21_entropy_descent.tex
+        │   │   │   ├── ch22_constraint_prop.tex
+        │   │   │   ├── ch24_replication.tex
+        │   │   │   ├── preface.tex
+        │   │   │   ├── synthesis.tex
+        │   │   │   └── titlepage.tex
+        │   │   └── main.tex
+        │   ├── identity_after_collapse.tex
+        │   ├── interface_ecologies.tex
+        │   ├── interface_ecologies_v2.tex
+        │   ├── kernel-memory.tex
+        │   ├── mesoscale_matter.tex
+        │   ├── processing
+        │   │   ├── admissibility-certificates.tex
+        │   │   ├── boundaries-computational-objects.tex
+        │   │   ├── compression-fallacy.tex
+        │   │   ├── computational_worlds.tex
+        │   │   ├── economics-of-irreversibility.tex
+        │   │   ├── parenthetical-asides.tex
+        │   │   ├── repair-not-reconstruction.tex
+        │   │   └── restoration-before-explanation.tex
+        │   ├── quantum-mechanics
+        │   │   ├── self_improving_media_quines.tex
+        │   │   └── unistochastic-qm
+        │   │       └── main.tex
+        │   ├── rsvp_v4.tex
+        │   ├── stone_piano.tex
+        │   └── working
+        │       ├── Identity_After_Collapse.tex
+        │       └── attention-essay.tex
+        ├── caldera-reactor
+        │   └── caldera_reactor.tex
+        ├── cognition-research
+        │   ├── cosmological-memory.tex
+        │   └── persistence-without-reachability.tex
+        ├── computation
+        │   ├── abstraction
+        │   │   ├── armillary_sphere.tex
+        │   │   ├── computacao_alem_dos_dados.tex
+        │   │   ├── computation-beyond-data.tex
+        │   │   ├── creative-obstinacy.tex
+        │   │   ├── distributed-agency.tex
+        │   │   ├── flyxion_atlas.tex
+        │   │   └── volume_zero.tex
+        │   ├── against_the_kitchen_sink.tex
+        │   ├── collapse_retention.tex
+        │   ├── continuation_geometry.tex
+        │   ├── continuation_geometry_monograph.tex
+        │   ├── correspondents_and_residents.tex
+        │   ├── diagnostic-coordinates.tex
+        │   ├── generative_continuation_geometry.tex
+        │   ├── histories-become-operators.tex
+        │   ├── monotonic-continuation.tex
+        │   ├── moon-not-computer.tex
+        │   ├── processing
+        │   │   ├── against_the_kitchen_sink.tex
+        │   │   ├── collapse_retention.tex
+        │   │   ├── continuation_geometry.tex
+        │   │   ├── continuation_geometry_monograph.tex
+        │   │   ├── correspondents_and_residents.tex
+        │   │   ├── diagnostic-coordinates.tex
+        │   │   ├── draft
+        │   │   │   └── generative_continuation_geometry.tex
+        │   │   ├── generative_continuation_geometry.tex
+        │   │   ├── histories-become-operators.tex
+        │   │   └── monotonic-continuation.tex
+        │   ├── radiative-switch
+        │   │   └── radiative_switch_computation.tex
+        │   ├── version-control
+        │   │   └── git-series-plan.tex
+        │   └── xylomorphic_computation.tex
+        ├── cosmology
+        │   ├── accessibility-relaxation.tex
+        │   ├── diagnosis-before-inference.tex
+        │   ├── diagnosis-expanded-section.tex
+        │   ├── interface-analysis.tex
+        │   ├── monograph.tex
+        │   └── working
+        │       ├── admissibility-interface.tex
+        │       ├── distinction-geometry-core.tex
+        │       ├── flyxion-frameworks.tex
+        │       └── resource-geometry.tex
+        ├── diagnostic-coordinates
+        │   └── monograph.tex
+        ├── ecological-models
+        │   └── urban_eco_climate.tex
+        ├── gamma-waves
+        │   ├── The Geometry of Outrage.tex
+        │   ├── economics
+        │   │   └── essay.tex
+        │   ├── essay
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_II (1).tex
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_II.tex
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_III.tex
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_IV (1).tex
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_IV (2).tex
+        │   │   ├── RSVP_Monograph_Complete_Parts_I_IV (3).tex
+        │   │   └── processing
+        │   │       ├── draft-01
+        │   │       │   └── essay.tex
+        │   │       ├── draft-02
+        │   │       │   └── essay.tex
+        │   │       └── essay.tex
+        │   ├── monograph
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-02
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-03
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-04
+        │   │   │   └── monograph.tex
+        │   │   └── monograph.tex
+        │   ├── projects
+        │   │   ├── draft-01
+        │   │   │   └── essay.tex
+        │   │   ├── draft-02
+        │   │   │   └── essay.tex
+        │   │   ├── draft-03
+        │   │   │   └── essay.tex
+        │   │   ├── draft-04
+        │   │   │   └── essay.tex
+        │   │   ├── draft-05
+        │   │   │   └── essay.tex
+        │   │   └── essay.tex
+        │   └── prototypes
+        │       └── entropys_edge.tex
+        ├── haplopraxis
+        │   └── under-construction
+        │       └── developmental-opacity.tex
+        ├── human
+        │   └── projects
+        │       ├── textbot.tex
+        │       └── zebra-architecture.tex
+        ├── kitbash
+        │   ├── Admissibility and Renormalization.tex
+        │   ├── Ecphoric Synthesis.tex
+        │   ├── Ephemeral Feeds.tex
+        │   ├── Everlasting Redshift.tex
+        │   ├── Metric Interface Dynamics.tex
+        │   ├── On Gaudiness.tex
+        │   ├── The Failure of Project Xanadu.tex
+        │   ├── Transformation Before Representation.tex
+        │   ├── asymptotic_safety.tex
+        │   ├── controversial-topics
+        │   │   └── background
+        │   │       └── monograph.tex
+        │   ├── cosmology
+        │   │   ├── Axial Holonomy - draft 01.tex
+        │   │   ├── Axial Holonomy - draft 02.tex
+        │   │   ├── Axial Holonomy - draft 03.tex
+        │   │   ├── asymptotic_safety.tex
+        │   │   ├── constraint_geometry.tex
+        │   │   ├── dynamics_of_theory_space.tex
+        │   │   ├── essay
+        │   │   │   ├── draft-01
+        │   │   │   │   └── essay.tex
+        │   │   │   └── essay.tex
+        │   │   ├── generative_memory.tex
+        │   │   ├── prereq_textbook.tex
+        │   │   ├── rsvp_cosmology-1.tex
+        │   │   ├── rsvp_cosmology.tex
+        │   │   ├── rsvp_cosmology_v2-1.tex
+        │   │   ├── rsvp_cosmology_v2.tex
+        │   │   └── working
+        │   │       ├── draft-03
+        │   │       │   └── incompleteness.tex
+        │   │       ├── draft-04
+        │   │       │   └── incompleteness.tex
+        │   │       └── draft-05
+        │   │           └── incompleteness.tex
+        │   ├── draft
+        │   │   └── geometry-as-computational-infrastructure.tex
+        │   ├── economics
+        │   │   └── essay.tex
+        │   ├── essay
+        │   │   ├── draft-01
+        │   │   │   └── paper.tex
+        │   │   ├── draft-02
+        │   │   │   └── paper.tex
+        │   │   ├── draft-03
+        │   │   │   └── paper.tex
+        │   │   ├── knowledge-ecosystems.tex
+        │   │   └── paper.tex
+        │   ├── geometry-as-computational-infrastructure.tex
+        │   ├── irreversible-histories.tex
+        │   ├── monograph
+        │   │   └── Scalar-Extraction.tex
+        │   ├── operations
+        │   │   ├── essay-01
+        │   │   │   └── monograph.tex
+        │   │   ├── essay-02
+        │   │   │   ├── draft-01.tex
+        │   │   │   ├── draft-02.tex
+        │   │   │   └── draft-03.tex
+        │   │   └── essay-03
+        │   │       ├── draft-01
+        │   │       │   └── essay.tex
+        │   │       └── essay-03.tex
+        │   ├── paperbot
+        │   │   ├── draft
+        │   │   │   └── paperbot-parliament.tex
+        │   │   ├── geometry-of-control.tex
+        │   │   ├── orientation-monograph.tex
+        │   │   ├── paperbot-parliament.tex
+        │   │   ├── parliament_hydra.tex
+        │   │   └── reachability_systems.tex
+        │   ├── paradox-of-precaution.tex
+        │   ├── philosophy
+        │   │   └── structural-semantics.tex
+        │   ├── physics
+        │   │   ├── RSVP_Study_Guide (1).tex
+        │   │   ├── RSVP_Study_Guide (2).tex
+        │   │   ├── RSVP_Study_Guide (3).tex
+        │   │   ├── constraint-accumulation-draft-01.tex
+        │   │   ├── constraint-accumulation.tex
+        │   │   ├── processing
+        │   │   │   └── constraint-accumulation.tex
+        │   │   └── working
+        │   │       ├── RSVP_Study_Guide - incomplete.tex
+        │   │       ├── RSVP_Study_Guide.tex
+        │   │       └── draft-01
+        │   │           └── RSVP_Study_Guide.tex
+        │   ├── prereq_textbook.tex
+        │   ├── processing
+        │   │   ├── Draft 1.tex
+        │   │   ├── Draft 2.tex
+        │   │   ├── Draft 3.tex
+        │   │   ├── essay
+        │   │   │   └── main.tex
+        │   │   ├── mundus_subterraneus.tex
+        │   │   └── unreadability.tex
+        │   ├── research
+        │   │   ├── essay
+        │   │   │   ├── draft-01
+        │   │   │   │   └── thermal-infrastructure.tex
+        │   │   │   ├── draft-03
+        │   │   │   │   └── thermal-infrastructure.tex
+        │   │   │   └── thermal-infrastructure.tex
+        │   │   ├── math
+        │   │   │   ├── draft-01
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   ├── draft-02
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   ├── draft-03
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   ├── draft-04
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   ├── draft-05
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   ├── draft-06
+        │   │   │   │   └── entropic-gravity.tex
+        │   │   │   └── entropic-gravity.tex
+        │   │   ├── psychology
+        │   │   │   ├── draft-01
+        │   │   │   │   └── emotions.tex
+        │   │   │   ├── draft-02
+        │   │   │   │   └── emotions.tex
+        │   │   │   └── emotions.tex
+        │   │   └── working
+        │   │       ├── draft-01
+        │   │       │   └── essay.tex
+        │   │       ├── draft-02
+        │   │       │   └── essay.tex
+        │   │       └── essay.tex
+        │   ├── sandbox
+        │   │   └── essay
+        │   │       └── essay.tex
+        │   ├── thesis
+        │   │   ├── constraint_closure.tex
+        │   │   ├── draft-01
+        │   │   │   └── thesis.tex
+        │   │   ├── draft-02
+        │   │   │   └── thesis.tex
+        │   │   ├── draft-03
+        │   │   │   └── thesis.tex
+        │   │   └── thesis.tex
+        │   ├── top-level-ontology-draft-01.tex
+        │   ├── top-level-ontology-draft-02.tex
+        │   └── workspace
+        │       └── operator-ecology.tex
+        ├── library
+        │   ├── Agency Is Not Computation.tex
+        │   ├── Cognition-as-Constraint-Historical-Computation.tex
+        │   ├── Constraint Before Optimization.tex
+        │   ├── Hallucination is Normal.tex
+        │   ├── Identity as Namespace - draft 01.tex
+        │   ├── Identity as Namespace.tex
+        │   ├── Indivisibility-and-entropy.tex
+        │   ├── Intelligence Is a Trajectory.tex
+        │   ├── Merit without Mercy.tex
+        │   ├── Simulation as Civic Infrastructure.tex
+        │   ├── The Logic of Redundancy.tex
+        │   ├── The Myth of Dual Cognition.tex
+        │   ├── The Stack Capture Race.tex
+        │   ├── Thermodynamic-Reachability.tex
+        │   ├── Worldline Selection Under Constraint.tex
+        │   ├── astrophysics
+        │   │   ├── solar-interiors.tex
+        │   │   └── time
+        │   │       ├── draft-01
+        │   │       │   └── entropic-smoothing.tex
+        │   │       ├── draft-02
+        │   │       │   └── entropic-smoothing.tex
+        │   │       └── entropic-smoothing.tex
+        │   ├── baseline
+        │   │   └── text_as_substrate.tex
+        │   ├── computing
+        │   │   └── magnetic-fluidic-computing.tex
+        │   ├── constraint_geometry.tex
+        │   ├── essay
+        │   │   ├── draft-01.tex
+        │   │   └── essay.tex
+        │   ├── field-dynamics-essay.tex
+        │   ├── geology
+        │   │   ├── draft-01
+        │   │   │   └── paper.tex
+        │   │   ├── draft-02
+        │   │   │   └── paper.tex
+        │   │   ├── draft-03
+        │   │   │   └── paper.tex
+        │   │   └── paper.tex
+        │   ├── intelligence-under-constraint.tex
+        │   ├── monograph
+        │   │   ├── binding_invariant.tex
+        │   │   ├── constraint_regimes-v1.tex
+        │   │   ├── constraint_regimes.tex
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-02
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-03
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-04
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-05
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-06
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-07
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-08
+        │   │   │   └── monograph.tex
+        │   │   ├── draft-09
+        │   │   │   └── monograph.tex
+        │   │   ├── processing
+        │   │   │   ├── binding_invariant.tex
+        │   │   │   ├── constraint_regimes-v1.tex
+        │   │   │   ├── constraint_regimes.tex
+        │   │   │   ├── topology_of_intention-v1.tex
+        │   │   │   ├── topology_of_intention-v2.tex
+        │   │   │   └── topology_of_intention.tex
+        │   │   ├── topology_of_intention-v1.tex
+        │   │   ├── topology_of_intention-v2.tex
+        │   │   └── topology_of_intention.tex
+        │   ├── physics
+        │   │   ├── affine-quantum-deformation-abstract.tex
+        │   │   ├── affine-quantum-deformation-article.tex
+        │   │   ├── affine-quantum-deformation-summary.tex
+        │   │   ├── affine-quantum-deformation-workshop.tex
+        │   │   ├── energy_as_contradiction.tex
+        │   │   └── monograph
+        │   │       ├── draft-01
+        │   │       │   └── essay.tex
+        │   │       ├── draft-02
+        │   │       │   └── essay.tex
+        │   │       ├── essay.tex
+        │   │       └── incomplete.tex
+        │   ├── pipeline
+        │   │   ├── monograph - draft 01.tex
+        │   │   ├── monograph - draft 02.tex
+        │   │   ├── monograph - draft 03.tex
+        │   │   ├── monograph - draft 04.tex
+        │   │   ├── monograph.tex
+        │   │   ├── suggestions - 01.tex
+        │   │   └── suggestions - 02.tex
+        │   ├── processing
+        │   │   ├── The Coordination Engine - draft 01.tex
+        │   │   ├── The Coordination Engine - draft 02.tex
+        │   │   ├── The Coordination Engine.tex
+        │   │   └── lower-vertebrates.tex
+        │   ├── projects
+        │   │   └── Distributed Centrality.tex
+        │   ├── research
+        │   │   ├── constraint-closure-v1.tex
+        │   │   └── constraint-closure.tex
+        │   ├── resources
+        │   │   ├── comparison-draft-01
+        │   │   │   └── geometric-memory.tex
+        │   │   ├── comparison-draft-02
+        │   │   │   └── geometric-memory.tex
+        │   │   ├── draft-01
+        │   │   │   └── geometric-memory.tex
+        │   │   └── geometric-memory.tex
+        │   ├── spectral-universality
+        │   │   └── spectral-universality.tex
+        │   ├── system
+        │   │   └── viewpoint-diversity.tex
+        │   ├── text_as_substrate-v1.tex
+        │   ├── text_as_substrate-v2.tex
+        │   ├── text_as_substrate.tex
+        │   ├── trajectories.tex
+        │   ├── vault
+        │   │   ├── draft-01.tex
+        │   │   └── monograph.tex
+        │   └── workspace
+        │       ├── admissibility_before_truth.tex
+        │       ├── conservation_of_ambiguity.tex
+        │       ├── cost_of_knowing.tex
+        │       ├── erasure_is_deformation.tex
+        │       ├── from-verification-to-commitment.tex
+        │       ├── geometry_of_witnesses.tex
+        │       └── observability_is_restorability.tex
+        ├── memory
+        │   ├── beyond-optimal-foraging.tex
+        │   ├── building-forth.tex
+        │   ├── fusion-viability
+        │   │   ├── fusion-viability-book-latex
+        │   │   │   └── main.tex
+        │   │   └── main.tex
+        │   ├── persistent-generative-worlds
+        │   │   └── main.tex
+        │   ├── processing
+        │   │   ├── book1-latex-source
+        │   │   │   └── main.tex
+        │   │   ├── constitutional-cybernetics.tex
+        │   │   ├── dip-of-the-horizon.tex
+        │   │   ├── main.tex
+        │   │   └── superuser-guide-to-latex
+        │   │       └── main.tex
+        │   └── selective-continuation.tex
+        ├── paracosm
+        │   ├── preamble.tex
+        │   ├── template.tex
+        │   └── workspace
+        │       └── proof-of-god.tex
+        ├── research-projects
+        │   ├── Aurora
+        │   │   ├── biodiversity-as-infrastructure.tex
+        │   │   ├── gesture-before-symbol-draft.tex
+        │   │   ├── gesture-before-symbol.tex
+        │   │   ├── obstruction-cohomology.tex
+        │   │   └── recomposable-fragmentation.tex
+        │   ├── Collective Intelligence Under Constraint.tex
+        │   ├── Constraints-without-Commitment.tex
+        │   ├── Gallery Before Feed - draft 01.tex
+        │   ├── Gallery Before Feed.tex
+        │   ├── Homotopy and Identity.tex
+        │   ├── Irreversibility as Architecture.tex
+        │   ├── Irreversible-dynamics.tex
+        │   ├── Local Tractability and Global Dysfunction - draft 01.tex
+        │   ├── Local Tractability and Global Dysfunction.tex
+        │   ├── Noun-Free Cognition.tex
+        │   ├── Order and Obfuscation.tex
+        │   ├── Persistence Before Efficiency.tex
+        │   ├── Personal Superintelligence.tex
+        │   ├── Physics After Spacetime.tex
+        │   ├── PlenumHub
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   └── monograph.tex
+        │   ├── RSVP-Monograph
+        │   │   ├── RSVP-Theory.tex
+        │   │   ├── Volume-I-Foundations
+        │   │   │   └── main-vol1.tex
+        │   │   ├── Volume-II-Applications
+        │   │   │   └── main-vol2.tex
+        │   │   └── Volume-III-Extensions
+        │   │       ├── chapters
+        │   │       │   └── ch01-spherepop-homotopy.tex
+        │   │       └── main-vol3.tex
+        │   ├── RSVP-Theory.tex
+        │   ├── RSVP-meditations.tex
+        │   ├── Spectacle Runtime.tex
+        │   ├── The Ergonomics of Prediction - draft 01.tex
+        │   ├── The Ergonomics of Prediction.tex
+        │   ├── The Narrow Path.tex
+        │   ├── active-inference
+        │   │   └── monograph.tex
+        │   ├── admissibility-lab
+        │   │   ├── continuations_before_objects.tex
+        │   │   ├── eight_letter_keyboard.tex
+        │   │   ├── motor_phonology.tex
+        │   │   └── processing
+        │   │       ├── autobiographical-erasure.tex
+        │   │       ├── containers-before-contents.tex
+        │   │       ├── copies-before-originals.tex
+        │   │       └── intelligence-as-perspectival-convergence.tex
+        │   ├── analysis
+        │   │   ├── github_activity-2.tex
+        │   │   ├── github_developer_lifecycles-draft.tex
+        │   │   └── github_developer_lifecycles.tex
+        │   ├── anti-admissibility.tex
+        │   ├── categorical-structure-of-alignment-v1.tex
+        │   ├── categorical-structure-of-alignment.tex
+        │   ├── delta-sigma-modulators
+        │   │   └── main.tex
+        │   ├── ellul-intro.tex
+        │   ├── epistemology
+        │   │   ├── Abstraction-as-Stabilized-Replay.tex
+        │   │   ├── Epistemic-Tooling.tex
+        │   │   ├── Semantic-Construction.tex
+        │   │   ├── Spherepop-OS-alternate.tex
+        │   │   ├── Spherepop-OS-extended.tex
+        │   │   ├── Strategic-Refusal.tex
+        │   │   ├── agents-and-didactic-interfaces-v01.tex
+        │   │   ├── agents-and-didactic-interfaces-v02.tex
+        │   │   ├── agents-and-didactic-interfaces-v03.tex
+        │   │   ├── agents-and-didactic-interfaces.tex
+        │   │   ├── intelligence-as-structural-compression-draft-01.tex
+        │   │   ├── intelligence-as-structural-compression.tex
+        │   │   ├── morphology-as-computation.tex
+        │   │   ├── processing
+        │   │   │   └── morphology-as-computation.tex
+        │   │   ├── recursive-admissibility.tex
+        │   │   ├── shared
+        │   │   │   ├── macros.tex
+        │   │   │   └── preamble
+        │   │   │       └── preamble.tex
+        │   │   └── spherepop
+        │   │       ├── Abstraction-before-Representation.tex
+        │   │       ├── Replay-and-Invariance.tex
+        │   │       ├── Replayable-Construction.tex
+        │   │       ├── Replayable-Memory.tex
+        │   │       ├── Semantic-Consistency.tex
+        │   │       └── Semantic-Stability.tex
+        │   ├── essay
+        │   │   └── behavioural-capture.tex
+        │   ├── fixed-point-causality.tex
+        │   ├── goodhart.tex
+        │   ├── history
+        │   │   ├── Evolutionary Development - draft 01.tex
+        │   │   ├── Evolutionary Development.tex
+        │   │   ├── draft
+        │   │   │   └── repair-categories.tex
+        │   │   ├── repair-categories.tex
+        │   │   ├── terminal-and-traversal.tex
+        │   │   └── wave_to_continuation_dynamics.tex
+        │   ├── intelligence
+        │   │   └── semantic-relaxation-networks.tex
+        │   ├── interpretability
+        │   │   ├── Causal Mechanistic Interpretability - draft 01.tex
+        │   │   ├── Causal Mechanistic Interpretability.tex
+        │   │   ├── Causal Mediation.tex
+        │   │   ├── Event-Nodes and Texture-nodes - draft 01.tex
+        │   │   ├── Event-Nodes and Texture-nodes.tex
+        │   │   ├── Event-Nodes.tex
+        │   │   ├── From Inspection to Intervention.tex
+        │   │   ├── Mechanistic Interpretability.tex
+        │   │   ├── The Limits of Interpretability.tex
+        │   │   ├── Two-Channel Causal Mediation - draft 01.tex
+        │   │   ├── Two-Channel Causal Mediation.tex
+        │   │   └── recency-as-salience.tex
+        │   ├── labs
+        │   │   └── monograph
+        │   │       └── monograph.tex
+        │   ├── major_projects
+        │   │   ├── CrystalEconomy
+        │   │   │   ├── cinematic-reconstruction-v1.tex
+        │   │   │   ├── cinematic-reconstruction-v2.tex
+        │   │   │   ├── cinematic-reconstruction-v3.tex
+        │   │   │   ├── cinematic-reconstruction-v4.tex
+        │   │   │   ├── cinematic-reconstruction-v5.tex
+        │   │   │   ├── cinematic-reconstruction-v6.tex
+        │   │   │   └── cinematic-reconstruction-v7.tex
+        │   │   └── RSVP-meditations.tex
+        │   ├── monograph
+        │   │   ├── draft-02.tex
+        │   │   ├── draft-03.tex
+        │   │   └── draft-04.tex
+        │   ├── paper
+        │   │   ├── admissibility-log.tex
+        │   │   ├── entropic-decimation.tex
+        │   │   ├── error_as_obstruction.tex
+        │   │   ├── flash_reluctance_engine.tex
+        │   │   ├── ledger-without-value.tex
+        │   │   ├── semantic_entropy_formalism.tex
+        │   │   └── typed_calculus.tex
+        │   ├── philosophy
+        │   │   ├── astrophysics_after_uniform_object.tex
+        │   │   ├── reality_reachability.tex
+        │   │   └── reconstruction_and_distinction.tex
+        │   ├── photonics
+        │   │   ├── bayesian-photonics.tex
+        │   │   └── drafts
+        │   │       └── bayesian-photonics.tex
+        │   ├── plenumhub_repo
+        │   │   └── paper
+        │   │       └── PlenumHub.tex
+        │   ├── plenumhub_stage3
+        │   │   └── paper
+        │   │       └── main.tex
+        │   ├── polanyi-spherepop.tex
+        │   ├── policy-selection
+        │   │   ├── draft-01
+        │   │   │   └── monograph.tex
+        │   │   └── draft-03
+        │   │       ├── monograph-02.tex
+        │   │       └── monograph.tex
+        │   ├── polyxan-semantic-hyperstructure-draft.tex
+        │   ├── polyxan-semantic-hyperstructure.tex
+        │   ├── polyxan-starspace-specification.tex
+        │   ├── prefigurative-spherepop.tex
+        │   ├── processing
+        │   │   └── Collective Intelligence Under Constraint.tex
+        │   ├── progress-report.tex
+        │   ├── proof-specification.tex
+        │   ├── proof.tex
+        │   ├── recursive-agency
+        │   │   ├── lamphrodynamic-flows.tex
+        │   │   └── monograph.tex
+        │   ├── rsvp-lab
+        │   │   └── trajectory_inference.tex
+        │   ├── semantic-calculus
+        │   │   ├── EBSSC-draft-01.tex
+        │   │   └── EBSSC-draft-02.tex
+        │   ├── spherepop-calculus.tex
+        │   ├── spherepop-derivation.tex
+        │   ├── textbook
+        │   │   ├── autonomy-of-refusal-draft.tex
+        │   │   ├── autonomy-of-refusal.tex
+        │   │   └── draft
+        │   │       ├── The_Ecology_of_Distinctions.tex
+        │   │       └── main.tex
+        │   ├── textmonod-essay
+        │   │   ├── monograph.tex
+        │   │   └── stochastic-revision-models.tex
+        │   ├── theoretical-perspective.tex
+        │   ├── to_process
+        │   │   ├── main.tex
+        │   │   ├── main_02.tex
+        │   │   └── preface.tex
+        │   └── working
+        │       ├── capital_order_rsvp.tex
+        │       ├── constraint-first-topology.tex
+        │       ├── distributed_cognition.tex
+        │       └── steam_cellulose_domes.tex
+        ├── robotics
+        │   ├── continuation_geometry_of_circuits.tex
+        │   ├── hierarchical_continuation.tex
+        │   └── processing
+        │       ├── continuation_geometry_of_circuits.tex
+        │       └── hierarchical_continuation.tex
+        ├── spherepop
+        │   ├── Active Geodesic Inference.tex
+        │   ├── Computation After Storage.tex
+        │   ├── Computation as Semantic Maintenance.tex
+        │   ├── Event-historical Aggregation.tex
+        │   ├── History as Identity - v01.tex
+        │   ├── History as Identity - v02.tex
+        │   ├── History as Identity.tex
+        │   ├── Introducción a Spherepop - v01.tex
+        │   ├── Introducción a Spherepop.tex
+        │   ├── Joy-of-Spherepop-draft-01.tex
+        │   ├── Joy-of-Spherepop.tex
+        │   ├── Operational-Mereology.tex
+        │   ├── Scope as Geometry.tex
+        │   ├── Spherepop Trajectory Collapse.tex
+        │   ├── Spherepop-OS.tex
+        │   ├── Spherepop_Specifications.tex
+        │   ├── Structured Irreversibility.tex
+        │   ├── The Calculus of Commitment.tex
+        │   ├── The Forkability of Time.tex
+        │   ├── Throwing-the-game.tex
+        │   ├── attention-as-minimal-relational-interaction.tex
+        │   ├── computing-with-spherepop.tex
+        │   ├── dynamics
+        │   │   └── spherepop_scope_dynamics.tex
+        │   ├── entropy_of_austerity.tex
+        │   ├── essay
+        │   │   ├── draft-01
+        │   │   │   ├── essay.tex
+        │   │   │   └── spherepop_calculus.tex
+        │   │   └── spherepop_calculus.tex
+        │   ├── history
+        │   │   └── The History of Spherepop.tex
+        │   ├── identity_as_event_history-v1.tex
+        │   ├── identity_as_event_history.tex
+        │   ├── intelligence-explosion.tex
+        │   ├── monograph
+        │   │   └── spherepop-calculus.tex
+        │   ├── processing
+        │   │   ├── Spherepop_Specifications.tex
+        │   │   ├── adaptive-trust
+        │   │   │   ├── Adaptive_Trust_Dynamics_Corpus
+        │   │   │   │   ├── Cycle1_Diagnosis
+        │   │   │   │   │   ├── essay_1_01.tex
+        │   │   │   │   │   ├── essay_1_02.tex
+        │   │   │   │   │   ├── essay_1_03.tex
+        │   │   │   │   │   ├── essay_1_04.tex
+        │   │   │   │   │   ├── essay_1_05.tex
+        │   │   │   │   │   ├── essay_1_06.tex
+        │   │   │   │   │   ├── essay_1_07.tex
+        │   │   │   │   │   ├── essay_1_08.tex
+        │   │   │   │   │   ├── essay_1_09.tex
+        │   │   │   │   │   ├── essay_1_10.tex
+        │   │   │   │   │   ├── essay_1_11.tex
+        │   │   │   │   │   ├── essay_1_12.tex
+        │   │   │   │   │   ├── essay_1_13.tex
+        │   │   │   │   │   ├── essay_1_14.tex
+        │   │   │   │   │   ├── essay_1_15.tex
+        │   │   │   │   │   ├── essay_1_16.tex
+        │   │   │   │   │   ├── essay_1_17.tex
+        │   │   │   │   │   ├── essay_1_18.tex
+        │   │   │   │   │   ├── essay_1_19.tex
+        │   │   │   │   │   └── essay_1_20.tex
+        │   │   │   │   ├── Cycle2_Renewal
+        │   │   │   │   │   ├── essay_2_01.tex
+        │   │   │   │   │   ├── essay_2_02.tex
+        │   │   │   │   │   ├── essay_2_03.tex
+        │   │   │   │   │   ├── essay_2_04.tex
+        │   │   │   │   │   ├── essay_2_05.tex
+        │   │   │   │   │   ├── essay_2_06.tex
+        │   │   │   │   │   ├── essay_2_07.tex
+        │   │   │   │   │   ├── essay_2_08.tex
+        │   │   │   │   │   ├── essay_2_09.tex
+        │   │   │   │   │   ├── essay_2_10.tex
+        │   │   │   │   │   ├── essay_2_11.tex
+        │   │   │   │   │   ├── essay_2_12.tex
+        │   │   │   │   │   ├── essay_2_13.tex
+        │   │   │   │   │   ├── essay_2_14.tex
+        │   │   │   │   │   ├── essay_2_15.tex
+        │   │   │   │   │   ├── essay_2_16.tex
+        │   │   │   │   │   ├── essay_2_17.tex
+        │   │   │   │   │   ├── essay_2_18.tex
+        │   │   │   │   │   ├── essay_2_19.tex
+        │   │   │   │   │   └── essay_2_20.tex
+        │   │   │   │   └── index.tex
+        │   │   │   ├── corpus.tex
+        │   │   │   └── monograph.tex
+        │   │   ├── draft
+        │   │   │   └── intelligence-explosion.tex
+        │   │   ├── essay.tex
+        │   │   ├── geometry
+        │   │   │   └── monograph.tex
+        │   │   ├── intelligence-explosion.tex
+        │   │   └── monograph.tex
+        │   ├── prototypes
+        │   │   ├── Operational-Mereology.tex
+        │   │   ├── canonicalization.tex
+        │   │   ├── docs
+        │   │   │   ├── computing-with-spherepop.tex
+        │   │   │   ├── spherepop-haskell-tutorial.tex
+        │   │   │   ├── spherepop-python-tutorial.tex
+        │   │   │   └── spherepop-racket-tutorial.tex
+        │   │   └── roadmap.tex
+        │   ├── spherepop-foundations.tex
+        │   ├── textbook
+        │   │   ├── beyond-parentheses.tex
+        │   │   ├── dependent-type-theory.tex
+        │   │   ├── ecology-of-thought.tex
+        │   │   ├── economy-of-forgotten-things.tex
+        │   │   ├── language_as_generator.tex
+        │   │   ├── memory-before-representation.tex
+        │   │   ├── negation-before-logic.tex
+        │   │   ├── refusal-structures.tex
+        │   │   ├── repairing-futures.tex
+        │   │   └── rotation_admissibility.tex
+        │   ├── the-autonomy-of-refusal.tex
+        │   ├── throwing_the_game_v2.tex
+        │   └── working
+        │       ├── Structured Irreversibility - draft 01.tex
+        │       ├── Structured Irreversibility - draft 02.tex
+        │       ├── Structured Irreversibility.tex
+        │       ├── execution history - draft 02.tex
+        │       ├── execution history - draft 03.tex
+        │       ├── execution history - draft 04.tex
+        │       └── execution history.tex
+        ├── standardgalactic
+        │   ├── Scope Memeplexes.tex
+        │   ├── constraint_trajectory_irreversibility.tex
+        │   ├── epistemology
+        │   │   ├── manufacturing_credulity.tex
+        │   │   ├── markedness_capability.tex
+        │   │   └── selection_without_design.tex
+        │   ├── research
+        │   │   ├── macro-economics.tex
+        │   │   ├── notes
+        │   │   │   └── structural_ideas.tex
+        │   │   └── structural_ideas.tex
+        │   └── rsvp-jepa.tex
+        ├── standardgalactic.github.io
+        │   └── critique
+        │       ├── Identity Collapse - draft 01.tex
+        │       ├── Identity Collapse - draft 02.tex
+        │       └── Identity Collapse.tex
+        ├── syllabus
+        │   ├── 01_how_ideas_work.tex
+        │   ├── 02_architecture_of_ideas.tex
+        │   └── 03_structural_thinking.tex
+        ├── typing-tutor
+        │   └── essay
+        │       ├── global-constraints.tex
+        │       └── memeplexes.tex
+        ├── userspace
+        │   ├── essay.tex
+        │   ├── futurism
+        │   │   └── labor_singularity.tex
+        │   └── labor_singularity.tex
+        └── video-player
+            └── resources
+                ├── monograph-draft-01.tex
+                └── monograph-draft-02.tex
+
+356 directories, 983 files
