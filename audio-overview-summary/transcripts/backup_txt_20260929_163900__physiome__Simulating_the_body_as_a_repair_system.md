@@ -1,0 +1,3 @@
+# backup_txt_20260929_163900/physiome/Simulating_the_body_as_a_repair_system
+
+The powerful analytical feature unlocked by this strict architectural rule is **deterministic replay**. This capability allows the simulator—like game engines or lockstep network simulations—to preserve history without needing massive data storage for every variable at each millisecond. Instead, only the initial state and a minimal set of inputs (e.g., injecting epinephrine) are required to reconstruct the exact simulation outcome repeatedly, making it invaluable for medical diagnostics and understanding complex biological processes like allergic reactions or organ failures.

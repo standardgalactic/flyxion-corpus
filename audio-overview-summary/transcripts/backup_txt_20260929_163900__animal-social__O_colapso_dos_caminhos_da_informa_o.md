@@ -1,0 +1,7 @@
+# backup_txt_20260929_163900/animal-social/O_colapso_dos_caminhos_da_informação
+
+O artigo discute a importância da "manutenção das arestas" na preservação e acessibilidade de informações, tanto em contextos históricos quanto digitais. Ele usa exemplos como o idioma árabe, que tem 14 séculos de continuidade de acesso aos seus textos clássicos, para ilustrar como a engenharia e práticas culturais podem garantir que as ideias não sejam "trancadas" em cofres, mas continuamente acessíveis através de rotas repetidamente caminhadas. 
+
+Além disso, o autor aponta para a Carta da Língua Francesa no Quebec como um exemplo de legislação que atua como uma manutenção periódica desses "hiperlinks culturais", impedindo que os caminhos em francês sejam deixados de uso diário e colapsem sob pressão econômica e corporativa. Isso é comparado à física das redes de computadores, onde a tendência natural seria o colapso desses "hiperlinks" digitais.
+
+O artigo conclui sugerindo que para corrigir essas pontes (ou caminhos) falhantes, precisamos adotar três posturas simultâneas: persistência do nó (garantir a existência física da informação), manutenção da aresta (verificar e limpar continuamente os caminhos de acesso), e coerência do caminho (manter o sentido lógico das relações entre ideias ao longo do tempo). Isso tem implicações práticas para a organização individual e coletiva do conhecimento, bem como para o uso de inteligência artificial que pode substituir ou complementar esses esforços cognitivos.

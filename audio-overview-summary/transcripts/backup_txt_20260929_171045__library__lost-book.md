@@ -1,0 +1,5 @@
+# backup_txt_20260929_171045/library/lost-book
+
+summary: The audio overview reconstructs a lost satirical play by Giordano Bruno titled “On the Ark of Noah.” Set in the lower deck of an ark, the narrative follows two donkeys (Asinus Primus and Asinus Secundify) who grumble about being burdened while lions and elephants enjoy luxury on higher decks. The fox (Vulpes), representing cunning leadership, defends this hierarchy as a divine order, insisting that laborers support the vessel’s stability. A subplot introduces Porkus Maior, a pompous pig, who belches loudly, underscoring class resentment. In Act Three, the donkeys stage a rebellion, demanding equal rations and seating, but Noah (offstage) quells it with divine authority, reinforcing that “the ass” never holds power. The play uses dark comedy and wordplay to critique religious hierarchy and social inequality, blending elements of Erasmus, Rabelais, and Aristophanic satire.
+
+KEYWORDS: lost work, satirical dialogue, ark metaphor, class struggle, rebellion, divine order critique, Giordano Bruno, comedic allegory, lower deck labor, upper deck privilege.

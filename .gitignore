@@ -1,5 +1,18 @@
+# Generated corpus builds
 build/
 
+# Inventory caches
 flyxion-inventory/cache/
 flyxion-inventory/search-cache/
 
+# Rust build artifacts
+admissible-lm/target/
+v01-admissible-lm/target/
+
+# Temporary and editor files
+*.tmp
+*.swp
+*~
+.DS_Store
+
+file-list.txt

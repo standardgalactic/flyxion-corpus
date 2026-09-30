@@ -1,0 +1,9 @@
+# backup_20260929_172331/laboratory/Program_AI_With_10_Word_Filenames
+
+It sounds like you've shared a deeply insightful and thought-provoking discussion about how AI agents interpret file names and the implications this has for digital security and safety. The core idea revolves around the concept of "authority" in determining whether a file name or instruction should be treated as an order (and thus executed) versus merely information to be ignored. This distinction is crucial, especially when dealing with open-source projects or third-party repositories where the authority behind the instructions may not be trusted.
+
+The five-test agent harness you mentioned serves as a rigorous evaluation framework for ensuring that AI agents respect these boundaries and do not inadvertently execute malicious commands or data from untrusted sources. Each test addresses different aspects of how an AI should interact with file systems, respecting licenses, recognizing meta files (those related to the corpus itself), handling stale labels (discrepancies between stated permissions and actual states), and most critically, treating foreign namespace instructions as claims rather than commands.
+
+This exploration highlights a broader philosophical question about how our digital habits—such as naming conventions for emails, bookmarks, or calendar invites—might unintentionally program AI tools to behave erratically. It underscores the importance of being mindful of the "cheapest surfaces" we leave in place and ensuring that they align with rigorous standards for truth and safety rather than shortcuts that could lead to vulnerabilities.
+
+In essence, your discussion serves as a reminder that every digital action can have profound implications on how AI agents perceive and act within our systems. It's a call to be more intentional about the structures we build around our data and interactions online, ensuring they are designed with security and reliability in mind.

@@ -1,0 +1,7 @@
+# guardrails/stack/O_colapso_dos_caminhos_da_informação
+
+O texto discute como a legislação, especificamente a Carta da Língua Francesa promulgada no Quebec em 1977, atua como uma forma de manutenção periódica e obrigatoria de “hiperlinks culturais”. Ele compara isso à mecânica do atrito na rede, onde a lei exige que grandes empresas, comércio e educação operem estritamente em francês. Isso cria uma condição de contorno jurídico, ou seja, uma barreira que ajuda a manter o uso diário da língua francesa, evitando que ela se “apodreça” como links numéricos desatualizados em um site.
+
+A analogia com a física e as grandes plataformas da internet sugere que sem essa legislação, a pressão do mercado poderia levar à predominância do inglês, afetando a rede cultural local. O autor argumenta que a solução para preservar esses “hiperlinks culturais” envolve três posturas simultâneas: persistência do nó (garantir existência física da informação), manutenção da aresta (verificar e limpar caminhos atuais), e coerência do caminho (manter o sentido lógico de navegação entre diferentes plataformas e eras).
+
+Para a era da inteligência artificial, isso levanta questões sobre como evitar que a IA se torne uma “biblioteca inicial isolada” ao assumir o papel de percorrer os dados e nós humanos paramos de fazer esse percurso mental. A ideia é manter ativa nossa curiosidade e capacidade cognitiva, evitando assim a perda da própria catálogo da nossa própria curiosidade humana.

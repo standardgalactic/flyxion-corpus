@@ -1,0 +1,3 @@
+# backup_20260929_172331/alphabet/research/Why_intelligence_thrives_on_extreme_abundance
+
+The term you’re referring to is **“grokking.”** It’s a concept popularized in science fiction (most notably by Robert A. Heinlein in his 1961 novel *Stranger in a Strange Land*) and describes an advanced state of understanding where not only the rules are learned but also the underlying intuition or feeling behind them—essentially, “to understand completely.” In the context you described, grokking refers to how an AI model initially memorizes training data (the chaotic spikes) before gradually abstracting the true underlying rule, leading to improved generalization.

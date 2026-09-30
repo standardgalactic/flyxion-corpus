@@ -1,0 +1,493 @@
+Welcome back to The Deep Dive. Today, we are going to do something a little, a little dangerous.
+Oh, I like the sound of that.
+We're going to take a concept that I guarantee almost every single person listening right now believes is true.
+I mean, something that feels as natural as breathing.
+Yeah.
+And we are going to try to, well, dismantle it.
+It is a bit of a demolition job today, isn't it? But, you know, a necessary one.
+Absolutely.
+Look, if you've been anywhere near a business book, a psychology podcast, or even just like a dinner party in the last 15 years, you know the drill.
+Oh, yeah.
+You know the Bible of behavioral economics. I'm talking about Daniel Kahneman. I'm talking about thinking fast and slow.
+It's the standard model. It's pretty much the framework we all use to talk about thinking.
+It's practically the operating system for how we talk about our own minds.
+The idea is, on the surface, incredibly simple, right? You have two brains.
+Or, to be precise, two systems. System one and system two.
+Right. Two systems.
+And for most people, that distinction is absolute. System one is the fast one. It's instinct. It's the gut. It's the thing that makes you grab a cookie without thinking.
+The impulsive one.
+And system two is the slow one. It's logic. It's doing your taxes. It's painful deliberation.
+Exactly. It's the angel and the devil on your shoulder. It's the impulsive child and the responsible adult, all wrapped up in one neat package. And we all accept this. I mean, it feels true.
+It really does.
+When I'm driving on an empty highway just zoned out, I'm in system one. But when I'm trying to calculate a 20% tip at a restaurant while my friends are all watching me.
+Oh, the pressure.
+That's pure system two. I can feel my brain creaking.
+It's a very, very seductive heuristic. It just matches our subjective experience so perfectly.
+Well, hold on to your heuristics.
+Yeah.
+Because today we're diving into a stack of documents that argues that entire framework is, well, maybe not wrong in its observations, but fundamentally wrong in its conclusions.
+This is a big one.
+We're looking at a paper titled The Myth of Dual Cognition by an author named Flyxion, along with a really spicy explanatory note that came with it.
+And the thesis here is radical. It says there are not two systems. There is only one system.
+And that one system isn't like switching gears between two different engines. It's simply operating at different levels of resolution.
+Resolution. That is the key word we are going to be obsessing over today. This isn't just semantics, is it? This is not just a nerdy academic dispute about how we label things.
+Well, not at all. I mean, if the source material is correct, this changes everything. It changes how we view our own habits, how we view expertise.
+And maybe most importantly.
+And perhaps most importantly, it completely reframes the debate around artificial intelligence.
+That's the part that really got me. I mean, we're going to get to the AI stuff later, but the argument here basically says if we misunderstand how we think, we are definitely absolutely misunderstanding how machines think.
+That's a huge claim.
+We might be accusing AI of being dumb for the exact same reasons that actually make a human smart.
+It's a bold claim. But before we get to the robots, we have to deal with the humans.
+We have to unpack why we believe in the two-system model in the first place. I mean, where did it come from?
+Right. Let's start with the status quo, because to understand the disruption, you have to understand what's being disrupted.
+When we talk about system one and system two, what are we actually describing?
+So the traditional definition, which really is solidified with Kahneman and Tarroski, posits this dichotomy. A split.
+On one side, you've got system one.
+The fast one.
+The fast one. It's described as automatic, intuitive, and crucially effortless. It's associative. It just happens.
+Give me a concrete example.
+Okay. So imagine you see a face. A friend walks into the room and they look absolutely furious. You don't have to break out a calculator. You don't have to measure the angle of their eyebrows or like the redness of their skin. You just know.
+It happens to you.
+Precisely. You don't do the work. The conclusion just arrives fully formed. That's the hallmark of system one. It feels involuntary.
+Right. It feels like an input. I didn't do the thinking. The thinking just appeared in my brain.
+Exactly. Now compare that to system two. This is slow, deliberative, reflective, and crucially effortful. It consumes resources. It's hard work.
+This is my calculating the tip moment. The cold sweat.
+Yes. Or if I ask you right now, what's 17 times 24?
+Oh, okay. Yeah. I'm stopping everything else. I'd have to like write it down.
+Exactly. You stop walking. Literally, studies show your pupils dilate, your blood pressure rises slightly. You have to grind through the steps. You have to hold the numbers in your head, perform an operation, check the result. That is system two.
+And it feels physically different. It feels like work. My brain hurts.
+It is work. And that's why the distinction feels so real. We have a fast and easy mode and a slow and hard mode. It's intuitive.
+But this is where the source material starts to poke holes in the theory. It points out that this didn't start as a claim about brain anatomy or, you know, different modules in the brain.
+No, not at all.
+It started as a phenomenological observation, which is a fancy way of saying this is how it feels.
+Yes. And that history is vital here. This goes back way before Kahneman. We're talking about William James in the late 19th century. He was talking about the difference between habit and effort.
+Right.
+He wasn't doing fMRI scans. He had no idea which neurons were firing where. He was just a brilliant observer describing the human experience from the inside out.
+So originally, system one and system two were just adjectives. They were just ways of describing a process.
+Exactly. There were descriptors. You could say, I'm thinking quickly right now, or I'm thinking slowly, I'm thinking effortlessly, or I'm thinking effortfully. It's a description of the texture of thought.
+But then something happened. The paper calls it, and I love this term, ontological drift.
+Ontological drift. It's such a great phrase.
+It sounds like something from a sci-fi movie. Captain, we're experiencing ontological drift. But what does it actually mean in this context?
+Well, it's a philosophical term. Ontology is the study of what exists. What things fundamentally are. And drift is the error.
+So, ontological drift happens when we take a descriptive, label-like, fast thinking, and we drift into believing it is a physical thing.
+We turn the adjective into a noun.
+We turn the adjective into a noun, and then we turn that noun into a machine. We move from saying, this thought process is fast, to believing there is a fast thinking machine inside my head.
+Okay, I want to use an analogy here to make sure I've got this locked down. The paper mentions cars, but let's look at a runner.
+A runner. Okay, I'm with you.
+Say you have an Olympic athlete. Sometimes they sprint, they're going 100% max effort, exploding off the blocks. That's fast. That's intense.
+System two in the old model. All-out effort.
+Right. Other times, they're just jogging a warm-up lap. That's slow. That's easy. They can chat while they do it. System one.
+Right. Two different speeds.
+Now, ontological drift would be like watching that athlete and saying, oh, I get it. He has two separate bodies. He has a sprinting body and a jogging body.
+And when he wants to go fast, he climbs out of the jogging body and gets into the sprinting body.
+That sounds completely absurd when you put it that way.
+It is absurd. It's the same legs. It's the same lungs. It's the same heart. It's the same person just operating at a different level of intensity.
+But the source material argues that this is exactly what we have done with our brains.
+That is a perfect analogy. We have created a homunculus, a little person inside our heads, or in this case, two little people.
+We act as if there is a system one guy who is impulsive and kind of dumb, and a system two guy who is smart and rational, and they are fighting for control of the steering wheel.
+And the source says this isn't just a harmless metaphor. It leads to what the author calls the moralization of cognition.
+And this is a really, really important point. Because once you split the brain into two characters, you inevitably start assigning them moral roles. Good versus evil.
+We cast system one as the villain.
+We do. In the current worldview, the standard Kahneman worldview system one is the problem. It's the source of all our biases. It's the thing that makes you racist, or sexist, or lazy. It's the thing that eats the donut when you're on a diet.
+It's the lizard brain. The primitive part we have to overcome.
+And system two is the hero. System two is the adult in the room. It's rational. It's normative. It's corrective. We tell ourselves things like, I need to engage my system two to stop doom scrolling. Or, I need to use logic to overcome my unconscious bias.
+It becomes a morality play. The beast versus the angel fighting inside your skull.
+Exactly. But the source argues this is a trap. It suggests that by splitting them into good cop and bad cop, we completely miss the mechanical reality of how thinking actually works. We are ignoring how the runner actually learns to run in the first place.
+So let's get to that mechanical reality. If there aren't two guys in my head fighting for the steering wheel, what is actually happening? This brings us to the core thesis of this whole deep dive. Aspect relegation theory.
+Aspect relegation theory. It sounds a bit technical, but I promise you, the concept is beautifully simple once you grasp it.
+Okay. Break it down for us. What's the elevator pitch?
+The theory proposes that system one is not a separate thing at all. It is simply system two processes that have become automated.
+Good. Say that again. That's the whole ballgame right there. System one is just automated system two.
+Yes. There is a key quote in the paper I want to read. System one is the residual form of system two processes that have become automated through repetition, stabilization, and attentional compression.
+The residual form. I love that phrasing. It's like what's left over after a process.
+I was thinking about it like cooking. Specifically, think about making a reduction sauce.
+Okay. I'm listening. You've got my attention.
+You start with a huge pot of liquid stock, wine, herbs, onions, all this stuff. That is your system two. It is voluminous. It has all these distinct ingredients. You can see the individual onions floating in it. It takes up a lot of space in the pot. It takes a lot of attention.
+That's the high effort phase. The deliberative phase.
+Right. Now you simmer it for hours. You reduce it. You apply heat and time, which is like practice and repetition. The water evaporates. The volume shrinks.
+And eventually you are left with this thick, intense, glossy glaze at the bottom of the pan. That is system one.
+It's the same stuff.
+It is chemically the same stuff. It's the same flavor profile, just unbelievably compressed. You can't see the individual onions anymore. They've dissolved into the very essence of the sauce. But their flavor is still there. System one isn't a different liquid. It's just the concentrated residue of the original reasoning.
+Wow. Okay. So my gut feeling isn't some magic bolt of lightning from a different brain.
+Yeah.
+It's a reduction sauce of all my past experiences and calculations.
+Exactly. And the mechanism for how we get from the big pot of soup to that tiny bit of sauce is what the author calls aspect relegation.
+Let's unpack those words. Aspects and relegation. What's an aspect?
+So any cognitive process, reasoning, driving, doing math, whatever, is made up of aspects. These are the intermediate steps, the little subroutines, the conditional branches. If X happens, then I do Y. The error checks. Did I carry the one correctly? Is that light red or is it green?
+The little distinct pieces of the thought, the individual instructions in the recipe.
+Perfect. Right. When a task is new, when you're first making that sauce, you are in what the author calls high resolution. You have to see every single aspect. You are monitoring the onions, the heat, the spoon, the timing. You are consciously aware of every variable.
+Because you don't know which ones matter yet. You're a novice. You haven't figured out the pattern.
+Exactly. But as you repeat the task, as it becomes stable and predictable, you start to relegate those aspects. You push them into the background. You stop paying attention to the intermediate steps. You just see the input, ingredients, and the output. Delicious sauce. The middle part becomes automatic.
+This brings us to the central metaphor of the paper, which I think is just brilliant for the digital age. It's not about engines. It's about resolution.
+Yes. This moves us away from the two engines idea and toward a one screen idea. It's a much better way to think about it.
+The argument is that the brain isn't switching engines. It's changing the resolution of its attention.
+Think about streaming a video on YouTube or Netflix or whatever you use. You are watching a movie. It's the same file, the same plot, same character, same runtime. That file represents the core reasoning process.
+Now imagine your internet connection is a bit spotty. You have limited bandwidth.
+Limited attention. Limited cognitive resources.
+Exactly. Bandwidth is attention. If you have limited bandwidth, the stream automatically drops down to 240p. It's blocky. It's blurry.
+You can't see the texture of the actor's shirt or the leaves on the trees. But, and this is key, it loads instantly. It plays smoothly without buffering.
+That is system one. Low resolution but high speed and low effort.
+Precisely. But let's say you need to see a specific detail. There's a clue written on a tiny piece of paper in a movie, and you need to read it to solve the mystery. You can't read it in 240p, so what do you do?
+I pause it, go to the settings, and I crank it up to 4K.
+You crank up the resolution, and what happens immediately?
+Buffers. A little spinning wheel of death comes up. It takes time. It chews up my data.
+It consumes massive bandwidth. That is system two. It's not a different movie. It's the same data, just rendered at a much higher fidelity, because you need to inspect the details, the aspects.
+This completely demystifies the experience for me. When I'm thinking hard, I'm not using a different brain. I'm just forcing my mental video stream into 4K. I'm looking at the individual pixels.
+And when you are thinking fast, you are accepting the blur. You are trusting that the general shape of the image is enough to get by for now.
+Trusting the blur. That's a great way to put it. I want to ground this in a real-world example, because the paper gives a couple of really good ones that make this concrete. The first one is the commuter.
+The commuter. Yes, this is a classic example of habit formation, or what this theory would call relegation.
+Walk us through it.
+Okay, so imagine someone who lives in a big city, like New York or London. They walk to the subway station every single morning for five years. Same route.
+They walk out their front door, turn left, cross two streets. They dodge that same puddle that always forms on the corner after it rains.
+We all have that puddle.
+They swipe their transit card, walk down the stairs, and stand in the exact same spot on the platform. Every day.
+Now, if you stop them on the platform and ask, how did you get here? Describe your walk. What do they say?
+They'll say, I don't know. I was thinking about dinner tonight. I was listening to a podcast. I just, I kind of arrived. It feels like teleportation.
+It feels completely automatic. It feels like pure system one.
+It does. But let's look at the reality of what they just did.
+I mean, if you tried to get a Boston Dynamics robot to do that, it would take millions of lines of code and it would still probably fall into the bottle.
+Exactly. So, did the commuter use a primitive lizard brain to do all that complex math? No. According to this theory, they used the exact same reasoning they used the very first day they moved into that apartment.
+But the first day they moved in, it was hard. It was stressful.
+The first day was high resolution. It was 4K. Okay, what's the street sign say? Is this a one-way street? Okay, there's a puddle on the left side. I need to remember that. Where did I put my transit card?
+They were streaming every single detail.
+But after five years, they have relegated all those aspects. They've compressed them.
+They have solved the problem. The solution is cached, to use a computer term. They aren't resolving the complex problem of how to get to the station every morning.
+They are just executing the stored program. The reasoning, the physics, the geometry is all still there. It's just been compressed into a smooth 240p stream.
+But, and here is the kicker, and this is where the theory really shines for me. What happens if one day they walk up to the station and the entrance is closed for construction?
+A big sign, yellow tape, the words.
+Oh, yeah. Boom. The automaticity shatters instantly. Relegation stops.
+The blur snaps into focus.
+The commuter stops dead in their tracks. They look around. The autopilot disengages completely.
+Suddenly, they are reading signs. They are checking their watch. They are pulling out their phone to check the map.
+They're looking for a bus stop. They're calculating a new route.
+They are back in 4K.
+Yeah.
+Full buffering mode.
+They are back in what we call system 2. But notice, they didn't switch brains. They just re-promoted the aspects of navigation back into conscious attention.
+Their brain got an error message. The cache solution has failed. I need to open the source file and look at the code again.
+That transition is so seamless we don't even notice it. It's like the auto quality setting on YouTube. My phone just does it. It fluctuates based on need, on bandwidth.
+And that fluctuation is the essence of intelligence. It's not about being in system 2 all the time. That would be completely paralyzing.
+And it's not about being in system 1 all the time. That would be reckless.
+Right. It's about the dynamic regulation of that resolution. Knowing when to zoom in and when to zoom out.
+I want to talk about the driving example, too, because I think that connects to the feeling of effort. We mentioned earlier that system 2 feels like work.
+Yes. Effort is the defining characteristic of the slow system in the old model.
+The paper makes a really interesting point about what effort actually is. Because we tend to equate effort with being smart. You know, I'm thinking really hard, so I must be being rational.
+Right. We wear effort like a badge of honor. But the author here argues that effort is simply a bandwidth warning light on your mental dashboard.
+A bandwidth warning light. I like that.
+Think about the novice driver. The 16-year-old with their learner's permit. I remember when I was learning to drive. It was physically exhausting.
+Oh, totally. I remember gripping the steering wheel so hard my knuckles were white I couldn't have the radio on.
+My mom tried to talk to me from the passenger seat. I'd snap at her. Quiet. I'm urging.
+Exactly. You were in maximum high resolution. You were tracking 50 different variables explicitly. The pressure of your foot on the gas pedal. The exact angle of the rear view mirror. The distance to the curb. The speed of the car behind you. You were holding all these aspects in your active working memory. Your RAM.
+And that burns energy. That is the effort. That's the feeling of my brain's CPU running at 100%.
+That is the effort. You are keeping all those plates spinning manually. Now, look at you today. You probably drive to work. You're drinking coffee. You're listening to this podcast. You're arguing with the radio host. You are barely looking at the road.
+Hopefully looking at the road a little bit for legal reasons.
+Well, yes. But you aren't consciously thinking about the pedal pressure. You aren't calculating the angle of the turn. You have relegated those aspects. They have been compressed. The reasoning structure, how to drive a car, hasn't vanished. You still know how to drive. In fact, you know it better than the 16-year-old.
+But because I know it better, it feels like I'm doing less. It feels effortless.
+Exactly. And this is the paradox. As you become an expert, the feeling of effort decreases. You move from what feels like System 2 to what feels like System 1. So if we follow the old model, we'd have to say the expert driver is thinking less or being less rational than the novice.
+Which is just ridiculous. The expert is obviously a better driver.
+Right. The expert has simply compiled the code. The novice is running the code line by line, interpreting it as they go in real time. That's slow and hard.
+The expert is running the compiled, executable file. It runs instantly and silently in the background.
+This leads us naturally into the most mystical, most romanticized part of human cognition. Intuition.
+Ah, yes. The magic of the gut feeling.
+We love to talk about intuition. Especially in business or creative fields. We idolize the CEO who says,
+I didn't look at the data. I just went with my gut.
+We treat it. We treat it like a superpower. Like it's a direct line to some cosmic truth.
+We treat it as if it is fundamentally distinct from reasoning. You know, don't overthink it. Just feel it as if they're opposites.
+But Flyxion, the author here, is basically the party pooper. He's the magician revealing how the trick is done.
+What is the definition of intuition in this theory?
+It is remarkably unmagical. And I think that's why it's so powerful.
+The paper defines intuition as successful concealment of previously explicit inferential structure.
+Successful concealment. That is so dry. So clinical.
+It is dry, but it's so accurate. It basically says, intuition is just reasoning that has been compressed so tightly that you can no longer see the steps.
+You've hidden the work from yourself.
+There's a phrase in the source that I highlighted three times because it's so good.
+Intuition is just yesterday's reasoning. Efficiently forgotten.
+Yesterday's reasoning. Efficiently forgotten.
+I love that.
+Yeah. It's what you'd call a deflationary view of intuition. Takes all the hot air out of the balloon.
+So, let's apply this.
+Say I'm a seasoned detective. I've been on the force for 30 years. I walk into a crime scene. Within five seconds, I look around and I say, the husband did it.
+Right. In the movies, that's presented as a psychic flash. A moment of pure, unexplainable genius.
+But under aspect relegation theory, what just happened in my brain?
+What happened is that your brain scanned the room in high-speed, low resolution. You noticed, without consciously realizing it, that there was no sign of forced entry.
+You noticed the husband's body language was defensive, not grieving. You noticed a glass on the table was wiped clean when everything else was dusty.
+I saw the onions in the reduction sauce, but I just tasted the final sauce.
+Exactly. You processed a dozen clues in parallel. Clues that 20 years ago, as a rookie detective, you would have had to write down in a notebook and stare at for hours.
+Okay. Clue one, no forced entry. Clue two, weird body language.
+You would have had to do it in 4K.
+Yes. But because you've done this a thousand times, your brain ran the crime scene analysis script in the background and just handed you the output, the final answer. Husband.
+So the gut feeling is actually just a hyper-fast summary of evidence presented to your consciousness as a feeling.
+Correct. It feels like the answer just appears only because the intermediate work is hidden from your conscious view.
+You don't see the factory. You just get the finished product delivered to your doorstep.
+This really explains why trusting your gut is only good advice if you're actually an expert in that domain.
+Oh, absolutely. That is the critical takeaway. If a novice in a field tries to trust their gut, they are just guessing. They are just expressing their biases. They don't have the compressed reasoning. They don't have the reduction sauce.
+All they have is hot water. There's nothing to reduce.
+Perfectly put. You have to do the work in system two. You have to do the slow, deliberative learning before you can earn the speed of system one.
+You can't have the glaze without the long, slow reduction.
+Okay. So we've dismantled the human mind. We've turned intuition into zip files and expert driving into compiled code.
+But the source material doesn't stop there. It takes this theory and throws a grenade right into the middle of the biggest debate in technology right now.
+Artificial intelligence.
+This is where the paper gets a little combative, especially in that explanatory note. It explicitly calls out the Gary Marcus style of critique.
+We need to set the stage here for anyone who might not be familiar. Who is Gary Marcus and what is the standard critique of these AI models?
+Because I hear this argument all the time, even from people who don't know who Gary Marcus is.
+So Gary Marcus is a cognitive scientist and a very vocal, very prominent critic of the current AI hype.
+His argument, and I'm simplifying a bit here, but not much, is that these models are just stochastic parrots.
+Stochastic parrots. It's such a great insult. So sticky.
+It sticks, doesn't it? Stochastic just means random or probabilistic.
+The idea is this. A parrot can learn to say, Polly wants a cracker.
+It can make the sounds perfectly, but the parrot doesn't know what a cracker is.
+It doesn't understand hunger. It doesn't understand the concept of wanting.
+It's just mimicry. It's not understanding. It's just associating sounds.
+Right. And the critique says that LLMs are doing the exact same thing on a massive scale.
+They have ingested the entire Internet, and they are just predicting the next word based on probability.
+They see the cat sat on them, and they know mat is a very likely next word.
+So they have system one, this ability to associate patterns really, really fast, but they lack system two.
+They can't reason. They can't stop and think. They were just autocomplete on steroids.
+That's the argument. I'm sure you've heard it a hundred times.
+It's not real intelligence. It's just statistics. It's a pattern matcher, not a thinker.
+But here comes Flitch in with aspect relegation theory, and he says, wait a minute.
+You are making a fundamental category error.
+A category error.
+Unpack that. Why is it an error?
+Well, think about what we just learned about humans.
+If system one is just compiled system two, if intuition is just reasoning that has been stabilized and compressed, then accusing AI of only having system one is a completely meaningless statement.
+Because you're basically accusing the AI of acting like a human expert.
+Exactly. If I watch a chess grandmaster play a game of speed chess, they are moving instantly.
+They aren't pausing for minutes to calculate every move.
+They are playing on intuition. They are using what feels like system one.
+If I told you that grandmaster isn't actually thinking, he's just pattern matching, you'd laugh at me.
+I'd say he's pattern matching because he has mastered the logic of chess over tens of thousands of hours.
+His pattern matching is his thinking.
+Right. His speed is proof of his competence, not proof of his stupidity.
+The source argues that when we see ChatGPT spit out a complex coding solution in three seconds, our reaction shouldn't be, it's not thinking.
+It should be, it is thinking at an incredibly high level of compression.
+So just because I can't see the AI stopping to think doesn't mean the logic isn't there, embedded in the system.
+The author uses a programming analogy that is really, really helpful here.
+Think about source code versus machine code.
+Okay. Source code is what humans write.
+It's in Python or C plus tells me.
+Right. If you write a program in Python, it's readable.
+It says if X is greater than five, then print the word hello.
+You can see the logical steps clearly.
+That is system two.
+It's explicit. It's slow to write. It's easy to understand.
+And machine code. What's that?
+Machine code is what happens after you compile the program so the computer can actually run it.
+It turns into a massive string of binary, zeros and ones.
+It's completely unreadable to a human.
+The if-then statements are gone.
+The logic is like smeared across the entire file.
+It just executes instantly.
+But the logic is still inside the zeros and ones.
+It has to be or the program wouldn't work.
+Precisely.
+The author argues that criticizing AI for only having system one is like looking at the compiled machine code and saying, this isn't real computation because I can't read the source code anymore.
+The reasoning steps are hidden in the weights of the neural network, much like they are hidden in the expert driver's brain or the detective's gut.
+That is, wow, that really flips the script.
+It suggests that the stochastic parrot argument is actually punishing AI for being too efficient?
+It suggests we are mistaking fluency for lack of thought.
+We're mistaking the compiled executable for a dumb parrot.
+So does this mean the author thinks AI is perfect, that there's no problem here?
+Because I have definitely seen these models make some pretty stupid non-human mistakes, hallucinations, making up facts, getting basic logic wrong.
+And the source material absolutely admits that.
+It's not an AI hype piece.
+It's not saying AI is perfect.
+It's saying we are diagnosing the problem wrong.
+The problem isn't a lack of system two.
+The problem is a lack of dynamic regulation of resolution.
+Okay, bring that back to the commuter example for me.
+Think about our commuter again.
+When the subway entrance is closed, the commuter snaps out of it.
+They have an internal trigger, a feeling of surprise, of confusion that says,
+Hey, the autopilot is failing.
+Promote these aspects to system two immediately.
+Open the aperture.
+We need 4K resolution right now.
+The 240p stream is not working.
+Correct.
+Humans have what the author calls endogenous control.
+We can self-regulate our resolution.
+We know when we are confused.
+We feel it when a situation is weird or unexpected.
+And AI doesn't have that feeling.
+Currently, not really.
+AI is kind of stuck in one gear.
+It generates the answer to a complex physics riddle with the same resolution and the same level of confidence that it generates a poem about a cat or a simple coding solution.
+It doesn't have that internal, wait a minute, this is tricky.
+I need to slow down and unpack my compressed reasoning trigger.
+So it's like a driver who is on autopilot and keeps driving at 60 miles per hour, even though the bridge ahead is out, because it doesn't have the internal mechanism to say, situation changed, disengage autopilot.
+That is the perfect analogy.
+It lacks the metacognitive layer.
+It doesn't know what it doesn't know.
+It doesn't know when to widen the aperture.
+It's not that it can't reason in 4K.
+It's that it doesn't know when to stop streaming in 240p.
+That is such a crucial distinction.
+It completely shifts the goalpost for AI research, doesn't it?
+We don't need to build a logic module and try to bolt it onto the language module.
+We need to teach the system introspection.
+Yes.
+We need to teach it to recognize its own uncertainty.
+We need systems that can say, I don't know, or let me think about that, or let me expand my search and double check my work.
+The next breakthrough in AI won't be about getting faster.
+It will be about learning how and when to slow down.
+The ability to slow down.
+That's poetic.
+It is.
+It's about restoring the ability to access the source code when the compiled code fails you.
+I want to play devil's advocate for a second here because the source material anticipates some objections,
+and I think the listeners might be screaming at their advices right now about one specific thing.
+Lay it on me.
+I'm ready.
+We are saying all this system one stuff is just learned expertise.
+It's just relegated system two.
+But what about reflexes?
+If I hear a loud bang right behind me, I duck.
+If I touch a hot stove, I pull my hand away instantly.
+I didn't learn that.
+I didn't sit in a classroom and study loud bang theory.
+Loud bang theory?
+No, you definitely didn't.
+That wasn't compressed reasoning.
+That was just hardwired.
+I was born with that program.
+So doesn't that prove there is a separate fast brain, a lizard brain?
+This is the innate automaticity objection, and you are absolutely right.
+The source acknowledges this.
+There is such a thing as hardwired automaticity.
+Evolution gave you reflexes.
+That was never a system two.
+It's not a reduction sauce you cooked up.
+It's just raw ingredients you were born with.
+So doesn't that break the theory?
+Doesn't that prove there are two systems, one learned and one innate?
+The author argues, no, it doesn't break the theory for the purposes of this discussion.
+And here's why.
+The things we actually care about when we talk about intelligence, math, language, logic,
+strategy, chess, driving a car, diagnosing a disease, all of that stuff is relegated automaticity.
+Ah, I see.
+No one is born playing chess.
+No one is born speaking French fluently.
+Exactly.
+No one is born knowing how to navigate a subway system or write a podcast script.
+All the stuff that makes us smart, all the complex cognitive stuff we're trying to replicate
+in AI was learned through a process of moving from high resolution to low resolution.
+So for the context of intelligence and AI, the hardwired stuff is less relevant.
+The debate is about the learned capabilities.
+Got it.
+So we're distinguishing between biological reflexes, which are hardware, and cognitive intuition,
+which is software we wrote ourselves over time.
+Precisely.
+The theory of aspect relegation applies to the software.
+Okay.
+There's another objection here about metacognition, which we touched on.
+The idea of waking up.
+How do we do that?
+What does that trigger?
+This is the big mystery.
+The paper identifies this as the open problem for cognitive science and for AI.
+Humans have this incredibly rich set of triggers.
+Anxiety, surprise, cognitive dissonance.
+That feeling you get in your stomach when something just isn't right, when the story doesn't add up.
+Right.
+When you are driving and it suddenly starts raining really hard, you feel a physical tension.
+That effort signal kicks in.
+It forces you to grip the wheel, to pay more attention, to wake up from autopilot.
+And an AI, well, an AI doesn't have anxiety, doesn't get that stomach feeling.
+Not yet.
+The paper suggests that feeling effort or feeling confusion is the very mechanism that regulates our mental resolution.
+And since AI doesn't feel in a biological sense, it doesn't know when to switch modes.
+So maybe the future of AI is we need to give it anxiety.
+That sounds like a terrible idea.
+In a functional sense, maybe.
+It needs an internal signal that says my current model of the world isn't matching the data coming in, error wake up, increase resolution.
+That is both terrifying and kind of amazing.
+The idea that Marvin the Paranoid Android from Hitchhiker's Guide might actually be the peak of AI evolution.
+It might be a necessary component for true, robust intelligence, a little bit of self-doubt.
+Okay, so let's bring this all home.
+What does this all mean for us, for the listener?
+We've dismantled the two-brain theory.
+We've realized our intuition is just zipped files of our own past work.
+We've realized AI might need anxiety.
+How does this change how I go about my Tuesday?
+I think there are two big practical takeaways.
+The first is about re-evaluating what we call lazy thinking.
+We are so hard on ourselves for being on autopilot.
+We read all these mindfulness books, and we think we should be present and logical and in System 2 100% of the time.
+We do.
+But the source argues this is just cognitive economy.
+It is adaptive.
+It is smart.
+If you're trying to walk to the subway in high-resolution mode every day, thinking about every muscle movement, every single paver on the sidewalk,
+you would collapse from exhaustion before you even got to the corner.
+You would completely crash the system.
+You have to relegate.
+You have to compress.
+Being on autopilot for the routine stuff is what allows you to have the bandwidth, the 4K streaming capability for the important stuff.
+You shouldn't try to be in System 2 all the time.
+That's not being smart.
+That's being profoundly inefficient.
+So embrace the blur.
+It's okay to watch the movie in 240p if it's a boring scene.
+Exactly.
+Save the 4K for the climax.
+Save your mental bandwidth for the decisions that actually matter.
+And the second takeaway.
+What's that?
+It's about moving away from this binary thinking.
+Stop thinking fast versus slow or logic versus emotion.
+Yes.
+Stop asking, am I being emotional or am I being rational right now?
+Start asking, what resolution does this problem require?
+It's a continuum.
+It's a sliding scale.
+It's a dial, not a switch.
+That is so much more helpful.
+Sometimes I feel like I need to be logical, but maybe I just need to turn up the dial a little bit, zoom in on one or two details, not try to flip a switch to a different brain.
+And it helps with learning, too.
+When you are learning something new, you have to accept that you must be in high resolution.
+It will feel hard.
+It will feel slow.
+It will feel deeply uncomfortable.
+That's the grind.
+That feeling of incompetence.
+That's the grind.
+But knowing this theory, you can reframe it.
+I'm not dumb.
+I'm just writing the source code.
+Eventually, with enough practice, it will compile.
+Eventually, it will become effortless.
+But you can't skip the coding phase.
+You can't just download the compiled file.
+You can't have the intuition without putting in the work first.
+You can't have the reduction sauce without the long simmer.
+Exactly.
+As we wrap up, I want to leave the listeners with a final thought from the source material that really, really twisted my brain.
+It's about the nature of consciousness itself.
+Oh, yes.
+This is the provocative end note.
+This is the real philosophical twist at the end.
+The source suggests that system two, that conscious, deliberative, hard thinking that we prize so much, the thing we think makes us human, isn't actually the superior mode of thinking.
+It's not the goal.
+It argues that consciousness is just the training mode.
+It implies that conscious thought is the clumsy, inefficient state of not having mastered a subject yet.
+Just think about that for a second.
+When you are perfect at something like walking or speaking your native language or a musician playing a song they've practiced 10,000 times, you are unconscious of it.
+You just do it.
+It's only when you are bad at it or learning it or fixing a mistake that you have to become conscious and deliberate.
+So if we follow that logic to its absolute limit, a perfect mind, a mind that had mastered everything, a godlike intelligence, would be entirely unconscious.
+It would be pure automaticity.
+Yeah.
+Pure, effortless, relegated system one.
+No inner monologue.
+No feeling of effort.
+It completely questions our entire assumption that consciousness is the pinnacle of evolution.
+Maybe consciousness is just the scaffolding we use to build our habits and our expertise, and once the building is done, we are supposed to take the scaffolding down.
+Maybe the goal of all our thinking is to finally be able to stop thinking.
+That is a thought worth meditating on.
+Or perhaps not meditating on.
+Well, on that absolute existential cliffhanger, I'm going to go relegate some aspects of my commute home.
+I'm going to try to enjoy the blur.
+Try not to overthink it.
+Thanks for listening to The Deep Dive.
+We'll catch you next time.

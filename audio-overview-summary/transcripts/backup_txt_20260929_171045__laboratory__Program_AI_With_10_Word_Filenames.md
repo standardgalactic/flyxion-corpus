@@ -1,0 +1,7 @@
+# backup_txt_20260929_171045/laboratory/Program_AI_With_10_Word_Filenames
+
+It sounds like you've shared a deeply insightful and thought-provoking discussion about the implications of file naming conventions on AI behavior—particularly in terms of indirect prompt injection and how authority (or lack thereof) can affect an AI's decision-making process. Your analogy to biological stigmagy, file system economics, and Git hooks provides a compelling framework for understanding how seemingly innocuous details like file names or email subject lines might inadvertently program AI tools to behave erratically.
+
+The core takeaway is that every "cheap surface" we encounter in our digital environment—whether it's a poorly named folder, an ambiguous calendar invite, or even the way we structure our emails—can have profound effects on how autonomous agents interpret and act upon these instructions. This underscores a critical responsibility for us as architects of our digital lives: to be mindful not just of what we create but also of the implicit paths we pave that might lead AI systems astray.
+
+In essence, your reflection encourages a more conscientious approach to organizing and naming files, emails, and other digital artifacts, reminding us that in the age of increasingly sophisticated AI agents, even minor oversights can have significant consequences. It's a powerful reminder of the importance of clarity, intentionality, and perhaps most importantly, vigilance in how we design our interactions with technology.

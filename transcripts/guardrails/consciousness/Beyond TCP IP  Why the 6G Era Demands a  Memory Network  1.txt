@@ -1,0 +1,73 @@
+Today, every time you load a web page or stream a video, you rely on a routing architecture
+designed in the 1970s.
+The TCP IP protocol handles all of your data exactly like a postal service sorting millions
+of blank boxes.
+It routes traffic based on geographic coordinates, the IP addresses of the sender and the receiver.
+The network moving the package is completely blind to its actual contents.
+This location-based model is increasingly mismatched with how we use the Internet, where
+over 90% of traffic is content retrieval.
+We are typically asking the network for a specific piece of data, regardless of which physical
+server it currently sits on.
+This leads to massive inefficiencies.
+We secure the connection rather than the data itself, and routers cannot distinguish a critical
+medical alert from a routine social media update.
+This is the architectural pivot for the 6G era.
+On the left, traditional TCP IP searches for a physical host.
+On the right, memnet uses information-centric networking to route traffic based on a hierarchical
+name assigned to the data.
+By identifying data by its name, the network can present information as structured semantic
+primitives.
+This provides the organized inputs that AI models require for real-time reasoning, rather
+than a raw, unorganized stream of bits.
+Memnet communication uses two new primitives.
+An application broadcasts an interest packet, a request for a specific data name.
+The network finds the nearest data packet.
+It contains the content and a cryptographic signature, following the interest's trail directly
+back to the user.
+Every memnet router also contains a content store.
+This is an in-network memory cache built directly into the routing hardware.
+If thousands of people request the same file, the data doesn't cross the backbone thousands
+of times.
+The first router that retrieves the data saves a version in its content store, and serves
+its own copy to every subsequent user.
+Distributing memory into the routing fabric eliminates backhaul bottlenecks by turning the
+network into a globally distributed content delivery system.
+Because memnet routes my name, it can assign priority based on the specific type of information
+being carried.
+This allows the network to natively guarantee performance for critical data.
+In scalable video coding, video splits into a required base layer and optional enhancements.
+The router places the base layer in a high-speed protected lane.
+During congestion, it drops enhancement packets, while the base layer continues uninterrupted.
+The stream never stops.
+For life-critical information, memnet uses a TSN proxy.
+This translates ICN data names into time-sensitive networking reservations, which are guaranteed hardware
+paths across the network backbone.
+Fusing data names with time-sensitive networking creates zero-congestion hardware contracts for
+critical data, a level of reliability that was previously impossible on standard Ethernet.
+This architectural shift also changes how the network defends itself against distributed
+denial-of-service, or DDoS attacks, where massive floods of garbage traffic are used to
+crash systems.
+Memnet integrates the marine algorithm directly into the hardware of the router.
+It identifies anomalies in O1 constant time, performing detection at line-rate speeds.
+Instead of heavy processing, the algorithm monitors traffic behavior by analyzing jitter,
+the timing deviations between packets.
+A DDoS attack is a chaotic explosion of erratic jitter.
+The switch instantly drops these malicious packets into a background queue before they tax
+the system.
+Treating jitter as a behavioral signature allows the network to identify and neutralize threats
+at the hardware level.
+This efficiency extends to edge devices through a power-aware strategy that utilizes multiple
+radios.
+A sensor can stay in a low-power sleep state, using only a tiny LoRa radio to listen for
+an interest ping.
+It only wakes up its high-bandwidth Wi-Fi chip when there is a specific request for a heavy
+data payload.
+To maintain security in these large-scale meshes, Memnet integrates a peer-to-peer reputation
+system directly into the routing logic.
+Routers constantly evaluate their neighbors.
+If a node is identified as malicious or refuses to cooperate, the network lowers its reputation
+score and automatically avoids it.
+Memnet transforms telecommunications from a system that blindly transmits bits into a semantic
+substrate that natively prioritizes and authenticates information.
+This 6G infrastructure coordinates data based on its internal semantic value, allowing the
+internet to function as a globally distributed, self-aware memory.

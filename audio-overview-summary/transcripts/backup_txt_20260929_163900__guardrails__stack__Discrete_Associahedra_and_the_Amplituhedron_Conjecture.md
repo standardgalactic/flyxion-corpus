@@ -1,0 +1,16 @@
+# backup_txt_20260929_163900/guardrails/stack/Discrete_Associahedra_and_the_Amplituhedron_Conjecture
+
+KEYWORDS:
+
+discrete associahedra
+amplituhedron conjecture
+positive geometries
+irreversible constraint dynamics
+RSVP entropy fields
+Feynman diagrams
+Landauer limit
+information theory
+computational utility
+philosophical framing
+structural boundary
+Rosetta Stone mapping

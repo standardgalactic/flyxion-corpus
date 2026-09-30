@@ -1,0 +1,9 @@
+# guardrails/stack/Nuestra_vara_de_la_dificultad_está_chueca
+
+El artículo plantea una reflexión profunda sobre cómo la dificultad no es una propiedad fija, sino algo que se mueve continuamente. En lugar de buscar soluciones con menor costo total a largo plazo, los sistemas adaptativos (como la evolución biológica o el desarrollo tecnológico) tienden a optar por atajos inmediatos y más simples, lo que genera complejidad en el futuro. Este concepto se relaciona con la teoría del índice de ensamblaje, que mide la complejidad de un objeto por los pasos mínimos para construirlo.
+
+De acuerdo con esta perspectiva, la inteligencia no es simplemente la capacidad de resolver problemas difíciles, sino más bien la habilidad de gestionar las fronteras entre lo fácil y lo difícil. Esto implica una metacognición: ser consciente cuando nuestras abstracciones o compilaciones ya no se ajustan al entorno cambiante y tener la flexibilidad para reemplazarlas.
+
+La estupidez, en este sentido, no es una falta de capacidad sino un compromiso excesivo con abstracciones obsoletas que ya no se ajustan al nuevo contexto. El progreso, entonces, no consiste en eliminar la dificultad sino en redistribuirla continuamente. La verdadera justicia, por lo tanto, tendría que considerar el acceso desigual a los andamios (herramientas, educación, contexto) necesarios para hacer factible una tarea.
+
+Finalmente, se plantea una cuestión existencial: si nuestros planes y leyes siempre son versiones simplificadas de la realidad, ¿estamos destinados a que nuestras ambiciones simbólicas superen nuestra capacidad real de ejecución en sistemas cada vez más complejos? Esto nos invita a reflexionar sobre nuestro control sobre los sistemas complejos que diseñamos y si realmente podemos anticipar todos sus fricciones y dependencias ocultas.

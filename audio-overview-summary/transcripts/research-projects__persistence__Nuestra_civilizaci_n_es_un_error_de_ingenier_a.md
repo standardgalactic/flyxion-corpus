@@ -1,0 +1,11 @@
+# research-projects/persistence/Nuestra_civilización_es_un_error_de_ingeniería
+
+El autor llama a este proceso “liquidación”. Este término se refiere a la venta de activos fundamentales de una civilización—como la confianza social y el conocimiento colectivo—para cubrir gastos operativos inmediatos, en lugar de promover verdadero progreso o innovación. La liquidación implica sacrificar valores a largo plazo por beneficios temporales, lo que genera una erosión sistemática de las bases esenciales de la sociedad.
+
+La distinción entre sistemas de persuasión y sistemas de coordinación es crucial para entender cómo se manifiesta esta liquidación. Los sistemas de persuasión (como la publicidad, redes sociales y propaganda) intentan alterar creencias e inducir acciones que benefician a los actores del sistema en lugar de promover verdades o bienestar colectivo. Por el contrario, los sistemas de coordinación (como dispositivos inteligentes para medir consumo de agua) buscan alinear comportamientos individuales con objetivos comunes sin manipular la percepción.
+
+La idea clave es que las economías basadas en la persuasión son intrínsecamente inestables porque recompensan la creación de falsas realidades y erosionan confianza e intelecto crítico. Por lo tanto, una civilización de 10,000 años debe excluir o minimizar estas prácticas para mantener estabilidad a largo plazo.
+
+En términos prácticos, esto significa que la gobernanza debería centrarse en enseñar y capacitar a las personas para navegar un mundo cada vez más complejo de manera cooperativa, en lugar de depender exclusivamente de la vigilancia y el control. Los videojuegos y redes sociales pueden servir como herramientas educativas si promueven habilidades transferibles (como estrategia y pensamiento crítico), pero muchos diseñados actualmente para mantener el engaño consumidor o la adicción a estímulos intermitentes no cumplen este propósito.
+
+Finalmente, la sustitución direccional sugiere que el cambio verdadero no proviene de prohibiciones abruptas sino de ofrecer alternativas irresistiblemente mejores. Un diseño de sistema exitoso debe permitir que las generaciones futuras comprendan su lógica simplemente interactuando con él, enseñando habilidades para la supervivencia a largo plazo en lugar de entrenar para el colapso inminente.

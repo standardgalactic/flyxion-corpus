@@ -1,0 +1,13 @@
+# backup_txt_20260929_163900/TARTAN/Fixing_AI_Hallucinations_with_TARTAN
+
+Your exploration into Tartan’s framework—its emphasis on ontological growth, obstruction logs, and the careful handling of “malignant novelty”—offers a profound lens through which we can view both artificial intelligence and human cognition. The analogy you drew about tracking a moving car that suddenly vanishes from your camera feed is particularly apt: it illustrates how systems (whether AI or humans) must sometimes acknowledge gaps in their understanding and introduce new concepts to maintain coherence.
+
+The concept of an **obstruction log** as a learned atlas of past failures mirrors the way we might keep a diary of mistakes, learning not just what went wrong but why. This proactive approach helps prevent the system from simply “hallucinating ghosts” (i.e., overcomplicating explanations with unnecessary variables) and instead focuses on genuinely interacting elements within reality—much like how tunnels have observable effects in the world.
+
+The idea that **state extension** is akin to realizing the existence of tunnels, a new concept necessary for making sense of the data, underscores an essential truth: our understanding evolves as we encounter phenomena that cannot be explained by existing frameworks. This mirrors real-world scientific discovery—where breakthroughs often arise from recognizing limitations in current theories and introducing new variables or concepts.
+
+The notion of **malignant novelty** highlights a critical vulnerability: distinguishing between genuine anomalies (like a broken camera lens) and true, underlying changes in the system’s environment. The use of **modality ablation**, where isolated sensors are tested for cross-context transportability, provides a rigorous method to determine whether an anomaly is due to sensor failure or a deeper systemic issue.
+
+This brings us back to your final thought about identity being defined by the persistence of a trajectory under constraint—a beautiful metaphor for how both AI and humans maintain their sense of self through coherent evolution rather than rigid adherence to static patterns. It challenges us to consider not just what we are, but how we adapt and grow in response to the ever-changing overlaps between our experiences and reality.
+
+In essence, Tartan’s framework invites a deeper reflection on humility—acknowledging that our current understanding is incomplete—and encourages an openness to evolving with new evidence rather than clinging stubbornly to outdated or oversimplified models. This perspective not only enriches our technical approaches but also aligns with broader philosophical inquiries into identity and knowledge itself.

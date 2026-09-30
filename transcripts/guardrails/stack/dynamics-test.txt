@@ -1,0 +1,719 @@
+Dynamics in Action
+Intentional Behavior as a Complex System
+Alicia Warreiro, A Bradford Book
+The MIT Press, Cambridge, Massachusetts, London, England
+CD 1999, Massachusetts Institute of Technology
+For my mother, Alicia Valiente, and in memory of my father, Francisco Warreiro
+Dynamics in Action
+For those of us who try to write at the same time as we teach, full-time and well at a community college, and there are many of us, the encouragement and support of friends and colleagues who take one scholarly work seriously are a blessing without which life would be greatly diminished.
+Both my personal and professional lives have been enriched by countless such persons, many of whom began as colleagues but in time became friends.
+For their incisive and helpful comments on my work, as well as for their friendship, I will be forever grateful.
+I wish I could name and thank you all.
+For more than 24 years it has been a joy to teach at Prince George's Community College, thanks in large part to the presence of my fellow philosophers, Marlene Carpenter and Clyde Ebenrack.
+Their dedication and devotion both to their students and their friends are unmatched.
+Portions of this manuscript were written while visiting research associate professor at Georgetown University.
+I want to thank their chemistry department chairman, Joseph Verlay, for that opportunity.
+Issa Engelberg and John McCann provided valuable comments on early sections of the book, and Edward Pauls, Carl Rubino, and Robert Ulanowich trudged through the entire first and though so rough draft of the manuscript.
+Not only did none of them suggest that I pack it in, they actually encouraged me, as did Isabel Padreau.
+Thanks. I am very appreciative, also, of Stanley Salve's insightful and thoughtful criticisms over the years.
+His questions and comments have always helped me think and write more clearly.
+A special thanks goes to Robert Artigiani.
+Many of the ideas presented in this book were first articulated during what has become a 12-year-long conversation.
+For patiently correcting my many egregious errors and not complaining when I no longer could tell which idea or phrase was first his and which mine, thanks.
+I am indebted more than I can say to David DePue for his supererogatory assistance.
+Anonymous to me until the very end, David not only served as reviewer of several earlier drafts,
+he also provided valuable suggestions on the book's content.
+I am embarrassed at his having been acknowledgments.
+Dispositions, Teleology and Reductionism
+Philosophical Topics 12, 1983, 153-65
+Does Level Generation Always Generate ACT Tokens?
+Philosophy Research Archives 9, 1983, 177, 92
+Kahn's Concept of Teleology and Modern Chemistry
+Review of Metaphysics 39, 1985, 107, 35
+Does Action Theory Rest on a Mistake?
+Philosophy Research Archives 13, 1987-88
+Non-linear Phenomena, Explanation in Action
+International Philosophical Quarterly 28, 1988, 247, 55
+What did the agent know?
+Maniscrito 11, 1988, 108-13
+Fail Safe vs. Safe Fail
+Suggestions toward an evolutionary model of justice
+Texas Law Review 69, 1991, 1745, 77
+Language Competence and Tradition Constituted Rationality
+Philosophy and Phenomenological Research
+51, 1991, 611-17
+Causality as Constraint
+In Evolutionary Systems
+Biological and Epistemological Perspectives on Self-Organization
+Ed.
+Cheevanta Vidvar, S. N. Solve, and M. Delpos
+1998, D'Or Dretched, Clure
+Impertune so
+Elizabeth Stanton of the MIT Press deserves special mention for believing in this project from the very
+beginning, and for taking a flyer on an unknown. Had she not championed my cause, this book would not
+have been published. To Melissa Vaughan, my editor at MIT Press, for her efficient and gracious
+guidance of both book and author, and to Shirley Castle, for her thorough and elegant index, my
+censorous thanks go as well. For the persistent and good-humored help of all of these people, I will always be grateful.
+Inevitable errors no doubt still remain in the manuscript.
+These are, of course, solely my own. How do I thank my family, not only for instilling in me love of books and
+learning, but primarily for the sacrifice of leaving behind their possessions in comfortable lifestyle so that my
+sister and I could live in freedom, and for making what must have been a very difficult transition for them an
+adventure for us? Taito, Lydia, and of course Nanasan Kwanan. This one's for you, too.
+Finally, to Jose Gfaz Esper. De Foto Corazon, Gracias. Portions of the following papers I authored have found their way into
+this book and are reprinted with permission. Abbreviations works cited in this volume are abbreviated as listed
+here. Full references to these works and to other texts cited appear in the bibliography.
+Aristotle to Animata and Nicomachean Ethics and Metaphysics Meta. The pagination of the Becker edition of the Greek text,
+published in the first two of the five volumes of the Berlin Academy's 1831-1870 edition of Aristotle's work has
+become the customary means to locate a passage in Aristotle. Unless otherwise noted, references to Kant
+indicate, The Critique of Teleological Judgment, in The Critique of Judgment, T.R.
+J.C. Meredith, Oxford. Clarendon Press, 1980. These references also cite, after, Ack.
+Volume and page number in Kent's Gismel Trifton, prepared under the supervision of the Berlin Academy
+of Sciences. What is the difference between a wink and a blink? Knowing one from the other is important
+and not only for philosophers of mind. Significant moral and legal consequences rest on the distinction
+between voluntary and involuntary behavior. Jurors, for example, report that deciding whether the accused
+caused someone's death is relatively easy. They find it much more difficult, on the other hand,
+to determine, what class of offense if any had been committed, Hacker 1995, 44. At Supreme Court hearings
+on the subject of physician-assisted suicide, the discussion turned on the same issue. Suppose a
+doctor administers a large dose of barbiturates to a patient in pain. The patient slips into a coma and dies.
+Was it first- or second-degree murder, or accidental homicide? Walter Dellinger, acting Solicitor General,
+testified at those hearings that, so long as the physician's intent was to relieve pain and not cause
+death, the behavior was not unlawful. As Anthony Lewis, writing in the New York Times, January 1997,
+noted of the debate, everything turned on the shadowy question of intent. Our judgments concerning moral
+responsibility and legal liability will be very different, therefore, depending on how we answer
+the question, was it a wink or a blink? And yet that is precisely the problem. Gauging intent in order to
+establish what the accused did so that jurors as well as the rest of us can then discriminate among
+degrees of responsibility. We are not responsible and cannot be held accountable for blinking.
+And rightly so. We think of blinks, unlike winks, as behavior that we do not intend and cannot control
+something that happens to us. A reflex reaction in which we are passive. Winking, on the other hand,
+is something we do in some unclear sense of we that identifies us as agents. Only intentional behavior
+qualifies as moral or immoral. Reflexes are immoral. But what marks off intentional actions from
+unintentional, accidental or reflex behavior? How do agents, as opposed to their bodies,
+do things? And how do we tell? The branch of philosophy called, action theory has traditionally
+been charged with articulating necessary and sufficient conditions marking the introduction.
+Boundary between action and non-action, as well as between voluntary and involuntary behavior.
+The philosophical issues with which action theory is concerned include such topics as the concepts of
+agency and free will, the relationship between awareness and behavior, and the role that reasons
+play in causing and explaining actions. Understanding these has required weaving together topics culled from
+such disparate disciplines as epistemology, metaphysics, philosophy of mind and, more recently, neurology and
+even genetics. Although not labeled as such until after World War II, the concerns of action theory go as
+far back as the ancient Greeks. In Plato's dialogue Feino, which takes place while Socrates is awaiting execution,
+Socrates worries that earlier philosophers made air, ether, and water the only causes. What about Socrates's
+reasons for not escaping from prison? Are they not the true cause of his behavior? Later, and more
+systematically, Aristotle examined the difference between intentional and involuntary behavior. An adequate
+explanation of anything, he claimed, must identify those causes responsible for the phenomenon being
+explained. Aristotle's four causes are final cause, the goal or purpose toward which something aims,
+formal cause, that which makes anything that sort of thing and no other eye, material cause, the stuff out of
+which it is made, and efficient cause, the force that brings the thing into being. Explaining anything,
+including behavior, requires identifying the role that each cause plays in bringing about the phenomenon.
+Implicit in Aristotle's account of cause and crucially influential in the history of action theory,
+however, is another of Aristotle's claims. That nothing, strictly speaking, can move, cause, or act on itself
+in the same respect. This principle has remained unchallenged throughout the history of philosophy and,
+as we shall see, has caused many problems for the theory of action. Because he had more than one type of
+cause to draw on, Aristotle was able to explain voluntary self-motion in terms of a peculiar combination of
+causes. By the end of the 17th century, however, modern philosophy had discarded two of those causes,
+final and formal. As a result, purposive, goal-seeking and formal, structuring causes no longer even
+qualified as causal. Philosophy restricted its understanding of causality to efficient cause.
+And then, taking its cue from Newtonian science, modern philosophy conceptualized efficient causality
+as the push-pull impact of external forces on inert matter. This mechanistic understanding of cause,
+too, has had serious consequences for action theory, particularly when combined with the
+principle philosophy did retain, Aristotle's thesis that nothing moves itself. Aristotle had insisted
+that formal deduction from universal premises is the logic of reasoning proper to science,
+because human behavior is temporally and contextually embedded, on the other hand, it is introduction.
+The central concern of practical wisdom, phronesis. Because of its subject matter and unlike deduction,
+therefore, wisdom varies, as the occasion requires. In contrast, modern philosophy also brought with it a
+particular understanding of the logic of explanation. The principle that, ideally, all explanation is
+fundamentally deductive in form. Following Hume in opposition to Aristotle, as Stephen T. Ullman, 1990,
+has pointed out, philosophers concluded that deduction from timeless and contextless laws is the ideal,
+not only of science, but of any legitimate form of reasoning. A law of nature at worst statistical,
+but ideally strictly deterministic, combined with statements specifying initial conditions must allow
+that which is being explained, the explanandum, to be inferred. Even human actions must be explained in that manner.
+By the middle of the twentieth century, the principle that the logic of any serious explanation must adhere to
+such a covering law model, was the received view. Understanding all causes collision-like,
+and the explanatory ideal as deduction from deterministic laws, are two examples of a trend
+that has characterized the history of philosophy for over two thousand years. The progressive elimination of
+time and context from metaphysics and epistemology. Since time and context play a central role in all living
+things, including human beings and their behavior, action theory is thus an excellent prism that refracts
+in separate two key problems in the history of Western philosophy. Cause and explanation,
+and lays bare the role that time and context play in each. The first claim of this book is that an
+inadequate, 350-year-old model of cause and explanation underlies contemporary theories of action. In
+addition to a brief history of the concepts of cause and explanation, Part 1 consists of a detailed analysis
+of the major warhorses of contemporary action theory with a view to demonstrating that action theory rests
+on these two mistaken views of cause and explanation. Chapters 1 and 2 examine the modern
+understanding of cause and the problems it has occasion for action theory. In those chapters I survey
+major contemporary causal theories of action, all of which have consistently adhered to Aristotle's
+principle that nothing moves or changes itself, intentions, volitions, and other alleged causes of
+action are supposed to be other than the behavior they cause. In addition, by subscribing to a
+Newtonian understanding of efficient cause as well, these theories have also uncritically assumed that
+intentions, volitions, or agents cause action in the collision-like way that cue sticks cause cue balls to
+move. As a result of these two unexamined presuppositions, causal theories have been plagued by
+characteristic and recurrent objections. Most of the action theory literature of the past four decades
+has consisted of repeated attempts to mitigate or circumvent these objections. Not recognizing that
+they will persist until action theory abandons this mechanistic view of cause. Introduction
+Introduction Next, I examine the problems that the received view of explanation has created for action
+theory. Chapter 3 surveys the history of the covering law approach to rationality and explanation.
+Chapter 4 examines how this explanatory framework, in the guise of logical behaviorism, makes an
+appearance in the theory of action. Behaviorist analyses have tried to reduce the flexibility and
+appropriateness characteristic of human action to stimulus response patterns. Motivating such attempted
+reductions has been the desire to make human behavior explicable by rendering it scientific,
+that is, tractable by the received view of explanation as deduction. Given modern philosophy's
+elimination of final cause from its metaphysical framework, even those theorists who recognize the
+obvious goal-directedness of action try to do the same. Teleology, too, therefore, was analyzed away as
+nothing but the lawful regularity of stimulus response patterns. Chapter 5 chronicles the attempted
+reduction of purposiveness to behavior as patterns of stimulus response. Modern philosophy's understanding of
+cause and explanation has failed as a general theory. Today there is no reason to continue to subscribe to
+this idemporeal and acontextual approach. By the 19th century, two major challenges to the modern conceptual
+framework had already appeared. First, the inexorable increase in entropy postulated by the second law of
+thermodynamics seemed to return temporal direction to physics by identifying the universal and irreversible
+arrow of time. Everything moves from order to disorder. On the face of it, however, biology contradicts the
+second law. Whence the increasing complexity so much in evidence in biological development and evolution? What
+went largely unrecognized until recently was the fact that the classical thermodynamics of the 19th century
+treats all systems as if they are closed, isolated, and near equilibrium which living things are not. Second, in opposition to
+the inexorable winding down predicted by classical thermodynamics, Darwin's theory of evolution, particularly
+its concept of selection, appear to account for the increasing complexity and order that characterizes
+both ontogeny and phylogeny. More important for our purposes, by giving the environment in which an
+organism is located a central role as the agent of selection, Darwin's writings return context to
+science for the first time in centuries. Darwinism, however, still considers the environment wholly external
+to the organism. If so, how is the cause responsible for speciation to be understood? Certainly not as pushing.
+Is the universe winding down or ratcheting up? Fortunately, there is a way out of this impasse.
+Over the last few decades a new branch of thermodynamics has been developed, variously called the theory of
+complex adaptive systems, complexity theory, and similar names, that deals with systems far from equilibrium
+and open in the sense that they exchange matter and energy with their environment. Pioneered by Ilya Prigogine.
+Introduction 1977 Chemistry Nobel laureate for his discovery of so-called dissipative structures,
+its conceptual framework offers significant implications for the philosophy of science,
+science, particularly when combined with dynamical systems theory. Part 2 of the book explores the potential
+that far from equilibrium thermodynamics has for understanding action. Before doing that, however,
+I take a look at information theory. One of the drawbacks of conceptualizing cause as the instantaneous
+impact of external forces on inert matter is that such causes cannot monitor a process and guide it toward completion.
+In contrast, because of its concern with making sure that transmitted messages arrive at their intended
+destination, information theory is fundamentally interested in the way information flows.
+Through its concepts of equivocation and noise, information theory can track such flow by determining whether
+information available at the receiver's end is dependent on information generated at the source.
+Thinking of actions as unbroken trajectories calculated in terms of information flow,
+noise, and equivocation allows us to avoid many of the traditional objections to which causal theories of action are vulnerable.
+Chapter 6 examines the applicability of information-theoretic concepts to action.
+Standard information theory, however, brings along its own weaknesses, in particular the problem of meaning.
+Communications engineers speak of bits of information, a contentless quantity with no relationship to the
+nature, or the robust sense of meaning that is so much a part of human communication and behavior.
+Action theory needs, in contrast, an account of how the content of an intention, as meaningful,
+can inform and flow into behavior such that the action actualizes the content of that intention.
+The second main claim of this book is that the conceptual framework of the theory of
+complex adaptive systems can serve as what Richard Boyd, 1979, calls a
+theory-constitutive metaphor that permits a reconceptualization of just such a cause,
+and in consequence a rethinking of action.
+A different logic of explanation one more suitable to all historical,
+contextually embedded process s, including action arises from of this radical revision.
+Several key concepts of the new scientific framework are especially suited to this task.
+First, complex adaptive systems are typically characterized by positive feedback process s in
+which the product of the process is necessary for the process itself. Contrary to Aristotle,
+this circular type of causality is a form of self-cause. Second, when parts interact to produce
+wholes, and the resulting distributed wholes in turn affect the behavior of their parts,
+interlevel causality is at work. Interactions among certain dynamical processes can create a
+systems-level organization with new properties that are not the simple sum of the components that
+constitute the higher level. In turn, the overall dynamics of the emergent distributed
+introduction system not only determine which parts will be allowed into the system,
+the global dynamics also regulate and constrain the behavior of the lower-level components.
+The theory of complex adaptive systems can therefore be used as a metaphor for this form of causal
+relations, which had puzzled Kent as a form of causality, unknown to us. In other words,
+far from being the inert epiphenomenon modern science claims all holes are, complex dynamical
+holes clearly and in a distributed manner exert active power on their part such that the overall
+system is maintained and enhanced. Understanding dynamical systems can therefore revive Aristotle's
+concepts of formal and final cause by offering the scientifically respectable model of how such causes
+causes cause. Chapter 7 introduces the reader to systems theory in general. Chapter 8 provides an
+overview of non-linear dynamical systems theory. Since the active power that holes exert on their
+components is clearly not the go-cart-like collisions of a mechanical universe, how are we to explicate
+these inter-level causal relationships previously, unknown to us? The third main claim of this book is that the
+causal mechanism at work between levels of hierarchical organization can best be understood as the
+operations of constraint. Chapters 9 and 10 analyze inter-level causes in terms of constraints.
+Lila Gatlin, 1972, distinguish s between two types of constraints. Context-free constraints, which take a
+system's components far from equi-probability, and context-sensitive constraints, which synchronize and
+correlate previously independent parts into a systemic whole. When organized into a complex, integral whole,
+parts become correlated as a function of context-dependent constraints imposed on them by the newly organized
+system in which they are now embedded. Catalysts, feedback loops, and biological resonance and entrainment
+embody context-sensitive constraints. From the bottom up, the establishment of context-sensitive constraints
+is the phase change that self-organizes the global level. Or to say it differently,
+the self-organization of the global level is the appearance of context-sensitive constraints on the system's
+components. Parts heretofore separate and independent are suddenly correlated, thereby becoming interdependent components
+or nodes of a system. But even as they regulate alternatives, context-dependent constraints simultaneously open up new
+possibilities. The more complex a system, the more states and properties it can manifest.
+Novel characteristics and laws emerge with the organization of the higher level.
+For example, when amino acids self-organize, bottom up into a protein, the protein can carry out enzymatic
+functions that the amino acids on their own cannot. From the top-down and serving as a contextual constraint,
+the dynamics of the global dynamical system in turn close off some of the behavioral alternatives that would be open to.
+The components were they not captured in the overall system. Once folded up into a protein,
+for example, the amino acids find their activity regulated, top-down, they behave differently as part of the protein
+than they would have on their own. Constraints work, then, by modifying either a system's phase space
+or the probability distribution of events and movements within that space. Since actions are
+lower, motor-level implementations of higher-level intentional causes, reconceptualizing mental causation
+in terms of top-down, context-sensitive dynamical constraints can radically recast our thinking about
+action. There is ample evidence that the human brain is a self-organized, complex adaptive system that
+encodes stimuli with context-sensitive constraints. Studies showing that, each cortical pattern is a
+dissipative structure emergent from a microscopic fluctuation suggest that this is a plausible hypothesis,
+Freeman 1995, 51. Not only does the brain have re-entrant pathways, Edelman 1987, that function as
+positive feedback channels. It is also known to determine for itself what counts as a meaningful
+stimulus and what constitutes meaningless noise. Research increasingly supports the hypothesis that
+non-linear feedback and resonance and entrainment among neurons as well as between the overall nervous
+system and the environment, are responsible for the self-organization of coherent behavior in neuronal
+populations. In chapters 11 through 13 I examine the implications of such a view for a dynamical
+account of action. As is true of all self-organized structures, the emergent dynamics of coherent
+neurological activity can be expected to show novel and surprising properties, as a consequence of the
+neurological self-organization resulting from context-sensitive constraints. I suppose, conscious and
+particularly self-conscious beings emerge, beings that can believe, intent, mean, and so forth. Since the
+global level of all complex adaptive systems contextually constrains the behavior of the components that make it up,
+I postulate that behavior constitutes action, a wink, as opposed to a blink when the brain's self-organized
+dynamics, as characterized by consciousness and meaning, originate, regulate, and constrain s-k-e-l-e-t-o muscular
+process as such that the resulting behavior satisfies the meaningful content embodied in the complex dynamics from which it issued.
+Thinking of agents and their actions in this manner provides a previously unavailable way of conceptualizing
+the difference in the etiology and trajectory of winks and blinks. Bottom up, formulating a prior intention
+to wink would be the felt counterpart of a neurological phase change, the dynamical self-organization of a more
+complex level of coherent brain activity that integrates neuronal patterns embodying wants,
+desires, desires, meaning, and the like. Unlike Newtonian causes, however, this higher level of
+introduction. Introduction neurological organization would not be simply a triggering device. The global
+dynamics of self-organizing complex adaptive process s-constraint top-down their components,
+motor process as in the case of behavior. As contextual constraints, however, a system's dynamics are not
+a current events like Newtonian forces. An intention's constraints would be embodied in the metastable
+dynamics that characterize the intention's neurophysiological organization, and as such would
+not immediately disengage. Rather, by serving as the brain's operator or order parameter, those contextual
+constraints that embody an intention, acting top-down would provide the behavior with continuous,
+ongoing control and direction by modifying in real-time the probability distribution of lower-level
+biological neurological processes. As a consequence, the behavioral alternatives available to an MPIT
+lent it by the agent. Far from representing messy, noisy complications that can be safely ignored,
+time and context are as central to the identity and behavior of these dynamic processes as they are to
+human beings. Unlike the pro-says described by classical thermodynamics, which in their relentless march toward
+equilibrium forget their past, complex adaptive systems are essentially historical. They embody in their
+very structure of the conditions under which they were created, including the chance events around which each
+self-organized stage reorganizes. The unrepeatable, random fluctuation or perturbation around which each phase of
+a sequence of adaptations nucleates leaves its mark on the specific configuration that emerges. The structure of a
+snowflake, for example, carries information about the conditions under which it was created. Each level is uniquely and
+progressively individuated, as is the developmental and behavioral trajectory of each organism.
+SALT 1993 A. The unpredictability that confounded those theories of action attempting to reduce
+purposiveness to regular stimulus response patterns is therefore an ineradicable feature of complex adaptive
+systems and a consequence of their embeddedness in time and space. If human beings and their behavior
+are complex adaptive phenomena, the precise pathway that their actions will take is simply unpredictable.
+Covering law models are therefore clearly inadequate to explain these processes. How, then, must human
+action be explained? In chapter 14 I propose an interpretive, narrative model of explanation. In hermeneutical
+interpretation, the meaning of a complete text is constructed from the relationships among the individual
+passages. In turn, the meaning of the story's individual passages is derived from the meaning of the entire
+text in which those passages are embedded. This continual, interpretive, taking from parts to whole and back to
+parts reproduces the way dynamical systems self-organize out of the interrelationships among the parts and then loop
+back to constrain those parts. This similarity in the dynamics of self. Introduction organization in
+hermeneutics makes the latter uniquely suited as the logic of explanation for stable states of the former. Far enough from
+equilibrium, however, dynamical systems can abruptly and irreversibly undergo a radical transformation.
+On the other side of this bifurcation, see chapter 8, a system either reorganizes into a higher level of
+complexity characterized by renewed potential and possibilities, or falls apart. Across phase changes,
+that is, there are no established dynamics that can serve as the context from which the parts derive their
+meaning, the change itself and the dynamics governing the system's stable states needs explaining. Since these
+phase changes are unpredictable, the only way to explain them is with a retrospective narrative that
+retraces the actual leap. Explaining these individual dramatic transformations, as well as the
+detailed trajectory that even everyday behavior takes, requires a genealogical narrative that makes ample
+references to temporal and contextual events. This historical interpretation must provide detailed descriptions of the
+singular incidents that the agent experienced and that both precipitated the transformation and served as the nucleus around
+which the bifurcation reorganized. Narrative, interpretive, and historical explanations of action thus require an expanded
+appreciation of what counts as reason and explanation, for they explain, not by subsuming an explanandum under a
+generalization and thereby predicting it, as modern philosophy would require, but rather by providing insight into and
+understanding of what actually happened. They do so by supplying a rich description of the precise,
+detailed path that the agent took, including the temporal and spatial dynamics, both physical and cultural in which the
+agent was embedded and in which the action occurred. Who could have predicted that Ibsen's Nora, a doll's house,
+would leave her husband and child. And yet, at the play's end, we understand why Nora slams the door, even if no one could have
+predicted it. We understand her behavior by coming to appreciate all the complicated and messy factors that became entangled in
+her life. The drama shows how they interacted to produce a break. Moreover, if we learn anything from watching the play, we also
+learn something about the quirks and idiosyncrasies of human psychology, of the circumstances in which humans
+function, and how these contribute to the unpredictability of our actions. Historical, interpretive stories might not
+allow us to predict future behavior, but they do allow us to understand why it is unpredictable. The flaws of
+contemporary philosophical action theory cannot be understood, therefore, in isolation from the larger
+context of the history of Western philosophy. In turn, the failure of that history to formulate a
+satisfactory account of cause and explanation is better understood by viewing those two concepts through
+the prism of action theory. Doing so, introduction refracts the deficiencies of modern philosophy's
+understanding of cause and explanation, of necessity, therefore, this book is not only about action
+theory, it weaves through metaphysics and philosophy of science as well. Western philosophy's understanding of
+cause and explanation, too, cannot be understood without showing how these two concepts have been used in
+modern science. Even after the advent of the theories of evolution and thermodynamics, modern science
+continue to restrict itself to closed linear systems abstracted from their historical and spatial context
+point. Only with the recent development of complexity theory have openness, non-linearity, time, and context come to the
+forefront. Although centrally concerned with the conceptual problems of action, therefore, this book threads not only
+through other branches of philosophy, but through the history of Western science as well. Like the hermeneutical model for
+explaining action, an interdisciplinary approach such as the one I am attempting must also, of necessity, tack back and
+forth between the history of philosophy and science on the one hand, and action theory on the other, in order to bring
+their relationship into view. Interdisciplinary books are notoriously problematic. Sections that appear overly simplistic and
+old-old hat to one audience strike another as brand new and difficult. In this book in particular, the history and science
+sections, chapters 1, 3, 7, and 8 are unavoidably sweeping and impressionistic, whereas those that present a sort of
+lawyer's brief against contemporary action theory, chapters 2, 4, and 5 are detailed and technical. Readers familiar with the
+literature of action theory might do well to bracket these chapters. Readers who know general systems theory and
+non-linear dynamics can bracket chapters 7 and 8. Chapters 9 through 13 make up the theoretical heart of the book. Using the
+dynamics of complex adaptive systems as a theory constitutive metaphor, chapter 9 develops a new way of thinking of
+causality as a causality as constrained. In chapters 10 and 11 I show how thinking of self-organized
+neurological systems as dynamical landscapes makes the heretofore recalcitrant problem of meaning
+tractable. In those chapters I claim that meaningful intentions are embodied in self-organized neurological
+dynamics, and that act types are attractors through those brain dynamics. Evidence from biological and
+developmental research shows that this is a plausible scenario. Chapters 12 and 13 apply these ideas
+specifically to the problem of action. Doing so either solves or circumvents each of the problems on
+which traditional theories of action have floundered. Chapter 12 shows that complex adaptive systems theory
+allows us to conceptualize how the meaningful content of intentions, as embodied in dynamical or
+organization, can cascade across coordinates and terminate in behavior that semantically satisfies the intention
+from which it issued. Chapter 13 shows how
+the emphasis that dynamical systems theory places on contextual embeddedness can resolve many of the problems with which
+action theory has traditionally grappled. In part 3 I leave the metaphysics of action and turn to the subject of
+explanation. Chapter 14 sketch s the narrative and historical model of explaining action mentioned earlier.
+The chapter with which I end, agency and freedom, address s some of the implications that a dynamical systems and
+narrative approach to action and its explanation might have for such disparate subject areas as law, psychology, and
+education. Introduction. Dynamics in action. PR DIY action theory rests on a mistake. Dynamics in action.
+Chapter 1 How the modern understanding of cause came to be years ago, while performing surgery to remove the affected
+parietal cortex of epileptic patients, Wilder Penfield was surprised to find that when he poked a particular
+location in the brain, patients are awake during brain surgery, the patient might suddenly recall childhood memories
+in vivid detail. When probing a different sight in the brain, the patient might blurt out something and then
+immediately protest, didn t say that. You pulled it out of me. In other words, it may have come out of my mouth.
+But it wasn t my action. Didn t do it. If asked the difference between a wink and a blink, we too might reply,
+wink, blinks just happen. In that general vein, Roderick Chisholm, 1964, claimed that unless we suppose that some
+events are caused by non-events, that is, by persons, personal responsibility is impossible.3 If a certain
+ancestry being caused by an agent or person is what makes some behavior action, that criterion would explain
+why we hold people responsible for winks but not blinks. Don t blame me. Didn t wink? It was a blink.
+Philosophical problems arise, however, because the same body and the same neurological system are involved
+whether I wink or blink. Cynics may notice that this issue is just one of many examples of a more
+generalized problem. The notorious failure of both philosophy and science to explain and predict
+human behavior. Rarely noticed, however, is that one reason for the paralysis is that philosophers lack
+a satisfactory theory of how causes cause and how explanations explain. Considering this egregious
+lacuna, it is not surprising that philosophers are unable to conceptualize and explain either voluntary
+self-motion or an agent's purposive actions. As is often the case in philosophy, it all goes back to
+Aristotle. In To Anima and To Motu Animalium, Aristotle carefully examined the subject of self-motion.
+In the work he dedicated to his son, the Nicomachean ethics, he explored the distinction between action
+proper and mere behavior. A passage in Book 3 of this work anticipates many of the problems that
+20th century philosophy would later gather into the sub-discipline called, action theory.
+Suppose the boat is threatened by an oncoming storm, Aristotle writes, to lighten the load and prevent
+capsizing, the captain throws the cargo overboard. Is his behavior voluntary, involuntary, or compulsory?
+The difference between voluntary, involuntary, and compulsory behavior, Aristotle insists, depends on whether or
+not the origin or principle of movement. Arch is within the agent. Behavior is compulsory when the
+cause is in the external circumstances and the agent contributes nothing, EN 1110b. Moving because I was
+pushed, that is, is, compulsory. Easy enough, and in contemporary action theory such reactions are
+classified alongside blinks and do not qualify as action. What about involuntary behavior? Can you
+wink involuntarily? As jurors soon discover to their dismay, many subtle gradations exist between the
+extremes of voluntary intentional action and compulsory behavior, between a wink and a blink. Throwing the
+cargo overboard, or cargo overboard, for example, is, mixed, Aristotle states. On the one hand, it is like
+involuntary behavior, behavior whose principle of movement is within the agent, and so qualifies as
+action, but with a qualification. It is, painful. Under ordinary circumstances, no one would choose to
+throw valuable goods overboard. Didn't he want to do it, but I did. I had to. On the other hand, throwing the
+cargo overboard is, more like, a voluntary act, for the behavior was worthy of choice at the time when,
+it was, done and the end of the action was, relative to the occasion, EN 1110 all, 13. It was the desire not
+to capsize that caused the captain to throw the cargo overboard. Nobody physically pushed him.
+Voluntary actions are thus both purposive and appropriate to the situation. Appropriate behavior
+whose principle of movement or cause is within the agent, who is aware of what he or she is doing,
+is paradigmatically action. Aristotle distinguishes those situations in which the cause of a person's
+behavior is ignorance, which he calls acting by reason of ignorance, from those in which someone
+who is drunk or in a rage acts in ignorance, the cause here is the liquor or the anger, not the
+ignorance. The former are not voluntary, because the agent did not know what he was doing, but also
+not involuntary, because he did not regret his behavior. Perhaps the latter should have a name of its
+own, Aristotle muses. In any case, when the cause is ignorance, the behavior cannot be classified as
+voluntary. And yet when compared to the role of either the hammer in the patella reflex, or of the
+lightbulb flash that makes us blink, ignorance is internal. But how can a lack of something, awareness,
+in this case, be causally efficacious? What kind of causality would be at work? Aristotle does not
+address that issue, but it is possible to infer from what he does say that, despite lack of regret,
+ignorance of, the circumstances of the action and the objects with which it is concerned makes the
+behavior that issues from that ignorance non-action. Thereby absolved of responsibility, the person
+deserves instead our pity and pardon. Actions for which we can be held accountable thus require that
+agents be minimally aware of what they are doing. For not all voluntary behavior, however, is explicitly
+chosen. Only those acts brought about by a person's own efforts as a result of deliberation should be
+described as chosen. The crucially difficult and to this day unresolved questions are, how do desire and
+deliberation, choice and intention, cause voluntary behavior? What, exactly, is involved in claiming that,
+the principle of movement is within, the agent? To explain Aristotle's analysis of organisms,
+actual behavior, it is first necessary to understand his views on change. All becoming,
+he maintained, involves the transformation of something that is so only, potentially, into something that is,
+actually, so. Burning wood changes something that was merely potentially hot into something
+that is actually hot. All such transitions, including those changes that bring about human behavior,
+must be explained by identifying the role that each of the four causes, formal, final, efficient,
+and material, plays in making the potential actual. If wood lacked the potential to be hot,
+it could never become hot. According to Aristotle, potencies are, originative sources of change in
+another thing or in the thing itself qua other, meta ix.i, io46aii, i2. There are two kinds of potencies,
+one the passive potency to be acted upon, a potency to receive change that is contained in matter,
+the other, the other the active potency to act on, a potency found in agents to impart change. Inanimate
+objects and the elements possess only the first kind, organisms, on the other hand, have both. However,
+in so far as a thing is an organic unity, it cannot be acted on by itself, for it is one and not two different things.
+Meta, ix.i, io46a2830, emphasis mine. For organisms to act on themselves, they would have to possess
+simultaneously both the passive potency to be acted on as well as the active potency to act upon,
+something else. Since nothing can simultaneously possess both potencies with respect to the same
+property, nothing can act on itself. Is nature exempt from this prohibition? A few chapters later
+Aristotle adds that by potency he means, not only that definite kind which is said to be a principle
+of change in another thing or in the thing itself regarded as other, but in general every principle
+of movement or of rest. For nature also is in the same genus as potency, for it is a principle of
+movement, not, however, in something else but in the thing itself qua thing. Meta, ix.8, io49b62, emphasis mine.
+Is the principle of change of a tree, which produces itself by producing leaves, a principle of movement
+that acts on itself, regarded as other, or is it a principle of movement that acts on, itself qua thing?
+If nature is, in the same genus as potency and not an, organic unity, then nature
+can act on itself as such. Are trees nature? In one sense, of course. But because an individual tree
+is a substance, an organic unity, Aristotle holds that a tree as such cannot, be acted on by itself.
+Earlier, in physics viii.5, Aristotle had reached the general conclusion that, t he whole moves itself
+not by virtue of having some part such as to move itself, it moves itself as a whole, moving and being
+moved by virtue of part of it moving and part of it being moved. It does not move as a role, and it is
+not moved as a whole, a moves and only be is moved, 25882227, emphasis mine. What of animal and human
+self-motion? Suppose a lion pursues a gazelle. This last citation suggests that the lion as a whole,
+as a substance cannot trigger its leg movements, that would amount to self-cause. So how does the
+animal move? Since Aristotle is unwilling to deny the reality of self-motion, how does he account for
+this obvious fact if he insists that, as a whole, organisms cannot act on themselves, that is, they
+cannot move their own bodies? A combination of the four different causes is needed to do the job.
+Animal and human self-motion is explained as follows, or she's the psyche or soul's one way reaching out
+toward an object in the external world perceived by the animal or human as significant, is the active
+principle that moves by actualizing the, passive potency to be acted upon that exists in the organism's
+material body. One aspect of the lion as active, its soul efficiently causes another aspect as passive,
+its body to move. But the soul cannot efficiently cause itself, so in reaching out for the gazelle as food,
+the lion's psyche is the unmoved mover of its body. The lion's soul thus requires an external object,
+the gazelle, as intentionally represented, to actualize the soul's desire by serving as final cause,
+Freeland 1994 or object of desire, Furley 1978, 1994. Aristotle therefore explains animal self-motion by
+splitting the organism in two, soul, the unmoved mover and body, the moved. Strictly speaking,
+the prohibition against self-cause is thereby upheld. Nothing moves itself. And so things remain to this
+day. See Thule 1987. The lion's pursuit of the gazelle constitutes voluntary self-motion because the
+activation of the lion's body is rooted through its animal soul. In contrast, blinks can be fully
+explained in terms of material and efficient causes because they do not root through an Asian soul.
+Blinks are just the bodily effects of the impact of external forces, the sort of process to which
+pre-Socratic philosophers tried to reduce all human behavior and which the imprisoned Socrates worried
+about. Blinks are efficiently caused by something external to the agent's soul, which contributes
+nothing to the behavior. They are, therefore, examples of compulsory behavior. In contrast,
+viewer's eyes' representation of an external object as desirable locates the active principle that
+effectively causes the behavior within the agent. The resulting behavior is, accordingly,
+voluntary action. As mentioned in connection with the shipwreck example, Aristotle maintains that
+behavior is an agent's, and thus his or her action, whether voluntary or involuntary, if its principle of
+movement is internal. But we now appreciate that, internal does not mean internal to the agent's body.
+The twitch of a nervous tick is not action, even though it originates entirely within the body.
+Perceiving x as y is necessary for voluntary behavior to root through the agent's psyche and thus be
+purposive and appropriate to the situation. The reaching out of or she's plays that role. But or she's,
+that internal principle of movement, as we saw, does not efficiently cause itself. It is not activated by
+any efficient cause. In fact, the psyche's desire is an unmoved mover elicited by something in the
+environment, the gazelle, that serves as its final cause or object of desire. However, the gazelle by itself
+cannot function as final cause, the lion must perceive the gazelle as food for it to be the
+object of the lion's desire. Awareness, intentionally characterized and the goal-directedness it supports
+are the hinges connecting the inside and the outside. Because the lion's soul is other than its body,
+the former, once activated, can trigger the latter as efficient cause. Always, however, one aspect
+soul causes or moves another body. The animal as a whole does not efficiently move its parts. Nevertheless,
+Aristotle pulls off a neat trick. By positing something outside the organism as final cause or object of
+desire of voluntary behavior, he effectively embeds the organism in the environment. An organism's internal
+state is dependent on something outside it. As that toward which the soul reaches out, the environment
+is implicated even in voluntary behavior. Aristotle's concept of voluntary therefore suggests a sense of
+free, that means in part, rooted through the agent's soul. When opposed to, compulsory, in this way,
+free, does not mean, nothing outside the agent is involved. This understanding of free will has since
+been lost. How the modern understanding of cause came to be at least, that is the way the Aristotelian
+thesis about self-motion has come down to us and has influenced action theory. The catch is that
+Aristotle confesses, to Anne, 11.1, 4i38 that he himself is unclear as to whether the psyche or soul the
+formative, active principle that the body realizes a thing or object distinct either spatially or in its
+very nature from the animal. In the case of self-motion, it might be argued, the lion's appetitive
+soul is the formal cause of the animal's motion, but not in the sense that one thing or aspect of the
+lion moves a different thing or aspect as other. The lion doesn't cause itself to move in that way,
+the way efficient cause operate. The lion just moves, realizing from the inside, so to speak,
+the form of the action, pursuit, and not, for example, crouching. What would, realizing from the inside
+mean, however? The lion isn't always pursuing the gazelle, the lion does things other than chase.
+Gazelles. The formal cause, to pursue, is not always in effect. So why it is in effect at some times,
+but not others requires explanation? Do formal causes require activation, for example, by the
+gazelle as final cause? Despite being within the lion, do formal causes require something external to
+kick in? The overall confusion is understandable. In physics viii, as we saw, Aristotle wanted to make
+sure the universe is not understood as bringing itself into existence. Into motu animalium, on the other
+hand, in apparent contradiction to physics viii, he wants to allow animal self-motion. How do final and
+formal causes cause? Certainly not the way efficient causes cause. By injecting an external force into a
+causal chain, furlay 1978. In the case of nutrition and growth, formal cause operates by regulating the
+motion of the components, furlay 1978. In modern terminal, logie, formal causes cause by modulating,
+for example, gene expression, that is, by limiting when each component can do wood. Viewed in that light,
+a laser beam, which as a whole, slaves, Hawken 1983, 1987, or entrains its component atomic waves to its
+frequency, also exercises a type of formal cause. The problem of self-cause is one example of the puzzles
+of reflexivity that have fascinated philosophers since the Cretan-Lyre paradox. Reflexivity,
+as Hilary Lawson, 1985, 9, points out. As a turning back on oneself, a form of self-awareness,
+has been part of philosophy since its inception. Champlin, 1988, identifies several forms of reflexive
+paradox s. Self-deception, can you deceive yourself by telling yourself a lie?
+Self-contradiction, p. and not p. Self-evidence and self-explanatoriness, vs. Petitio Principi,
+self-killing and self-generation of life. Self-membership of classes, Russell's paradox,
+and self-knowledge and self-reference, the Cretan-Lyre. For 2,000 years of Western philosophy,
+arriving at a reflexive paradox was considered unmistakable evidence that something had gone
+very wrong with one's reasoning. The thinker was counseled to go back and start from the beginning.
+Self-reflexive paradox s. indicated a fundamental error in one's assumptions. They must be avoided,
+or in some way contained, Lawson. The ploys to avoid or contain them were similar.
+If you deceive yourself, one part of you does the deceiving and another is deceived. If a proposition
+is self-contradictory, one part of the proposition contradicts another part. And so the problem is
+circumvented by maintaining that nothing, strictly speaking, deceives, contradicts, or efficiently
+causes much less explains itself. If something moves itself, then, one part does the moving
+while another is moved. Aristotle's tactic. In the case of organisms, which obviously change
+location on their own accord, self-motion must accordingly be explained as above, one part of
+the organism. The mechanistic causes of Newtonian science in any case, whatever Aristotle himself
+held, by the early 17th century modern science had discarded the concept of formal cause altogether,
+insisting that organic holes, no less than aggregates, reduce to their component parts.
+Only efficient cause are properly causal. Holes are therefore epiphenomenal, that is, causally impotent
+by products. Aristotle's principle that nothing causes or moves itself, however, was retained. Once gravity
+was captured in an equation, the 17th and 18th centuries subscribed to a deterministic universe of
+universal laws and fully specifiable initial conditions from which the precise location of planets a million
+years hence could be exactly predicted. Newton's physics take place in an absolute, three-dimensional
+Euclidean space. Inhabiting this universe are material particles, tiny, discrete objects sometimes pictured
+as minuscule marbles. These atoms constitute the building blocks of all matter and are acted upon
+according to fixed laws by external forces such as gravity. According to the clockwork mechanism this
+view describes, things are related to each other only externally. One atom activates a second by
+colliding with it and thereby impressing an external force on the latter. Aristotle's ban on self-cause
+thus became firmly entrenched after Newton. The basic particles populating this mechanistic world of
+modern physics. Modern physics are independent of each other and do not interact to achieve a goal or
+purpose as they would were Aristotle's final cause still in place. Once Aristotle's final causes were
+disallowed, Newtonian mechanics left no room for either objects in the external world or anticipated
+end states to serve as intentional objects of desire and goals of action. Once holes came to be thought of
+as reducible as reducible to the sum of their component particles, the concept of formal cause likewise became
+odious. The principle that makes an integral substance a whole was also, and for that very reason,
+discarded. Holes were no different from aggregates, agglomerations whose properties remained the same
+whether or not they were components of a larger unity. This principle further reinforced Aristotle's
+prohibition against self-cause. Since holes were seen as mere by-products, how the modern understanding of
+cause came to be, or she's, or, later on, free will, intention, volition, the frontal cortex,
+corpus striatum, interior cingulate sulcus, etc. As an active principle efficiently causes another part as
+passive or potential, the skeletonian muscles to move or change. When combined with a rejection of the
+concepts of formal and final cause, this belief, from Aristotle, through Newton, to today, has had
+serious consequences for biology. More to our purposes, it has had serious consequences for
+understanding human action. They were, as holes, causally impotent, epiphenomenal. All causal work
+was done by the atoms as they bumped into each other. In a universe where only point masses and forces are
+considered real, qualities that are a function of the relation between atoms, or between organisms in the
+world, were also dismissed as subjective. By the end of the seventeenth century, all relational
+properties, such as temperature and color, that did not to fit into this scheme were relegated to the
+inferior status of secondary qualities. Galileo's ability to set aside the interference of friction
+from the equations governing the motion of bodies also suggested that context contributes nothing to
+reality. Once atomism became the ruling conceptual framework, context and environment were thus left
+without a role to play in either science or philosophy. Indexicals such as here and there, this and that,
+now and then, lost their claim on reality as situatedness and point of view became unimportant.
+An object's only real properties were its so-called primary properties, characteristics like
+mass that, because they are internal to the object, it would exhibit anywhere, anytime. Since only primary
+properties were essential properties, it was therefore no longer acceptable to explain action as
+Aristotle had, by embedding the organism in its environment. The consequences of this view for
+practical reasoning in general and the justification of behavior in particular would find their complete
+statement in Kant's ethical theory. Although time constitutes a separate and absolute dimension in
+Newton's theory, it is a counterintuitive understanding of time. Newtonian atomism reduced the universe to the
+relationships between single material points whose movements from one position to another are time
+irreversible. In the notations of Newton's dynamic equations, the equation's sign represents time. Since that sign can be
+either positive or negative, one should think of time as being able, in principle, to flow backward as well as forward.
+Causes can follow effects as well as precede them. And so with this principle of time reversibility, Newton's heirs dealt the final blow to
+Aristotle's concept of final cause by dismissing as illusory the apparent unidirectionality display both in the development of
+organic forms of organic forms and by deemed for goal-directedness of voluntary, intentional behavior. In doing so, the one way reaching out of
+Orshe's, from soul to world, which accounted for the purposiveness of action, became a problem in need of an explanation, as did the vector-like
+quality of action itself. If real things, atomic particles, were unaffected by time and context, and objects' interactions with its
+environment and the unique trajectory it traced through time and space also became secondary, accidental, properties of no account to what
+really makes a thing the kind of thing it is and no other, anthropological considerations, Kant would call them.
+What was left? Material causes were for the most part ignored until the 20th century, so with formal and final causes eliminated from the
+conceptual framework by Newton's heirs, for more than 300 years efficient cause were thought to operate like collisions of lined up
+dominoes or billiard balls, one careening into the next, on which it impressed an external force. Each causal process, furthermore, was
+viewed as an occurrent event that was in principle reversible. Modern philosophy thus reconceptualized self-motion as follows.
+In Descartes' dualism, a non-physical mind, substantially distinct from the body, activates it as efficient
+cause. The mind does not require anything external to activate it, not even a final cause. That is what it means to say that it possesses
+free will. Descartes thus upheld Aristotle's ban on self-cause. However, when combined with the billiard ball understanding of
+efficient cause, this account of the mind-body relationship brought with it its own well-known problems.
+How does something non-physical efficiently cause something else to happen in the physical world,
+or vice versa without thereby violating the law of conservation of mass and energy? How can the mind
+insert itself into the chain of physical forces? How does this unique sort of efficient cause operate?
+What kind of force could that be? In opposition to the dualists, materialists chose to analyze
+voluntary motion as one part of the body, in the brain that, separate and distinct from the rest,
+activates the latter. One part triggers another, which pushes a third, and so on until something
+shoves the skeletomuscular system into action. And so the race was on to find the control neuron or set of
+neurons, the frontal cortex, the left parietal cortex, the corpus triatum, that serves as the mechanical
+trigger of intentional action. All the while, behind these conundrums lurked both the Aristotelian
+understanding of cause that prohibited self-cause, and the modern view of cause as only collision.
+The problems that this view of cause and explanation occasion for explaining action,
+not to mention biological development and evolution, went unnoticed in the wake of the
+tremendous payoff promised by a world of aimless atomic particles whose only characteristic is mass
+and motion and which crash purposelessly into each other. Certainty and predictability. Given a particular
+position in time and space, the exact determinism of Newtonian laws allowed precise
+retrodiction from the current state of the system to any particular moment in the past. More importantly,
+strict determinism offered the possibility of predicting exactly the state of the system at any future
+instant. Pierre Simon de Laplace claimed that once the laws of nature and the initial conditions of the
+universe were fully specified, complete and accurate knowledge of both past and future would be
+possible. That promise extended even to human actions. The philosophical literature of action has
+remained trapped in this peculiar combination of Aristotelian and Newtonian views of causality.
+On the one hand Newton's heirs repudiated Aristotle on formal and final causes. On the other,
+they followed Aristotle in claiming that causes must be external to their effects. Nothing can cause or
+move itself. No environmental embeddedness is allowed. Once modern philosophy discarded the notion of final
+cause, there was no way to conceive of an internal relation between the outside world and the content of an
+intention as attractor and guide of voluntary behavior. Once modern philosophy discarded the notion of formal
+cause, all causes were assumed to be a current events operating only as efficient cause, analyzed as the
+forceful momentum of an external particle activating another in bumper car fashion. No standing causes were allowed.
+As a result, advocates of agent causality were left with no way of explaining what agents and intentions are,
+much less how they cause, and even less direct and guide action. Combined with a continuing belief in the
+impossibility of self-cause, this conceptual apparatus has framed the theoretical accounts of action of the last 40
+years. After a torrent of articles in books published between 1950 and the 1980s, the output on action theory by and large
+dried up. In articles compiled in Hill and Mellie's 1995 anthology on mental causation, one of the rare exceptions to this
+general drought, several authors bemoan the sorry state of philosophy's understanding of cause but offer no alternative. The next
+chapter describes the impact that this understanding of cause has had on contemporary theories of
+action. Chapter 2 Causal Theories of Action Agent Causation
+Roderick Chisholm was quoted earlier to the effect that agent causation must be different from event causation
+if moral attributions are to be possible. What do I claim when I declare, in some sense of the pronoun
+I that implies responsibility that, I winked. To qualify as action, agent causation theorists claim,
+I not just some event in me must have caused the behavior. This notion of agent causation presents
+serious difficulties. Who are these agents? How do they exercise causal power? How, that is, do agents,
+as opposed to events in them, cause behavior or anything else? The issue is problematic because,
+whether or not agents cause their arms to rise, events in their central nervous system make the
+arms muscles contract such that the arms rise. What is the relationship between agents and those
+neurological processes? Do the agents cause them too? If agents are not identical to those neurological
+events, the specter of dualism reappears, along with all its attendant difficulties pertaining to how a
+non-physical cause can produce a physical effect. If, on the other hand, as materialists claim,
+the agent is those neurological processes. Since self-cause is assumed to be impossible and holes,
+as such, cannot act on their parts, there is no way to explain how the central nervous system as a
+whole can activate its own components. True self-cause would involve localized parts interacting so as to
+produce holes that in turn, as distributed holes, could influence their components. Interlevel causality
+between parts and holes. But by following Aristotle and rejecting this possibility, philosophy closed off
+any avenue for explaining action in that fashion. Having discarded the notions of formal and final cause,
+moreover, philosophy was left without a way of understanding non-event causation. As a result,
+philosophers who champion agent causation as the distinguishing mark of action have never satisfactorily
+explained either the identity of agents or their manner of causation. J.J. Thompson, 1977,
+150 claimed that an action belongs to, is owned by, an agent if that agent is responsible,
+in some strong sense, for the neurological event which in turn causes the behavior. The agent is
+responsible in this special sense for an event if he or she causes everything that causes the behavior.
+But precisely how does he or she cause? Even as an early advocate of agent causation,
+Chisholm, 1964, 616 nevertheless agreed with the standard view that, in any true causal relationship
+one can always, in case he knows what both events are, describe them independently of each other.
+Also adhering to causal orthodoxy, Richard Taylor, 1970 b, 2, subscribed to the principle that causation
+is always a relation between two things, agents and the behavior they cause. So despite claiming that
+one of the items in the causal relation is not an event but an agent, Taylor therefore agreed with
+Chisholm regarding the required externality between cause and effect. Even concerning agent causation,
+that is, both Taylor and Chisholm ruled out the possibility of self-cause. For a relationship to
+be properly causal, agents must be other than the behavior they, powerfully, cause. Nothing can cause
+itself. Since unlike the current events such as intentions, agents are by definition non-events,
+there remains, in addition to the recurring question of how agent causation operates,
+the problem of determining who the agent is. And since according to the received view,
+causes must be other than their effects and therefore separate and distinct, it should be possible to
+tell the difference between the agent responsible for a certain instance of behavior and the behavior
+itself. The agent must be either a non-physical mind or one part of the central nervous system that
+causes behavior by efficiently activating another part. What, then, is this agent? A portion of the nervous
+system? Six we can turn the tables on Richard Taylor and demand as he did of volitional theorists,
+as we will see below that he find those agents independently of the acts they cause.
+Show us this elusive entity, independent of and separate from the neurological events,
+that efficiently triggers behavior. The burden of proof then becomes Taylor's or any philosophers who
+advocates agent causation while simultaneously retaining the standard view of cause. Find the mysterious
+agent. Taylor's comments that the agent is not identical with his body, volitions, intentions,
+or any other events, processes, or states within him are of no help. Nor are his statements that,
+I am a man and, this man, is the cause of those acts that are mine. Such language does not,
+as he claims, avoid any reference to self or egos, R. Taylor 1966, 137. A man is not identical with his body,
+fears, fears, emotions, volitions, acts of will, self, or ego, Taylor insists. Just what, then,
+is this agent? Because he, too, has no way of conceptualizing wholes as integral and causally
+affective entities. Peter Strawson's, 1959, claims about, persons as the locus of moral responsibility
+also flounder for the same reason. In light of these difficulties with the concept of agent causation,
+Chisholm, 1995, recently opted for event causation over agent causation.
+Once again, Aristotle's principle that nothing can cause, change, or move itself is upheld. In short,
+agent causation theorists have been unable to break either with the requirement attributed to
+Aristotle that causes B other than their effects, or with the modern view that all causes are efficient
+causes. Instead of rethinking the concept of cause so that it can handle agent causation, Taylor,
+Chisholm, and others, C. Hill and Mellie, 1995, have held on to the requirement that there be must-do
+items in any causal relationship, in the case of actions, agents and their behavior. Lately,
+philosophers such as Carl G. Nate, 1995, have claimed that agent causation should not be envisioned as a
+situation in which agents first cause some intervening event or set of events that in
+turn causes the behavior. The agent just acts, Gene Nate holds. However, he offers no philosophical
+account of cause that explains how the agent, just acts. Let us examine in more detail the ways in which
+this understanding of cause has been applied in contemporary theories of action. Consider this
+representative quote from Harry Frankfurt, 1978, 157. C. O. Sal theories imply that actions and mere
+happenings do not differ essentially in themselves at all. They are differentiated by nothing that exists
+or that is going on at the time those events occur, but by something quite extrinsic to them a
+difference at an earlier time among another set of events entirely. Like Chisholm and Taylor,
+Frankfurt assumes that causes, even causes of action, and their effects must be discrete and
+separate phenomena. The former, collision-like, bump into and thereby activate the latter.
+The only issue to be decided is the identity of that efficient cause. Causal theories also
+individuate act tokens, that is, particular actions, according to the type of event that causes the
+behavior, whether in dualist or materialist guise, and suitably identified as an intention, volition,
+want and belief complex, and the like, causes of action, following Aristotle,
+have been assumed to be events entirely inside the agent but other than the behavior itself.
+In hit-and-run fashion, these intentions, volitions, and so forth, activate another part,
+the skeleton and muscles to produce behavior that, as a result, qualifies as action. Nothing in the
+environment acting as final cause is supposed to influence the mental event. What triggers the
+mental event? The deus ex machina reply has often been, nothing. Intentions are instances of free will
+in action.7 Causal theories of action Causal theories of action Arthur Danto is responsible for the
+the commonplace distinction between basic and non-basic actions. When performs a basic action,
+h, he does so directly, that is, there is nothing which is itself an action of his and a component in the
+doing by him of b, 1973. 31. When I move my hand I perform a basic action. I do nothing else to move my hand,
+I just do so directly. Flipping the light switch and turning on the light, however, are non-basic
+actions. I cannot do either directly. I turn on the light by flipping the switch, and I flip the switch
+by moving my hand. Non-basic actions are therefore those we perform by performing other basic actions.
+When, by, I, moving my hand, I, 2, flip a switch, 3, causing the light to go on, which, 4, inadvertently
+startles Smith, does what I do as an action include not only moving my hand but also turning on the light,
+startling Smith, and so forth. Since the ways in which I do each of these things differ, can I properly be said to do
+all the things in this, actually as actions at all? If as a result, Smith has a heart attack and dies,
+did I, murder by startling? Does each description moving my hand, flipping a switch, causing the light
+to go on, startling Smith identify a distinct action of mine? Which of these events, whether voluntary or
+involuntary, are my actions?

@@ -1,0 +1,3 @@
+# backup_txt_20260929_163900/alphabet/research/Why_intelligence_thrives_on_extreme_abundance
+
+The term you’re referring to is **“grokking.”** In this context, grokking describes a phenomenon where an artificial intelligence model initially memorizes training data perfectly (achieving zero error) but later improves its generalization by abstracting and understanding the underlying rules or principles of that data. This process illustrates how learning can involve both raw memorization followed by deeper comprehension—a concept highlighted in discussions about AI training experiments and their implications for machine cognition.

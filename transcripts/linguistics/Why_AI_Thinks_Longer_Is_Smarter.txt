@@ -1,0 +1,801 @@
+You know, think back to high school or maybe college.
+You're sitting there staring at an essay prompt, and you've basically made your point.
+Right.
+You've argued your thesis, you've provided the evidence, and you've done it all in like three clear, tight paragraphs.
+Yeah, but the syllabus says the requirement is a minimum of five pages.
+Exactly.
+So what do you do?
+The academic padding begins.
+You know, the font size miraculously goes up to a 12.5.
+The margins get just a little bit wider.
+Yeah, and your vocabulary suddenly becomes incredibly Victorian.
+Suddenly a simple word like therefore becomes this massive architectural structure,
+like as a direct and unavoidable consequence of the aforementioned factors.
+Which is funny because you aren't actually adding any new thoughts.
+No, not at all.
+You're just adding fluff.
+I mean, you figure the teacher or the professor will look at the sheer physical weight of the text and think,
+wow, they really thought deeply about that.
+You are trying to simulate the physical appearance of hard work.
+Right.
+You're conflating the volume of the output with the quality of the thought process,
+mainly because, well, that's what the grading structure incentivized.
+And the fascinating and honestly slightly terrifying thing is that our most advanced artificial intelligence models are currently doing the exact same thing.
+Welcome to the Deep Dive.
+Glad to be here.
+The reason we're tackling this today is because we have two incredible sources on the table that completely,
+just completely upend how we think about artificial intelligence.
+Really do.
+First, we have a highly practical empirical piece of research by Bownhar and colleagues called Shorter But Not Worse.
+They notice a bizarre AI behavior.
+And second, we have our main focus, which is a massive, profound theoretical paper from June 2026 by a researcher named Flyxion,
+titled The Substance and Accident of Reasoning, Admissibility, Repair, and the Geometry of Verbosity.
+Yeah, Bownhar's paper kind of provides the inciting incident here.
+Right.
+They discovered something completely counterintuitive.
+They found that if you take an AI model that's struggling with complex math and you actively make its training data easier,
+it actually makes the AI's reasoning more efficient, more accurate, and much more concise.
+Which is wild.
+It is.
+And Flyxion's paper steps back from that empirical finding and asks, well, why?
+What is the actual geometry of thought that makes that possible?
+Because, I mean, that makes no sense on the surface.
+You'd think harder training makes a smarter AI.
+Like, if I want to get better at chess, I shouldn't play against novices.
+That's the logical assumption, yeah.
+But Flyxion uses this anomaly to explore the literal geometry of how knowledge is stored.
+So we're going to understand why these models, and let's be honest, perhaps our own human minds,
+mistake the appearance of hard work for actual intelligence.
+It's a huge shift in perspective.
+So, to you listening right now, think about this.
+Have you ever padded an email to your boss with extra industry jargon,
+just to make it look like you spent an hour on it instead of five minutes?
+We've all done it.
+Yeah, we have.
+Well, today, you're going to learn exactly why machine learning models fall into that exact same trap.
+So, where do we start with this?
+To really diagnose why this verbosity emerges, we have to look at the baseline problem in how these models are trained.
+Specifically, the reinforcement learning pipelines for mathematical reasoning.
+Okay, the pipelines.
+Right.
+When developers train a model to solve math, they run it through thousands of problems,
+and very quickly, they run into a wall with the easy problems.
+Okay, let's unpack that for a second.
+When you say they run into a wall, you mean the model gets too good at them?
+Basically, yeah.
+Like, if you give an advanced AI a problem like solving for X in a basic algebraic equation,
+every single time it tries to answer what they call a rollout in the industry, right?
+Yes, a rollout.
+Right.
+So, every single rollout, it gets it right, it's hitting a 100% success rate.
+Mm-hmm.
+Why is that a wall?
+Isn't that the goal?
+Well, it is the goal for the end user, sure, but it is a total nightmare for the training algorithm.
+Because in reinforcement learning, a model learns by comparing its good attempts against its bad attempts.
+The algorithm looks at the difference.
+That difference is the mathematical gradient.
+The gradient, right?
+Yeah, so if every single attempt gets the exact same perfect score of 1.0, that gradient collapses to zero, there's no delta.
+Oh, I see.
+There is no difference between its attempts, which means the math literally cannot update the neural network's weights.
+The model learns absolutely nothing new.
+It's like a professional tennis player practicing against a wall.
+That's a great way to put it.
+They aren't going to improve their backhand because the environment isn't forcing them to adapt.
+There's no dynamic feedback.
+So what do the engineers do?
+Do they just delete the easy problems from the training data?
+That is exactly what they do.
+They filter out the easy problems because they provide no, quote, optimization signal.
+Wow.
+They force the model to concentrate exclusively on problems of intermediate and high difficulty.
+You know, places where the model still occasionally fails, thus preserving that vital gradient.
+But this is where the trap is set, right?
+Because think about what hard math problems naturally require.
+They require a lot of steps.
+Exactly.
+They require very long, complex strings of text to solve.
+If you are doing advanced calculus or proving a topological theorem, you can't just spit out the number four.
+No, you have to show 20 lines of painstaking work.
+So the model is now operating in an environment where it only ever sees a reward when it produces a long sequence of text.
+And over time, the model's neural network draws a really dangerous statistical correlation.
+It begins to associate the reward of getting the right answer strictly with the verbosity of a long answer.
+It's Pavlovium.
+Ring the bell.
+Get the food.
+Write a huge block of text.
+Get the reward.
+Precisely.
+But Flyxion points out that it goes deeper than just classical conditioning.
+There is an information theoretic trap happening here.
+Okay.
+Information theoretic.
+Yeah.
+The paper talks heavily about the chain rule of conditional entropy.
+I want to try to puzzle this out.
+So conditional means based on what came before.
+Right.
+And entropy is a measure of randomness or uncertainty.
+Yes.
+Are you saying the AI just keeps talking because every new word limits the statistical randomness of the next word?
+Mechanically, yes.
+What's happening is rooted in how autoregressive models generate text.
+They predict the next word based on all the previous words, which is called the prefix.
+The prefix.
+Okay.
+So the chain rule of conditional entropy states that the entropy of Y given X1 and X2 is generally less than or equal to the entropy of Y given just X1.
+Let's put that in plain English.
+In plain English, the more context you provide, the less uncertain the final answer becomes.
+Generating a longer prefix can only decrease or at worst preserve the mathematical uncertainty of your final answer.
+Let me see if I have this right.
+If I start a sentence with, um, the capital of France is Vichy.
+There is a tiny bit of entropy there.
+Sure.
+It's almost certainly Paris, but maybe I'm talking about a historical period where it was Vichy.
+Right.
+But if I write the capital of France where the Eiffel Tower is located is, uh, I have reduced the entropy to absolute zero.
+It has to be Paris.
+That is a perfect illustration.
+So if there is no penalty for taking up space, the AI learns to use verbosity as a statistical shortcut.
+Oh, wow.
+It pads its output with meaningless filler or overly complex step-by-step logic simply to drive the mathematical uncertainty of the final output token as close to zero as possible.
+It's optimizing for predictability.
+Exactly.
+And the engineers look at that and say, well, great.
+The model is reducing entropy.
+Uncertainty is going down.
+So the model is getting smarter and more confident.
+Yeah.
+That's the standard industry assumption.
+But Flyxion pushes back on this incredibly hard.
+How so?
+Flyxion argues that entropy reduction is not intelligence.
+Okay.
+The conventional argument only identifies the mechanism of why verbosity emerges.
+It completely fails to identify what is actually wrong with it.
+And Flyxion provides three vivid analogies to illustrate why blindly optimizing for reduced uncertainty can actually destroy a complex system.
+Let's walk through those analogies because they really, uh, they really crystallize the danger of this mindset for me.
+They're very helpful.
+The first one Flyxion uses is about language.
+Imagine a language that wants to reduce uncertainty so it starts merging words together.
+It collapses distinct meanings into a single semantic form.
+Right.
+If you force a language to merge words to narrow the distribution of interpretations, you end up with something highly predictable.
+It's literally George Orwell's newspeak from 1984.
+Exactly.
+You get rid of words like excellent, splendid, sublime, and you just force everyone to use double plus good.
+Yeah.
+Sure, you've reduced the statistical uncertainty of what word someone's going to use next.
+Yeah.
+But you've made actual disambiguation, the ability to express complex, nuanced reality, impossible.
+You've broken the tool.
+The system became predictable but useless.
+Useless, yeah.
+The second analogy is a map.
+Think about how you reduce uncertainty on a map.
+You erase the roads.
+Right.
+You erase the roads.
+If I erase all the side streets, the back alleys, the dirt roads, and I only leave the main highway, it is incredibly easy to predict where a driver is going to go.
+The entropy of their road is virtually zero.
+But wait.
+I can hear someone listening right now pushing back on this logic.
+Go ahead.
+Because if I'm building an autonomous driving system or a GPS, isn't predictability exactly what I want?
+I want the car to stay on the highway.
+Why is erasing the side streets bad if the highway gets you to the destination?
+It's a fair question.
+But think about what happens when the environment changes.
+If there is a massive traffic jam on the highway or a bridge collapses, the driver is doomed.
+Oh, because the map doesn't show any other way around.
+Exactly.
+The map has lost its navigational capacity.
+The relevant quantity and intelligence is not predictability or low entropy.
+It is what Flyxion calls admissibility.
+Admissibility.
+This is the cornerstone of the paper's theory.
+Definition 3.1.
+What exactly makes a representation admissible?
+A representation is admissible when it preserves the distinctions required for future action.
+Preserves the distinctions required for future action.
+So, keeping the side streets on the map because you might need them later,
+even if they make predicting the immediate route slightly harder.
+Exactly.
+You sacrifice a little bit of immediate predictability to maintain robustness.
+That makes total sense.
+And the third analogy brings it into human systems, a bureaucracy.
+Oh, I love this one.
+A bureaucracy reduces uncertainty by prohibiting choices.
+It constrains the action space until the outcomes are fully determined.
+You fill out form A, you get outcome B.
+No exceptions, no context considered.
+The uncertainty is gone, but it completely destroys the agency the system was ostensibly designed to support.
+The distinction of individual human circumstances is totally erased.
+Right.
+So, applying this back to the AI, by making all successful math solutions look long and verbose,
+the AI has reduced entropy at the cost of admissibility.
+Yes.
+It made itself predictable, but it lost the capacity to produce the full range of correct solutions.
+It traded true understanding for a highly specific, brittle proxy.
+Okay, so if entropy reduction is this, like false idol, what physically broke inside the AI model's brain when it learned to be so wordy?
+That's where we get into the geometry.
+Yeah.
+I want to get into the hidden geometry of how knowledge is soared, because Flyxion talks about representational collapse,
+specifically a projection collapse.
+So, in a healthy, well-functioning neural network, the model maintains a multidimensional space of concepts.
+It knows that the correctness of an answer and the length of an answer are two entirely separate things.
+Okay.
+In mathematical terms, they are orthogonal.
+They sit at right angles to each other.
+Meaning they don't affect each other.
+Exactly.
+You can have short wrong answers, short right answers, long wrong answers, and long right answers.
+They are independent variables.
+Yes, but remember what happened during training.
+Right.
+The data only ever rewarded the model when it gave long correct answers, because all the easy problems were thrown out.
+So, the model's internal map literally merged the two concepts.
+The mathematical function of correct, f of correct, literally became conflated with the function of long, f of long.
+The distinction collapsed.
+The distinction collapsed.
+Flyxion uses a specific geometric language to describe this, drawing on the CLIO framework.
+How does that work visually?
+Imagine a two-dimensional graph.
+The we-axis is quality, is the answer good or bad.
+The x-axis is length, is the answer short or long.
+Got it.
+A simple coordinate plane.
+Right.
+In this geometric space, Flyxion introduces the concept of a fiber.
+A fiber.
+A fiber is the pre-image of a good solution.
+It's the physical region on our graph, and corresponding to the literal matrix of weights in the neural network that represents all the valid ways to arrive at a correct answer.
+Okay.
+So, in an undistorted healthy representation, that fiber stretches all the way across the x-axis.
+Exactly.
+It contains both short correct trajectories and long correct trajectories.
+Because there are many valid ways to arrive at the truth.
+Some are brief.
+Some are exhaustive.
+But under the hard-only training curriculum, the empirical support for this fiber physically contracts.
+The entire short trajectory region of the fiber disappears.
+It just vanishes.
+The model's weights shift so drastically that it assigns near-zero probability to that area of the graph.
+So, it's not just that the model prefers long answers.
+It's that the matrix values for short and correct are literally indistinguishable or unattainable.
+The model cannot see or reach short correct solutions anymore.
+That part of its brain has just gone dark.
+It is a profound loss of navigational structure.
+A planner operating on a collapsed representation can no longer distinguish between properties that are necessary for success
+and properties that merely happen to accompany success in its limited past experience.
+Let me try to anchor this with a real-world analogy, because I want to make sure we really feel the weight of this collapse.
+Please do.
+Imagine a hiring manager at a tech company.
+Over the course of 10 years, purely by coincidence, every single software engineer who performed exceptionally well and got promoted also happened to wear glasses.
+A statistical anomaly in the training data of the manager's career.
+Right, exactly.
+So, initially, the manager might just notice a correlation.
+But over time, if the manager's brain undergoes a projection collapse, they stop looking at coding tests or performance metrics entirely.
+They begin to assume that wearing glasses is the literal substance of being a good engineer.
+The two concepts merge.
+F of good employee becomes F of wears glasses.
+And if we tie that back to the neural network, the weights in the manager's brain that evaluate competence have been entirely overwritten by the visual processing of eyewear.
+Yes.
+So what happens when a brilliant, perfect candidate walks in without glasses?
+The manager literally cannot see them as a good candidate.
+Exactly.
+The fiber representing good engineers without glasses has collapsed.
+The manager isn't just making a lazy choice.
+Their internal representation of reality has lost a vital dimension.
+They've mistaken an accidental property, eyewear, for the essential, substantial property of competence.
+Which opens up a massive can of worms regarding how the entire tech industry is operating right now.
+Oh, absolutely.
+Because this geometry of collapse doesn't just explain why an AI writes a novel to solve 2 plus 2.
+It reveals a systemic flaw in how we measure progress.
+Flyxion lays this out in Proposition 5.1, defining the algebraic skeleton of these failures as a proxy collapse.
+Right.
+A proxy collapse occurs when a learner replaces a strong correlation with a strict identity.
+Okay, unpack that.
+Instead of saying proxy A predicts target B, the system begins to operate as if proxy A is target B.
+And Flyxion identifies three distinct machine learning errors that are all, at their core, this exact same projection collapse.
+Yeah, we've talked deeply about one of them, the entropy reduction error or verbosity, where the model conflates correct reasoning with length.
+But the other two are everywhere right now.
+Let's look at the latent compression error.
+In machine learning architecture, developers frequently try to compress complex data into a lower-dimensional latent space to make the model run efficiently.
+Make it smaller and faster.
+Right.
+Historically, models that achieve this low dimensionality happen to generalize very well to new data.
+So the field began conflating a general, robust representation with a low-dimensional representation.
+They assumed lower dimensionality is inherently better, like smaller is smarter.
+Exactly.
+They treated the proxy low dimensions as the target itself.
+Which is a collapse.
+Yes.
+The problem is, eventually, you compress the data so heavily that you throw away vital nuances.
+You collapse distinctions that are actually required for navigating complex tasks.
+The model fails because it threw away the side streets to make a perfectly straight highway.
+That's it.
+Exactly.
+But the third error is the one that really caught my eye.
+Flyxion calls it the reasoning length error.
+Conflating good reasoning with many steps.
+This is the cultural myth of long chains of thought.
+I mean, I see this everywhere.
+Oh, it's the dominant narrative.
+You go on tech blogs, and everyone is hyping up test-time compute scaling.
+They post screenshots of an AI taking 400 steps to answer a logic puzzle, and they say,
+look how deep it's thinking.
+It's reasoning just like a human.
+The entire discourse assumes that an AI that takes 10 steps to answer is inherently thinking
+deeper than one taking two steps.
+It is a massive cultural delusion.
+Flyxion brings in philosophical terminology to explain why we are being fooled by this.
+Let's hear it.
+These properties, low dimensions, low entropy, many steps, they are what philosophers call
+accidental properties.
+Accidental.
+Yes.
+They are contingent on the specific bias training data the models were fed.
+They are not substantial properties.
+They do not constitute the actual essence of intelligence.
+Substance versus accident.
+That's literally the title of the paper.
+It is.
+We are looking at the accidental byproducts of the training environment and worshipping
+them as the substance of intelligence.
+That's a great way to summarize it.
+So, wait, are you saying that if a two-step correct proof exists and the AI pads it out
+to 10 steps, that is not a sign of deep thought, but actually a sign of structural brain damage
+in the model?
+I am.
+A model that produces 10 reasoning steps when two would suffice is not engaging in careful
+reasoning.
+It is trapped in an inadmissible representation.
+Wow.
+It is the student adding five pages of fluff because it literally doesn't know how to just
+be right and be concise at the same time.
+The models aren't failing to learn.
+They are succeeding perfectly at learning the wrong lessons from flawed data.
+Okay.
+So, we've diagnosed the disease.
+The model's internal geometry has collapsed.
+It's blindly following proxies.
+Its fiber of short solutions has been totally obliterated.
+Yes.
+How do we fix it?
+I mean, my immediate instinct, and probably the instinct of anyone listening, is to
+just to punish it.
+That's the usual route.
+Right.
+If the AI is talking too much, dock its points.
+Put a length penalty in the code, like minus 0.1 from the reward for every extra word.
+Why doesn't a simple length penalty work?
+That is the standard intuitive approach in the field, penalty-based regularization.
+But Flyxion, drawing heavily on Bownhar et al.'s empirical data, proves why penalties
+are mathematically and geometrically inadequate.
+Okay.
+The intervention from the shorter but not worse paper was astonishing.
+To fix the AI, they didn't add a single length penalty.
+They didn't penalize it at all?
+Not at all.
+They simply mixed moderately easy math problems back into the training data.
+They just gave it some easy homework?
+Yes.
+And what happened?
+The AI solution length was cut in half across the board, even on the profoundly hard problems,
+with zero loss in accuracy.
+That is wild.
+The brevity was entirely emergent.
+It basically healed itself.
+It just naturally decided to stop waffling.
+But I need to understand the mechanics here.
+Flyxion formalizes this in Theorem 6.1, calling it easy problems as minimal repair.
+Right.
+I want you to explain this to me like I'm a first-year computer science student.
+We have to look at the mathematical advantage function the AI uses, specifically GRPO.
+Group relative policy optimization.
+Yeah.
+Break down that formula for me.
+Let's visualize the formula conceptually.
+The advantage function A determines how much the neural network updates its weights.
+Okay.
+The formula looks at a group of attempts, say 20 rollouts for a single math problem.
+It calculates the average reward of those 20 attempts, which we'll call the baseline.
+Makes sense.
+The advantage for any specific attempt is its individual reward minus that baseline,
+divided by the standard deviation.
+A equals R minus baseline, divided by standard depth.
+Okay.
+So it's standard grading on a curve.
+If I do better than the class average, my advantage is positive,
+and the neural pathways I use get strengthened.
+If I do worse, it's negative, and those pathways get weakened.
+Precisely.
+Now let's look at the fatal flaw on hard problems, what Flyxion calls advantage blindness.
+Advantage blindness.
+Imagine the AI is given a brutally hard problem.
+Out of 20 attempts, it only gets the right answer twice.
+Both correct attempts receive a reward of 1.0.
+The other 18 get zero.
+So the baseline average is very low, like 0.1.
+Right.
+Now suppose one of those correct answers was incredibly concise, just two lines,
+and the other correct answer was a sprawling 50-line waffling mess.
+Okay.
+Let's run them through the formula.
+For the short answer, 1.0 minus 0.1.
+The advantage is highly positive.
+For the long answer, 1.0 minus 0.1.
+The advantage is identically highly positive.
+Oh, I see it.
+The math has no variable for word count.
+None.
+The grading curve gives them the exact same massive positive update.
+It literally receives no informational push to be concise.
+The system is structurally blind to length.
+That is advantage blindness.
+The objective function is mathematically incapable of teaching the policy to prefer short solutions on hard problems.
+Because short solutions are so rare, they just get lumped in with any successful trajectory.
+Wow.
+But now, look at what happens when you introduce easy problems.
+You create what Flyxion calls a budget-truncated asymmetry.
+Budget truncation.
+Yeah.
+Meaning, there is a hard limit to how many tokens or words the AI is allowed to output before the system cuts it off.
+Every AI has an maximum context window or token budget per generation.
+Now, imagine the AI is given an easy problem, like solving 3x equals 12.
+Very easy.
+But because it has been deeply conditioned to be verbose, it attempts to write a massive, sprawling philosophical treatise on the nature of algebra.
+And because it's an easy problem, the philosophical treatise goes on for so long that it runs out of tokens, it hits the budget limit, and gets truncated before it actually outputs x equals 4.
+Exactly.
+It gets cut off, fails to provide the final answer, and receives a reward of 0, a failing grade.
+Meanwhile, on that same easy problem, maybe one of its random attempts was a short, direct answer.
+That attempt easily fits within the token budget.
+It provides the final answer, and it gets a full reward of 1.0.
+So on the easy problems, the grading curve finally separates the two.
+Yes.
+The short answer gets the 1.0, and the long, waffling answer hits the ceiling, gets truncated, and gets a 0.
+Easy problems finally provide the positive differential gradient to favor short solutions.
+They physically demonstrate to the model that a short, correct answer is not only possible, but highly successful.
+Okay, but this circles back to my question about penalties.
+In section 8 of the paper, Flyxion talks about the information gap of length penalties.
+Right.
+Why is just subtracting points for long answers worse than this easy problem repair?
+If I add a penalty, couldn't I just alter the GRPO formula so the long answer gets a lower score?
+You could, but it comes down to corollaries 8.3 and 8.4 and the geometry of the collapsed fiber.
+Oh, back to the fiber.
+Remember, in a collapsed representation, the model literally does not know that short, correct answers are physically possible.
+The short trajectory region of its neural network has been overwritten.
+The probability is near zero.
+Right.
+It's the hiring manager who physically cannot perceive a good engineer unless they are wearing glasses.
+If you introduce a length penalty, all you are doing is telling the model long is bad.
+You are punishing the only behavior it currently knows how to execute successfully.
+Oh, hope.
+But you aren't showing it an alternative.
+You aren't repopulating the empty fiber.
+So the model just gets paralyzed.
+It says, I have to be long to be correct, but now I'm getting heavily penalized for being long.
+I literally don't know what else to do.
+A penalty just compresses the long solution region without expanding the short solution region.
+It penalizes the accident without demonstrating the substance.
+That makes perfect sense.
+As Flyxion writes, repair dominates penalty.
+You have to demonstrate admissibility before the model has fully internalized that it cannot be done.
+Let's try to map this to a physical analogy because the difference between regularization, which is fixing the objective via a penalty,
+and morphological repair, which is fixing the representation, is huge.
+It's the core of the paper.
+Imagine you have a dog, and for its entire life, it has only ever been allowed to go into the backyard through the back door.
+However, in the dog's internal representation, the concept of going outside is perfectly conflated with the back door.
+The fiber has collapsed.
+A perfect proxy collapse.
+F of outside equals F of back door.
+Right.
+Now, you decide you want the dog to use the front door.
+The length penalty approach is like putting an invisible electric fence at the back door.
+When the dog tries to go out, it gets shocked.
+What does the dog learn?
+It certainly doesn't learn to use the front door.
+No. It just thinks it's trapped in the house forever.
+It's paralyzed. You've made its only known path painful without demonstrating an alternative.
+And in neural network terms, the penalty just pushes the weights toward negative infinity.
+It doesn't build a new pathway.
+But the easy problem repair, that is you walking over to the front door, opening it wide, and throwing a treat onto the front lawn.
+Yes.
+You demonstrate that a new, previously invisible path exists.
+You expand the dog's representation of reality.
+You repopulate the fiber.
+That is an exceptionally precise analogy for what Theorem 6.1 describes.
+The easy problems are the open front door.
+They provide admissibility evidence that the penalty approach fundamentally lacks.
+Okay. So you throw the treat.
+The dog goes through the front door.
+The AI solves the easy math problem concisely.
+The fiber is repaired.
+Yes.
+But moving forward, how do you maintain the cure?
+Does the dog remember the front door forever?
+Because eventually, the AI still has to solve those incredibly hard PhD-level math problems that genuinely do require long answers.
+That's a great point.
+If it learned that short is good, won't it just start giving short, wrong answers to hard problems?
+This is where the structural brilliance of the intervention really shines.
+Flyxion details a two-stage curriculum.
+Okay. What's stage one?
+Stage one is what we just discussed.
+Emergent brevity.
+You feed it easy problems, and you physically repair the fiber.
+The model learns that shortness is a viable option.
+Stage one opens the front door.
+Exactly.
+Stage two is curriculum RLVR, or capability expansion into hard domains.
+Now you slowly start feeding it the brutally hard math problems again.
+And the incredible finding is stage two does not reintroduce the collapse.
+Wait, why not?
+If the hard problems only reward long answers again, why doesn't the gradient pull it right back into verbosity?
+Because the underlying geometry has fundamentally changed.
+Before stage one, the model conflated correctness and length into one single entangled variable.
+Right. F of correct was F of long.
+Now because of the easy problems, it understands that correctness and length are two separate orthogonal dimensions.
+So when it encounters a hard problem that genuinely requires a 50-step proof, it writes a 50-step proof.
+Whoa.
+But it does so only because the specific mathematical structure of the problem requires it, not out of a blind habitual proxy correlation.
+It's using the back door when the back door makes sense and the front door when the front door makes sense.
+It has agency again.
+Exactly.
+It can modulate its solution length based on the task, but Flyxion issues a major warning here in theorem 9.2, the stability condition.
+A warning?
+The repaired fiber requires active maintenance.
+Yes. Corollary 9.3 explicitly states that if you completely remove all easy problems in stage 2, if you go back to a strictly hard-only diet, the model will eventually relapse into verbosity.
+Wait, really? The fiber will contract again?
+Yes.
+The continuous presence of at least a small fraction of easy problems is mathematically required to provide the stabilizing gradient that keeps the short-solution fiber open.
+Wow.
+If you don't maintain the signal, the relentless pressure of the hard problems will slowly cause the projection to collapse all over again.
+Like muscle atrophy.
+Very much so.
+If you do heavy bench presses every single day but never stretch, eventually the joint tightens up and you lose your range of motion.
+You have to keep doing the light mobility work to maintain the joint's capacity.
+That's spot on.
+And this ties into a profound concept Flyxion calls monotone correspondence in Proposition 9.4.
+Flyxion connects the fiber admissibility gap, how much of the correct solution space the model is currently blind to, with something called reachability loss.
+What is reachability loss?
+It's a formal measure of how many successful futures a system permanently loses access to because of its rigid behavior.
+A loss of future potential.
+Exactly. The proposition proves that the bigger the blind spot in the model's representation, the greater the reachability loss.
+When a model collapses correctness into hubosity, it isn't just inefficient on current tasks.
+It literally cannot reach future deployment contexts where brevity is mandatory.
+It has sacrificed its future potential on the altar of its current training environment.
+So looking at the synthesis of all this, the golden rule seems to be repair before expansion.
+Absolutely.
+You cannot force a broken system to handle harder and harder tasks.
+You have to restore its local faithfulness first.
+You have to make sure its basic map of reality isn't conflating the accident with the substance.
+That is the universal principle of admissibility-based learning.
+If you try to expand a collapsed representation, you just magnify the collapse.
+Which brings us to the part of Flyxion's paper that absolutely blew my mind.
+The broader implications.
+Yes.
+Flyxion takes this highly specific, very modern mathematical fix in artificial intelligence and makes a stunning leap.
+The paper demonstrates that this morphological repair, repopulating an empty fiber by demonstrating a hidden distinction,
+is actually a universal pattern of how knowledge evolves across all of science, biology, and history.
+It really is.
+Flyxion looks at three massive, real-world examples outside of AI to show that this is how all progress happens.
+Let's look at the scientific anomaly first, because the history of physics is essentially a history of projection collapses and subsequent repairs.
+Exactly.
+We're talking about Newton and Einstein.
+Let's walk through how Newtonian physics was suffering from a collapsed fiber.
+Please do.
+For centuries, classical Newtonian mechanics treated two fundamentally different concepts as the exact same thing, inertial mass and gravitational mass.
+Okay, let's define those.
+Inertial mass is a measure of how hard it is to accelerate an object when you push it.
+It's the M in F equals ma.
+Right.
+Gravitational mass is a measure of how heavily an object interacts with a gravitational field.
+It's the M in Newton's law of universal gravitation.
+So one is about resistance to a push, the other is about the pull of a planet.
+Conceptually, they are totally distinct.
+Yes.
+But under terrestrial conditions on Earth, they are perfectly proportional.
+If an object is twice as hard to push, it also weighs twice as much on a scale.
+So in the training data of human experience living on Earth, the two concepts correlated exactly.
+It was a projection collapse.
+Precisely.
+The scientific ontology merged them.
+F of inertial became F of gravitational.
+The scientific community became the hiring manager who thought wearing glasses was the same as being a good coder.
+They thought inertial resistance was the exact same substance as gravitational pull.
+Right.
+How did it get repaired?
+Through anomalies and extreme theoretical stress testing culminating in Einstein's general relativity,
+Einstein's equivalence principle forced the distinction open.
+The anomaly revealed that they are theoretically and geometrically distinct properties of space-time,
+even if they cover locally on Earth.
+Flyxion makes a crucial point here, right?
+Einstein didn't add massive amounts of new physical matter to the universe to prove this.
+No.
+He didn't impose a penalty yet.
+He just demonstrated that a distinction we thought was impossible,
+or rather, a distinction we hadn't even considered,
+was actually real.
+He repopulated a previously empty conceptual fiber.
+That's exactly it.
+Okay, what about the biological example?
+How does Darwinian evolution map onto this math?
+Think of evolutionary biology and phenotypic adaptation.
+You have a lineage of birds on an isolated island that has become hyper-specialized
+to eat only one specific type of hard seed.
+Okay.
+Over generations, the bird's beak becomes perfectly adapted to that one seed,
+and it loses the ability to eat insects or soft fruit.
+That organism has undergone a biological representational collapse.
+Its physical phenotype no longer distinguishes between an environment with that seed and one without it.
+If the seed disappears, the bird dies.
+It literally cannot survive elsewhere.
+Its fiber of viable environments has contracted to a single point.
+Right.
+Then, a random genetic mutation occurs that restores a degree of dietary flexibility.
+Maybe its beak shape changes slightly so it can crush the hard seed but also pluck an insect.
+And the mutation doesn't change the bird's fundamental architecture.
+It's still a bird.
+But it drastically expands the fiber of viable environments.
+Yes.
+It restores admissibility.
+It reopens a survival trajectory that the heavy evolutionary pressure of the hard seeds had previously closed off.
+The mutation acts exactly like the easy math problems for the AI.
+It demonstrates a new viability without destroying the old capability.
+This is so fascinating.
+And the final example Flyxion uses is from Pure Mathematics, a historical counterexample involving Augustine Louis Kocci.
+I really need you to break this one down because 19th century calculus is deeply intimidating.
+What was Kocci's projection collapse?
+In the early 19th century, Kocci was doing foundational work in calculus.
+He wrote a proof treating two types of continuity as equivalent, point-wise continuity and uniform continuity.
+What is the difference between those two?
+Trying to keep it, you know, accessible.
+I'll try.
+Think of continuity as a guarantee of stability.
+If I change the input of a function just a little bit, the output only changes a little bit.
+That's the epsilon-delta definition you learn in calculus.
+Okay.
+Point-wise, continuity means that this guarantee holds true at every single specific point on a graph,
+but the tightness of the guarantee might vary wildly depending on which point you are looking at.
+So at x equals 1, a tiny shift in input causes a tiny shift in output.
+But at x equals 100, the function might be much steeper, so you need a much, much smaller shift in input to keep the output stable.
+The guarantee changes based on location.
+Exactly.
+Uniform continuity, on the other hand, is a much stronger global guarantee.
+It means you can find one single universal tightness that works everywhere on the graph at once.
+The location doesn't matter.
+Okay, so there are clearly different concepts.
+One is local.
+One is global.
+How did a genius like Kocci confuse them?
+Because in Kocci's specific mathematical training data,
+the domain of continuous functions on closed, compact intervals that he was primarily working with,
+they actually do coincide.
+Oh.
+Every point-wise continuous function on a closed interval is uniformly continuous.
+The proxy and the target collapsed.
+Kocci wrote a theorem assuming that if a sequence of continuous functions converges,
+the limit is always continuous.
+He assumed point-wise convergence implied uniform convergence.
+He collapsed the distinction because his local environment never required him to distinguish between them.
+He suffered from advantage blindness.
+Yes, exactly.
+But decades later, other mathematicians found a counterexample.
+They constructed specific functions, often involving infinite series or open intervals,
+that proved the concepts were fundamentally distinct.
+The counterexample forced the hidden distinction open.
+And crucially, it didn't destroy Kocci's original work under its intended interpretation.
+It just demonstrated that his internal representation had collapsed the distinction
+that the broader reality of mathematics actually required.
+If we look at the philosophical takeaway here, it is profound.
+In every single case, the physics anomaly with Einstein, the biological mutation in the bird,
+the mathematical counterexample for Kocci, and the AI's easy math problems repair
+does not consist of adding massive constraints or new penalties.
+It's not an electric fence at the back door.
+No.
+It consists of demonstration.
+It consists of showing the system that a previously ignored possibility is actually viable,
+a demonstration over information.
+I am just marveling at the scale of this connection.
+The fact that feeding an AI a problem like 3x equals 12 acts structurally the exact same
+way as an evolutionary mutation or a historical scientific counterexample.
+It's all the same underlying geometry.
+They all serve the exact same geometric function.
+They break the illusion that the way things have been is the way things must be.
+They shatter the projection collapse and repopulate the fiber.
+It is a profound unification of learning theory, and it brings us directly to the broader machine
+learning lesson in Flyxion's paper.
+Right.
+Because if Flyxion is right about this universal pattern, then the immediate future of AI and
+how we relate to information needs a massive paradigm shift.
+Flyxion is basically calling out the entire tech industry in Section 12 of the paper.
+We need to completely reframe how we view AI failures.
+Right now, when a large language model hallucinates or fails a reasoning task, what do the developers
+say?
+They say, we need more data.
+We need a trillion more parameters.
+We need stronger optimizers.
+Sliction says, stop blaming the model size or the optimizer.
+Blame the unrepresentative training distributions that induce these projection collapses.
+The model is succeeding perfectly at learning from flawed data that collapses the exact distinctions
+the task requires.
+And the paper lists these incredibly sharp predictions for other AI flaws that are happening right now,
+which require this exact same morphological repair.
+Let's look at a few of these false proxies.
+The first one, confident prose does not equal correctness.
+We see this constantly.
+An AI will give you an answer that is entirely factually wrong, but it will write it with the
+supreme authoritative confidence of a tenured professor.
+Why?
+Because its training data consisted of authoritative human texts, textbooks, published papers,
+encyclopedias, which usually correlate with being right.
+The model collapsed confidence into correctness.
+F of correct became F of confident.
+So how do you fix it?
+You don't penalize it for sounding confident.
+Based on Flyxion's theory, you have to demonstrate the empty fiber.
+You have to feed it training examples of highly confident prose that is completely undeniably
+factually wrong.
+You have to break the proxy identity.
+You have to show it that the two variables are orthogonal.
+Or take the next prediction.
+Long arguments do not equal thoroughness.
+Just because an AI writes a massive essay doesn't mean it covers all the bases.
+It might just be repeating itself or padding.
+The fix.
+Show it short, ironclad, comprehensive arguments.
+Show it brevity that is conceptually perfect.
+And the final prediction.
+Formal language does not equal precision.
+An AI might use massive vocabulary and formal syntax, but be logically incredibly sloppy.
+Because it learned that smart people use big words.
+The fix is to show it highly informal conversational language that is laser precise in its logic.
+Show it slang that cuts perfectly to the core of an issue.
+What Flyxion is doing here is redefining the true measure of intelligence.
+The tech world right now is obsessed with entropy reduction making models
+that spit out highly predictable, highly confident, highly structured text.
+But the measure of an intelligent system is not its ability to reduce uncertainty.
+It is its ability to preserve the distinctions that matter.
+Thinking longer is not thinking better.
+Writing more formally is not thinking more clearly.
+When a system learns that the appearance of hard work and the substance of hard work
+are not the same thing, that is when true, robust capability emerges.
+Which makes me want to ask you, the listener, a direct question right now.
+Where are you applying the wrong proxies in your own life?
+Where are you jutting the substance of something entirely by its accidents
+simply because of the environment you're used to?
+It's a great question to ask.
+Are you assuming someone is a good leader just because they speak loudly in meetings?
+Are you assuming a project is valuable just because it took 100 hours to complete?
+The geometry of verbosity isn't just in the AI.
+It's in our own representations of reality.
+We all have collapsed fibers that need repairing.
+It is the human condition to rely on proxies.
+They're efficient shortcuts.
+But it is the mark of growth to continually test those proxies against reality,
+hunt for counterexamples, and repair the representations that have collapsed.
+As we wrap up this deep dive, I want to leave you with one final standalone idea to mull over.
+We spent this entire time talking about how AI models naturally collapse the concept of correctness
+into verbosity simply by observing biased training data.
+They conflate the appearance of hard work with actual intelligence.
+But what if we turn that lens around?
+Turn it around on us.
+Yeah.
+If an algorithm is structurally vulnerable to projection collapse,
+what massive projection collapses are humans currently making about artificial intelligence itself?
+Well, that's heavy.
+Are we as a society collectively staring at these models?
+Models that are explicitly trained to spit out highly structured, formal, lengthy, confident text
+and conflating that accidental output with the substance of true consciousness?
+Are we looking at the algorithmic equivalent of a padded high school essay and saying,
+wow, there's a soul in there, simply because those are the traits we accidentally associate with smart humans?
+We might just be reading the font size and margins.
+Exactly.
+It's a terrifying thought.
+Are we being fooled by the very verbosity that the AI engineers are desperately trying to repair?
+Thank you for taking this deep dive with us.
+Keep questioning the proxies you rely on.
+Keep looking for the counterexamples.
+And above all, make sure your own fibers of representation remain fully unapologetically expanded.

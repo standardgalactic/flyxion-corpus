@@ -1,0 +1,7 @@
+# admissibility-lab/processing/Why_we_erase_ourselves_to_be_understood
+
+The mathematical choice of multiplying rather than adding the scores of the four pillars in Flyxion’s fidelity functional is crucial because it creates a strict bottleneck that prevents any single weak link from being compensated by strong links elsewhere. If one were to simply add the scores together, there would be no inherent constraint against a piece of evidence being entirely dependent on authority or hearsay—essentially a cult of personality with zero source independence. In such a system, even if other areas scored well, a single flaw could go unnoticed and uncorrected because the average score might still appear satisfactory.
+
+Multiplication forces each pillar to contribute multiplicatively to the overall fidelity score. If any one pillar scores low (e.g., relying entirely on someone’s authority), its contribution becomes zero due to multiplication by zero, collapsing the entire fidelity score instantly. This makes Flyxion’s system unforgiving and ruthless in filtering out falsehoods or incomplete evidence—only those that pass rigorous checks across all dimensions are allowed to survive.
+
+This approach mirrors how entropy works: if any component fails catastrophically (like a weak link), it nullifies the whole chain, ensuring robustness against systemic errors. It’s designed as a safeguard for truth in complex systems where misinterpretation and misunderstanding can easily propagate unchecked.

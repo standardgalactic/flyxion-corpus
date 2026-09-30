@@ -1,0 +1,13 @@
+# backup_20260929_172331/research-projects/persistence/Nuestra_civilización_es_un_error_de_ingeniería
+
+Este texto profundiza en una visión crítica y futurista sobre cómo los sistemas actuales, especialmente aquellos basados en la persuasión (como la publicidad, las redes sociales y la propaganda política), son incompatibles con la estabilidad a largo plazo de una civilización. La autora argumenta que estas prácticas no solo erosionan la confianza social y la capacidad de discernimiento, sino que también generan un ciclo continuo de necesidades insatisfechas y consumismo, lo cual es intrínsecamente inestable.
+
+La distinción entre sistemas de persuasión (que buscan alterar creencias para inducir acción a favor del persuadente) y sistemas de coordinación (que alinean comportamientos con objetivos comunes sin cambiar la percepción de la realidad) se presenta como fundamental. Los sistemas de persuasión, por su diseño, son incompatibles con la estabilidad a largo plazo porque recompensan la creación de falsas realidades y erosionan lentamente los invariantes fundamentales como la confianza.
+
+La autora propone que una civilización de 10.000 años debe excluir las economías basadas en la persuasión, sugiriendo que esto no es un imperativo moralista sino un requisito arquitectónico para la estabilidad. En su lugar, proponen redefinir la gobernanza como una forma educativa a gran escala (gobierno como currículo), donde el objetivo principal es enseñar a los ciudadanos a habituar de manera cooperativa en un mundo cada vez más complejo.
+
+El texto también aborda cómo los videojuegos y las redes sociales pueden ser herramientas de entrenamiento, pero solo si son "admisible" (como juegos como Factorio o Civilization) que mejoran habilidades transferibles. En contraste, sistemas inadmisibles (como tragamonedas o plataformas de doomscrolling) degradan la capacidad del usuario y le enseñan a ser consumidor impulsivo.
+
+Finalmente, el concepto de sustitución direccional se presenta como un método para cambiar prácticas destructivas sin prohibición porrazada. Esto implica ofrecer alternativas que sean irrenunciables debido a su superioridad en costos, sabor, nutrición o eficiencia energética. La idea central es que el diseño de sistemas debe permitir que las generaciones futuras comprendan la lógica del mundo simplemente interactuando con él, sin necesidad de referencias externas.
+
+En resumen, el texto invita a reflexionar sobre cómo los sistemas actuales están diseñados para mantener el consumo y la dependencia en lugar de promover habilidades duraderas y sostenibles. La pregunta central es si las aplicaciones, ciudades e instituciones que construimos hoy nos enseñan a sobrevivir o entrenamos para un colapso inevitable.

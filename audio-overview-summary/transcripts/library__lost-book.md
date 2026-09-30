@@ -1,0 +1,5 @@
+# library/lost-book
+
+summary: The audio overview reconstructs Giordano Bruno’s lost comedic work “Lost Book” (c. 1580), framed as a satirical dialogue set aboard Noah’s Ark. It critiques hierarchical religious authority by portraying the lower‑deck donkeys—who bear the literal weight of supporting the vessel—as oppressed while upper‑deck animals and humans enjoy luxury, feasting on fruits and figs. The play uses allegorical characters (Asinus Primus & Secundify as dim‑witted donkeys; Vulps the fox as schemer; Porcus Maior the pig as bureaucratic elite) to expose class inequity within a divine order. Through dramatic confrontations—where the donkeys plot rebellion and are ultimately re‑subjugated by Noah’s divine decree—the piece functions both as dark comedy and political allegory, highlighting Bruno’s penchant for blending philosophical critique with witty wordplay reminiscent of Erasmus, Rabelais, and Aristophanic traditions.
+
+KEYWORDS: satirical dialogue, Noah's Ark allegory, class hierarchy critique, comedic drama, religious authority satire, allegorical characters (donkeys, fox, pig), political commentary, 16th‑century Italian literature.

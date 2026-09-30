@@ -1,0 +1,3 @@
+# backup_txt_20260929_163900/physiome/processing/Simulating_the_body_as_a_repair_system
+
+The powerful analytical feature unlocked by this strict architectural rule is **deterministic replay**. This capability allows the simulator to precisely reconstruct and replay any past state of an organism simply by using its initial state snapshot and a minimal set of inputs (like injecting epinephrine at a specific minute), without needing to store every variable’s value over time. Deterministic replay is especially valuable in medical diagnostics, enabling clinicians to trace back biological failures or reactions down to their exact origins within the simulation environment.

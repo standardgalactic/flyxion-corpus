@@ -1,0 +1,5 @@
+# alphabet/Genius, Prodigy, and Talent
+
+summary: The audio overview critiques the notion that child prodigies and geniuses achieve their abilities solely through innate talent. It emphasizes the critical role of deliberate practice and adult interactions in shaping a young learner's perceived capabilities, using historical examples like Clever Hans (the horse) and Akfasha’s goat to illustrate how external cues can mislead assessments of true ability. The essay also examines socioeconomic factors that limit educational opportunities for children from disadvantaged backgrounds, advocating for non-hierarchical learning environments tailored to individual interests rather than predefined benchmarks. Additionally, it discusses psychological strategies such as “liking” (positive emotional engagement) and “blocking” (limiting distractions) to maintain motivation and focus on meaningful skill development.
+
+KEYWORDS: genius, prodigy, talent, deliberate practice, adult interaction, Clever Hans, Akfasha’s goat, socioeconomic factors, non-hierarchical learning, liking, blocking, educational resources, social capital, psychological strategies.
